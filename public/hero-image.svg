@@ -1,0 +1,36 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景漸變 -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="100%" height="100%" fill="url(#bgGradient)"/>
+  
+  <!-- 裝飾元素 -->
+  <circle cx="300" cy="200" r="180" fill="#3B82F6" opacity="0.2"/>
+  <circle cx="900" cy="600" r="250" fill="#8B5CF6" opacity="0.2"/>
+  <circle cx="600" cy="400" r="300" fill="#3B82F6" opacity="0.1"/>
+  
+  <!-- 網格線 -->
+  <g stroke="#3B82F6" stroke-width="1" opacity="0.3">
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="600" x2="1200" y2="600"/>
+    <line x1="300" y1="0" x2="300" y2="800"/>
+    <line x1="600" y1="0" x2="600" y2="800"/>
+    <line x1="900" y1="0" x2="900" y2="800"/>
+  </g>
+  
+  <!-- 幾何圖形 -->
+  <rect x="150" y="350" width="200" height="200" rx="20" fill="#3B82F6" opacity="0.6"/>
+  <circle cx="850" cy="250" r="100" fill="#8B5CF6" opacity="0.6"/>
+  <polygon points="600,200 700,350 500,350" fill="#3B82F6" opacity="0.6"/>
+  
+  <!-- 代碼符號 -->
+  <text x="400" y="600" font-family="monospace" font-size="60" fill="#4B5563" opacity="0.8">&lt;/&gt;</text>
+  <text x="700" y="500" font-family="monospace" font-size="60" fill="#4B5563" opacity="0.8">{}</text>
+</svg> 
