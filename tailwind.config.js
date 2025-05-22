@@ -8,11 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#3B82F6",
-        secondary: "#7C3AED",
-        dark: "#0F0F0F",
-        "dark-accent": "#1A1A1A",
-        light: "#F5F5F7",
+        primary: "#f3b237",        // 你最愛的金黃主色，明亮且醒目
+        secondary: "#2768a8",      // 深藍偏冷色，穩重又有科技感（也是你喜歡的）
+        dark: "#181c24",           // 深藍灰，比純黑柔和、視覺友善
+        "dark-accent": "#242935",  // 卡片背景用，深但有層次，適合 UI 分區
+        light: "#fdfae6",          // 亮米白，溫暖乾淨，不刺眼
       },
       fontFamily: {
         sans: ["var(--font-inter)"],

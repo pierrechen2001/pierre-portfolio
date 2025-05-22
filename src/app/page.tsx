@@ -17,13 +17,13 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
       
-      {/* Hero Section - 現代深色風格 */}
-      <section className="relative overflow-hidden bg-[#1A1A1F] text-white pt-32 pb-20 md:py-32">
-        <div className="container relative z-10">
+      {/* Hero Section */}
+      <section className="page-header bg-[#1A1A1F] text-white pt-32 pb-20 md:py-32">
+        <div className="container page-header-content">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="max-w-2xl text-center md:text-left">
-              <p className="text-xl text-[#F3C14B] mb-2 font-medium">{t('iam')}</p>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 text-white leading-tight">
+              <p className="text-xl text-[var(--primary)] mb-2 font-medium">{t('iam')}</p>
+              <h1 className="page-title text-white leading-tight">
                 {t('fullname')}
               </h1>
               <p className="text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl">
@@ -32,13 +32,13 @@ export default function Home() {
               <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                 <Link
                   href="/projects"
-                  className="bg-[#F3C14B] hover:bg-[#E9BC45] text-[#1A1A1F] px-8 py-4 rounded-lg font-medium transition-all duration-300 transform hover:scale-105"
+                  className="btn btn-primary"
                 >
                   {t('view_portfolio')}
                 </Link>
                 <Link
                   href="/contact"
-                  className="border-2 border-[#333340] hover:border-[#F3C14B] text-gray-300 hover:text-white px-8 py-4 rounded-lg font-medium transition-all duration-300"
+                  className="btn btn-secondary"
                 >
                   {t('contact_me')}
                 </Link>
@@ -51,24 +51,24 @@ export default function Home() {
                 alt="Pierre's Avatar"
                 width={384}
                 height={384}
-                className="rounded-full bg-[#252530] p-1 border border-[#333340]"
+                className="rounded-full bg-[var(--background-alt)] p-1 border border-[var(--border-color)]"
               />
-              <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-[#F3C14B] to-[#E9BC45] opacity-20 blur-md"></div>
+              <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] opacity-20 blur-md"></div>
             </div>
           </div>
         </div>
         
         {/* 裝飾元素 */}
-        <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-[#F3C14B]/10 rounded-full blur-3xl"></div>
-        <div className="absolute -top-16 -right-16 w-64 h-64 bg-[#E9BC45]/10 rounded-full blur-3xl"></div>
+        <div className="decoration-blob -bottom-16 -left-16 w-64 h-64"></div>
+        <div className="decoration-blob -top-16 -right-16 w-64 h-64"></div>
       </section>
       
       {/* Featured Projects Section */}
-      <section className="py-20 bg-[#1A1A1F] relative overflow-hidden">
+      <section className="py-20 bg-[var(--background)] relative overflow-hidden">
         <div className="container relative z-10">
           <div className="mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">{t('my_portfolio')}</h2>
-            <p className="text-gray-400 max-w-2xl text-lg">
+            <p className="text-[var(--text-muted)] max-w-2xl text-lg">
               {t('portfolio_description')}
             </p>
           </div>
@@ -91,7 +91,7 @@ export default function Home() {
           <div className="text-center mt-16">
             <Link
               href="/projects"
-              className="inline-flex items-center px-8 py-4 rounded-lg bg-[#252530] text-white hover:bg-[#333340] font-medium transition-colors duration-300"
+              className="btn btn-secondary"
             >
               {t('view_all_projects')}
               <svg

@@ -3,15 +3,46 @@
 @tailwind utilities;
 
 :root {
-  --background: #1A1A1F;
-  --foreground: #F5F5F7;
-  --primary: #F3C14B;
-  --secondary: #757575;
-  --accent: #E9BC45;
-  --card-bg: #252530;
-  --border-color: #333340;
+  /* 主要顏色變量 - 這些是網站核心顏色系統 */
+  --primary: #f3b237;           /* 主色調 - 金黃色 */
+  --primary-dark: #e9a42e;      /* 主色調深色版 */
+  --primary-light: #f7c359;     /* 主色調淺色版 */
+  
+  --secondary: #2768a8;         /* 次要色調 - 深藍色 */
+  --secondary-dark: #1e5a96;    /* 次要色調深色版 */
+  --secondary-light: #3a7ab9;   /* 次要色調淺色版 */
+  
+  /* 背景與前景 */
+  --background: #181c24;        /* 主要背景色 - 深藍灰 */
+  --background-alt: #242935;    /* 次要背景色 - 用於卡片等元素 */
+  --foreground: #fdfae6;        /* 主要文字顏色 - 溫暖米白 */
+  
+  /* UI元素顏色 */
+  --card-bg: #2a2a35;           /* 卡片背景 */
+  --border-color: #3a3a48;      /* 邊框顏色 */
+  --accent: #ffcc4d;            /* 強調色 - 亮黃橘 */
+  
+  /* 文字顏色變體 */
+  --text-muted: #a0a0a6;        /* 次要文字顏色 */
+  --text-accent: var(--primary); /* 強調文字顏色 */
+  
+  /* 功能性顏色 */
+  --success: #4caf50;           /* 成功提示色 */
+  --warning: #ff9800;           /* 警告提示色 */
+  --error: #f44336;             /* 錯誤提示色 */
+  --info: #2196f3;              /* 資訊提示色 */
 }
 
+/* 深色模式下的顏色調整 */
+.dark {
+  --background: #121418;
+  --background-alt: #1e222b;
+  --card-bg: #242830;
+  --border-color: #3a3a48;
+  --text-muted: #8a8a96;
+}
+
+/* 全局樣式 */
 body {
   background: var(--background);
   color: var(--foreground);
@@ -27,8 +58,26 @@ body {
   padding-right: 1.25rem;
 }
 
-/* 卡片和元素樣式 */
-.project-card {
+/* 統一頁面標題區塊 */
+.page-header {
+  @apply relative overflow-hidden py-20 md:py-24;
+  background: linear-gradient(to bottom, var(--background), var(--background-alt));
+}
+
+.page-header-content {
+  @apply relative z-10;
+}
+
+.page-title {
+  @apply text-4xl md:text-5xl font-bold mb-6;
+}
+
+.page-description {
+  @apply text-xl text-gray-300 max-w-3xl;
+}
+
+/* 統一卡片樣式 */
+.card {
   background-color: var(--card-bg);
   border-radius: 0.75rem;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -37,10 +86,63 @@ body {
   border: 1px solid var(--border-color);
 }
 
-.project-card:hover {
+.card:hover {
   box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2), 0 8px 10px -6px rgba(0,0,0,0.2);
   transform: translateY(-8px);
   border-color: var(--primary);
+}
+
+/* 項目卡片特定樣式 */
+.project-card {
+  @apply card;
+}
+
+/* 按鈕樣式 */
+.btn {
+  @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 inline-flex items-center justify-center;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid var(--border-color);
+  color: var(--foreground);
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* 徽章樣式 */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: var(--background-alt);
+  color: var(--text-muted);
+}
+
+.badge-primary {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+.badge-secondary {
+  background-color: var(--secondary);
+  color: var(--foreground);
 }
 
 /* 強調元素設計 */
@@ -55,56 +157,29 @@ body {
   color: transparent;
 }
 
-.accent-border {
-  border: 1px solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(to right, var(--primary), var(--accent));
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.125rem 0.625rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 500;
+/* 裝飾元素 */
+.decoration-blob {
+  @apply absolute rounded-full blur-3xl opacity-20;
+  background: var(--primary);
 }
 
 /* 動畫效果 */
 @keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
 }
 
 @keyframes pulse {
-  0%, 100% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 0.8;
-  }
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.8; }
 }
 
 @keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
 }
 
 .animate-float {
@@ -119,23 +194,6 @@ body {
   animation: blob 10s infinite;
 }
 
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-
-/* 漸變和過渡效果 */
-.hover-lift {
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-lift:hover {
-  transform: translateY(-5px);
-}
-
 /* 響應式調整 */
 @media (max-width: 640px) {
   .container {
@@ -143,13 +201,8 @@ body {
     padding-right: 1rem;
   }
   
-  h1 {
+  .page-title {
     font-size: 2.25rem;
     line-height: 2.5rem;
-  }
-  
-  h2 {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
   }
 }
