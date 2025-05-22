@@ -29,10 +29,10 @@ export default function Header() {
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       scrolled 
-        ? 'bg-[#1A1A1F]/90 backdrop-blur-md py-3 border-b border-[#333340]' 
+        ? 'bg-[#1A1A1F]/95 backdrop-blur-md py-3 shadow-md border-b border-[#333340]/50' 
         : 'bg-transparent py-5'
     }`}>
-      <div className="container">
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <span className="text-xl font-bold text-white">
@@ -99,9 +99,9 @@ export default function Header() {
         
         {/* Mobile Navigation */}
         <div className={`md:hidden overflow-hidden transition-all duration-300 ${
-          isMenuOpen ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'
+          isMenuOpen ? 'max-h-60 opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'
         }`}>
-          <nav className="pt-4 pb-2 space-y-2 border-t border-[#333340] mt-4">
+          <nav className={`${isMenuOpen ? 'pt-4 pb-2' : 'py-0'} space-y-2 ${isMenuOpen ? 'border-t border-[#333340]/50' : ''}`}>
             <div className="flex items-center justify-between pb-2">
               <LanguageSwitcher />
             </div>

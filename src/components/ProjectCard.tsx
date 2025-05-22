@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 type ProjectStatus = 'completed' | 'in-progress' | 'planned';
 
@@ -27,6 +30,8 @@ export default function ProjectCard({
   date,
   skills,
 }: ProjectCardProps) {
+  const { t } = useLanguage();
+  
   const statusColor = {
     completed: 'bg-green-900/30 text-green-400',
     'in-progress': 'bg-[#F3C14B]/20 text-[#F3C14B]',
@@ -74,7 +79,7 @@ export default function ProjectCard({
         <div className="flex justify-between items-start mb-3">
           <h3 className="text-xl font-bold text-white group-hover:text-[#F3C14B] transition-colors">{title}</h3>
           <span className={`badge ${statusColor[status]} text-xs px-2.5 py-1 rounded-full font-medium`}>
-            {statusText[status]}
+            {t(status)}
           </span>
         </div>
         <p className="text-sm text-gray-400 mb-2">
@@ -97,7 +102,7 @@ export default function ProjectCard({
           href={`/projects/${id}`}
           className="inline-flex items-center text-[#F3C14B] hover:text-[#E9BC45] font-medium group-hover:translate-x-1 transition-transform"
         >
-          查看詳情
+          {t('view_details')}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

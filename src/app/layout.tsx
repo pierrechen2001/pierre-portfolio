@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description: "個人作品集網站 - 展示我所有開發過的專案",
     url: 'https://yourdomain.com',
     siteName: "Pierre's Portfolio",
-    locale: 'zh_TW',
+    locale: 'en_US',
     type: 'website',
   },
 };
@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-TW" className={`${inter.variable} ${robotoMono.variable} scroll-smooth`}>
+    <html lang="en" className={`${inter.variable} ${robotoMono.variable} scroll-smooth`}>
       <body className="antialiased min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-black">
         <Providers>
           <div className="flex flex-col min-h-screen">

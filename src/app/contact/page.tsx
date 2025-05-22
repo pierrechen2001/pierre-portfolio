@@ -1,37 +1,47 @@
+'use client';
+
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
-
-export const metadata = {
-  title: '聯絡 | Pierre\'s Portfolio',
-  description: '聯繫我以討論項目合作或了解更多信息',
-};
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useEffect } from 'react';
 
 export default function ContactPage() {
+  const { t, language } = useLanguage();
+  
+  // 使用 useEffect 設置頁面標題和描述
+  useEffect(() => {
+    document.title = `${t('contact_page_title')} | Pierre's Portfolio`;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', t('contact_page_description'));
+    }
+  }, [t, language]);
+  
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       
       <main className="flex-grow">
         <section className="bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/5 dark:to-secondary/5">
-          <div className="container py-16">
-            <h1 className="text-4xl font-bold mb-6">聯絡我</h1>
+          <div className="container mx-auto px-4 py-16">
+            <h1 className="text-4xl font-bold mb-6">{t('contact_page_title')}</h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
-              無論您是想討論一個項目，提出一個問題，還是只是打個招呼，我都很樂意聽到您的聲音。
+              {t('contact_description')}
             </p>
           </div>
         </section>
         
         <section className="py-16">
-          <div className="container">
+          <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
-                <h2 className="text-2xl font-bold mb-6">發送訊息</h2>
+                <h2 className="text-2xl font-bold mb-6">{t('get_in_touch')}</h2>
                 <ContactForm />
               </div>
               
               <div>
-                <h2 className="text-2xl font-bold mb-6">聯繫方式</h2>
+                <h2 className="text-2xl font-bold mb-6">{t('contact_info')}</h2>
                 <div className="bg-white dark:bg-dark p-6 rounded-lg shadow-md">
                   <div className="space-y-6">
                     <div className="flex items-start">
@@ -52,7 +62,7 @@ export default function ContactPage() {
                         </svg>
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold mb-1">電子郵件</h3>
+                        <h3 className="text-lg font-semibold mb-1">{t('contact_form_email')}</h3>
                         <a
                           href="mailto:contact@pierre-portfolio.com"
                           className="text-primary hover:underline"
@@ -80,9 +90,9 @@ export default function ContactPage() {
                         </svg>
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold mb-1">電話</h3>
+                        <h3 className="text-lg font-semibold mb-1">{language === 'en' ? 'Phone' : '電話'}</h3>
                         <a
-                          href="tel:+886912345678"
+                          href="tel:+886963779263"
                           className="text-primary hover:underline"
                         >
                           +886 912 345 678
@@ -114,16 +124,16 @@ export default function ContactPage() {
                         </svg>
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold mb-1">位置</h3>
+                        <h3 className="text-lg font-semibold mb-1">{language === 'en' ? 'Location' : '位置'}</h3>
                         <p className="text-gray-600 dark:text-gray-300">
-                          台北市信義區
+                          {language === 'en' ? 'Xinyi District, Taipei' : '台北市中正區'}
                         </p>
                       </div>
                     </div>
                   </div>
                   
                   <div className="mt-8">
-                    <h3 className="text-lg font-semibold mb-4">社群連結</h3>
+                    <h3 className="text-lg font-semibold mb-4">{language === 'en' ? 'Social Links' : '社群連結'}</h3>
                     <div className="flex space-x-4">
                       <a
                         href="https://github.com/yourusername"

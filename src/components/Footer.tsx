@@ -1,9 +1,15 @@
+'use client';
+
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-[#1A1A1F] text-gray-300 pt-16 pb-8 border-t border-[#333340]">
-      <div className="container">
+      <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="inline-block">
@@ -12,11 +18,11 @@ export default function Footer() {
               </h3>
             </Link>
             <p className="text-gray-400 max-w-md mb-6">
-              專注於打造優秀的網站和應用程式，將創意轉化為現實。提供全方位的解決方案，從網站設計到應用開發。
+              {t('about_me')}
             </p>
             <div className="flex space-x-4 mb-6">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/pierrechen2001"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#252530] hover:bg-[#333340] p-2 rounded-full transition-colors duration-300 text-gray-400 hover:text-white"
@@ -32,7 +38,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/guanyu-chen-989117303/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#252530] hover:bg-[#333340] p-2 rounded-full transition-colors duration-300 text-gray-400 hover:text-white"
@@ -52,27 +58,27 @@ export default function Footer() {
           
           <div>
             <h3 className="text-lg font-bold mb-6 text-white relative pb-2 before:content-[''] before:absolute before:left-0 before:bottom-0 before:h-0.5 before:w-12 before:bg-[#F3C14B]">
-              快速連結
+              {t('quick_links')}
             </h3>
             <ul className="space-y-4">
               <li>
                 <Link href="/" className="text-gray-400 hover:text-white transition-colors hover:pl-1 inline-block">
-                  首頁
+                  {t('home')}
                 </Link>
               </li>
               <li>
                 <Link href="/projects" className="text-gray-400 hover:text-white transition-colors hover:pl-1 inline-block">
-                  作品集
+                  {t('portfolio')}
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="text-gray-400 hover:text-white transition-colors hover:pl-1 inline-block">
-                  關於我
+                  {t('about')}
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-gray-400 hover:text-white transition-colors hover:pl-1 inline-block">
-                  聯絡
+                  {t('contact')}
                 </Link>
               </li>
             </ul>
@@ -80,14 +86,14 @@ export default function Footer() {
           
           <div>
             <h3 className="text-lg font-bold mb-6 text-white relative pb-2 before:content-[''] before:absolute before:left-0 before:bottom-0 before:h-0.5 before:w-12 before:bg-[#F3C14B]">
-              聯絡資訊
+              {t('contact_info')}
             </h3>
             <ul className="space-y-4 text-gray-400">
               <li className="flex items-start">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-3 mt-0.5 text-[#F3C14B]">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                 </svg>
-                <span>contact@yourdomain.com</span>
+                <span>b12705058@g.ntu.edu.tw</span>
               </li>
               <li className="flex items-start">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-3 mt-0.5 text-[#F3C14B]">
@@ -100,7 +106,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-[#333340] mt-12 pt-8 text-center text-gray-500">
-          <p>© {new Date().getFullYear()} Pierre Chen. All rights reserved.</p>
+          <p>© {currentYear} Pierre Chen. {t('rights_reserved')}</p>
         </div>
       </div>
     </footer>

@@ -1,8 +1,11 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ContactForm() {
+  const { t } = useLanguage();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,12 +46,12 @@ export default function ContactForm() {
       
       setSubmitStatus({
         success: true,
-        message: '您的訊息已成功發送！我會盡快回覆您。',
+        message: t('contact_success'),
       });
     } catch (error) {
       setSubmitStatus({
         success: false,
-        message: '發送失敗，請稍後再試。',
+        message: t('contact_error'),
       });
     } finally {
       setIsSubmitting(false);
@@ -60,7 +63,7 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="name" className="block text-sm font-medium mb-1">
-            姓名
+            {t('contact_form_name')}
           </label>
           <input
             id="name"
@@ -70,12 +73,13 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-dark"
+            placeholder={t('name_required')}
           />
         </div>
         
         <div>
           <label htmlFor="email" className="block text-sm font-medium mb-1">
-            電子郵件
+            {t('contact_form_email')}
           </label>
           <input
             id="email"
@@ -85,13 +89,14 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-dark"
+            placeholder={t('email_required')}
           />
         </div>
       </div>
       
       <div>
         <label htmlFor="subject" className="block text-sm font-medium mb-1">
-          主題
+          {t('contact_form_subject')}
         </label>
         <input
           id="subject"
@@ -106,7 +111,7 @@ export default function ContactForm() {
       
       <div>
         <label htmlFor="message" className="block text-sm font-medium mb-1">
-          訊息
+          {t('contact_form_message')}
         </label>
         <textarea
           id="message"
@@ -116,6 +121,7 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-dark"
+          placeholder={t('message_required')}
         />
       </div>
       
@@ -125,7 +131,7 @@ export default function ContactForm() {
           disabled={isSubmitting}
           className="bg-primary text-white px-6 py-3 rounded-md font-medium hover:bg-blue-600 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
         >
-          {isSubmitting ? '發送中...' : '發送訊息'}
+          {isSubmitting ? t('contact_form_sending') : t('contact_form_send')}
         </button>
       </div>
       
