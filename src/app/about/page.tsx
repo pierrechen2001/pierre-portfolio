@@ -42,6 +42,11 @@ function ParallaxBackground() {
         <div className="absolute top-[15%] right-[-20%] w-[40%] h-[40%] bg-indigo-300/20 rounded-full blur-[150px] animate-pulse" style={{ animationDuration: '10s' }}></div>
         <div className="absolute bottom-[15%] left-[10%] w-[60%] h-[60%] bg-slate-800/20 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '12s' }}></div>
         <div className="absolute bottom-[-15%] right-[30%] w-[30%] h-[30%] bg-blue-700/20 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '9s' }}></div>
+        <div className="parallax-blob absolute top-[70%] right-[10%] w-[35%] h-[35%] bg-gradient-to-bl from-purple-500/20 to-indigo-600/15 rounded-full blur-[90px] animate-pulse" style={{ animationDuration: '11s' }}></div>
+        
+        <div className="parallax-blob absolute top-[5%] left-[80%] w-[45%] h-[45%] bg-gradient-to-tr from-teal-500/15 to-emerald-400/10 rounded-full blur-[70px] animate-pulse" style={{ animationDuration: '8.5s' }}></div>        
+
+        <div className="parallax-blob absolute top-[10%] right-[5%] w-[40%] h-[40%] bg-gradient-to-bl from-teal-500/15 to-emerald-400/8 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '9.5s' }}></div>
         <div className="absolute top-[40%] left-[30%] w-[45%] h-[45%] bg-slate-700/20 rounded-full blur-[130px] animate-pulse" style={{ animationDuration: '11s' }}></div>
       </div>
     </div>
@@ -159,35 +164,35 @@ export default function AboutPage() {
                     <div className="md:hidden relative w-full pl-8 mb-2">
                       <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-primary"></div>
                       <div className="absolute left-2 top-2 w-[1px] h-full bg-gradient-to-b from-primary/50 via-secondary/50 to-primary/50"></div>
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">2025年 - 現在</span>
-                      <h3 className="text-xl md:text-2xl font-bold mt-1 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Dogtor 全端工程師</h3>
-                      <p className="font-medium mt-1 text-[var(--primary)]">AI 學習應用開發團隊</p>
+                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('dogtor_period')}</span>
+                      <h3 className="text-xl md:text-2xl font-bold mt-1 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('dogtor_position')}</h3>
+                      <p className="font-medium mt-1 text-[var(--primary)]">{t('dogtor_company')}</p>
                     </div>
                     
                     {/* 桌面版左側內容 */}
                     <div className="md:text-right md:pr-12 parallax-scroll hidden md:block" data-speed="0.05">
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">2025年 - 現在</span>
-                      <h3 className="text-2xl font-bold mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Dogtor 全端工程師</h3>
-                      <p className="font-medium mt-2 text-[var(--primary)]">AI 學習應用開發團隊</p>
+                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('dogtor_period')}</span>
+                      <h3 className="text-2xl font-bold mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('dogtor_position')}</h3>
+                      <p className="font-medium mt-2 text-[var(--primary)]">{t('dogtor_company')}</p>
                     </div>
                     
                     {/* 右側內容 */}
                     <div className="md:pl-12 backdrop-blur-sm bg-[var(--background)]/50 p-4 md:p-6 rounded-xl shadow-sm parallax-scroll pl-8 md:pl-12" data-speed="-0.01">
                       <p className="text-[var(--foreground)] mb-3 md:mb-4">
-                        參與 Dogtor 專案的全端開發，結合 Flutter、FastAPI 和 MySQL 建構學生學習平台，並部署於 GCP。
+                        {t('dogtor_description')}
                       </p>
                       <ul className="list-none space-y-1 md:space-y-2 text-[var(--foreground)]">
                         <li className="flex items-center">
                           <span className="mr-2 text-primary">•</span>
-                          設計與建置個人化錯題追蹤與練習系統
+                          {t('dogtor_achievement_1')}
                         </li>
                         <li className="flex items-center">
                           <span className="mr-2 text-primary">•</span>
-                          將後端 API 部署至 Cloud Run，串接 Flutter 應用
+                          {t('dogtor_achievement_2')}
                         </li>
                         <li className="flex items-center">
                           <span className="mr-2 text-primary">•</span>
-                          整合 OpenAI 模型進行題目生成與回饋
+                          {t('dogtor_achievement_3')}
                         </li>
                       </ul>
                     </div>
@@ -202,35 +207,35 @@ export default function AboutPage() {
                     <div className="md:hidden relative w-full pl-8 mb-2">
                       <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-secondary"></div>
                       <div className="absolute left-2 top-2 w-[1px] h-full bg-gradient-to-b from-secondary/50 via-primary/50 to-secondary/50"></div>
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">2023年 - 現在</span>
-                      <h3 className="text-xl md:text-2xl font-bold mt-1 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">精湛教育創辦人兼技術開發</h3>
-                      <p className="font-medium mt-1 text-[var(--primary)]">Superb Education</p>
+                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('superb_period')}</span>
+                      <h3 className="text-xl md:text-2xl font-bold mt-1 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">{t('superb_position')}</h3>
+                      <p className="font-medium mt-1 text-[var(--primary)]">{t('superb_company')}</p>
                     </div>
                     
                     {/* 桌面版右側內容（交錯效果） */}
                     <div className="md:text-left md:order-2 parallax-scroll hidden md:block md:pl-12" data-speed="0.03">
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">2023年 - 現在</span>
-                      <h3 className="text-2xl font-bold mt-2 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">精湛教育創辦人兼技術開發</h3>
-                      <p className="font-medium mt-2 text-[var(--primary)]">Superb Education</p>
+                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('superb_period')}</span>
+                      <h3 className="text-2xl font-bold mt-2 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">{t('superb_position')}</h3>
+                      <p className="font-medium mt-2 text-[var(--primary)]">{t('superb_company')}</p>
                     </div>
                     
                     {/* 左側內容（在桌面版） */}
                     <div className="md:order-1 parallax-scroll backdrop-blur-0 bg-[var(--background)]/50 p-8 md:p-6 rounded-xl shadow-sm pl-8 md:pl-6" data-speed="-0.02">
                       <p className="text-[var(--foreground)] mb-3 md:mb-4">
-                        獨立開發 LINE 聊天機器人與教學平台，協助高中生學習數理與英文，並整合 Google Sheet API 進行出勤與作業追蹤。
+                        {t('superb_description')}
                       </p>
                       <ul className="list-none space-y-1 md:space-y-2 text-[var(--foreground)]">
                         <li className="flex items-center">
                           <span className="mr-2 text-secondary">•</span>
-                          使用 Python 串接 LINE Message API 與 Google Sheets API
+                          {t('superb_achievement_1')}
                         </li>
                         <li className="flex items-center">
                           <span className="mr-2 text-secondary">•</span>
-                          將後端應用部署至 Heroku 提供穩定服務
+                          {t('superb_achievement_2')}
                         </li>
                         <li className="flex items-center">
                           <span className="mr-2 text-secondary">•</span>
-                          設計官網前端頁面，使用 HTML/CSS/JS 完成
+                          {t('superb_achievement_3')}
                         </li>
                       </ul>
                     </div>
@@ -245,35 +250,35 @@ export default function AboutPage() {
                     <div className="md:hidden relative w-full pl-8 mb-2">
                       <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-primary"></div>
                       <div className="absolute left-2 top-2 w-[1px] h-[80%] bg-gradient-to-b from-primary/50 via-secondary/50 to-transparent"></div>
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">2023年 - 預計2027年</span>
-                      <h3 className="text-xl md:text-2xl font-bold mt-1 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">資訊管理學士</h3>
-                      <p className="font-medium mt-1 text-[var(--primary)]">國立台灣大學</p>
+                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('ntu_period')}</span>
+                      <h3 className="text-xl md:text-2xl font-bold mt-1 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('ntu_degree')}</h3>
+                      <p className="font-medium mt-1 text-[var(--primary)]">{t('ntu_school')}</p>
                     </div>
                     
                     {/* 桌面版左側內容 */}
                     <div className="md:text-right md:pr-12 parallax-scroll hidden md:block" data-speed="0.01">
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">2023年 - 預計2027年</span>
-                      <h3 className="text-2xl font-bold mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">資訊管理學士</h3>
-                      <p className="font-medium mt-2 text-[var(--primary)]">國立台灣大學</p>
+                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('ntu_period')}</span>
+                      <h3 className="text-2xl font-bold mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('ntu_degree')}</h3>
+                      <p className="font-medium mt-2 text-[var(--primary)]">{t('ntu_school')}</p>
                     </div>
                     
                     {/* 右側內容 */}
                     <div className="md:pl-12 backdrop-blur-0 bg-[var(--background)]/50 p-10 md:p-6 rounded-xl shadow-sm parallax-scroll pl-8 md:pl-12" data-speed="-0.02">
                       <p className="text-[var(--foreground)] mb-3 md:mb-4">
-                        主修資訊管理，修習軟體工程、資料庫系統、深度學習與人機互動等課程，積極參與校內外程式設計競賽與應用專題開發。
+                        {t('ntu_description')}
                       </p>
                       <ul className="list-none space-y-1 md:space-y-2 text-[var(--foreground)]">
                         <li className="flex items-center">
                           <span className="mr-2 text-primary">•</span>
-                          開發多個 AI 教育與社會影響應用專案
+                          {t('ntu_achievement_1')}
                         </li>
                         <li className="flex items-center">
                           <span className="mr-2 text-primary">•</span>
-                          擔任「災害風險管理」課程助教
+                          {t('ntu_achievement_2')}
                         </li>
                         <li className="flex items-center">
                           <span className="mr-2 text-primary">•</span>
-                          擔任校內冬令營講師，教授溝通與領導技巧
+                          {t('ntu_achievement_3')}
                         </li>
                       </ul>
                     </div>
@@ -290,24 +295,24 @@ export default function AboutPage() {
                 {/* NTU 學歷卡片 */}
                 <div className="transition-all p-6 backdrop-blur-sm bg-[var(--background-alt)]/80 border border-[var(--border)]/10 rounded-xl">
                   <div className="flex flex-col justify-between items-start mb-6">
-                    <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">資訊管理學士</h3>
-                    <span className="text-lg font-semibold text-[var(--text-muted)]">2023年 - 預計2027年</span>
+                    <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('ntu_degree')}</h3>
+                    <span className="text-lg font-semibold text-[var(--text-muted)]">{t('ntu_period')}</span>
                   </div>
-                  <p className="text-xl font-medium mb-4 text-[var(--primary)]">國立台灣大學</p>
+                  <p className="text-xl font-medium mb-4 text-[var(--primary)]">{t('ntu_school')}</p>
                   <p className="text-[var(--foreground)]">
-                    主修資訊管理，修習軟體工程、資料庫、深度學習、人機互動等課程，並積極參與校內外專案與競賽。
+                    {t('ntu_description')}
                   </p>
                 </div>
 
                 {/* KMU 學歷卡片 */}
                 <div className="transition-all p-6 backdrop-blur-sm bg-[var(--background-alt)]/80 border border-[var(--border)]/10 rounded-xl">
                   <div className="flex flex-col justify-between items-start mb-6">
-                    <h3 className="text-2xl font-bold bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">化學學士</h3>
-                    <span className="text-lg font-semibold text-[var(--text-muted)]">2019年 - 2023年</span>
+                    <h3 className="text-2xl font-bold bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">{t('kmu_degree')}</h3>
+                    <span className="text-lg font-semibold text-[var(--text-muted)]">{t('kmu_period')}</span>
                   </div>
-                  <p className="text-xl font-medium mb-4 text-[var(--primary)]">高雄醫學大學</p>
+                  <p className="text-xl font-medium mb-4 text-[var(--primary)]">{t('kmu_school')}</p>
                   <p className="text-[var(--foreground)]">
-                    主修化學，進行癌症生物標記分析研究，參與學生會並擔任學生代表、活動總召，發展出良好的溝通與領導能力。
+                    {t('kmu_description')}
                   </p>
                 </div>
               </div>

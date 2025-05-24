@@ -13,12 +13,6 @@ export default function ContactForm() {
     message: '',
   });
   
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{
-    success?: boolean;
-    message?: string;
-  }>({});
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -26,40 +20,12 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus({});
-
-    try {
-      // 在這裡添加實際的表單提交邏輯
-      // 這個示例只是模擬提交
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      
-      // 成功提交後重置表單
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      });
-      
-      setSubmitStatus({
-        success: true,
-        message: t('contact_success'),
-      });
-    } catch (error) {
-      setSubmitStatus({
-        success: false,
-        message: t('contact_error'),
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form
+      action="https://formsubmit.co/peathuchu@gmail.com"
+      method="POST"
+      className="space-y-6"
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="name" className="block text-sm font-medium mb-1">
@@ -72,7 +38,7 @@ export default function ContactForm() {
             required
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-dark"
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-dark text-blue-900"
             placeholder={t('name_required')}
           />
         </div>
@@ -88,7 +54,7 @@ export default function ContactForm() {
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-dark"
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-dark text-blue-900"
             placeholder={t('email_required')}
           />
         </div>
@@ -105,7 +71,7 @@ export default function ContactForm() {
           required
           value={formData.subject}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-dark"
+          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-dark text-blue-900"
         />
       </div>
       
@@ -120,7 +86,7 @@ export default function ContactForm() {
           required
           value={formData.message}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-dark"
+          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-dark text-blue-900"
           placeholder={t('message_required')}
         />
       </div>
@@ -128,24 +94,16 @@ export default function ContactForm() {
       <div>
         <button
           type="submit"
-          disabled={isSubmitting}
           className="bg-primary text-white px-6 py-3 rounded-md font-medium hover:bg-blue-600 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
         >
-          {isSubmitting ? t('contact_form_sending') : t('contact_form_send')}
+          {t('contact_form_send')}
         </button>
       </div>
-      
-      {submitStatus.message && (
-        <div
-          className={`p-4 rounded-md ${
-            submitStatus.success
-              ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-100'
-              : 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-100'
-          }`}
-        >
-          {submitStatus.message}
-        </div>
-      )}
+
+      <input type="hidden" name="_next" value="https://pierre-chen.com/contact">
+      </input>
+      <input type="hidden" name="_captcha" value="false">
+      </input>
     </form>
   );
 } 

@@ -12,18 +12,44 @@ interface Skill {
   color: string;
 }
 
+interface Milestone {
+  title: string;
+  description: string;
+  type: 'achievement' | 'skill' | 'learning';
+  icon?: string;
+}
+
 interface ProjectProps {
   id: string;
   project: {
     id: string;
-    title: string;
-    description: string;
-    fullDescription: string;
+    title: {
+      en: string;
+      zh: string;
+    };
+    description: {
+      en: string;
+      zh: string;
+    };
+    fullDescription: {
+      en: string;
+      zh: string;
+    };
     imageUrl: string;
     status: 'completed' | 'in-progress' | 'planned';
-    date: string;
+    date: {
+      en: string;
+      zh: string;
+    };
     skills: Skill[];
-    features?: string[];
+    features?: {
+      en: string[];
+      zh: string[];
+    };
+    milestones?: {
+      en: Milestone[];
+      zh: Milestone[];
+    };
     githubUrl?: string;
     demoUrl?: string;
   };
@@ -34,12 +60,12 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
   
   // 使用 useEffect 設置頁面標題和描述
   useEffect(() => {
-    document.title = `${project.title} | Pierre's Portfolio`;
+    document.title = `${project.title[language]} | Pierre's Portfolio`;
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', project.description);
+      metaDescription.setAttribute('content', project.description[language]);
     }
-  }, [project.title, project.description]);
+  }, [project.title, project.description, language]);
 
   // 專案圖片佔位符顏色
   const gradientColors = {
@@ -60,7 +86,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
         <div className={`w-full bg-gradient-to-r ${gradientColor} h-64 relative overflow-hidden`}>
           <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center opacity-30"></div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white text-center px-4">{project.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-white text-center px-4">{project.title[language]}</h1>
           </div>
         </div>
         
@@ -90,7 +116,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
             <div className="flex flex-wrap justify-between items-start mb-6">
               <div>
                 <p className="text-gray-500 dark:text-gray-400">
-                  {project.date}
+                  {project.date[language]}
                 </p>
               </div>
               <span className={`badge ${
@@ -109,7 +135,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                 {language === 'en' ? 'Project Overview' : '專案概述'}
               </h2>
               <div className="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 leading-relaxed">
-                {project.fullDescription.split('\n').map((paragraph, i) => (
+                {project.fullDescription[language].split('\n').map((paragraph, i) => (
                   <p key={i} className="mb-4">
                     {paragraph.trim()}
                   </p>
@@ -123,7 +149,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                   {language === 'en' ? 'Key Features' : '主要功能'}
                 </h2>
                 <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-                  {project.features.map((feature, index) => (
+                  {project.features[language].map((feature, index) => (
                     <li key={index} className="flex items-start">
                       <span className="inline-flex items-center justify-center w-6 h-6 mr-3 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 flex-shrink-0">
                         {index + 1}
@@ -150,6 +176,61 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                 ))}
               </div>
             </div>
+            
+            {project.milestones && (
+              <div className="mb-10">
+                <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
+                  {language === 'en' ? 'Project Milestones' : '專案里程碑'}
+                </h2>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {project.milestones[language].map((milestone, index) => {
+                    const typeColors = {
+                      achievement: 'bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-900/30 dark:to-orange-900/30 border-yellow-200 dark:border-yellow-700',
+                      skill: 'bg-gradient-to-r from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30 border-blue-200 dark:border-blue-700',
+                      learning: 'bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 border-green-200 dark:border-green-700'
+                    };
+                    
+                    const typeLabels = {
+                      achievement: language === 'en' ? 'Achievement' : '成就',
+                      skill: language === 'en' ? 'Skill' : '技能',
+                      learning: language === 'en' ? 'Learning' : '學習'
+                    };
+                    
+                    return (
+                      <div
+                        key={index}
+                        className={`p-6 rounded-xl border-2 ${typeColors[milestone.type]} transition-all hover:shadow-lg hover:scale-105`}
+                      >
+                        <div className="flex items-start space-x-4">
+                          <div className="text-3xl flex-shrink-0">
+                            {milestone.icon || '🎯'}
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center justify-between mb-2">
+                              <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
+                                {milestone.title}
+                              </h3>
+                              <span className={`text-xs px-2 py-1 rounded-full font-medium ${
+                                milestone.type === 'achievement' 
+                                  ? 'bg-yellow-200 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200'
+                                  : milestone.type === 'skill'
+                                  ? 'bg-blue-200 text-blue-800 dark:bg-blue-800 dark:text-blue-200'
+                                  : 'bg-green-200 text-green-800 dark:bg-green-800 dark:text-green-200'
+                              }`}>
+                                {typeLabels[milestone.type]}
+                              </span>
+                            </div>
+                            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                              {milestone.description}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
             
             <div className="flex flex-wrap gap-4">
               {project.githubUrl && (

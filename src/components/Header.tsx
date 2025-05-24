@@ -101,39 +101,41 @@ export default function Header() {
         <div className={`md:hidden overflow-hidden transition-all duration-300 ${
           isMenuOpen ? 'max-h-60 opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'
         }`}>
-          <nav className={`${isMenuOpen ? 'pt-4 pb-2' : 'py-0'} space-y-2 ${isMenuOpen ? 'border-t border-[#333340]/50' : ''}`}>
-            <div className="flex items-center justify-between pb-2">
-              <LanguageSwitcher />
-            </div>
-            <Link
-              href="/"
-              className="block py-2 px-3 text-gray-300 hover:text-white hover:bg-[#252530] rounded-lg transition-all"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t('home')}
-            </Link>
-            <Link
-              href="/projects"
-              className="block py-2 px-3 text-gray-300 hover:text-white hover:bg-[#252530] rounded-lg transition-all"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t('portfolio')}
-            </Link>
-            <Link
-              href="/about"
-              className="block py-2 px-3 text-gray-300 hover:text-white hover:bg-[#252530] rounded-lg transition-all"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t('about')}
-            </Link>
-            <Link
-              href="/contact"
-              className="block py-2 px-3 text-gray-300 hover:text-white hover:bg-[#252530] rounded-lg transition-all"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t('contact')}
-            </Link>
-          </nav>
+          <div className={`${isMenuOpen ? 'bg-[#1A1A1F]/95 backdrop-blur-md rounded-lg border border-[#333340]/50 shadow-lg' : ''}`}>
+            <nav className={`${isMenuOpen ? 'pt-4 pb-2 px-3' : 'py-0'} space-y-2 ${isMenuOpen ? 'border-t border-[#333340]/50 mt-3' : ''}`}>
+              <div className="flex items-center justify-between pb-2">
+                <LanguageSwitcher />
+              </div>
+              <Link
+                href="/"
+                className="block py-2 px-3 text-gray-300 hover:text-white hover:bg-[#252530] rounded-lg transition-all"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t('home')}
+              </Link>
+              <Link
+                href="/projects"
+                className="block py-2 px-3 text-gray-300 hover:text-white hover:bg-[#252530] rounded-lg transition-all"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t('portfolio')}
+              </Link>
+              <Link
+                href="/about"
+                className="block py-2 px-3 text-gray-300 hover:text-white hover:bg-[#252530] rounded-lg transition-all"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t('about')}
+              </Link>
+              <Link
+                href="/contact"
+                className="block py-2 px-3 text-gray-300 hover:text-white hover:bg-[#252530] rounded-lg transition-all"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t('contact')}
+              </Link>
+            </nav>
+          </div>
         </div>
       </div>
     </header>

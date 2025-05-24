@@ -123,6 +123,18 @@ body {
   color: var(--primary);
 }
 
+/* View All Button 特殊樣式 */
+.view-all-button {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.view-all-button:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 8px 25px rgba(243, 178, 55, 0.3);
+}
+
 /* 徽章樣式 */
 .badge {
   display: inline-flex;
@@ -205,4 +217,19 @@ body {
     font-size: 2.25rem;
     line-height: 2.5rem;
   }
+}
+
+/* 文字截斷樣式 */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
