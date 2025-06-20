@@ -116,13 +116,13 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-24 items-center">
               <div className="md:col-span-5 order-2 md:order-1">
                 <div className="relative parallax-scroll" data-speed="-0.07">
-                  <div className="relative h-96 w-full overflow-hidden rounded-2xl shadow-xl">
+                  <div className="relative h-[30rem] w-full max-w-sm mx-auto">
                     <Image
-                      src="/profile.png"
+                      src="/av.png"
                       alt={`${t('fullname')} photo`}
                       fill
-                      sizes="(max-width: 768px) 100vw, 40vw"
-                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 384px"
+                      className="object-contain bg-transparent"
                       priority
                       unoptimized={true}
                     />

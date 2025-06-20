@@ -8,7 +8,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,6 +75,7 @@ export default function Header() {
           <nav className="hidden md:flex space-x-1">
             <NavLink href="/" label={t('home')} />
             <NavLink href="/projects" label={t('portfolio')} />
+            <NavLink href="/notes" label={language === 'en' ? 'Notes' : '筆記庫'} />
             <NavLink href="/about" label={t('about')} />
             <NavLink href="/contact" label={t('contact')} />
           </nav>
@@ -119,6 +120,13 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('portfolio')}
+              </Link>
+              <Link
+                href="/notes"
+                className="block py-2 px-3 text-gray-300 hover:text-white hover:bg-[#252530] rounded-lg transition-all"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {language === 'en' ? 'Notes' : '筆記庫'}
               </Link>
               <Link
                 href="/about"

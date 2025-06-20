@@ -101,9 +101,9 @@ export default function ProjectCard({
   const { t, language } = useLanguage();
   
   const statusColor = {
-    completed: 'bg-green-900/30 text-green-400',
-    'in-progress': 'bg-[#F3C14B]/20 text-[#F3C14B]',
-    planned: 'bg-gray-800 text-gray-300',
+    completed: 'bg-green-500/20 text-green-400 border border-green-500/30',
+    'in-progress': 'bg-[#F3C14B]/20 text-[#F3C14B] border border-[#F3C14B]/30',
+    planned: 'bg-gray-500/20 text-gray-400 border border-gray-500/30',
   };
 
   const statusText = {
@@ -128,8 +128,8 @@ export default function ProjectCard({
   const gradientColor = gradientColors[id as keyof typeof gradientColors] || 'from-[#F3C14B] to-[#E9BC45]';
 
   return (
-    <Link href={`/projects/${id}`} className="block group">
-      <div className="project-card h-[510px] flex flex-col">
+    <Link href={`/projects/${id}`} className="block group h-full">
+      <div className="project-card h-full flex flex-col bg-[var(--background-alt)]/60 backdrop-blur-sm border border-[var(--border-color)]/30 rounded-2xl overflow-hidden hover:border-primary/50 hover:bg-[var(--background-alt)]/80 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2">
         <div className="relative aspect-video w-full overflow-hidden flex-shrink-0">
           <div className={`absolute inset-0 bg-gradient-to-br ${gradientColor} opacity-10`}>
             <div className="absolute inset-0 flex items-center justify-center">
@@ -149,37 +149,39 @@ export default function ProjectCard({
           />
         </div>
         <div className="p-6 flex flex-col flex-grow">
-          <div className="flex justify-between items-start mb-3">
-            <h3 className="text-xl font-bold text-white group-hover:text-[#F3C14B] transition-colors line-clamp-2 flex-grow mr-2">{title[language]}</h3>
-            <span className={`badge ${statusColor[status]} text-xs px-2.5 py-1 rounded-full font-medium flex-shrink-0`}>
+          <div className="flex justify-between items-start gap-3 mb-4">
+            <h3 className="text-xl font-bold text-white group-hover:text-[#F3C14B] transition-colors leading-tight flex-grow">{title[language]}</h3>
+            <span className={`badge ${statusColor[status]} text-xs px-3 py-1.5 rounded-full font-medium flex-shrink-0 whitespace-nowrap`}>
               {t(status)}
             </span>
           </div>
-          <p className="text-sm text-gray-400 mb-2 flex-shrink-0">
+          <p className="text-sm text-gray-400 mb-4 flex-shrink-0">
             {date[language]}
           </p>
-          <p className="text-gray-300 mb-5 line-clamp-3 flex-grow">
-            {description[language]}
-          </p>
-          <div className="flex flex-wrap gap-2 mb-5">
-            {skills.map((skill) => (
-              <span
-                key={skill.name}
-                className={`text-xs px-2.5 py-1 rounded-full border font-medium ${getSkillColor(skill.name)}`}
-              >
-                {skill.name}
-              </span>
-            ))}
+          <div className="flex-grow mb-6">
+            <p className="text-gray-300 leading-relaxed">
+              {description[language]}
+            </p>
           </div>
-          <div className="mt-auto">
-            <div className="inline-flex items-center text-[#F3C14B] hover:text-[#E9BC45] font-medium group-hover:translate-x-1 transition-transform">
+                        <div className="flex flex-wrap gap-2 mb-6">
+                {skills.map((skill) => (
+                  <span
+                    key={skill.name}
+                    className={`text-xs px-3 py-1.5 rounded-full font-medium ${skill.color || getSkillColor(skill.name)} transition-all duration-300 hover:scale-105`}
+                  >
+                    {skill.name}
+                  </span>
+                ))}
+              </div>
+          <div className="mt-auto pt-2">
+            <div className="inline-flex items-center text-[#F3C14B] hover:text-[#E9BC45] font-medium group-hover:translate-x-1 transition-all duration-300">
               {t('view_details')}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                className="w-4 h-4 ml-1.5"
+                className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
               >
                 <path
                   strokeLinecap="round"

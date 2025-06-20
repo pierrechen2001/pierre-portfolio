@@ -233,3 +233,39 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* 專案卡片網格樣式 - 確保同一行卡片高度統一 */
+.project-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .project-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .project-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+/* 專案卡片樣式增強 */
+.project-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+/* 圖片容器樣式改進 */
+.avatar-container {
+  position: relative;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+}

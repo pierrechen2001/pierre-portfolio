@@ -147,105 +147,120 @@ export default function Home() {
         <div className="fixed inset-0 z-[-1] bg-[var(--background)]/90 backdrop-blur-sm"></div>
         
         <main className="flex-grow bg-transparent">
-          <div className="container mx-auto py-16 px-4 md:px-6">
-            {/* Hero Section */}
-            <div className="mb-20 pt-6 md:pt-14 md:pb-6">
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-                <div className="md:col-span-7 order-2 md:order-1 text-center md:text-left parallax-scroll" data-speed="0.03">
-                  <p className="text-xl text-[var(--primary)] mb-2 font-medium">{t('iam')}</p>
-                  <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6 leading-tight">
+          {/* Hero Section with improved spacing and image integration */}
+          <div className="container mx-auto px-6 md:px-8 lg:px-12 py-16 md:py-20">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center min-h-[40vh]">
+              
+              {/* Left side content with better spacing */}
+              <div className="md:col-span-7 order-2 md:order-1 space-y-8">
+                <div className="parallax-scroll" data-speed="0.05">
+                  <p className="text-lg md:text-xl text-[var(--primary)] font-medium mb-4">
+                    {t('iam')}
+                  </p>
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight">
                     {t('fullname')}
                   </h1>
-                  <div className="space-y-4 text-[var(--foreground)] backdrop-blur-sm bg-[var(--background)]/50 p-6 rounded-xl shadow-sm mb-10">
-                    <p className="text-xl text-gray-300 leading-relaxed">
-                      {t('description')}
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                    <Link
-                      href="/projects"
-                      className="btn btn-primary"
-                    >
-                      {t('view_portfolio')}
-                    </Link>
-                    <Link
-                      href="/contact"
-                      className="btn btn-secondary"
-                    >
-                      {t('contact_me')}
-                    </Link>
-                  </div>
-                </div>
-                
-                <div className="md:col-span-5 order-1 md:order-2">
-                  <div className="relative parallax-scroll" data-speed="-0.07">
-                    <div className="relative w-64 h-64 md:w-96 md:h-96 mx-auto">
-                      <Image
-                        src="/avatar.svg"
-                        alt="Pierre's Avatar"
-                        width={384}
-                        height={384}
-                        className="rounded-full bg-[var(--background-alt)] p-1 border border-[var(--border-color)]"
-                      />
-                      <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] opacity-20 blur-md"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Featured Projects Section */}
-            <div className="mb-24 parallax-scroll" data-speed="0.05">
-              <div className="mb-16 text-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('my_portfolio')}</h2>
-                <div className="backdrop-blur-sm bg-[var(--background)]/50 p-6 rounded-xl shadow-sm max-w-2xl mx-auto">
-                  <p className="text-[var(--text-muted)] text-lg">
-                    {t('portfolio_description')}
+                  <p className="text-lg md:text-xl text-[var(--foreground-muted)] leading-relaxed max-w-2xl">
+                    {t('description')}
                   </p>
                 </div>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                {featuredProjects.map((project, index) => (
-                  <div key={project.id} className="parallax-scroll" data-speed="-0.08">
-                    <ProjectCard
-                      id={project.id}
-                      title={project.title}
-                      description={project.description}
-                      imageUrl={project.imageUrl}
-                      status={project.status}
-                      date={project.date}
-                      skills={project.skills}
-                    />
-                  </div>
-                ))}
-              </div>
-              
-              <div className="text-center">
-                <Link
-                  href="/projects"
-                  className="btn btn-secondary view-all-button transition-transform duration-300 origin-center"
-                  data-speed="-0.2"
-                >
-                  {t('view_all_projects')}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="w-5 h-5 ml-2"
+                
+                <div className="flex flex-col sm:flex-row gap-4 parallax-scroll" data-speed="0.02">
+                  <Link
+                    href="/projects"
+                    className="bg-primary text-[var(--dark)] px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 inline-flex items-center justify-center group"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </Link>
+                    {t('view_portfolio')}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="border border-[var(--border-color)] text-[var(--foreground)] px-8 py-4 rounded-lg font-semibold hover:bg-[var(--background-alt)] transition-all duration-300 hover:border-primary/50 inline-flex items-center justify-center"
+                  >
+                    {t('contact_me')}
+                  </Link>
+                </div>
+              </div>
+              
+              {/* Right side image with better integration */}
+              <div className="md:col-span-5 order-1 md:order-2">
+                                  <div className="relative parallax-scroll" data-speed="-0.07">
+                    <div className="avatar-container relative w-64 h-96 md:w-80 md:h-[30rem] mx-auto">
+                      {/* Decorative elements */}
+                      <div className="absolute -top-4 -left-4 w-8 h-8 border-2 border-primary/30 rounded-full animate-pulse"></div>
+                      <div className="absolute -bottom-6 -right-6 w-12 h-12 border-2 border-secondary/30 rounded-lg rotate-12 animate-pulse" style={{ animationDelay: '1s' }}></div>
+                      <div className="absolute top-1/4 -right-8 w-4 h-4 bg-primary/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+                      
+                      <Image
+                        src="/nb_pixel_av.png"
+                        alt="Pierre's Avatar"
+                        fill
+                        sizes="(max-width: 768px) 256px, 320px"
+                        className="object-contain bg-transparent"
+                        priority
+                        unoptimized={true}
+                      />
+                    </div>
+                  </div>
               </div>
             </div>
           </div>
+          
+          {/* Featured Projects Section with improved spacing */}
+          <section className="container mx-auto px-6 md:px-8 lg:px-12 py-16 md:py-24">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                {t('my_portfolio')}
+              </h2>
+              <p className="text-lg md:text-xl text-[var(--foreground-muted)] max-w-3xl mx-auto">
+                {t('portfolio_description')}
+              </p>
+            </div>
+            
+            <div className="project-cards-grid">
+              {featuredProjects.map((project, index) => (
+                <div key={project.id} className="parallax-scroll" data-speed="0.02">
+                  <ProjectCard {...project} />
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mt-16 mt-20">
+              <Link
+                href="/projects"
+                className="inline-flex items-center bg-[var(--background-alt)] border border-[var(--border-color)] text-[var(--foreground)] px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold hover:bg-primary hover:text-[var(--dark)] hover:border-primary transition-all duration-300 group text-sm md:text-base w-full sm:w-auto justify-center"
+              >
+                <span className="whitespace-nowrap">{t('view_all_projects')}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="w-4 h-4 md:w-5 md:h-5 ml-2 group-hover:translate-x-1 transition-transform"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </section>
         </main>
         
         <Footer />

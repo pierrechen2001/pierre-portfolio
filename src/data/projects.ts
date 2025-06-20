@@ -42,6 +42,10 @@ export interface Project {
   };
   githubUrl?: string;
   demoUrl?: string;
+  featured?: boolean;
+  viewLiveUrl?: string;
+  viewCodeUrl?: string;
+  youtubeVideoId?: string;
 }
 
 export const projects: Project[] = [
@@ -79,18 +83,18 @@ export const projects: Project[] = [
         Dogtor 讓學生根據自身弱點練習題目，並即時收到反饋，聚焦學習成效，提升學習動力。
       `
     },
-    imageUrl: '/projects/project-card.svg',
+    imageUrl: '/projects/dt.jpg',
     status: 'in-progress',
     date: {
-      en: 'February 2025',
-      zh: '2025年2月'
+      en: '2025 - Present',
+      zh: '2025年 - 現在'
     },
     skills: [
-      { name: 'Flutter', color: 'bg-cyan-200 text-cyan-800' },
-      { name: 'FastAPI', color: 'bg-red-200 text-red-800' },
-      { name: 'MySQL', color: 'bg-blue-200 text-blue-800' },
-      { name: 'GCP Cloud Run', color: 'bg-gray-200 text-gray-800' },
-      { name: 'Cloud SQL', color: 'bg-gray-200 text-gray-800' }
+      { name: 'Flutter', color: 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' },
+      { name: 'FastAPI', color: 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' },
+      { name: 'MySQL', color: 'bg-purple-500/20 text-purple-400 border border-purple-500/30' },
+      { name: 'GCP Cloud Run', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30' },
+      { name: 'Cloud SQL', color: 'bg-purple-600/20 text-purple-300 border border-purple-600/30' }
     ],
     features: {
       en: [
@@ -158,7 +162,6 @@ export const projects: Project[] = [
         }
       ]
     },
-    githubUrl: 'https://github.com/yourusername/dogtor'
   },
   {
     id: 'erp-system',
@@ -198,17 +201,17 @@ export const projects: Project[] = [
         這是我第一次處理真實商業資料，設計並實作一個直接支援公司前線營運的系統。
       `
     },
-    imageUrl: '/projects/project-card.svg',
+    imageUrl: '/projects/erp.jpg',
     status: 'completed',
     date: {
       en: 'June 2024',
       zh: '2024年6月'
     },
     skills: [
-      { name: 'React', color: 'bg-blue-200 text-blue-800' },
-      { name: 'TypeScript', color: 'bg-purple-200 text-purple-800' },
-      { name: 'Firebase Authentication', color: 'bg-yellow-200 text-yellow-800' },
-      { name: 'Firestore', color: 'bg-orange-200 text-orange-800' }
+      { name: 'React', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30' },
+      { name: 'TypeScript', color: 'bg-blue-600/20 text-blue-300 border border-blue-600/30' },
+      { name: 'Firebase Authentication', color: 'bg-amber-500/20 text-amber-400 border border-amber-500/30' },
+      { name: 'Firestore', color: 'bg-purple-400/20 text-purple-300 border border-purple-400/30' }
     ],
     features: {
       en: [
@@ -280,7 +283,8 @@ export const projects: Project[] = [
         }
       ]
     },
-    githubUrl: 'https://github.com/yourusername/erp-system'
+    githubUrl: 'https://github.com/yourusername/erp-system',
+    youtubeVideoId: 'ViVosgnhEbM', // Rick Astley - Never Gonna Give You Up
   },
   {
     id: 'superbot',
@@ -322,17 +326,17 @@ export const projects: Project[] = [
         SuperBot 大幅降低行政負擔，讓教師能專注於教學，並確保行政紀錄正確且自動化。
       `
     },
-    imageUrl: '/projects/project-card.svg',
+    imageUrl: '/projects/sb.jpg',
     status: 'completed',
     date: {
       en: 'July 2024',
       zh: '2024年7月'
     },
     skills: [
-      { name: 'Python', color: 'bg-yellow-200 text-yellow-800' },
-      { name: 'LINE API', color: 'bg-green-200 text-green-800' },
-      { name: 'Google Sheets API', color: 'bg-blue-200 text-blue-800' },
-      { name: 'Heroku', color: 'bg-purple-200 text-purple-800' }
+      { name: 'Python', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30' },
+      { name: 'LINE API', color: 'bg-green-600/20 text-green-400 border border-green-600/30' },
+      { name: 'Google Sheets API', color: 'bg-blue-600/20 text-blue-300 border border-blue-600/30' },
+      { name: 'Heroku', color: 'bg-purple-500/20 text-purple-400 border border-purple-500/30' }
     ],
     features: {
       en: [
@@ -438,18 +442,18 @@ export const projects: Project[] = [
         七桃不只是 App，更是針對高齡社會挑戰的解決方案，推動社會共融與積極老化。
       `
     },
-    imageUrl: '/projects/project-card.svg',
+    imageUrl: '/projects/sp.jpg',
     status: 'in-progress',
     date: {
       en: 'August 2024',
       zh: '2024年8月'
     },
     skills: [
-      { name: 'Flutter', color: 'bg-cyan-200 text-cyan-800' },
-      { name: 'Dart', color: 'bg-blue-200 text-blue-800' },
-      { name: 'Firebase', color: 'bg-yellow-200 text-yellow-800' },
-      { name: 'UX Research', color: 'bg-green-200 text-green-800' },
-      { name: 'Algorithm Design', color: 'bg-purple-200 text-purple-800' }
+      { name: 'Flutter', color: 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' },
+      { name: 'Dart', color: 'bg-cyan-600/20 text-cyan-300 border border-cyan-600/30' },
+      { name: 'Firebase', color: 'bg-amber-500/20 text-amber-400 border border-amber-500/30' },
+      { name: 'UX Research', color: 'bg-green-500/20 text-green-400 border border-green-500/30' },
+      { name: 'Algorithm Design', color: 'bg-purple-500/20 text-purple-400 border border-purple-500/30' }
     ],
     features: {
       en: [
@@ -481,7 +485,7 @@ export const projects: Project[] = [
         },
         {
           title: 'Recommendation System Integration',
-          description: 'Developed a personalized activity recommendation algorithm that considers user interests, friends’ participation, and location proximity.',
+          description: 'Developed a personalized activity recommendation algorithm that considers user interests, friends\\\' participation, and location proximity.',
           type: 'learning',
           icon: '🤖'
         },
@@ -519,7 +523,8 @@ export const projects: Project[] = [
         }
       ]
     },
-    githubUrl: 'https://github.com/yourusername/seven-peach'
+    githubUrl: 'https://github.com/yourusername/seven-peach',
+    youtubeVideoId: 'gFHqAii7p5Y',
   },
   {
     id: 'lakycarcar',
@@ -555,17 +560,17 @@ export const projects: Project[] = [
         這是我首次深入接觸圖形程式設計與 C++ 記憶體最佳化，為我的軟體工程基礎打下了扎實基礎。
       `
     },
-    imageUrl: '/projects/project-card.svg',
+    imageUrl: '/projects/lk.jpg',
     status: 'completed',
     date: {
       en: 'January 2024',
       zh: '2024年1月'
     },
     skills: [
-      { name: 'C++', color: 'bg-blue-200 text-blue-800' },
-      { name: 'SFML', color: 'bg-gray-200 text-gray-800' },
-      { name: 'Data Structures', color: 'bg-green-200 text-green-800' },
-      { name: 'Memory Management', color: 'bg-red-200 text-red-800' }
+      { name: 'C++', color: 'bg-indigo-500/20 text-indigo-400 border border-indigo-500/30' },
+      { name: 'SFML', color: 'bg-orange-600/20 text-orange-300 border border-orange-600/30' },
+      { name: 'Data Structures', color: 'bg-green-500/20 text-green-400 border border-green-500/30' },
+      { name: 'Memory Management', color: 'bg-red-600/20 text-red-400 border border-red-600/30' }
     ],
     features: {
       en: [
@@ -635,6 +640,7 @@ export const projects: Project[] = [
         }
       ]
     },
-    githubUrl: 'https://github.com/yourusername/lakycarcar'
+    githubUrl: 'https://github.com/yourusername/lakycarcar',
+    youtubeVideoId: 'sPTc4_vDMfo',
   }
 ];
