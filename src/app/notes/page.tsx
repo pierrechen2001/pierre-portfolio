@@ -58,7 +58,7 @@ export default function NotesPage() {
 
   // 過濾筆記
   const filteredNotes = notes.filter(note => {
-    const matchesCategory = selectedCategory === 'All' || note.category[language] === selectedCategory;
+    const matchesCategory = selectedCategory === 'All' || selectedCategory === '全部' || note.category[language] === selectedCategory;
     const matchesSearch = searchQuery === '' || 
       note.title[language].toLowerCase().includes(searchQuery.toLowerCase()) ||
       note.description[language].toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -123,7 +123,7 @@ export default function NotesPage() {
 
                 {/* 分類過濾 */}
                 <div className="flex flex-wrap gap-2">
-                  {categories.map((category) => (
+                  {[{ en: 'All', zh: '全部' }, ...categories].map((category) => (
                     <button
                       key={category.en}
                       onClick={() => setSelectedCategory(category[language])}
