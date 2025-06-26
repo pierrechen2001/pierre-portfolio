@@ -147,12 +147,88 @@ export default function Home() {
         <div className="fixed inset-0 z-[-1] bg-[var(--background)]/90 backdrop-blur-sm"></div>
         
         <main className="flex-grow bg-transparent">
-          {/* Hero Section with improved spacing and image integration */}
+          {/* Hero Section with improved mobile layout */}
           <div className="container mx-auto px-6 md:px-8 lg:px-12 py-16 md:py-20">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center min-h-[40vh]">
+            {/* Mobile layout with avatar and name side by side */}
+            <div className="md:hidden">
+              {/* Mobile header with avatar and I am Pierre Chen */}
+              <div className="flex items-end justify-between mb-6">
+                {/* Left side - I am Pierre Chen */}
+                <div className="flex-1 parallax-scroll" data-speed="0.05">
+                  <p className="text-lg text-[var(--primary)] font-medium mb-2">
+                    {t('iam')}
+                  </p>
+                  <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight">
+                    {t('fullname')}
+                  </h1>
+                </div>
+                
+                {/* Right side - smaller avatar */}
+                <div className="flex-shrink-0 ml-4">
+                  <div className="relative parallax-scroll" data-speed="-0.07">
+                    <div className="avatar-container relative w-40 h-48">
+                      {/* Smaller decorative elements */}
+                      <div className="absolute -top-1 -left-1 w-2 h-2 border border-primary/30 rounded-full animate-pulse"></div>
+                      <div className="absolute -bottom-1 -right-1 w-3 h-3 border border-secondary/30 rounded rotate-12 animate-pulse" style={{ animationDelay: '1s' }}></div>
+                      
+                      <Image
+                        src="/nb_pixel_av.png"
+                        alt="Pierre's Avatar"
+                        fill
+                        sizes="80px"
+                        className="object-contain bg-transparent"
+                        priority
+                        unoptimized={true}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Mobile description */}
+              <div className="space-y-6">
+                <div className="parallax-scroll" data-speed="0.05">
+                  <p className="text-lg text-[var(--foreground-muted)] leading-relaxed">
+                    {t('description')}
+                  </p>
+                </div>
+                
+                <div className="flex flex-col gap-4 parallax-scroll" data-speed="0.02">
+                  <Link
+                    href="/projects"
+                    className="bg-primary text-[var(--dark)] px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 inline-flex items-center justify-center group"
+                  >
+                    {t('view_portfolio')}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="border border-[var(--border-color)] text-[var(--foreground)] px-8 py-4 rounded-lg font-semibold hover:bg-[var(--background-alt)] transition-all duration-300 hover:border-primary/50 inline-flex items-center justify-center"
+                  >
+                    {t('contact_me')}
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop layout - original grid layout */}
+            <div className="hidden md:grid grid-cols-12 gap-8 md:gap-12 items-center min-h-[40vh]">
               
               {/* Left side content with better spacing */}
-              <div className="md:col-span-7 order-2 md:order-1 space-y-8">
+              <div className="col-span-7 space-y-8">
                 <div className="parallax-scroll" data-speed="0.05">
                   <p className="text-lg md:text-xl text-[var(--primary)] font-medium mb-4">
                     {t('iam')}
@@ -196,25 +272,25 @@ export default function Home() {
               </div>
               
               {/* Right side image with better integration */}
-              <div className="md:col-span-5 order-1 md:order-2">
-                                  <div className="relative parallax-scroll" data-speed="-0.07">
-                    <div className="avatar-container relative w-64 h-96 md:w-80 md:h-[30rem] mx-auto">
-                      {/* Decorative elements */}
-                      <div className="absolute -top-4 -left-4 w-8 h-8 border-2 border-primary/30 rounded-full animate-pulse"></div>
-                      <div className="absolute -bottom-6 -right-6 w-12 h-12 border-2 border-secondary/30 rounded-lg rotate-12 animate-pulse" style={{ animationDelay: '1s' }}></div>
-                      <div className="absolute top-1/4 -right-8 w-4 h-4 bg-primary/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-                      
-                      <Image
-                        src="/nb_pixel_av.png"
-                        alt="Pierre's Avatar"
-                        fill
-                        sizes="(max-width: 768px) 256px, 320px"
-                        className="object-contain bg-transparent"
-                        priority
-                        unoptimized={true}
-                      />
-                    </div>
+              <div className="col-span-5">
+                <div className="relative parallax-scroll" data-speed="-0.07">
+                  <div className="avatar-container relative w-64 h-96 md:w-80 md:h-[30rem] mx-auto">
+                    {/* Decorative elements */}
+                    <div className="absolute -top-4 -left-4 w-8 h-8 border-2 border-primary/30 rounded-full animate-pulse"></div>
+                    <div className="absolute -bottom-6 -right-6 w-12 h-12 border-2 border-secondary/30 rounded-lg rotate-12 animate-pulse" style={{ animationDelay: '1s' }}></div>
+                    <div className="absolute top-1/4 -right-8 w-4 h-4 bg-primary/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+                    
+                    <Image
+                      src="/nb_pixel_av.png"
+                      alt="Pierre's Avatar"
+                      fill
+                      sizes="(max-width: 768px) 256px, 320px"
+                      className="object-contain bg-transparent"
+                      priority
+                      unoptimized={true}
+                    />
                   </div>
+                </div>
               </div>
             </div>
           </div>

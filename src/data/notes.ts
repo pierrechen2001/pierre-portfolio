@@ -23,6 +23,188 @@ export interface Note {
 }
 
 export const notes: Note[] = [
+
+  // Paste this into your src/data/notes.ts file
+
+{
+  id: 'dogtor-dev-logthe-idea-behind-our-ai-learning-app',
+  title: {
+    en: `Dogtor Dev Log：The Idea Behind Our AI Learning App`,
+    zh: `Dogtor 開發筆記：App 的發想與起點`
+  },
+  description: {
+    en: `Dogtor blends generative AI with learning psychology—not just an app, but a smart companion designed to help students sustain motivation in an age of distraction.`,
+    zh: `結合生成式 AI 與學習心理的 Dogtor，不只是學習 App，更是陪伴學生持續前進的智慧學伴，一場從補教現場出發的教育革新實驗。`
+  },
+  content: {
+    en: `## The Beginning: Not Waiting to Be Replaced, But Choosing to Evolve
+
+Let’s rewind to **early 2024**, when generative AI was exploding across the internet. New tools and applications were popping up like wildfire—exciting, but also a little terrifying.
+
+At that time, I had already been working in the cram school industry for nearly **five years**, doing everything from teaching, admin, to curriculum design.
+
+Back then, I kept asking myself:
+
+**“Will my job still matter in the age of AI?”**
+
+It started as a curiosity—wondering which industries might get replaced by AI. But the more I thought about it, the heavier it felt.
+
+Eventually, I flipped the question around:
+
+**If I’m going to be replaced someday, why not build the tool that replaces me?**
+
+That was the moment Dogtor was born.
+
+---
+
+## Observations from the Frontline: Students Don’t Lack Motivation—They Just Can’t Sustain It
+
+As someone who's worked closely with students for years, I realized something important:
+
+**Students don’t lack motivation. What they lack is rhythm and interaction to sustain that motivation.**
+
+Every student knows they should study more, play fewer games, and that good grades lead to better futures.  
+The real challenge is this: **Once they decide to study, how long can they actually stick with it?**
+
+I’ve heard so many students say:
+
+**“Teacher, I really wanted to study today, but the moment I opened my textbook… I just reached for my phone instead.”**
+
+It’s not laziness. It’s that traditional study methods—worksheets, memorization, drills—are repetitive and boring.  
+**There’s no interaction, no feedback, no dopamine.**
+
+Learning becomes a long, dull marathon. Eventually, students give up.  
+What they truly need is a smart assistant that helps **sustain** their learning momentum.
+
+---
+
+## The Age of Fragmented Attention: Learning Tools Must Be Instant, Lightweight, and Engaging
+
+As I spent more time with students, I also noticed a huge shift:  
+Their **attention structure** has changed in this era of fragmented content.
+
+- They don’t watch 30-minute educational videos anymore—they prefer 3-minute Shorts or Reels  
+- They don’t need consoles or computers to play games—just a phone with real-time, fast-paced gameplay  
+- Their **attention spans are shorter, and their feedback expectations are instant**
+
+So I started asking myself:
+
+**What if learning tools matched that same rhythm?**
+
+I imagined a scene:
+
+**During a 10-minute break at school, or on a metro ride, a student opens their phone—not just to scroll TikTok or play a game—but to complete a quick 3-minute learning session through an app.**
+
+It’s not just a study tool anymore—it becomes a **habit**, a seamless part of their daily life.  
+**Learning no longer feels like pressure—it becomes a natural choice.**
+
+---
+
+## Dogtor Is Born: From an Idea to a Work-in-Progress App
+
+As I write this post, it’s now **June 2025**.  
+Dogtor is about **60% complete**, with most of the core features up and running. We’re actively testing, tweaking, and improving it every day.
+
+Dogtor is an **AI-powered learning companion** that combines generative AI with interactive learning design.  
+It can recommend questions based on student level, generate personalized practice from past mistakes, and provide **daily missions** to encourage consistent progress with instant feedback.
+
+But what matters most is:  
+**This isn’t just my project.**
+
+I’m incredibly grateful to the teammates working alongside me—turning this crazy “AI learning buddy” idea into something real.
+
+---
+
+## If I Had to Summarize It in One Sentence…
+
+**Dogtor doesn’t exist to replace teachers—it exists to help students go further, using the power of AI.**
+
+My hope is that one day, students in Taiwan will say,  
+“Thanks to Dogtor, studying actually feels fun—and I feel proud of myself again.”
+
+This blog post is the first footprint of that journey.`,
+    zh: `## 一切的開始：不是被取代，而是選擇自我進化
+
+時間回到 **2024 年初**，那是一個生成式 AI 如火如荼的時代。各式各樣的應用如雨後春筍般冒出，讓人又驚又怕。那時候的我，已經在補教行業打滾了將近 **5 年**，從講師、行政，到設計教材都做過。
+
+那陣子我常常問自己一個問題：
+
+**「在 AI 時代裡，我的工作還有價值嗎？」**
+
+原本只是好奇「哪些產業可能會被 AI 取代」，但越想越沉重，最後我乾脆轉個念——  
+**既然早晚會被取代，不如主動開發一個能取代自己的工具。**
+
+這，就是 Dogtor 誕生的起點。  
+
+---
+
+## 問題觀察：學生不是不想讀書，而是「撐不久」
+
+身為一位長期在第一線的教育工作者，我發現：
+
+**學生缺乏的不是學習動機，而是能延續動機的「節奏」與「互動感」。**
+
+幾乎每個學生都知道「多讀書、少打電動」、「考好有好未來」，  
+問題是——**當他們真的想讀書的那一刻，可以撐多久？**
+
+很多學生會說：「老師，我今天真的打算唸，但一看書就很想滑手機...」  
+這不是偷懶，而是傳統學習模式太單調：寫考卷、背單字、對答案，**沒有互動性、沒有回饋感。**
+
+學習變得像一場沉悶的馬拉松，久了就會想放棄。  
+他們需要的是「能延續學習動機」的助手。
+
+---
+
+## 碎片化時代：學習工具也要「即時、輕巧、有趣」
+
+和學生相處的過程中，我也觀察到另一個關鍵趨勢：  
+在這個內容碎片化的時代，學生的「注意力結構」也跟著改變了。
+
+- 他們不再習慣看 30 分鐘的教學影片，而是更喜歡 3 分鐘的 Shorts / Reels  
+- 他們不需要電腦或遊戲機，只要一支手機，就能玩即時快節奏的遊戲  
+- 他們的 **專注時間更短、對回饋的期待更即時**
+
+那如果學習工具也能符合這樣的節奏會怎樣？
+
+我開始想像一個情境：
+
+**「在十分鐘的下課時間、在捷運上的通勤過程，學生拿出手機，不只是滑抖音、打遊戲，而是打開一個能在 3 分鐘內快速學習的 App。」**
+
+這不只是一種學習方式，而是一種新的生活習慣：  
+**學習不再是壓力，而是隨手可得的選擇。**
+
+---
+
+## Dogtor 的誕生：從一個想法，到一個實現中的產品
+
+現在寫下這篇文章的此刻，是 **2025 年 6 月**。  
+我們的 Dogtor 開發進度大約完成了 **60%**，已經具備核心功能，也正積極測試與調整。
+
+這是一款結合 **生成式 AI 與學習互動** 的教育工具。  
+它能根據學生的程度推薦題目，根據錯誤記錄自動生成練習內容，還能設計「每日任務」，讓學生每天固定完成學習任務並獲得回饋。
+
+更重要的是，**這不是我一個人的作品。**  
+我非常感謝現在一起打拼的夥伴們，讓我這個「用 AI 打造學習陪伴者」的念頭，正在逐步實現中。
+
+---
+
+## 一句話總結我的初衷
+
+**Dogtor 的存在，不是要取代老師，而是用 AI 的力量，陪學生走得更遠。**
+
+希望未來，台灣的學生們會因為 Dogtor，感受到學習也可以是快樂又有成就感的事。  
+這篇文章，就當作是我們與這個夢想一起啟程的紀錄。`
+  },
+  category: {
+    en: 'Development',
+    zh: '開發'
+  },
+  tags: ['Dogtor', 'AI-app'],
+  publishedAt: '2025-06-26',
+  updatedAt: '2025-06-26',
+  featured: true,
+},
+
   // Paste this into your src/data/notes.ts file
 
 {
@@ -33,7 +215,7 @@ export const notes: Note[] = [
     },
     description: {
       en: `From chemistry to code—a candid journey of mistaken passion, self-discovery, and falling in love with software development.`,
-      zh: `從化學到軟體，一段關於誤打誤撞、自我探索，最後找到熱愛開發的真實轉彎故事。`
+      zh: `從化學到軟體，一段關於誤打誤撞、自我探索，最後找到熱愛軟體開發的故事。`
     },
     content: {
       en: `## The Accidental Start: When Good Grades Lied to Me
@@ -149,6 +331,7 @@ export const notes: Note[] = [
   
   老實說，我偶爾還是會焦慮。當年大學的朋友現在都要研究所畢業、準備進入職場了，而我好像「重來了一次」。  
   但回頭看看現在的我，在資訊管理學系結束大二的這個時間點，我可以很篤定地告訴自己：
+
   **還好我曾經懷疑過，也還好我勇敢換了路。  
   現在的我，正在往真正屬於我的方向前進。**`
     },
@@ -379,10 +562,7 @@ export const notes: Note[] = [
 
 export const categories = [
   { en: 'All', zh: '全部' },
-  { en: 'Web Development', zh: '網頁開發' },
-  { en: 'Programming', zh: '程式設計' },
-  { en: 'CSS', zh: 'CSS' },
-  { en: 'JavaScript', zh: 'JavaScript' },
-  { en: 'React', zh: 'React' },
-  { en: 'TypeScript', zh: 'TypeScript' }
+  { en: 'Development', zh: '開發' },
+  { en: 'Life', zh: '生活' },
+  { en: 'Life Exploration', zh: '人生探索' },
 ]; 

@@ -167,11 +167,11 @@ export const projects: Project[] = [
     id: 'erp-system',
     title: {
       en: 'Zhongxing Pest Control ERP System',
-      zh: '中興害蟲防治 ERP 系統'
+      zh: '中星害蟲防治 ERP 系統'
     },
     description: {
       en: 'An enterprise resource planning (ERP) system designed for Zhongxing Environmental Company to manage customers, work orders, scheduling, and business operations.',
-      zh: '為中興環保公司設計的企業資源規劃 (ERP) 系統，整合客戶管理、工單處理、排程與業務營運管理。'
+      zh: '為中星環保公司設計的企業資源規劃 (ERP) 系統，整合客戶管理、工單處理、排程與業務營運管理。'
     },
     fullDescription: {
       en: `
@@ -188,7 +188,7 @@ export const projects: Project[] = [
         This project was my first time handling real-world business data, designing a system that directly supports frontline operations.
       `,
       zh: `
-        這套 ERP 系統專為中興害蟲防治公司設計，目的是簡化業務營運流程，包括客戶管理、工單處理、行程安排、任務追蹤與報表生成。
+        這套 ERP 系統專為中星害蟲防治公司設計，目的是簡化業務營運流程，包括客戶管理、工單處理、行程安排、任務追蹤與報表生成。
         
         我主導整體前後端開發，前端使用 React 搭配 TypeScript，後端使用 Firebase Authentication 與 Firestore。
         系統功能包含：
@@ -204,8 +204,8 @@ export const projects: Project[] = [
     imageUrl: '/projects/erp.jpg',
     status: 'completed',
     date: {
-      en: 'June 2024',
-      zh: '2024年6月'
+      en: 'June 2025',
+      zh: '2025年6月'
     },
     skills: [
       { name: 'React', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30' },
