@@ -229,7 +229,7 @@ export default function ContactPage() {
                       <h3 className="text-xl font-semibold mb-6 text-[var(--foreground)]">{language === 'en' ? 'Social Links' : '社群連結'}</h3>
                       <div className="flex space-x-6">
                         <a
-                          href="https://github.com/yourusername"
+                          href="https://github.com/pierrechen2001"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="bg-[var(--background-alt)]/60 p-4 rounded-full hover:bg-primary/20 transition-all duration-300 hover:scale-110"
@@ -245,7 +245,7 @@ export default function ContactPage() {
                         </a>
                         
                         <a
-                          href="https://linkedin.com/in/yourusername"
+                          href="https://www.linkedin.com/in/guanyu-chen-989117303/"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="bg-[var(--background-alt)]/60 p-4 rounded-full hover:bg-primary/20 transition-all duration-300 hover:scale-110"

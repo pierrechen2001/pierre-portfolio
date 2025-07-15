@@ -19,11 +19,11 @@ export const metadata: Metadata = {
   title: "Pierre's Portfolio",
   description: "個人作品集網站 - 展示我所有開發過的專案",
   keywords: ["portfolio", "projects", "web development", "software engineer"],
-  metadataBase: new URL('https://yourdomain.com'),
+  metadataBase: new URL('https://www.pierre-chen.com/'),
   openGraph: {
     title: "Pierre's Portfolio",
     description: "個人作品集網站 - 展示我所有開發過的專案",
-    url: 'https://yourdomain.com',
+    url: 'https://www.pierre-chen.com/',
     siteName: "Pierre's Portfolio",
     locale: 'en_US',
     type: 'website',
