@@ -107,9 +107,9 @@ export default function ProjectCard({
   };
 
   const statusText = {
-    completed: '已完成',
-    'in-progress': '進行中',
-    planned: '計劃中',
+    completed: { zh: '已完成', en: 'Completed' },
+    'in-progress': { zh: '進行中', en: 'In Progress' },
+    planned: { zh: '計劃中', en: 'Planned' },
   };
 
   // 專案圖片佔位符顏色
@@ -152,7 +152,7 @@ export default function ProjectCard({
           <div className="flex justify-between items-start gap-3 mb-4">
             <h3 className="text-xl font-bold text-white group-hover:text-[#F3C14B] transition-colors leading-tight flex-grow">{title[language]}</h3>
             <span className={`badge ${statusColor[status]} text-xs px-3 py-1.5 rounded-full font-medium flex-shrink-0 whitespace-nowrap`}>
-              {t(status)}
+              {statusText[status][language]}
             </span>
           </div>
           <p className="text-sm text-gray-400 mb-4 flex-shrink-0">

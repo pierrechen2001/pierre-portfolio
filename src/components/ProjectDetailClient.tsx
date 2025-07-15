@@ -94,6 +94,12 @@ function ParallaxBackground() {
 export default function ProjectDetailClient({ project, id }: ProjectProps) {
   const { t, language } = useLanguage();
   
+  const statusText = {
+    completed: { zh: '已完成', en: 'Completed' },
+    'in-progress': { zh: '進行中', en: 'In Progress' },
+    planned: { zh: '計劃中', en: 'Planned' },
+  };
+  
   // 使用 useEffect 設置頁面標題和描述
   useEffect(() => {
     document.title = `${project.title[language]} | Pierre's Portfolio`;
@@ -168,7 +174,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                       ? 'bg-primary/20 text-primary border border-primary/30'
                       : 'bg-gray-500/20 text-gray-400 border border-gray-500/30'
                   }`}>
-                    {t(project.status)}
+                    {statusText[project.status][language]}
                   </span>
                 </div>
               </div>
