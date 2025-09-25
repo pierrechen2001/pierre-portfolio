@@ -46,6 +46,7 @@ export interface Project {
   viewLiveUrl?: string;
   viewCodeUrl?: string;
   youtubeVideoId?: string;
+  galleryImages?: string[];
 }
 
 export const projects: Project[] = [
@@ -162,6 +163,132 @@ export const projects: Project[] = [
         }
       ]
     },
+  },
+  {
+    id: 'aiplanner',
+    title: {
+      en: 'aiPlanner Smart Calendar',
+      zh: 'aiPlanner 智慧行程助理'
+    },
+    description: {
+      en: 'An iOS-native smart calendar app that uses natural language input and AI to simplify event creation and daily planning.',
+      zh: '一款 iOS 原生智慧行程應用，透過自然語言輸入與 AI，讓事件建立與日程規劃更直覺。'
+    },
+    fullDescription: {
+      en: `
+        aiPlanner is a smart calendar app built exclusively for iOS, designed to streamline how users create and manage schedules.  
+        
+        With natural language processing (NLP) at its core, users can simply type or speak phrases like *"Dinner with John next Friday at 7 PM"* and have events automatically parsed and added to their calendar.  
+        
+        I designed and developed aiPlanner with the following architecture:
+        - Swift-based iOS app with Apple-style UI
+        - Natural Language Processing for event parsing
+        - Supabase backend for authentication and optional shared event storage
+        - Local iCloud sync for private, personal data
+        
+        aiPlanner provides users with a frictionless way to manage their daily lives while ensuring both **privacy** and **usability**.
+      `,
+      zh: `
+        aiPlanner 是一款專為 iOS 打造的智慧行程應用，目標是讓使用者以更直覺的方式規劃與管理行程。  
+        
+        核心功能是自然語言處理 (NLP)，使用者只需輸入或說出 *「下週五晚上七點和 John 吃晚餐」*，事件就會自動解析並加入行事曆。  
+        
+        我主導了系統設計與開發，包含：
+        - 使用 Swift 開發 iOS 原生應用，維持 Apple 風格的簡潔設計
+        - 導入自然語言處理，支援快速解析事件
+        - Supabase 提供帳號驗證與共享事件儲存
+        - iCloud 本地同步，保障個人資料隱私
+        
+        aiPlanner 讓使用者以最自然的方式管理日常，兼顧 **隱私性** 與 **便利性**。  
+      `
+    },
+    imageUrl: '/projects/aip.jpg',
+    status: 'completed',
+    date: {
+      en: 'July 2025 - August 2025',
+      zh: '2025年7月 - 2025年8月'
+    },
+    skills: [
+      { name: 'Swift', color: 'bg-orange-500/20 text-orange-400 border border-orange-500/30' },
+      { name: 'Natural Language Processing', color: 'bg-purple-500/20 text-purple-400 border border-purple-500/30' },
+      { name: 'Supabase', color: 'bg-green-500/20 text-green-400 border border-green-500/30' },
+      { name: 'iCloud', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30' },
+      { name: 'iOS Development', color: 'bg-gray-500/20 text-gray-400 border border-gray-500/30' }
+    ],
+    features: {
+      en: [
+        'Natural language event creation (text & voice)',
+        'Swift-based iOS app with minimalist UI',
+        'Private iCloud sync for personal events',
+        'Supabase backend for authentication & shared events'
+      ],
+      zh: [
+        '自然語言事件建立（文字 & 語音）',
+        '以 Swift 開發的 iOS 原生應用與極簡 UI',
+        'iCloud 私有同步，保障個人事件',
+        'Supabase 後端支援帳號驗證與共享事件'
+      ]
+    },
+    milestones: {
+      en: [
+        {
+          title: 'Built iOS-native Calendar App',
+          description: 'Developed aiPlanner using Swift with Apple-style UI and smooth user experience.',
+          type: 'achievement',
+          icon: '📱'
+        },
+        {
+          title: 'Implemented Natural Language Parsing',
+          description: 'Enabled users to create events with simple text or voice inputs.',
+          type: 'skill',
+          icon: '🗣️'
+        },
+        {
+          title: 'Integrated Supabase',
+          description: 'Added authentication and shared event storage via Supabase.',
+          type: 'learning',
+          icon: '🛠️'
+        },
+        {
+          title: 'Enhanced Privacy with iCloud',
+          description: 'Leveraged iCloud sync for secure, private personal events.',
+          type: 'skill',
+          icon: '🔒'
+        }
+      ],
+      zh: [
+        {
+          title: '開發 iOS 原生行事曆應用',
+          description: '以 Swift 打造 aiPlanner，提供 Apple 風格的流暢體驗。',
+          type: 'achievement',
+          icon: '📱'
+        },
+        {
+          title: '導入自然語言解析',
+          description: '支援以簡單文字或語音快速建立事件。',
+          type: 'skill',
+          icon: '🗣️'
+        },
+        {
+          title: '整合 Supabase',
+          description: '透過 Supabase 提供帳號驗證與共享事件儲存。',
+          type: 'learning',
+          icon: '🛠️'
+        },
+        {
+          title: '強化隱私與 iCloud 同步',
+          description: '利用 iCloud 確保個人事件安全私密同步。',
+          type: 'skill',
+          icon: '🔒'
+        }
+      ]
+    },
+    galleryImages: [
+      '/projects/aip1.jpg',
+      '/projects/aip2.jpg',
+      '/projects/aip3.jpg',
+      '/projects/aip4.jpg'
+    ]
   },
   {
     id: 'erp-system',
@@ -283,7 +410,7 @@ export const projects: Project[] = [
         }
       ]
     },
-    githubUrl: 'https://github.com/yourusername/erp-system',
+    // githubUrl: 'https://github.com/yourusername/erp-system',
     youtubeVideoId: 'ViVosgnhEbM', // Rick Astley - Never Gonna Give You Up
   },
   {
@@ -406,7 +533,7 @@ export const projects: Project[] = [
         }
       ]
     },
-    githubUrl: 'https://github.com/yourusername/superbot'
+    // githubUrl: 'https://github.com/yourusername/superbot'
   },
   {
     id: 'seven-peach',
@@ -443,7 +570,7 @@ export const projects: Project[] = [
       `
     },
     imageUrl: '/projects/sp.jpg',
-    status: 'in-progress',
+    status: 'completed',
     date: {
       en: 'August 2024',
       zh: '2024年8月'
@@ -523,7 +650,7 @@ export const projects: Project[] = [
         }
       ]
     },
-    githubUrl: 'https://github.com/yourusername/seven-peach',
+    // githubUrl: 'https://github.com/yourusername/seven-peach',
     youtubeVideoId: 'gFHqAii7p5Y',
   },
   {
@@ -640,7 +767,7 @@ export const projects: Project[] = [
         }
       ]
     },
-    githubUrl: 'https://github.com/yourusername/lakycarcar',
+    // githubUrl: 'https://github.com/yourusername/lakycarcar',
     youtubeVideoId: 'sPTc4_vDMfo',
   }
 ];

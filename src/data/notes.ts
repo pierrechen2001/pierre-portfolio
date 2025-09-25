@@ -561,7 +561,6 @@ This blog post is the first footprint of that journey.`,
 ];
 
 export const categories = [
-  { en: 'All', zh: '全部' },
   { en: 'Development', zh: '開發' },
   { en: 'Life', zh: '生活' },
   { en: 'Life Exploration', zh: '人生探索' },

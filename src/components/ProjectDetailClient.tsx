@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import MediaCarousel from '@/components/MediaCarousel';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect, useRef } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
@@ -54,6 +55,7 @@ interface ProjectProps {
     githubUrl?: string;
     demoUrl?: string;
     youtubeVideoId?: string;
+    galleryImages?: string[];
   };
 }
 
@@ -98,6 +100,21 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
     completed: { zh: '已完成', en: 'Completed' },
     'in-progress': { zh: '進行中', en: 'In Progress' },
     planned: { zh: '計劃中', en: 'Planned' },
+  };
+
+  // 渲染 Markdown 格式的函數
+  const renderMarkdown = (text: string) => {
+    // 處理粗體 **text**
+    const boldRegex = /\*\*(.*?)\*\*/g;
+    const parts = text.split(boldRegex);
+    
+    return parts.map((part, index) => {
+      // 奇數索引的部分是粗體內容
+      if (index % 2 === 1) {
+        return <strong key={index} className="font-bold text-[var(--foreground)]">{part}</strong>;
+      }
+      return part;
+    });
   };
   
   // 使用 useEffect 設置頁面標題和描述
@@ -187,28 +204,23 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                 <div className="text-[var(--foreground-muted)] leading-relaxed space-y-4">
                   {project.fullDescription[language].split('\n').map((paragraph, i) => (
                     <p key={i} className="text-lg">
-                      {paragraph.trim()}
+                      {renderMarkdown(paragraph.trim())}
                     </p>
                   ))}
                 </div>
               </div>
 
-              {/* 專案影片 */}
-              {project.youtubeVideoId && (
+              {/* 專案媒體展示 */}
+              {(project.youtubeVideoId || (project.galleryImages && project.galleryImages.length > 0)) && (
                 <div className="mb-12">
                   <h2 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    {language === 'en' ? 'Project Video' : '專案影片'}
+                    {language === 'en' ? 'Project Media' : '專案展示'}
                   </h2>
-                  <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[var(--border-color)]/20">
-                    <iframe
-                      src={`https://www.youtube.com/embed/${project.youtubeVideoId}`}
-                      title="YouTube video player"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="w-full h-full"
-                    ></iframe>
-                  </div>
+                  <MediaCarousel
+                    youtubeVideoId={project.youtubeVideoId}
+                    galleryImages={project.galleryImages}
+                    projectTitle={project.title[language]}
+                  />
                 </div>
               )}
               
