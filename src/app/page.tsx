@@ -9,12 +9,7 @@ import { projects } from '@/data/projects';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect, useRef } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
-
-// 客戶端元數據
-const pageMetadata = {
-  title: 'Pierre\'s Portfolio',
-  description: '全端開發者作品集',
-};
+import Head from 'next/head';
 
 // 視差背景組件
 function ParallaxBackground() {

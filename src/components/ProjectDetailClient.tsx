@@ -102,6 +102,36 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
     planned: { zh: '計劃中', en: 'Planned' },
   };
 
+  // 生成專案的結構化數據
+  const projectStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": project.title[language],
+    "description": project.fullDescription[language],
+    "creator": {
+      "@type": "Person",
+      "name": "Pierre Chen",
+      "url": "https://www.pierre-chen.com"
+    },
+    "dateCreated": project.date[language],
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": project.skills.map(skill => skill.name).join(", "),
+    "programmingLanguage": project.skills.filter(skill => 
+      ['JavaScript', 'TypeScript', 'Python', 'Swift', 'Dart', 'Java'].includes(skill.name)
+    ).map(skill => skill.name),
+    "url": `https://www.pierre-chen.com/projects/${id}`,
+    "image": project.imageUrl,
+    "keywords": project.skills.map(skill => skill.name).join(", "),
+    "applicationSubCategory": project.status === 'completed' ? 'Released' : 'InDevelopment',
+    ...(project.githubUrl && { "codeRepository": project.githubUrl }),
+    ...(project.demoUrl && { "downloadUrl": project.demoUrl }),
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+
   // 渲染 Markdown 格式的函數
   const renderMarkdown = (text: string) => {
     // 處理粗體 **text**
@@ -129,6 +159,11 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
   return (
     <ParallaxProvider>
       <div className="flex flex-col min-h-screen relative">
+        {/* 添加結構化數據 */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(projectStructuredData) }}
+        />
         <Header />
         
         {/* 添加視差背景 */}
