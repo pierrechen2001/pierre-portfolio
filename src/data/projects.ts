@@ -65,7 +65,7 @@ export const projects: Project[] = [
         Dogtor is an AI-powered learning app that helps high school students practice effectively by generating personalized questions and tracking their learning progress.
         
         I spearheaded the entire system design and development, including:
-        - Flutter frontend with clean UI/UX
+        - AI engineering and deep learning model training for personalized question generation
         - FastAPI backend with RESTful APIs and automatic documentation
         - MySQL database schema for error tracking and learning analytics
         - Cloud deployment on Google Cloud Run and Cloud SQL for scalability
@@ -76,7 +76,7 @@ export const projects: Project[] = [
         Dogtor 是一款 AI 輔助學習應用，專為國高中生打造，能依據學生學習情況生成個人化練習題，並追蹤學習進度。
         
         我主導整體系統架構與開發，負責：
-        - Flutter 前端開發，打造直觀的使用者介面
+        - AI 工程與深度學習模型訓練，用於個人化題目生成
         - FastAPI 後端建構 RESTful API 並自動生成文件
         - MySQL 資料庫設計，追蹤錯題紀錄與學習分析
         - GCP Cloud Run 與 Cloud SQL 雲端部署，確保系統可擴展性與穩定性
@@ -163,6 +163,12 @@ export const projects: Project[] = [
         }
       ]
     },
+    galleryImages: [
+      '/projects/dogtor/2.jpg',
+      '/projects/dogtor/8.jpg',
+      '/projects/dogtor/12.jpg',
+      '/projects/dogtor/16.jpg'
+    ]
   },
   {
     id: 'aiplanner',
