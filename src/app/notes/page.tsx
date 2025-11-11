@@ -50,10 +50,35 @@ export default function NotesPage() {
   // 使用 useEffect 設置頁面標題
   useEffect(() => {
     document.title = `${language === 'en' ? 'Notes' : '筆記庫'} | Pierre's Portfolio`;
+
+    // 更新 meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', language === 'en' ? 'My development notes and insights' : '我的開發筆記與見解');
+      metaDescription.setAttribute('content', language === 'en' ? 'My development notes and insights on software engineering, AI, and technology' : '我的開發筆記與見解，涵蓋軟體工程、AI 技術等主題');
     }
+
+    // 添加 Open Graph meta tags
+    const setMetaTag = (property: string, content: string) => {
+      let meta = document.querySelector(`meta[property="${property}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('property', property);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    };
+
+    setMetaTag('og:title', `${language === 'en' ? 'Notes' : '筆記庫'} | Pierre's Portfolio`);
+    setMetaTag('og:description', language === 'en' ? 'My development notes and insights on software engineering, AI, and technology' : '我的開發筆記與見解，涵蓋軟體工程、AI 技術等主題');
+    setMetaTag('og:url', 'https://www.pierre-chen.com/notes');
+    setMetaTag('og:type', 'website');
+    setMetaTag('og:image', 'https://www.pierre-chen.com/og-image.png');
+
+    // Twitter Card
+    setMetaTag('twitter:card', 'summary_large_image');
+    setMetaTag('twitter:title', `${language === 'en' ? 'Notes' : '筆記庫'} | Pierre's Portfolio`);
+    setMetaTag('twitter:description', language === 'en' ? 'My development notes and insights on software engineering, AI, and technology' : '我的開發筆記與見解，涵蓋軟體工程、AI 技術等主題');
+    setMetaTag('twitter:image', 'https://www.pierre-chen.com/og-image.png');
   }, [language]);
 
   // 過濾筆記
@@ -70,10 +95,70 @@ export default function NotesPage() {
   // 精選筆記（用於首頁顯示）
   const featuredNotes = notes.filter(note => note.featured);
 
+  // 生成結構化數據 (JSON-LD)
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": language === 'en' ? 'Notes' : '筆記庫',
+    "description": language === 'en' ? 'My development notes and insights on software engineering, AI, and technology' : '我的開發筆記與見解，涵蓋軟體工程、AI 技術等主題',
+    "url": "https://www.pierre-chen.com/notes",
+    "author": {
+      "@type": "Person",
+      "name": "Pierre Chen",
+      "url": "https://www.pierre-chen.com"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": filteredNotes.length,
+      "itemListElement": filteredNotes.map((note, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "BlogPosting",
+          "headline": note.title[language],
+          "description": note.description[language],
+          "url": `https://www.pierre-chen.com/notes/${note.id}`,
+          "datePublished": note.publishedAt,
+          "author": {
+            "@type": "Person",
+            "name": "Pierre Chen"
+          },
+          "keywords": note.tags.join(', ')
+        }
+      }))
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": language === 'en' ? 'Home' : '首頁',
+          "item": "https://www.pierre-chen.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": language === 'en' ? 'Notes' : '筆記庫',
+          "item": "https://www.pierre-chen.com/notes"
+        }
+      ]
+    }
+  };
+
   return (
-    <ParallaxProvider>
-      <div className="flex flex-col min-h-screen relative">
-        <Header />
+    <>
+      {/* 結構化數據 (JSON-LD) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
+
+      <ParallaxProvider>
+        <div className="flex flex-col min-h-screen relative">
+          <Header />
         
         {/* 添加視差背景 */}
         <ParallaxBackground />
@@ -239,7 +324,8 @@ export default function NotesPage() {
         </main>
         
         <Footer />
-      </div>
-    </ParallaxProvider>
+        </div>
+      </ParallaxProvider>
+    </>
   );
 } 

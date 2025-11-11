@@ -60,10 +60,35 @@ export default function NoteDetailPage({ params }: NoteDetailPageProps) {
   useEffect(() => {
     if (note) {
       document.title = `${note.title[language]} | Pierre's Portfolio`;
+
+      // 更新 meta description
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
         metaDescription.setAttribute('content', note.description[language]);
       }
+
+      // 添加 Open Graph meta tags
+      const setMetaTag = (property: string, content: string) => {
+        let meta = document.querySelector(`meta[property="${property}"]`);
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.setAttribute('property', property);
+          document.head.appendChild(meta);
+        }
+        meta.setAttribute('content', content);
+      };
+
+      setMetaTag('og:title', `${note.title[language]} | Pierre's Portfolio`);
+      setMetaTag('og:description', note.description[language]);
+      setMetaTag('og:url', `https://www.pierre-chen.com/notes/${note.id}`);
+      setMetaTag('og:type', 'article');
+      setMetaTag('og:image', 'https://www.pierre-chen.com/og-image.png');
+
+      // Twitter Card
+      setMetaTag('twitter:card', 'summary_large_image');
+      setMetaTag('twitter:title', `${note.title[language]} | Pierre's Portfolio`);
+      setMetaTag('twitter:description', note.description[language]);
+      setMetaTag('twitter:image', 'https://www.pierre-chen.com/og-image.png');
     }
   }, [note, language]);
 
@@ -71,10 +96,46 @@ export default function NoteDetailPage({ params }: NoteDetailPageProps) {
     notFound();
   }
 
+  // 生成結構化數據 (JSON-LD)
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": note.title[language],
+    "description": note.description[language],
+    "author": {
+      "@type": "Person",
+      "name": "Pierre Chen",
+      "url": "https://www.pierre-chen.com"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Pierre Chen"
+    },
+    "datePublished": note.publishedAt,
+    "dateModified": note.updatedAt || note.publishedAt,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://www.pierre-chen.com/notes/${note.id}`
+    },
+    "keywords": note.tags.join(', '),
+    "articleSection": note.category[language],
+    "url": `https://www.pierre-chen.com/notes/${note.id}`,
+    "image": "https://www.pierre-chen.com/og-image.png"
+  };
+
   return (
-    <ParallaxProvider>
-      <div className="flex flex-col min-h-screen relative">
-        <Header />
+    <>
+      {/* 結構化數據 (JSON-LD) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
+
+      <ParallaxProvider>
+        <div className="flex flex-col min-h-screen relative">
+          <Header />
         
         {/* 添加視差背景 */}
         <ParallaxBackground />
@@ -337,7 +398,8 @@ export default function NoteDetailPage({ params }: NoteDetailPageProps) {
         </main>
         
         <Footer />
-      </div>
-    </ParallaxProvider>
+        </div>
+      </ParallaxProvider>
+    </>
   );
 } 

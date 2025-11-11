@@ -49,18 +49,17 @@ module.exports = {
   // 額外的 sitemap 配置
   additionalPaths: async (config) => {
     const result = []
-    
-    // 如果有動態路由，可以在這裡添加
-    // 例如：專案詳情頁面
+
+    // 專案詳情頁面
     const projects = [
       'dogtor',
-      'aiplanner', 
+      'aiplanner',
       'erp-system',
       'superbot',
       'seven-peach',
       'lakycarcar'
     ]
-    
+
     projects.forEach(projectId => {
       result.push({
         loc: `/projects/${projectId}`,
@@ -69,7 +68,24 @@ module.exports = {
         lastmod: new Date().toISOString(),
       })
     })
-    
+
+    // 筆記詳情頁面 - 動態生成所有筆記的 sitemap
+    const notes = [
+      'dogtor-dev-logthe-idea-behind-our-ai-learning-app',
+      'why-i-stepped-into-software',
+      'superbot-dev-log-my-first-api-project',
+      'balancing-gai-in-software-engineering-education'
+    ]
+
+    notes.forEach(noteId => {
+      result.push({
+        loc: `/notes/${noteId}`,
+        changefreq: 'weekly',
+        priority: 0.7,
+        lastmod: new Date().toISOString(),
+      })
+    })
+
     return result
   },
   

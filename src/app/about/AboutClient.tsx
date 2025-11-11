@@ -140,7 +140,103 @@ export default function AboutClient() {
                 <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-secondary/50 to-primary/50 hidden md:block"></div>
 
                 <div className="space-y-12 md:space-y-16">
-                  {/* 第一項時間軸條目 */}
+                  {/* 第一項時間軸條目 - Akira Dialog Tech */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 relative">
+                    {/* 桌面版時間軸點 */}
+                    <div className="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 w-6 h-6 rounded-full bg-primary"></div>
+                    
+                    {/* 手機版時間軸點 */}
+                    <div className="md:hidden relative w-full pl-8 mb-2">
+                      <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-primary"></div>
+                      <div className="absolute left-2 top-2 w-[1px] h-full bg-gradient-to-b from-primary/50 via-secondary/50 to-primary/50"></div>
+                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('akira_period')}</span>
+                      <h3 className="text-xl md:text-2xl font-bold mt-1 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('akira_position')}</h3>
+                      <p className="font-medium mt-1 text-[var(--primary)]">{t('akira_company')}</p>
+                      <p className="text-sm mt-0.5 text-[var(--text-muted)]">{t('akira_location')}</p>
+                    </div>
+                    
+                    {/* 桌面版左側內容 */}
+                    <div className="md:text-right md:pr-12 parallax-scroll hidden md:block" data-speed="0.05">
+                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('akira_period')}</span>
+                      <h3 className="text-2xl font-bold mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('akira_position')}</h3>
+                      <p className="font-medium mt-2 text-[var(--primary)]">{t('akira_company')}</p>
+                      <p className="text-sm mt-1 text-[var(--text-muted)]">{t('akira_location')}</p>
+                    </div>
+                    
+                    {/* 右側內容 */}
+                    <div className="md:pl-12 backdrop-blur-sm bg-[var(--background)]/50 p-4 md:p-6 rounded-xl shadow-sm parallax-scroll pl-8 md:pl-12" data-speed="-0.01">
+                      <p className="text-[var(--foreground)] mb-3 md:mb-4">
+                        {t('akira_description')}
+                      </p>
+                      <ul className="list-none space-y-1 md:space-y-2 text-[var(--foreground)]">
+                        <li className="flex items-start">
+                          <span className="mr-2 text-primary mt-1">•</span>
+                          <span>{t('akira_achievement_1')}</span>
+                        </li>
+                        <li className="flex items-start">
+                          <span className="mr-2 text-primary mt-1">•</span>
+                          <span>{t('akira_achievement_2')}</span>
+                        </li>
+                        <li className="flex items-start">
+                          <span className="mr-2 text-primary mt-1">•</span>
+                          <span>{t('akira_achievement_3')}</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* 第二項時間軸條目 - Superb Tech Studio */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 relative">
+                    {/* 桌面版時間軸點 */}
+                    <div className="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 w-6 h-6 rounded-full bg-secondary"></div>
+                    
+                    {/* 手機版時間軸點 */}
+                    <div className="md:hidden relative w-full pl-8 mb-2">
+                      <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-secondary"></div>
+                      <div className="absolute left-2 top-2 w-[1px] h-full bg-gradient-to-b from-secondary/50 via-primary/50 to-secondary/50"></div>
+                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('superb_tech_period')}</span>
+                      <h3 className="text-xl md:text-2xl font-bold mt-1 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">{t('superb_tech_position')}</h3>
+                      <p className="font-medium mt-1 text-[var(--primary)]">
+                        <a href="https://superbtech.studio" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                          {t('superb_tech_company')}
+                        </a>
+                      </p>
+                    </div>
+                    
+                    {/* 桌面版右側內容（交錯效果） */}
+                    <div className="md:text-left md:order-2 parallax-scroll hidden md:block md:pl-12" data-speed="0.03">
+                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('superb_tech_period')}</span>
+                      <h3 className="text-2xl font-bold mt-2 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">{t('superb_tech_position')}</h3>
+                      <p className="font-medium mt-2 text-[var(--primary)]">
+                        <a href="https://superbtech.studio" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                          {t('superb_tech_company')}
+                        </a>
+                      </p>
+                    </div>
+                    
+                    {/* 左側內容（在桌面版） */}
+                    <div className="md:order-1 parallax-scroll backdrop-blur-0 bg-[var(--background)]/50 p-8 md:p-6 rounded-xl shadow-sm pl-8 md:pl-6" data-speed="-0.02">
+                      <p className="text-[var(--foreground)] mb-3 md:mb-4">
+                        {t('superb_tech_description')}
+                      </p>
+                      <ul className="list-none space-y-1 md:space-y-2 text-[var(--foreground)]">
+                        <li className="flex items-center">
+                          <span className="mr-2 text-secondary">•</span>
+                          {t('superb_tech_achievement_1')}
+                        </li>
+                        <li className="flex items-center">
+                          <span className="mr-2 text-secondary">•</span>
+                          {t('superb_tech_achievement_2')}
+                        </li>
+                        <li className="flex items-center">
+                          <span className="mr-2 text-secondary">•</span>
+                          {t('superb_tech_achievement_3')}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* 第三項時間軸條目 - Dogtor */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 relative">
                     {/* 桌面版時間軸點 */}
                     <div className="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 w-6 h-6 rounded-full bg-primary"></div>
@@ -183,7 +279,7 @@ export default function AboutClient() {
                     </div>
                   </div>
 
-                  {/* 第二項時間軸條目 */}
+                  {/* 第四項時間軸條目 - Superb Education */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 relative">
                     {/* 桌面版時間軸點 */}
                     <div className="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 w-6 h-6 rounded-full bg-secondary"></div>
@@ -194,14 +290,22 @@ export default function AboutClient() {
                       <div className="absolute left-2 top-2 w-[1px] h-full bg-gradient-to-b from-secondary/50 via-primary/50 to-secondary/50"></div>
                       <span className="text-lg font-semibold text-[var(--text-muted)]">{t('superb_period')}</span>
                       <h3 className="text-xl md:text-2xl font-bold mt-1 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">{t('superb_position')}</h3>
-                      <p className="font-medium mt-1 text-[var(--primary)]">{t('superb_company')}</p>
+                      <p className="font-medium mt-1 text-[var(--primary)]">
+                        <a href="https://superbedu.cc" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                          {t('superb_company')}
+                        </a>
+                      </p>
                     </div>
                     
                     {/* 桌面版右側內容（交錯效果） */}
                     <div className="md:text-left md:order-2 parallax-scroll hidden md:block md:pl-12" data-speed="0.03">
                       <span className="text-lg font-semibold text-[var(--text-muted)]">{t('superb_period')}</span>
                       <h3 className="text-2xl font-bold mt-2 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">{t('superb_position')}</h3>
-                      <p className="font-medium mt-2 text-[var(--primary)]">{t('superb_company')}</p>
+                      <p className="font-medium mt-2 text-[var(--primary)]">
+                        <a href="https://superbedu.cc" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                          {t('superb_company')}
+                        </a>
+                      </p>
                     </div>
                     
                     {/* 左側內容（在桌面版） */}
@@ -226,48 +330,6 @@ export default function AboutClient() {
                     </div>
                   </div>
 
-                  {/* 第三項時間軸條目 */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 relative">
-                    {/* 桌面版時間軸點 */}
-                    <div className="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 w-6 h-6 rounded-full bg-primary"></div>
-                    
-                    {/* 手機版時間軸點 */}
-                    <div className="md:hidden relative w-full pl-8 mb-2">
-                      <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-primary"></div>
-                      <div className="absolute left-2 top-2 w-[1px] h-[80%] bg-gradient-to-b from-primary/50 via-secondary/50 to-transparent"></div>
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('ntu_period')}</span>
-                      <h3 className="text-xl md:text-2xl font-bold mt-1 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('ntu_degree')}</h3>
-                      <p className="font-medium mt-1 text-[var(--primary)]">{t('ntu_school')}</p>
-                    </div>
-                    
-                    {/* 桌面版左側內容 */}
-                    <div className="md:text-right md:pr-12 parallax-scroll hidden md:block" data-speed="0.01">
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('ntu_period')}</span>
-                      <h3 className="text-2xl font-bold mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('ntu_degree')}</h3>
-                      <p className="font-medium mt-2 text-[var(--primary)]">{t('ntu_school')}</p>
-                    </div>
-                    
-                    {/* 右側內容 */}
-                    <div className="md:pl-12 backdrop-blur-0 bg-[var(--background)]/50 p-10 md:p-6 rounded-xl shadow-sm parallax-scroll pl-8 md:pl-12" data-speed="-0.02">
-                      <p className="text-[var(--foreground)] mb-3 md:mb-4">
-                        {t('ntu_description')}
-                      </p>
-                      <ul className="list-none space-y-1 md:space-y-2 text-[var(--foreground)]">
-                        <li className="flex items-center">
-                          <span className="mr-2 text-primary">•</span>
-                          {t('ntu_achievement_1')}
-                        </li>
-                        <li className="flex items-center">
-                          <span className="mr-2 text-primary">•</span>
-                          {t('ntu_achievement_2')}
-                        </li>
-                        <li className="flex items-center">
-                          <span className="mr-2 text-primary">•</span>
-                          {t('ntu_achievement_3')}
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -318,19 +380,19 @@ export default function AboutClient() {
                   <ul className="space-y-2 text-[var(--foreground)]">
                     <li className="flex items-center">
                       <span className="mr-2">•</span>
+                      JavaScript / TypeScript
+                    </li>
+                    <li className="flex items-center">
+                      <span className="mr-2">•</span>
                       React / Next.js
                     </li>
                     <li className="flex items-center">
                       <span className="mr-2">•</span>
-                      TypeScript
+                      Data Structures & Algorithms
                     </li>
                     <li className="flex items-center">
                       <span className="mr-2">•</span>
-                      Tailwind CSS
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      HTML / CSS
+                      Web Performance Optimization
                     </li>
                   </ul>
                 </div>
@@ -345,19 +407,19 @@ export default function AboutClient() {
                   <ul className="space-y-2 text-[var(--foreground)]">
                     <li className="flex items-center">
                       <span className="mr-2">•</span>
-                      Node.js
+                      Python / Java / C++
                     </li>
                     <li className="flex items-center">
                       <span className="mr-2">•</span>
-                      Express
+                      Distributed Systems
                     </li>
                     <li className="flex items-center">
                       <span className="mr-2">•</span>
-                      MongoDB
+                      RESTful API Design
                     </li>
                     <li className="flex items-center">
                       <span className="mr-2">•</span>
-                      PostgreSQL
+                      Database Systems
                     </li>
                   </ul>
                 </div>
@@ -399,19 +461,19 @@ export default function AboutClient() {
                   <ul className="space-y-2 text-[var(--foreground)]">
                     <li className="flex items-center">
                       <span className="mr-2">•</span>
-                      DevOps
+                      Machine Learning / TensorFlow
                     </li>
                     <li className="flex items-center">
                       <span className="mr-2">•</span>
-                      CI/CD
+                      Operating Systems / Socket
                     </li>
                     <li className="flex items-center">
                       <span className="mr-2">•</span>
-                      UX/UI 設計
+                      Script Automation
                     </li>
                     <li className="flex items-center">
                       <span className="mr-2">•</span>
-                      SEO 優化
+                      System Design & Scalability
                     </li>
                   </ul>
                 </div>

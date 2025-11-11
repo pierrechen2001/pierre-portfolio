@@ -57,6 +57,23 @@ const translations = {
     'other_skills': 'Other Skills',
     
     // 工作經歷詳細內容
+    'akira_position': 'Software Engineer Intern',
+    'akira_company': 'Akira Dialog Tech Inc.',
+    'akira_location': 'Taipei, Taiwan',
+    'akira_period': 'Oct 2025 - Present',
+    'akira_description': 'Software engineering intern focused on backend API development and machine learning data enhancement.',
+    'akira_achievement_1': 'Designed and implemented RESTful APIs for mobile number verification and user profile management, including backend database schema planning and integration with SMS service providers',
+    'akira_achievement_2': 'Conducted end-to-end research on synthetic data generation for machine learning model enhancement - proposed methodology, designed labeling strategies, generated training datasets, and optimized model training pipelines',
+    'akira_achievement_3': 'Collaborated cross-functionally with frontend engineers to define API specifications, review QA checklists, and establish an efficient backend-frontend integration workflow',
+    
+    'superb_tech_position': 'Technical Developer',
+    'superb_tech_company': 'Superb Tech Studio',
+    'superb_tech_period': 'Aug 2025 - Present',
+    'superb_tech_description': 'Full-stack development and technical consulting for technology projects.',
+    'superb_tech_achievement_1': 'Developed custom web applications and automation tools for institutions',
+    'superb_tech_achievement_2': 'Implemented API integrations and database optimization solutions',
+    'superb_tech_achievement_3': 'Provided technical consulting and code reviews for client projects',
+    
     'dogtor_position': 'Dogtor Full-Stack Engineer',
     'dogtor_company': 'AI Learning Application Development Team',
     'dogtor_period': '2025 - Present',
@@ -65,7 +82,7 @@ const translations = {
     'dogtor_achievement_2': 'Deployed backend API to Cloud Run, integrated with Flutter application',
     'dogtor_achievement_3': 'Integrated OpenAI models for question generation and feedback',
     
-    'superb_position': 'Founder & Technical Developer at Superb Education',
+    'superb_position': 'Founder & Technical Developer',
     'superb_company': 'Superb Education',
     'superb_period': '2023 - Present',
     'superb_description': 'Independently developed LINE chatbot and teaching platform to assist high school students in learning mathematics and English, integrated Google Sheets API for attendance and assignment tracking.',
@@ -162,6 +179,23 @@ const translations = {
     'other_skills': '其他技能',
     
     // 工作經歷詳細內容
+    'akira_position': '軟體工程實習生',
+    'akira_company': '皓談心理科技',
+    'akira_location': '台北，台灣',
+    'akira_period': '2025年10月 - 現在',
+    'akira_description': '專注於後端 API 開發與機器學習資料增強的軟體工程實習生。',
+    'akira_achievement_1': '設計並實作手機號碼驗證與用戶資料管理的 RESTful API，包含後端資料庫架構規劃及與簡訊服務商的整合',
+    'akira_achievement_2': '進行端到端的合成資料生成研究以增強機器學習模型 - 提出方法論、設計標註策略、生成訓練資料集，並優化模型訓練流程',
+    'akira_achievement_3': '跨職能協作前端工程師，定義 API 規格、審查 QA 檢查清單，並建立高效的前後端整合工作流程',
+    
+    'superb_tech_position': '技術開發',
+    'superb_tech_company': '精湛資訊工作室',
+    'superb_tech_period': '2025年8月 - 現在',
+    'superb_tech_description': '為科技專案提供全端開發與技術顧問服務。',
+    'superb_tech_achievement_1': '為機構開發客製化網頁應用與自動化工具',
+    'superb_tech_achievement_2': '實作 API 整合與資料庫優化解決方案',
+    'superb_tech_achievement_3': '為客戶專案提供技術諮詢與程式碼審查',
+    
     'dogtor_position': 'Dogtor 全端工程師',
     'dogtor_company': 'AI 學習應用開發團隊',
     'dogtor_period': '2025年 - 現在',
@@ -170,8 +204,8 @@ const translations = {
     'dogtor_achievement_2': '將後端 API 部署至 Cloud Run，串接 Flutter 應用',
     'dogtor_achievement_3': '整合 OpenAI 模型進行題目生成與回饋',
     
-    'superb_position': '精湛教育創辦人兼技術開發',
-    'superb_company': 'Superb Education',
+    'superb_position': '創辦人兼技術開發',
+    'superb_company': '精湛教育',
     'superb_period': '2023年 - 現在',
     'superb_description': '獨立開發 LINE 聊天機器人與教學平台，協助高中生學習數理與英文，並整合 Google Sheet API 進行出勤與作業追蹤。',
     'superb_achievement_1': '使用 Python 串接 LINE Message API 與 Google Sheets API',
