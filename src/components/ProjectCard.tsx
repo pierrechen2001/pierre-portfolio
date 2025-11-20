@@ -148,33 +148,40 @@ export default function ProjectCard({
             className="object-cover w-full h-full"
           />
         </div>
-        <div className="p-6 flex flex-col flex-grow">
+        <div className="p-6 flex flex-col flex-grow relative overflow-hidden">
+          {/* 裝飾性線條 - Tech Accent */}
+          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--border-color)] to-transparent opacity-50 group-hover:via-primary/50 transition-all duration-500"></div>
+          
           <div className="flex justify-between items-start gap-3 mb-4">
             <h3 className="text-xl font-bold text-white group-hover:text-[#F3C14B] transition-colors leading-tight flex-grow">{title[language]}</h3>
-            <span className={`badge ${statusColor[status]} text-xs px-3 py-1.5 rounded-full font-medium flex-shrink-0 whitespace-nowrap`}>
+            <span className={`badge ${statusColor[status]} font-mono text-xs px-3 py-1.5 rounded md:rounded-md border backdrop-blur-sm flex-shrink-0 whitespace-nowrap shadow-sm`}>
               {statusText[status][language]}
             </span>
           </div>
-          <p className="text-sm text-gray-400 mb-4 flex-shrink-0">
+          <p className="text-xs font-mono text-gray-500 mb-4 flex-shrink-0 flex items-center">
+            <span className="w-2 h-2 rounded-full bg-gray-600 mr-2 group-hover:bg-[#F3C14B] transition-colors"></span>
             {date[language]}
           </p>
-          <div className="flex-grow mb-6">
-            <p className="text-gray-300 leading-relaxed">
+          <div className="flex-grow mb-6 border-l-2 border-[var(--border-color)] pl-4 group-hover:border-[#F3C14B]/50 transition-colors">
+            <p className="text-gray-300 leading-relaxed text-sm md:text-base">
               {description[language]}
             </p>
           </div>
-                        <div className="flex flex-wrap gap-2 mb-6">
-                {skills.map((skill) => (
-                  <span
-                    key={skill.name}
-                    className={`text-xs px-3 py-1.5 rounded-full font-medium ${skill.color || getSkillColor(skill.name)} transition-all duration-300 hover:scale-105`}
-                  >
-                    {skill.name}
-                  </span>
-                ))}
-              </div>
-          <div className="mt-auto pt-2">
-            <div className="inline-flex items-center text-[#F3C14B] hover:text-[#E9BC45] font-medium group-hover:translate-x-1 transition-all duration-300">
+          
+          <div className="flex flex-wrap gap-2 mb-6">
+            {skills.map((skill) => (
+              <span
+                key={skill.name}
+                className={`text-xs px-2 py-1 rounded font-mono ${skill.color || getSkillColor(skill.name)} border opacity-90 hover:opacity-100 transition-all duration-300`}
+              >
+                {skill.name}
+              </span>
+            ))}
+          </div>
+          
+          <div className="mt-auto pt-4 border-t border-[var(--border-color)]/30 group-hover:border-[#F3C14B]/20 transition-colors">
+            <div className="inline-flex items-center text-[#F3C14B] hover:text-[#E9BC45] font-mono text-sm font-medium group-hover:translate-x-1 transition-all duration-300">
+              <span className="mr-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">cd ./details</span>
               {t('view_details')}
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ProjectCard from '@/components/ProjectCard';
+import Typewriter from '@/components/Typewriter';
 import { projects } from '@/data/projects';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect, useRef } from 'react';
@@ -119,6 +120,10 @@ export default function Home() {
   // 只顯示前3個專案
   const featuredProjects = projects.slice(0, 3);
   const { t, language } = useLanguage();
+  
+  const roles = language === 'zh' 
+    ? ['全端開發者', 'AI 解決方案專家', '軟體架構師', '創新思維者']
+    : ['Full Stack Developer', 'AI Specialist', 'Software Architect', 'Creative Thinker'];
 
   // 使用 useEffect 設置頁面標題
   useEffect(() => {
@@ -150,12 +155,20 @@ export default function Home() {
               <div className="flex items-end justify-between mb-6">
                 {/* Left side - I am Pierre Chen */}
                 <div className="flex-1 parallax-scroll" data-speed="0.05">
-                  <p className="text-lg text-[var(--primary)] font-medium mb-2">
+                  <div className="font-mono text-[var(--primary)] font-medium mb-2 flex items-center text-sm">
+                    <span className="mr-2 opacity-70">&gt;</span>
                     {t('iam')}
-                  </p>
-                  <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight">
+                  </div>
+                  <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight mb-2">
                     {t('fullname')}
                   </h1>
+                  <div className="h-6 flex items-center overflow-hidden">
+                    <span className="text-[var(--border-color)] font-mono mr-2 text-sm">{'//'}</span>
+                    <Typewriter 
+                      words={roles} 
+                      className="text-base text-[var(--text-muted)]"
+                    />
+                  </div>
                 </div>
                 
                 {/* Right side - smaller avatar */}
@@ -181,7 +194,7 @@ export default function Home() {
               </div>
               
               {/* Mobile description */}
-              <div className="space-y-6">
+              <div className="space-y-6 pl-4 border-l border-[var(--border-color)]">
                 <div className="parallax-scroll" data-speed="0.05">
                   <p className="text-lg text-[var(--foreground-muted)] leading-relaxed">
                     {t('description')}
@@ -225,18 +238,28 @@ export default function Home() {
               {/* Left side content with better spacing */}
               <div className="col-span-7 space-y-8">
                 <div className="parallax-scroll" data-speed="0.05">
-                  <p className="text-lg md:text-xl text-[var(--primary)] font-medium mb-4">
-                    {t('iam')}
-                  </p>
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight">
+                  <div className="flex items-center space-x-3 font-mono text-[var(--primary)] mb-4 opacity-90">
+                    <span className="animate-pulse text-lg">_</span>
+                    <span className="text-lg md:text-xl font-medium tracking-wide">{t('iam')}</span>
+                  </div>
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight">
                     {t('fullname')}
                   </h1>
-                  <p className="text-lg md:text-xl text-[var(--foreground-muted)] leading-relaxed max-w-2xl">
-                    {t('description')}
-                  </p>
+                  <div className="h-10 mb-8 flex items-center">
+                    <span className="text-[var(--border-color)] font-mono mr-4 text-xl md:text-2xl">{'//'}</span>
+                    <Typewriter 
+                      words={roles} 
+                      className="text-xl md:text-2xl text-[var(--text-muted)] font-medium"
+                    />
+                  </div>
+                  <div className="pl-6 border-l-2 border-[var(--primary)]/30">
+                    <p className="text-lg md:text-xl text-[var(--foreground-muted)] leading-relaxed max-w-2xl">
+                      {t('description')}
+                    </p>
+                  </div>
                 </div>
                 
-                <div className="flex flex-col sm:flex-row gap-4 parallax-scroll" data-speed="0.02">
+                <div className="flex flex-col sm:flex-row gap-4 parallax-scroll pt-2" data-speed="0.02">
                   <Link
                     href="/projects"
                     className="bg-primary text-[var(--dark)] px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 inline-flex items-center justify-center group"

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { useLanguage } from '@/contexts/LanguageContext';
+import CodeBlock from '@/components/CodeBlock';
 
 // 用戶端組件，用於處理視差效果
 function ParallaxBackground() {
@@ -72,9 +73,53 @@ function ScrollParallax() {
   return null;
 }
 
+// Tech Stack Badge Component
+const TechBadge = ({ name, color }: { name: string, color: string }) => (
+  <span className={`inline-flex items-center px-3 py-1 rounded border text-xs font-mono bg-opacity-10 border-opacity-30 hover:bg-opacity-20 transition-all duration-300 ${color}`}>
+    {name}
+  </span>
+);
+
+// 簡單的標籤雲組件，無百分比
+const TechTagCloud = ({ tags, color }: { tags: string[], color: string }) => (
+  <div className="flex flex-wrap gap-2">
+    {tags.map(tag => (
+      <span key={tag} className={`px-2 py-1 rounded text-xs font-mono border border-opacity-20 bg-opacity-5 ${color}`}>
+        {tag}
+      </span>
+    ))}
+  </div>
+);
+
 export default function AboutClient() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
+  const techStacks = {
+    frontend: [
+      { name: 'React', color: 'bg-blue-500 border-blue-500 text-blue-400' },
+      { name: 'Next.js', color: 'bg-slate-500 border-slate-500 text-slate-400' },
+      { name: 'TypeScript', color: 'bg-blue-600 border-blue-600 text-blue-300' },
+      { name: 'Tailwind', color: 'bg-cyan-500 border-cyan-500 text-cyan-400' },
+    ],
+    backend: [
+      { name: 'Python', color: 'bg-yellow-500 border-yellow-500 text-yellow-400' },
+      { name: 'Node.js', color: 'bg-green-600 border-green-600 text-green-400' },
+      { name: 'FastAPI', color: 'bg-teal-500 border-teal-500 text-teal-400' },
+      { name: 'PostgreSQL', color: 'bg-blue-400 border-blue-400 text-blue-300' },
+    ],
+    mobile: [
+      { name: 'Flutter', color: 'bg-cyan-500 border-cyan-500 text-cyan-400' },
+      { name: 'React Native', color: 'bg-blue-400 border-blue-400 text-blue-300' },
+      { name: 'iOS', color: 'bg-gray-500 border-gray-500 text-gray-300' },
+      { name: 'Android', color: 'bg-green-500 border-green-500 text-green-400' },
+    ],
+    ai: [
+      { name: 'Machine Learning', color: 'bg-purple-500 border-purple-500 text-purple-400' },
+      { name: 'TensorFlow', color: 'bg-orange-500 border-orange-500 text-orange-400' },
+      { name: 'OpenAI API', color: 'bg-green-500 border-green-500 text-green-400' },
+    ]
+  };
+
   return (
     <ParallaxProvider>
       <div className="flex flex-col min-h-screen relative">
@@ -91,394 +136,358 @@ export default function AboutClient() {
           <div className="container mx-auto py-16 px-4 md:px-6">
             {/* 頂部區域：標題和簡介 */}
             <div className="mb-20 pt-6 md:pt-14 md:pb-6 text-center">
-              <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6">{t('about_page_title')}</h1>
-              <p className="text-lg max-w-2xl mx-auto text-[var(--foreground-muted)]">
+              <div className="inline-block mb-4 px-4 py-1 rounded-full border border-[var(--primary)]/30 bg-[var(--primary)]/10 text-[var(--primary)] font-mono text-sm">
+                $ whoami
+              </div>
+              <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6 tracking-tight">
+                {t('about_page_title')}
+              </h1>
+              <p className="text-lg md:text-xl max-w-2xl mx-auto text-[var(--foreground-muted)] font-light leading-relaxed">
                 {t('about_page_description')}
               </p>
             </div>
             
-            {/* 個人介紹區 */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-24 items-center">
-              <div className="md:col-span-5 order-2 md:order-1">
-                <div className="relative parallax-scroll" data-speed="-0.07">
-                  <div className="relative h-[30rem] w-full max-w-sm mx-auto">
-                    <Image
-                      src="/av.png"
-                      alt={`${t('fullname')} photo`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 384px"
-                      className="object-contain bg-transparent"
-                      priority
-                      unoptimized={true}
-                    />
+            {/* 個人介紹區 - IDE 風格 - 調整圖片比例與佈局 */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-32 items-start">
+              {/* 照片區域 - 縮小佔比 (3/12) */}
+              <div className="md:col-span-3 order-1 md:order-1 flex justify-center md:justify-end">
+                <div className="relative parallax-scroll w-full max-w-[240px]" data-speed="-0.05">
+                  <div className="relative aspect-[3/4] w-full">
+                    <div className="relative h-full w-full overflow-hidden rounded-lg">
+                      <Image
+                        src="/av.png"
+                        alt={`${t('fullname')} photo`}
+                        fill
+                        sizes="(max-width: 768px) 240px, 300px"
+                        className="object-cover object-top hover:scale-105 transition-transform duration-500"
+                        priority
+                        unoptimized={true}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
               
-              <div className="md:col-span-7 order-1 md:order-2 parallax-scroll" data-speed="0.03">
-                <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-primary/80 to-secondary/80 bg-clip-text text-transparent">{t('who_am_i')}</h2>
-                <div className="space-y-4 text-[var(--foreground)] backdrop-blur-sm bg-[var(--background)]/50 p-6 rounded-xl shadow-sm">
-                  <p>
-                    {t('about_intro_1')}
+              {/* 代碼區塊 - 擴大佔比 (9/12) */}
+              <div className="md:col-span-9 order-2 md:order-2 parallax-scroll" data-speed="0.02">
+                <div className="mb-4 flex items-center gap-2">
+                   <span className="w-2 h-6 bg-[var(--primary)] rounded-sm"></span>
+                   <h2 className="text-xl font-bold text-white">{t('who_am_i')}</h2>
+                </div>
+                
+                <CodeBlock title="README.md" language="markdown">
+                  <span className="text-purple-400"># {t('fullname')}</span>
+                  {'\n\n'}
+                  {t('about_intro_1')}
+                  {'\n\n'}
+                  <span className="text-[var(--primary)]">## Core Philosophy</span>
+                  {'\n'}
+                  {t('about_intro_2')}
+                  {'\n\n'}
+                  <span className="text-[var(--secondary)]">## Current Focus</span>
+                  {'\n'}
+                  {t('about_intro_3')}
+                </CodeBlock>
+              </div>
+            </div>
+            
+            {/* 工作經歷區域 - Git Log Style - 保持不變 */}
+            <div className="mb-32">
+              <div className="flex items-center justify-center gap-3 mb-16">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[var(--primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  Commit History
+                </h2>
+              </div>
+              
+              <div className="relative max-w-4xl mx-auto">
+                {/* 主時間軸線 */}
+                <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--border-color)] via-[var(--primary)]/50 to-[var(--border-color)]"></div>
+
+                <div className="space-y-20">
+                  {/* Akira Dialog Tech */}
+                  <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                    <div className="md:text-right pt-2">
+                       <div className="inline-block px-3 py-1 rounded-full border border-[var(--primary)]/30 bg-[var(--primary)]/10 text-[var(--primary)] font-mono text-xs mb-2">
+                         {t('akira_period')}
+                       </div>
+                       <h3 className="text-xl font-bold text-white">{t('akira_company')}</h3>
+                       <p className="text-[var(--text-muted)] font-mono text-sm">{t('akira_position')}</p>
+                    </div>
+                    
+                    {/* Git Node */}
+                    <div className="absolute left-8 md:left-1/2 w-4 h-4 -translate-x-[7px] md:-translate-x-[7px] mt-3 rounded-full bg-[var(--background)] border-2 border-[var(--primary)] z-10 shadow-[0_0_10px_var(--primary)]"></div>
+
+                    <div className="pl-16 md:pl-0 md:pt-2">
+                      <div className="p-6 rounded-xl bg-[var(--background-alt)]/40 border border-[var(--border-color)] hover:border-[var(--primary)]/50 transition-all duration-300 group">
+                        <div className="flex items-center gap-2 mb-4 font-mono text-xs text-[var(--text-muted)]">
+                          <span className="text-green-400">feat:</span>
+                          <span>AI Dialog System Implementation</span>
+                        </div>
+                        <ul className="space-y-3 text-sm text-gray-300">
+                           <li className="flex items-start gap-2">
+                             <span className="text-[var(--primary)] mt-1">+</span>
+                             {t('akira_achievement_1')}
+                           </li>
+                           <li className="flex items-start gap-2">
+                             <span className="text-[var(--primary)] mt-1">+</span>
+                             {t('akira_achievement_2')}
+                           </li>
+                           <li className="flex items-start gap-2">
+                             <span className="text-[var(--primary)] mt-1">+</span>
+                             {t('akira_achievement_3')}
+                           </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Superb Tech Studio */}
+                  <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                    <div className="md:order-2 pt-2">
+                       <div className="inline-block px-3 py-1 rounded-full border border-[var(--secondary)]/30 bg-[var(--secondary)]/10 text-[var(--secondary)] font-mono text-xs mb-2">
+                         {t('superb_tech_period')}
+                       </div>
+                       <h3 className="text-xl font-bold text-white">{t('superb_tech_company')}</h3>
+                       <p className="text-[var(--text-muted)] font-mono text-sm">{t('superb_tech_position')}</p>
+                    </div>
+                    
+                    {/* Git Node */}
+                    <div className="absolute left-8 md:left-1/2 w-4 h-4 -translate-x-[7px] md:-translate-x-[7px] mt-3 rounded-full bg-[var(--background)] border-2 border-[var(--secondary)] z-10 shadow-[0_0_10px_var(--secondary)]"></div>
+
+                    <div className="pl-16 md:pl-0 md:text-right md:order-1 md:pt-2">
+                      <div className="p-6 rounded-xl bg-[var(--background-alt)]/40 border border-[var(--border-color)] hover:border-[var(--secondary)]/50 transition-all duration-300">
+                         <div className="flex items-center gap-2 mb-4 font-mono text-xs text-[var(--text-muted)] md:justify-end">
+                          <span className="text-blue-400">refactor:</span>
+                          <span>System Architecture & Leadership</span>
+                        </div>
+                        <ul className="space-y-3 text-sm text-gray-300 inline-block text-left">
+                           <li className="flex items-start gap-2">
+                             <span className="text-[var(--secondary)] mt-1">+</span>
+                             {t('superb_tech_achievement_1')}
+                           </li>
+                           <li className="flex items-start gap-2">
+                             <span className="text-[var(--secondary)] mt-1">+</span>
+                             {t('superb_tech_achievement_2')}
+                           </li>
+                           <li className="flex items-start gap-2">
+                             <span className="text-[var(--secondary)] mt-1">+</span>
+                             {t('superb_tech_achievement_3')}
+                           </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Dogtor */}
+                  <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                    <div className="md:text-right pt-2">
+                       <div className="inline-block px-3 py-1 rounded-full border border-[var(--primary)]/30 bg-[var(--primary)]/10 text-[var(--primary)] font-mono text-xs mb-2">
+                         {t('dogtor_period')}
+                       </div>
+                       <h3 className="text-xl font-bold text-white">{t('dogtor_company')}</h3>
+                       <p className="text-[var(--text-muted)] font-mono text-sm">{t('dogtor_position')}</p>
+                    </div>
+                    
+                    {/* Git Node */}
+                    <div className="absolute left-8 md:left-1/2 w-4 h-4 -translate-x-[7px] md:-translate-x-[7px] mt-3 rounded-full bg-[var(--background)] border-2 border-[var(--primary)] z-10 shadow-[0_0_10px_var(--primary)]"></div>
+
+                    <div className="pl-16 md:pl-0 md:pt-2">
+                      <div className="p-6 rounded-xl bg-[var(--background-alt)]/40 border border-[var(--border-color)] hover:border-[var(--primary)]/50 transition-all duration-300">
+                        <div className="flex items-center gap-2 mb-4 font-mono text-xs text-[var(--text-muted)]">
+                          <span className="text-yellow-400">init:</span>
+                          <span>Dogtor Platform Launch</span>
+                        </div>
+                        <ul className="space-y-3 text-sm text-gray-300">
+                           <li className="flex items-start gap-2">
+                             <span className="text-[var(--primary)] mt-1">+</span>
+                             {t('dogtor_achievement_1')}
+                           </li>
+                           <li className="flex items-start gap-2">
+                             <span className="text-[var(--primary)] mt-1">+</span>
+                             {t('dogtor_achievement_2')}
+                           </li>
+                           <li className="flex items-start gap-2">
+                             <span className="text-[var(--primary)] mt-1">+</span>
+                             {t('dogtor_achievement_3')}
+                           </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Superb Education */}
+                  <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                    <div className="md:order-2 pt-2">
+                       <div className="inline-block px-3 py-1 rounded-full border border-[var(--secondary)]/30 bg-[var(--secondary)]/10 text-[var(--secondary)] font-mono text-xs mb-2">
+                         {t('superb_period')}
+                       </div>
+                       <h3 className="text-xl font-bold text-white">{t('superb_company')}</h3>
+                       <p className="text-[var(--text-muted)] font-mono text-sm">{t('superb_position')}</p>
+                    </div>
+                    
+                    {/* Git Node */}
+                    <div className="absolute left-8 md:left-1/2 w-4 h-4 -translate-x-[7px] md:-translate-x-[7px] mt-3 rounded-full bg-[var(--background)] border-2 border-[var(--secondary)] z-10 shadow-[0_0_10px_var(--secondary)]"></div>
+
+                    <div className="pl-16 md:pl-0 md:text-right md:order-1 md:pt-2">
+                      <div className="p-6 rounded-xl bg-[var(--background-alt)]/40 border border-[var(--border-color)] hover:border-[var(--secondary)]/50 transition-all duration-300">
+                         <div className="flex items-center gap-2 mb-4 font-mono text-xs text-[var(--text-muted)] md:justify-end">
+                          <span className="text-purple-400">merge:</span>
+                          <span>Education Tech Integration</span>
+                        </div>
+                        <ul className="space-y-3 text-sm text-gray-300 inline-block text-left">
+                           <li className="flex items-start gap-2">
+                             <span className="text-[var(--secondary)] mt-1">+</span>
+                             {t('superb_achievement_1')}
+                           </li>
+                           <li className="flex items-start gap-2">
+                             <span className="text-[var(--secondary)] mt-1">+</span>
+                             {t('superb_achievement_2')}
+                           </li>
+                           <li className="flex items-start gap-2">
+                             <span className="text-[var(--secondary)] mt-1">+</span>
+                             {t('superb_achievement_3')}
+                           </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            
+            {/* 分開的區塊：先是教育 */}
+            <div className="mb-20">
+              <div className="flex items-center gap-4 mb-8 border-b border-[var(--border-color)] pb-4">
+                <h2 className="text-3xl font-bold text-white">
+                  <span className="text-[var(--secondary)] mr-2">#</span>{t('education')}
+                </h2>
+                <div className="text-sm font-mono text-[var(--text-muted)] hidden md:block">
+                  // Academic Background
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* NTU */}
+                <div className="group relative p-8 rounded-2xl bg-[var(--background-alt)]/30 border border-[var(--border-color)] hover:border-[var(--primary)]/40 transition-all duration-300 overflow-hidden">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-[var(--primary)]/5 rounded-bl-full -mr-10 -mt-10 transition-transform group-hover:scale-110"></div>
+                  
+                  <div className="font-mono text-xs text-[var(--primary)] mb-3 tracking-wider uppercase">{t('ntu_period')}</div>
+                  <h3 className="text-2xl font-bold text-white mb-2">{t('ntu_school')}</h3>
+                  <div className="inline-block px-3 py-1 rounded bg-[var(--primary)]/10 text-[var(--primary)] text-sm font-medium mb-4">
+                    {t('ntu_degree')}
+                  </div>
+                  <p className="text-sm text-gray-400 font-mono leading-relaxed border-t border-[var(--border-color)]/30 pt-4">
+                    // {t('ntu_description')}
                   </p>
-                  <p>
-                    {t('about_intro_2')}
-                  </p>
-                  <p>
-                    {t('about_intro_3')}
+                </div>
+                
+                {/* KMU */}
+                <div className="group relative p-8 rounded-2xl bg-[var(--background-alt)]/30 border border-[var(--border-color)] hover:border-[var(--secondary)]/40 transition-all duration-300 overflow-hidden">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-[var(--secondary)]/5 rounded-bl-full -mr-10 -mt-10 transition-transform group-hover:scale-110"></div>
+                  
+                  <div className="font-mono text-xs text-[var(--secondary)] mb-3 tracking-wider uppercase">{t('kmu_period')}</div>
+                  <h3 className="text-2xl font-bold text-white mb-2">{t('kmu_school')}</h3>
+                  <div className="inline-block px-3 py-1 rounded bg-[var(--secondary)]/10 text-[var(--secondary)] text-sm font-medium mb-4">
+                    {t('kmu_degree')}
+                  </div>
+                  <p className="text-sm text-gray-400 font-mono leading-relaxed border-t border-[var(--border-color)]/30 pt-4">
+                    // {t('kmu_description')}
                   </p>
                 </div>
               </div>
             </div>
             
-            {/* 工作經歷區域 */}
+            {/* 分開的區塊：後是技能 */}
             <div className="mb-24">
-              <h2 className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('work_experience')}</h2>
-              
-              <div className="relative">
-                {/* 時間軸線 - 在桌面版顯示，手機版隱藏 */}
-                <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-secondary/50 to-primary/50 hidden md:block"></div>
-
-                <div className="space-y-12 md:space-y-16">
-                  {/* 第一項時間軸條目 - Akira Dialog Tech */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 relative">
-                    {/* 桌面版時間軸點 */}
-                    <div className="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 w-6 h-6 rounded-full bg-primary"></div>
-                    
-                    {/* 手機版時間軸點 */}
-                    <div className="md:hidden relative w-full pl-8 mb-2">
-                      <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-primary"></div>
-                      <div className="absolute left-2 top-2 w-[1px] h-full bg-gradient-to-b from-primary/50 via-secondary/50 to-primary/50"></div>
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('akira_period')}</span>
-                      <h3 className="text-xl md:text-2xl font-bold mt-1 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('akira_position')}</h3>
-                      <p className="font-medium mt-1 text-[var(--primary)]">{t('akira_company')}</p>
-                      <p className="text-sm mt-0.5 text-[var(--text-muted)]">{t('akira_location')}</p>
-                    </div>
-                    
-                    {/* 桌面版左側內容 */}
-                    <div className="md:text-right md:pr-12 parallax-scroll hidden md:block" data-speed="0.05">
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('akira_period')}</span>
-                      <h3 className="text-2xl font-bold mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('akira_position')}</h3>
-                      <p className="font-medium mt-2 text-[var(--primary)]">{t('akira_company')}</p>
-                      <p className="text-sm mt-1 text-[var(--text-muted)]">{t('akira_location')}</p>
-                    </div>
-                    
-                    {/* 右側內容 */}
-                    <div className="md:pl-12 backdrop-blur-sm bg-[var(--background)]/50 p-4 md:p-6 rounded-xl shadow-sm parallax-scroll pl-8 md:pl-12" data-speed="-0.01">
-                      <p className="text-[var(--foreground)] mb-3 md:mb-4">
-                        {t('akira_description')}
-                      </p>
-                      <ul className="list-none space-y-1 md:space-y-2 text-[var(--foreground)]">
-                        <li className="flex items-start">
-                          <span className="mr-2 text-primary mt-1">•</span>
-                          <span>{t('akira_achievement_1')}</span>
-                        </li>
-                        <li className="flex items-start">
-                          <span className="mr-2 text-primary mt-1">•</span>
-                          <span>{t('akira_achievement_2')}</span>
-                        </li>
-                        <li className="flex items-start">
-                          <span className="mr-2 text-primary mt-1">•</span>
-                          <span>{t('akira_achievement_3')}</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* 第二項時間軸條目 - Superb Tech Studio */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 relative">
-                    {/* 桌面版時間軸點 */}
-                    <div className="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 w-6 h-6 rounded-full bg-secondary"></div>
-                    
-                    {/* 手機版時間軸點 */}
-                    <div className="md:hidden relative w-full pl-8 mb-2">
-                      <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-secondary"></div>
-                      <div className="absolute left-2 top-2 w-[1px] h-full bg-gradient-to-b from-secondary/50 via-primary/50 to-secondary/50"></div>
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('superb_tech_period')}</span>
-                      <h3 className="text-xl md:text-2xl font-bold mt-1 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">{t('superb_tech_position')}</h3>
-                      <p className="font-medium mt-1 text-[var(--primary)]">
-                        <a href="https://superbtech.studio" target="_blank" rel="noopener noreferrer" className="hover:underline">
-                          {t('superb_tech_company')}
-                        </a>
-                      </p>
-                    </div>
-                    
-                    {/* 桌面版右側內容（交錯效果） */}
-                    <div className="md:text-left md:order-2 parallax-scroll hidden md:block md:pl-12" data-speed="0.03">
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('superb_tech_period')}</span>
-                      <h3 className="text-2xl font-bold mt-2 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">{t('superb_tech_position')}</h3>
-                      <p className="font-medium mt-2 text-[var(--primary)]">
-                        <a href="https://superbtech.studio" target="_blank" rel="noopener noreferrer" className="hover:underline">
-                          {t('superb_tech_company')}
-                        </a>
-                      </p>
-                    </div>
-                    
-                    {/* 左側內容（在桌面版） */}
-                    <div className="md:order-1 parallax-scroll backdrop-blur-0 bg-[var(--background)]/50 p-8 md:p-6 rounded-xl shadow-sm pl-8 md:pl-6" data-speed="-0.02">
-                      <p className="text-[var(--foreground)] mb-3 md:mb-4">
-                        {t('superb_tech_description')}
-                      </p>
-                      <ul className="list-none space-y-1 md:space-y-2 text-[var(--foreground)]">
-                        <li className="flex items-center">
-                          <span className="mr-2 text-secondary">•</span>
-                          {t('superb_tech_achievement_1')}
-                        </li>
-                        <li className="flex items-center">
-                          <span className="mr-2 text-secondary">•</span>
-                          {t('superb_tech_achievement_2')}
-                        </li>
-                        <li className="flex items-center">
-                          <span className="mr-2 text-secondary">•</span>
-                          {t('superb_tech_achievement_3')}
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* 第三項時間軸條目 - Dogtor */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 relative">
-                    {/* 桌面版時間軸點 */}
-                    <div className="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 w-6 h-6 rounded-full bg-primary"></div>
-                    
-                    {/* 手機版時間軸點 */}
-                    <div className="md:hidden relative w-full pl-8 mb-2">
-                      <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-primary"></div>
-                      <div className="absolute left-2 top-2 w-[1px] h-full bg-gradient-to-b from-primary/50 via-secondary/50 to-primary/50"></div>
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('dogtor_period')}</span>
-                      <h3 className="text-xl md:text-2xl font-bold mt-1 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('dogtor_position')}</h3>
-                      <p className="font-medium mt-1 text-[var(--primary)]">{t('dogtor_company')}</p>
-                    </div>
-                    
-                    {/* 桌面版左側內容 */}
-                    <div className="md:text-right md:pr-12 parallax-scroll hidden md:block" data-speed="0.05">
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('dogtor_period')}</span>
-                      <h3 className="text-2xl font-bold mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('dogtor_position')}</h3>
-                      <p className="font-medium mt-2 text-[var(--primary)]">{t('dogtor_company')}</p>
-                    </div>
-                    
-                    {/* 右側內容 */}
-                    <div className="md:pl-12 backdrop-blur-sm bg-[var(--background)]/50 p-4 md:p-6 rounded-xl shadow-sm parallax-scroll pl-8 md:pl-12" data-speed="-0.01">
-                      <p className="text-[var(--foreground)] mb-3 md:mb-4">
-                        {t('dogtor_description')}
-                      </p>
-                      <ul className="list-none space-y-1 md:space-y-2 text-[var(--foreground)]">
-                        <li className="flex items-center">
-                          <span className="mr-2 text-primary">•</span>
-                          {t('dogtor_achievement_1')}
-                        </li>
-                        <li className="flex items-center">
-                          <span className="mr-2 text-primary">•</span>
-                          {t('dogtor_achievement_2')}
-                        </li>
-                        <li className="flex items-center">
-                          <span className="mr-2 text-primary">•</span>
-                          {t('dogtor_achievement_3')}
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* 第四項時間軸條目 - Superb Education */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 relative">
-                    {/* 桌面版時間軸點 */}
-                    <div className="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 w-6 h-6 rounded-full bg-secondary"></div>
-                    
-                    {/* 手機版時間軸點 */}
-                    <div className="md:hidden relative w-full pl-8 mb-2">
-                      <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-secondary"></div>
-                      <div className="absolute left-2 top-2 w-[1px] h-full bg-gradient-to-b from-secondary/50 via-primary/50 to-secondary/50"></div>
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('superb_period')}</span>
-                      <h3 className="text-xl md:text-2xl font-bold mt-1 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">{t('superb_position')}</h3>
-                      <p className="font-medium mt-1 text-[var(--primary)]">
-                        <a href="https://superbedu.cc" target="_blank" rel="noopener noreferrer" className="hover:underline">
-                          {t('superb_company')}
-                        </a>
-                      </p>
-                    </div>
-                    
-                    {/* 桌面版右側內容（交錯效果） */}
-                    <div className="md:text-left md:order-2 parallax-scroll hidden md:block md:pl-12" data-speed="0.03">
-                      <span className="text-lg font-semibold text-[var(--text-muted)]">{t('superb_period')}</span>
-                      <h3 className="text-2xl font-bold mt-2 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">{t('superb_position')}</h3>
-                      <p className="font-medium mt-2 text-[var(--primary)]">
-                        <a href="https://superbedu.cc" target="_blank" rel="noopener noreferrer" className="hover:underline">
-                          {t('superb_company')}
-                        </a>
-                      </p>
-                    </div>
-                    
-                    {/* 左側內容（在桌面版） */}
-                    <div className="md:order-1 parallax-scroll backdrop-blur-0 bg-[var(--background)]/50 p-8 md:p-6 rounded-xl shadow-sm pl-8 md:pl-6" data-speed="-0.02">
-                      <p className="text-[var(--foreground)] mb-3 md:mb-4">
-                        {t('superb_description')}
-                      </p>
-                      <ul className="list-none space-y-1 md:space-y-2 text-[var(--foreground)]">
-                        <li className="flex items-center">
-                          <span className="mr-2 text-secondary">•</span>
-                          {t('superb_achievement_1')}
-                        </li>
-                        <li className="flex items-center">
-                          <span className="mr-2 text-secondary">•</span>
-                          {t('superb_achievement_2')}
-                        </li>
-                        <li className="flex items-center">
-                          <span className="mr-2 text-secondary">•</span>
-                          {t('superb_achievement_3')}
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
+              <div className="flex items-center gap-4 mb-8 border-b border-[var(--border-color)] pb-4">
+                <h2 className="text-3xl font-bold text-white">
+                  <span className="text-[var(--primary)] mr-2">#</span>{t('skills')}
+                </h2>
+                <div className="text-sm font-mono text-[var(--text-muted)] hidden md:block">
+                  // Tech Stack & Tools (v2.0.0)
                 </div>
               </div>
-            </div>
-            
-            {/* 教育背景 */}
-            <div className="parallax-scroll" data-speed="0.01">
-              <h2 className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">{t('education')}</h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                {/* NTU 學歷卡片 */}
-                <div className="transition-all p-6 backdrop-blur-sm bg-[var(--background-alt)]/80 border border-[var(--border)]/10 rounded-xl">
-                  <div className="flex flex-col justify-between items-start mb-6">
-                    <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{t('ntu_degree')}</h3>
-                    <span className="text-lg font-semibold text-[var(--text-muted)]">{t('ntu_period')}</span>
-                  </div>
-                  <p className="text-xl font-medium mb-4 text-[var(--primary)]">{t('ntu_school')}</p>
-                  <p className="text-[var(--foreground)]">
-                    {t('ntu_description')}
-                  </p>
-                </div>
-
-                {/* KMU 學歷卡片 */}
-                <div className="transition-all p-6 backdrop-blur-sm bg-[var(--background-alt)]/80 border border-[var(--border)]/10 rounded-xl">
-                  <div className="flex flex-col justify-between items-start mb-6">
-                    <h3 className="text-2xl font-bold bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">{t('kmu_degree')}</h3>
-                    <span className="text-lg font-semibold text-[var(--text-muted)]">{t('kmu_period')}</span>
-                  </div>
-                  <p className="text-xl font-medium mb-4 text-[var(--primary)]">{t('kmu_school')}</p>
-                  <p className="text-[var(--foreground)]">
-                    {t('kmu_description')}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* 技能區域 */}
-            <div className="pt-16 md:pt-24 mb-24 parallax-scroll" data-speed="0.02">
-              <h2 className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">{t('skills')}</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="card hover:shadow-md transition-all p-6 backdrop-blur-sm bg-[var(--background-alt)]/80 border border-[var(--border)]/10 rounded-xl">
-                  <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">{t('frontend_dev')}</h3>
-                  <ul className="space-y-2 text-[var(--foreground)]">
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      JavaScript / TypeScript
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      React / Next.js
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      Data Structures & Algorithms
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      Web Performance Optimization
-                    </li>
-                  </ul>
-                </div>
-                
-                <div className="card hover:shadow-md transition-all p-6 backdrop-blur-sm bg-[var(--background-alt)]/80 border border-[var(--border)]/10 rounded-xl">
-                  <div className="h-12 w-12 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2h-14z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">{t('backend_dev')}</h3>
-                  <ul className="space-y-2 text-[var(--foreground)]">
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      Python / Java / C++
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      Distributed Systems
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      RESTful API Design
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      Database Systems
-                    </li>
-                  </ul>
-                </div>
-                
-                <div className="card hover:shadow-md transition-all p-6 backdrop-blur-sm bg-[var(--background-alt)]/80 border border-[var(--border)]/10 rounded-xl">
-                  <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">{t('mobile_dev')}</h3>
-                  <ul className="space-y-2 text-[var(--foreground)]">
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      React Native
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      Flutter
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      iOS / Android
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      Progressive Web Apps
-                    </li>
-                  </ul>
-                </div>
-                
-                <div className="card hover:shadow-md transition-all p-6 backdrop-blur-sm bg-[var(--background-alt)]/80 border border-[var(--border)]/10 rounded-xl">
-                  <div className="h-12 w-12 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">{t('other_skills')}</h3>
-                  <ul className="space-y-2 text-[var(--foreground)]">
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      Machine Learning / TensorFlow
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      Operating Systems / Socket
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      Script Automation
-                    </li>
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      System Design & Scalability
-                    </li>
-                  </ul>
-                </div>
+                 {/* Frontend Stack */}
+                 <div className="p-6 rounded-xl bg-[var(--background-alt)]/20 border border-[var(--border-color)] hover:bg-[var(--background-alt)]/40 transition-all">
+                   <div className="flex items-center gap-2 mb-4 text-[var(--text-muted)]">
+                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                     </svg>
+                     <h3 className="font-mono text-sm">./frontend</h3>
+                   </div>
+                   <div className="flex flex-wrap gap-2 mb-4">
+                     {techStacks.frontend.map(tech => (
+                       <TechBadge key={tech.name} {...tech} />
+                     ))}
+                   </div>
+                   <p className="text-xs text-gray-500 leading-relaxed">
+                     Optimized component architecture with modern state management.
+                   </p>
+                 </div>
+                 
+                 {/* Backend Stack */}
+                 <div className="p-6 rounded-xl bg-[var(--background-alt)]/20 border border-[var(--border-color)] hover:bg-[var(--background-alt)]/40 transition-all">
+                   <div className="flex items-center gap-2 mb-4 text-[var(--text-muted)]">
+                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2h-14z" />
+                     </svg>
+                     <h3 className="font-mono text-sm">./backend</h3>
+                   </div>
+                   <div className="flex flex-wrap gap-2 mb-4">
+                     {techStacks.backend.map(tech => (
+                       <TechBadge key={tech.name} {...tech} />
+                     ))}
+                   </div>
+                   <p className="text-xs text-gray-500 leading-relaxed">
+                     Scalable microservices & high-performance API design.
+                   </p>
+                 </div>
+                 
+                 {/* Mobile Stack */}
+                 <div className="p-6 rounded-xl bg-[var(--background-alt)]/20 border border-[var(--border-color)] hover:bg-[var(--background-alt)]/40 transition-all">
+                   <div className="flex items-center gap-2 mb-4 text-[var(--text-muted)]">
+                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                     </svg>
+                     <h3 className="font-mono text-sm">./mobile</h3>
+                   </div>
+                   <div className="flex flex-wrap gap-2 mb-4">
+                     {techStacks.mobile.map(tech => (
+                       <TechBadge key={tech.name} {...tech} />
+                     ))}
+                   </div>
+                   <p className="text-xs text-gray-500 leading-relaxed">
+                     Native-like performance across all mobile platforms.
+                   </p>
+                 </div>
+                 
+                 {/* AI & Other Stack - 更新為無進度條樣式 */}
+                 <div className="p-6 rounded-xl bg-[var(--background-alt)]/20 border border-[var(--border-color)] hover:bg-[var(--background-alt)]/40 transition-all">
+                   <div className="flex items-center gap-2 mb-4 text-[var(--text-muted)]">
+                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                     </svg>
+                     <h3 className="font-mono text-sm">./ai-other</h3>
+                   </div>
+                   <div className="flex flex-wrap gap-2 mb-4">
+                     {techStacks.ai.map(tech => (
+                       <TechBadge key={tech.name} {...tech} />
+                     ))}
+                     <TechTagCloud tags={['System Design', 'DevOps', 'Socket']} color="text-gray-400" />
+                   </div>
+                   <p className="text-xs text-gray-500 leading-relaxed">
+                     Advanced problem solving with ML & system architecture.
+                   </p>
+                 </div>
               </div>
             </div>
+
           </div>
         </main>
         

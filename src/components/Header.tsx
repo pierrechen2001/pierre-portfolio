@@ -27,16 +27,17 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+    <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       scrolled 
-        ? 'bg-[#1A1A1F]/95 backdrop-blur-md py-3 shadow-md border-b border-[#333340]/50' 
+        ? 'bg-[var(--background)]/80 backdrop-blur-lg py-3 shadow-lg border-b border-[var(--border-color)]/50' 
         : 'bg-transparent py-5'
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold text-white">
-              <span className="text-[#F3C14B]">Pierre</span>
+          <Link href="/" className="flex items-center gap-2 group">
+            <span className="text-xl font-bold font-mono text-white">
+              <span className="text-[#F3C14B] transition-all duration-300 group-hover:text-white">&lt;Pierre</span>
+              <span className="transition-all duration-300 group-hover:text-[#F3C14B]"> /&gt;</span>
             </span>
           </Link>
           
@@ -102,8 +103,8 @@ export default function Header() {
         <div className={`md:hidden overflow-hidden transition-all duration-300 ${
           isMenuOpen ? 'max-h-60 opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'
         }`}>
-          <div className={`${isMenuOpen ? 'bg-[#1A1A1F]/95 backdrop-blur-md rounded-lg border border-[#333340]/50 shadow-lg' : ''}`}>
-            <nav className={`${isMenuOpen ? 'pt-4 pb-2 px-3' : 'py-0'} space-y-2 ${isMenuOpen ? 'border-t border-[#333340]/50 mt-3' : ''}`}>
+          <div className={`${isMenuOpen ? 'bg-[var(--background)]/95 backdrop-blur-xl rounded-lg border border-[var(--border-color)]/50 shadow-2xl' : ''}`}>
+            <nav className={`${isMenuOpen ? 'pt-4 pb-2 px-3' : 'py-0'} space-y-2 ${isMenuOpen ? 'border-t border-[var(--border-color)]/50 mt-3' : ''}`}>
               <div className="flex items-center justify-between pb-2">
                 <LanguageSwitcher />
               </div>

@@ -8,13 +8,14 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#1A1A1F] text-gray-300 pt-16 pb-8 border-t border-[#333340]">
+    <footer className="bg-[var(--background)]/90 backdrop-blur-sm text-gray-300 pt-16 pb-8 border-t border-[var(--border-color)]/50">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="inline-block">
-              <h3 className="text-2xl font-bold mb-4 text-white">
-                <span className="text-[#F3C14B]">Pierre</span>
+            <Link href="/" className="inline-block group">
+              <h3 className="text-2xl font-bold mb-4 text-white font-mono">
+                <span className="text-[#F3C14B] transition-all duration-300 group-hover:text-white">&lt;Pierre</span>
+                <span className="transition-all duration-300 group-hover:text-[#F3C14B]"> /&gt;</span>
               </h3>
             </Link>
             <p className="text-gray-400 max-w-md mb-6">
@@ -105,8 +106,9 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-[#333340] mt-12 pt-8 text-center text-gray-500">
-          <p>© {currentYear} Pierre Chen. {t('rights_reserved')}</p>
+        <div className="border-t border-[var(--border-color)]/50 mt-12 pt-8 text-center text-gray-500 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="font-mono text-sm">© {currentYear} Pierre Chen. <span className="hidden md:inline">|</span> {t('rights_reserved')}</p>
+          <p className="font-mono text-xs opacity-50">Build v2.0.0 • Optimized for innovation</p>
         </div>
       </div>
     </footer>

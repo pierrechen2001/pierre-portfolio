@@ -2,7 +2,7 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ContactForm from '@/components/ContactForm';
+import TerminalContact from '@/components/TerminalContact';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect, useRef } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
@@ -104,12 +104,13 @@ export default function ContactClient() {
                 
                 {/* 左側：聯絡表單 */}
                 <div className="parallax-scroll" data-speed="0.05">
-                  <div className="backdrop-blur-md bg-[var(--background)]/60 p-8 md:p-12 rounded-2xl shadow-2xl border border-[var(--border)]/20">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-primary/90 to-secondary/90 bg-clip-text text-transparent">
+                  <div className="mb-4">
+                    <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary/90 to-secondary/90 bg-clip-text text-transparent mb-2">
                       {t('get_in_touch')}
                     </h2>
-                    <ContactForm />
+                    <p className="text-gray-400 text-sm mb-6">// Initialize secure communication channel</p>
                   </div>
+                  <TerminalContact />
                 </div>
                 
                 {/* 右側：聯絡資訊 */}
