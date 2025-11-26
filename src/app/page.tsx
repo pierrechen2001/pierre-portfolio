@@ -166,7 +166,7 @@ export default function Home() {
                     <span className="text-[var(--border-color)] font-mono mr-2 text-sm">{'//'}</span>
                     <Typewriter 
                       words={roles} 
-                      className="text-base text-[var(--text-muted)]"
+                      className="text-xs text-[var(--text-muted)]"
                     />
                   </div>
                 </div>
@@ -174,7 +174,7 @@ export default function Home() {
                 {/* Right side - smaller avatar */}
                 <div className="flex-shrink-0 ml-4">
                   <div className="relative parallax-scroll" data-speed="-0.07">
-                    <div className="avatar-container relative w-40 h-48">
+                    <div className="avatar-container relative w-36 h-44 top-1.5">
                       {/* Smaller decorative elements */}
                       <div className="absolute -top-1 -left-1 w-2 h-2 border border-primary/30 rounded-full animate-pulse"></div>
                       <div className="absolute -bottom-1 -right-1 w-3 h-3 border border-secondary/30 rounded rotate-12 animate-pulse" style={{ animationDelay: '1s' }}></div>

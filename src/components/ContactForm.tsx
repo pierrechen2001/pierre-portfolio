@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, KeyboardEvent } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ContactForm() {
@@ -20,11 +20,19 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleFormKeyDown = (e: KeyboardEvent<HTMLFormElement>) => {
+    // 在輸入框按 Enter 不要讓瀏覽器自動提交／跳動，只允許按按鈕送出
+    if (e.key === 'Enter' && e.target instanceof HTMLInputElement) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <form
       action="https://formsubmit.co/peathuchu@gmail.com"
       method="POST"
       className="space-y-6"
+      onKeyDown={handleFormKeyDown}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>

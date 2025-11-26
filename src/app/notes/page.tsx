@@ -79,6 +79,15 @@ export default function NotesPage() {
     setMetaTag('twitter:title', `${language === 'en' ? 'Notes' : '筆記庫'} | Pierre's Portfolio`);
     setMetaTag('twitter:description', language === 'en' ? 'My development notes and insights on software engineering, AI, and technology' : '我的開發筆記與見解，涵蓋軟體工程、AI 技術等主題');
     setMetaTag('twitter:image', 'https://www.pierre-chen.com/og-image.png');
+
+    // Canonical URL
+    let linkCanonical = document.querySelector('link[rel="canonical"]');
+    if (!linkCanonical) {
+      linkCanonical = document.createElement('link');
+      linkCanonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(linkCanonical);
+    }
+    linkCanonical.setAttribute('href', 'https://www.pierre-chen.com/notes');
   }, [language]);
 
   // 過濾筆記
@@ -105,7 +114,11 @@ export default function NotesPage() {
     "author": {
       "@type": "Person",
       "name": "Pierre Chen",
-      "url": "https://www.pierre-chen.com"
+      "url": "https://www.pierre-chen.com",
+      "sameAs": [
+        "https://github.com/pierrechen2001",
+        "https://www.linkedin.com/in/guanyu-chen-989117303/"
+      ]
     },
     "mainEntity": {
       "@type": "ItemList",

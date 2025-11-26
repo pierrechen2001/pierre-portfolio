@@ -20,22 +20,24 @@ export default function TerminalContact() {
     message: ''
   });
   const inputRef = useRef<HTMLInputElement>(null);
-  const endRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // 初始化終端機
   useEffect(() => {
     const now = new Date().toString();
     setHistory([
       { type: 'system', content: `Last login: ${now} on ttys000` },
-      { type: 'system', content: 'Pierre Contact System v2.0.0' },
-      { type: 'system', content: 'Type "help" for available commands, or "start" to send a message.' },
+      { type: 'system', content: t('term_welcome') },
+      { type: 'system', content: t('term_initial_help') },
       { type: 'system', content: '' }, // Empty line for spacing
     ]);
-  }, []);
+  }, [t]);
 
   // 自動滾動到底部
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
   }, [history]);
 
   // 聚焦輸入框
@@ -52,10 +54,10 @@ export default function TerminalContact() {
     if (step === 'start') {
       if (trimmedCmd === 'help') {
          setHistory(prev => [...prev, 
-           { type: 'output', content: 'Available commands:' },
-           { type: 'output', content: '  start    - Start the secure messaging protocol' },
-           { type: 'output', content: '  clear    - Clear terminal screen' },
-           { type: 'output', content: '  whoami   - Display current user' },
+           { type: 'output', content: t('term_available_commands') },
+           { type: 'output', content: t('term_cmd_start') },
+           { type: 'output', content: t('term_cmd_clear') },
+           { type: 'output', content: t('term_cmd_whoami') },
          ]);
       } else if (trimmedCmd === 'clear') {
         setHistory([]);
@@ -63,12 +65,12 @@ export default function TerminalContact() {
         setHistory(prev => [...prev, { type: 'output', content: 'guest@pierre-portfolio' }]);
       } else if (trimmedCmd === 'start') {
         setStep('name');
-        setHistory(prev => [...prev, { type: 'system', content: 'Initializing secure connection...' }]);
+        setHistory(prev => [...prev, { type: 'system', content: t('term_initializing') }]);
         setTimeout(() => {
-           setHistory(prev => [...prev, { type: 'output', content: 'Please enter your name:' }]);
+           setHistory(prev => [...prev, { type: 'output', content: t('term_enter_name') }]);
         }, 500);
       } else if (trimmedCmd !== '') {
-        setHistory(prev => [...prev, { type: 'error', content: `Command not found: ${trimmedCmd}` }]);
+        setHistory(prev => [...prev, { type: 'error', content: `${t('term_cmd_not_found')} ${trimmedCmd}` }]);
       }
     } else {
       // 處理表單輸入流程
@@ -77,9 +79,9 @@ export default function TerminalContact() {
           if (trimmedCmd) {
             setFormData(prev => ({ ...prev, name: trimmedCmd }));
             setStep('email');
-            setHistory(prev => [...prev, { type: 'output', content: 'Enter your email address:' }]);
+            setHistory(prev => [...prev, { type: 'output', content: t('term_enter_email') }]);
           } else {
-             setHistory(prev => [...prev, { type: 'error', content: 'Name cannot be empty.' }]);
+             setHistory(prev => [...prev, { type: 'error', content: t('term_name_empty') }]);
           }
           break;
           
@@ -87,9 +89,9 @@ export default function TerminalContact() {
           if (trimmedCmd.includes('@')) {
             setFormData(prev => ({ ...prev, email: trimmedCmd }));
             setStep('subject');
-            setHistory(prev => [...prev, { type: 'output', content: 'Enter message subject:' }]);
+            setHistory(prev => [...prev, { type: 'output', content: t('term_enter_subject') }]);
           } else {
-             setHistory(prev => [...prev, { type: 'error', content: 'Invalid email format.' }]);
+             setHistory(prev => [...prev, { type: 'error', content: t('term_invalid_email') }]);
           }
           break;
 
@@ -97,9 +99,9 @@ export default function TerminalContact() {
             if (trimmedCmd) {
                 setFormData(prev => ({ ...prev, subject: trimmedCmd }));
                 setStep('message');
-                setHistory(prev => [...prev, { type: 'output', content: 'Enter your message:' }]);
+                setHistory(prev => [...prev, { type: 'output', content: t('term_enter_message') }]);
             } else {
-                setHistory(prev => [...prev, { type: 'error', content: 'Subject cannot be empty.' }]);
+                setHistory(prev => [...prev, { type: 'error', content: t('term_subject_empty') }]);
             }
             break;
 
@@ -109,21 +111,26 @@ export default function TerminalContact() {
             setStep('confirm');
             setHistory(prev => [...prev, 
                 { type: 'system', content: '----------------------------------------' },
-                { type: 'output', content: 'Ready to send. Type "yes" to confirm or "no" to cancel.' }
+                { type: 'output', content: t('term_ready_send') }
             ]);
           } else {
-             setHistory(prev => [...prev, { type: 'error', content: 'Message cannot be empty.' }]);
+             setHistory(prev => [...prev, { type: 'error', content: t('term_message_empty') }]);
           }
           break;
 
         case 'confirm':
-          if (trimmedCmd.toLowerCase() === 'yes' || trimmedCmd.toLowerCase() === 'y') {
+          // Support both English 'yes'/'y' and localized 'yes' if different
+          const isYes = trimmedCmd.toLowerCase() === 'yes' || 
+                        trimmedCmd.toLowerCase() === 'y' || 
+                        trimmedCmd.toLowerCase() === t('term_confirm_yes').toLowerCase();
+                        
+          if (isYes) {
             setStep('sending');
-            setHistory(prev => [...prev, { type: 'system', content: 'Encrypting packet... [OK]' }]);
+            setHistory(prev => [...prev, { type: 'system', content: t('term_encrypting') }]);
             
             // 模擬發送過程
             setTimeout(() => {
-                setHistory(prev => [...prev, { type: 'system', content: 'Establishing handshake... [OK]' }]);
+                setHistory(prev => [...prev, { type: 'system', content: t('term_handshake') }]);
             }, 800);
 
             setTimeout(async () => {
@@ -147,24 +154,24 @@ export default function TerminalContact() {
                     if (res.ok) {
                          setStep('done');
                          setHistory(prev => [...prev, 
-                             { type: 'success', content: 'Message transmitted successfully.' },
-                             { type: 'system', content: 'Connection closed.' },
-                             { type: 'output', content: 'Type "start" to send another message.' }
+                             { type: 'success', content: t('term_success') },
+                             { type: 'system', content: t('term_connection_closed') },
+                             { type: 'output', content: t('term_restart') }
                          ]);
                          setStep('start');
                          setFormData({ name: '', email: '', subject: '', message: '' });
                     } else {
-                        throw new Error('Transmission failed');
+                        throw new Error(t('term_failed'));
                     }
                 } catch (error) {
-                    setHistory(prev => [...prev, { type: 'error', content: 'Error: Transmission failed. Please try again later.' }]);
+                    setHistory(prev => [...prev, { type: 'error', content: t('term_error_failed') }]);
                     setStep('start');
                 }
             }, 2000);
 
           } else {
             setStep('start');
-            setHistory(prev => [...prev, { type: 'system', content: 'Operation cancelled.' }]);
+            setHistory(prev => [...prev, { type: 'system', content: t('term_cancelled') }]);
             setFormData({ name: '', email: '', subject: '', message: '' });
           }
           break;
@@ -196,7 +203,10 @@ export default function TerminalContact() {
       </div>
 
       {/* Terminal Content */}
-      <div className="flex-1 p-4 overflow-y-auto text-gray-300 custom-scrollbar">
+      <div 
+        ref={containerRef}
+        className="flex-1 p-4 overflow-y-auto text-gray-300 custom-scrollbar"
+      >
         {history.map((item, i) => (
           <div key={i} className="mb-1 break-words">
             {item.type === 'input' && (
@@ -229,11 +239,9 @@ export default function TerminalContact() {
              onChange={(e) => setInput(e.target.value)}
              onKeyDown={handleKeyDown}
              className="bg-transparent border-none outline-none flex-1 text-white caret-white"
-             autoFocus
              autoComplete="off"
            />
         </div>
-        <div ref={endRef} />
       </div>
     </div>
   );

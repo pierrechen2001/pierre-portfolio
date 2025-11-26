@@ -101,7 +101,7 @@ export default function Header() {
         
         {/* Mobile Navigation */}
         <div className={`md:hidden overflow-hidden transition-all duration-300 ${
-          isMenuOpen ? 'max-h-60 opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'
+          isMenuOpen ? 'max-h-[70vh] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'
         }`}>
           <div className={`${isMenuOpen ? 'bg-[var(--background)]/95 backdrop-blur-xl rounded-lg border border-[var(--border-color)]/50 shadow-2xl' : ''}`}>
             <nav className={`${isMenuOpen ? 'pt-4 pb-2 px-3' : 'py-0'} space-y-2 ${isMenuOpen ? 'border-t border-[var(--border-color)]/50 mt-3' : ''}`}>

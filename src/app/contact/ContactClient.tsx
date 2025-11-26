@@ -91,7 +91,7 @@ export default function ContactClient() {
               
               {/* 標題區域 */}
               <div className="text-center mb-16 parallax-scroll" data-speed="0.1">
-                <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-8">
+                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-8">
                   {t('contact_page_title')}
                 </h1>
                 <p className="text-xl md:text-2xl text-[var(--foreground-muted)] max-w-3xl mx-auto leading-relaxed">

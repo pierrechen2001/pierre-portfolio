@@ -89,6 +89,15 @@ export default function NoteDetailPage({ params }: NoteDetailPageProps) {
       setMetaTag('twitter:title', `${note.title[language]} | Pierre's Portfolio`);
       setMetaTag('twitter:description', note.description[language]);
       setMetaTag('twitter:image', 'https://www.pierre-chen.com/og-image.png');
+
+      // Canonical URL
+      let linkCanonical = document.querySelector('link[rel="canonical"]');
+      if (!linkCanonical) {
+        linkCanonical = document.createElement('link');
+        linkCanonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(linkCanonical);
+      }
+      linkCanonical.setAttribute('href', `https://www.pierre-chen.com/notes/${note.id}`);
     }
   }, [note, language]);
 
@@ -105,11 +114,19 @@ export default function NoteDetailPage({ params }: NoteDetailPageProps) {
     "author": {
       "@type": "Person",
       "name": "Pierre Chen",
-      "url": "https://www.pierre-chen.com"
+      "url": "https://www.pierre-chen.com",
+      "sameAs": [
+        "https://github.com/pierrechen2001",
+        "https://www.linkedin.com/in/guanyu-chen-989117303/"
+      ]
     },
     "publisher": {
-      "@type": "Person",
-      "name": "Pierre Chen"
+      "@type": "Organization",
+      "name": "Pierre's Portfolio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.pierre-chen.com/nb_pixel_av.png"
+      }
     },
     "datePublished": note.publishedAt,
     "dateModified": note.updatedAt || note.publishedAt,
@@ -120,7 +137,30 @@ export default function NoteDetailPage({ params }: NoteDetailPageProps) {
     "keywords": note.tags.join(', '),
     "articleSection": note.category[language],
     "url": `https://www.pierre-chen.com/notes/${note.id}`,
-    "image": "https://www.pierre-chen.com/og-image.png"
+    "image": "https://www.pierre-chen.com/og-image.png",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": language === 'en' ? 'Home' : '首頁',
+          "item": "https://www.pierre-chen.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": language === 'en' ? 'Notes' : '筆記庫',
+          "item": "https://www.pierre-chen.com/notes"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": note.title[language],
+          "item": `https://www.pierre-chen.com/notes/${note.id}`
+        }
+      ]
+    }
   };
 
   return (

@@ -132,7 +132,35 @@ const translations = {
     'email_invalid': 'Please enter a valid email',
     'message_required': 'Please enter your message',
     'get_in_touch': 'Get In Touch',
-    'contact_description': 'Feel free to reach out to me for project inquiries or just to say hello. I\'m always open to discussing new projects, creative ideas or opportunities to be part of your vision.'
+    'contact_description': 'Feel free to reach out to me for project inquiries or just to say hello. I\'m always open to discussing new projects, creative ideas or opportunities to be part of your vision.',
+
+    // 終端機文字
+    'term_welcome': 'Pierre Contact System v2.0.0',
+    'term_initial_help': 'Type "help" for available commands, or "start" to send a message.',
+    'term_available_commands': 'Available commands:',
+    'term_cmd_start': '  start    - Start the secure messaging protocol',
+    'term_cmd_clear': '  clear    - Clear terminal screen',
+    'term_cmd_whoami': '  whoami   - Display current user',
+    'term_initializing': 'Initializing secure connection...',
+    'term_enter_name': 'Please enter your name:',
+    'term_enter_email': 'Enter your email address:',
+    'term_enter_subject': 'Enter message subject:',
+    'term_enter_message': 'Enter your message:',
+    'term_name_empty': 'Name cannot be empty.',
+    'term_invalid_email': 'Invalid email format.',
+    'term_subject_empty': 'Subject cannot be empty.',
+    'term_message_empty': 'Message cannot be empty.',
+    'term_ready_send': 'Ready to send. Type "yes" to confirm or "no" to cancel.',
+    'term_encrypting': 'Encrypting packet... [OK]',
+    'term_handshake': 'Establishing handshake... [OK]',
+    'term_success': 'Message transmitted successfully.',
+    'term_connection_closed': 'Connection closed.',
+    'term_restart': 'Type "start" to send another message.',
+    'term_failed': 'Transmission failed',
+    'term_error_failed': 'Error: Transmission failed. Please try again later.',
+    'term_cancelled': 'Operation cancelled.',
+    'term_cmd_not_found': 'Command not found:',
+    'term_confirm_yes': 'yes'
   },
   zh: {
     // 頁面頭部
@@ -254,7 +282,35 @@ const translations = {
     'email_invalid': '請輸入有效的電子郵件',
     'message_required': '請輸入您的訊息',
     'get_in_touch': '與我聯繫',
-    'contact_description': '無論是專案邀約還是打聲招呼，都歡迎與我聯繫。我一直樂於討論新專案、創意想法或加入您願景的機會。'
+    'contact_description': '無論是專案邀約還是打聲招呼，都歡迎與我聯繫。我一直樂於討論新專案、創意想法或加入您願景的機會。',
+
+    // 終端機文字
+    'term_welcome': 'Pierre 聯絡系統 v2.0.0',
+    'term_initial_help': '輸入 "help" 查看可用指令，或輸入 "start" 開始發送訊息。',
+    'term_available_commands': '可用指令:',
+    'term_cmd_start': '  start    - 啟動安全訊息協定',
+    'term_cmd_clear': '  clear    - 清除終端機螢幕',
+    'term_cmd_whoami': '  whoami   - 顯示目前使用者',
+    'term_initializing': '正在初始化安全連線...',
+    'term_enter_name': '請輸入您的姓名:',
+    'term_enter_email': '請輸入您的電子郵件:',
+    'term_enter_subject': '請輸入訊息主旨:',
+    'term_enter_message': '請輸入您的訊息:',
+    'term_name_empty': '姓名不能為空。',
+    'term_invalid_email': '無效的電子郵件格式。',
+    'term_subject_empty': '主旨不能為空。',
+    'term_message_empty': '訊息不能為空。',
+    'term_ready_send': '準備發送。輸入 "yes" 確認或 "no" 取消。',
+    'term_encrypting': '正在加密封包... [OK]',
+    'term_handshake': '正在建立握手... [OK]',
+    'term_success': '訊息傳輸成功。',
+    'term_connection_closed': '連線已關閉。',
+    'term_restart': '輸入 "start" 發送另一則訊息。',
+    'term_failed': '傳輸失敗',
+    'term_error_failed': '錯誤：傳輸失敗。請稍後再試。',
+    'term_cancelled': '操作已取消。',
+    'term_cmd_not_found': '找不到指令：',
+    'term_confirm_yes': 'yes'
   }
 };
 
