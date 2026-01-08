@@ -171,6 +171,148 @@ export const projects: Project[] = [
     ]
   },
   {
+    id: '200ok',
+    title: {
+      en: '200OK Software Outsourcing Platform',
+      zh: '200OK 軟體外包接案平台'
+    },
+    description: {
+      en: 'A professional software outsourcing platform connecting clients with engineers through transparent matching processes and AI-assisted mechanisms.',
+      zh: '專業的軟體外包接案平台，連結需求方與工程師，透過透明媒合流程與 AI 輔助機制提升專案合作品質。'
+    },
+    fullDescription: {
+      en: `
+        200OK is a professional software outsourcing platform designed to connect clients with engineers, improving project collaboration quality and efficiency through transparent matching processes and AI-assisted mechanisms.
+        
+        As a team member (Group 18), I contributed to the full-stack development of this platform, which supports complete workflows including project posting, proposal submission, real-time communication, and token-based payment systems.
+        
+        Key responsibilities and features I worked on:
+        - **Authentication & Authorization**: Email registration with verification, Google OAuth integration via NextAuth.js
+        - **Project Management**: Full CRUD operations for project posting, browsing, and proposal management
+        - **Real-time Communication**: Socket.io integration for instant messaging between clients and engineers
+        - **Token System**: Digital token management for viewing proposals, submitting proposals, and unlocking contact information
+        - **AI Integration**: Google Gemini API integration for intelligent project matching and recommendations
+        
+        The platform simulates real-world commercial platform operations with comprehensive business logic including payment flows, status machines, and automated refund mechanisms.
+      `,
+      zh: `
+        200OK 是一個專業的軟體外包接案平台，目標在於連結需求方與工程師，透過透明的媒合流程與 AI 輔助機制，提升專案合作品質與效率。
+        
+        作為團隊成員（Group 18），我參與了這個平台的全端開發，支援完整的發案、接案、即時溝通與代幣付費流程。
+        
+        我負責的主要功能與開發項目：
+        - **認證與授權**：Email 註冊與信箱驗證、透過 NextAuth.js 整合 Google OAuth
+        - **專案管理**：完整的專案發佈、瀏覽與提案管理 CRUD 操作
+        - **即時通訊**：整合 Socket.io 實現發案者與接案者間的即時訊息傳送
+        - **代幣系統**：數位代幣管理機制，用於查看提案、提交提案與解鎖聯絡方式
+        - **AI 整合**：整合 Google Gemini API 提供智慧專案媒合與推薦功能
+        
+        平台模擬實際商業平台的運作模式，包含完整的付費機制、狀態機設計與自動退款流程等商業邏輯。
+      `
+    },
+    imageUrl: '/projects/200okp.png',
+    status: 'completed',
+    date: {
+      en: 'October 2025 - December 2025',
+      zh: '2025年10月 - 2025年12月'
+    },
+    skills: [
+      { name: 'Next.js', color: 'bg-slate-500/20 text-slate-400 border border-slate-500/30' },
+      { name: 'React', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30' },
+      { name: 'TypeScript', color: 'bg-blue-600/20 text-blue-300 border border-blue-600/30' },
+      { name: 'Tailwind CSS', color: 'bg-teal-500/20 text-teal-400 border border-teal-500/30' },
+      { name: 'FastAPI', color: 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' },
+      { name: 'PostgreSQL', color: 'bg-purple-700/20 text-purple-300 border border-purple-700/30' },
+      { name: 'Socket.io', color: 'bg-orange-500/20 text-orange-400 border border-orange-500/30' },
+      { name: 'NextAuth.js', color: 'bg-green-500/20 text-green-400 border border-green-500/30' }
+    ],
+    features: {
+      en: [
+        'Email registration with verification & Google OAuth login',
+        'Complete project posting and proposal submission workflows',
+        'Real-time messaging system with Socket.io',
+        'Token-based payment system for proposals and contact unlocking',
+        'AI-powered project matching with Google Gemini API',
+        'Automated refund mechanism (7-day auto-refund for unresponded proposals)'
+      ],
+      zh: [
+        'Email 註冊驗證與 Google OAuth 快速登入',
+        '完整的發案與提案提交流程',
+        'Socket.io 即時訊息溝通系統',
+        '代幣付費機制，用於查看提案與解鎖聯絡方式',
+        'Google Gemini API 智慧專案媒合推薦',
+        '自動化退款機制（7 日內無回應自動退款）'
+      ]
+    },
+    milestones: {
+      en: [
+        {
+          title: 'Full-Stack Platform Development',
+          description: 'Collaborated on building a complete commercial outsourcing platform from scratch, handling complex business logic including payment flows and state management.',
+          type: 'achievement',
+          icon: '🚀'
+        },
+        {
+          title: 'Real-time Communication Integration',
+          description: 'Implemented Socket.io for instant messaging, enabling seamless communication between clients and engineers within the platform.',
+          type: 'skill',
+          icon: '💬'
+        },
+        {
+          title: 'Authentication & Authorization System',
+          description: 'Integrated NextAuth.js with email verification and Google OAuth, ensuring secure user authentication and authorization.',
+          type: 'skill',
+          icon: '🔐'
+        },
+        {
+          title: 'Token-based Payment System',
+          description: 'Developed a digital token management system for viewing proposals, submitting proposals, and unlocking contact information with automated refund logic.',
+          type: 'learning',
+          icon: '💰'
+        },
+        {
+          title: 'AI-powered Matching',
+          description: 'Integrated Google Gemini API to provide intelligent project recommendations and matching between clients and engineers.',
+          type: 'learning',
+          icon: '🤖'
+        }
+      ],
+      zh: [
+        {
+          title: '全端平台開發',
+          description: '參與從零開始建立完整的商業外包接案平台，處理包含付費流程與狀態管理等複雜商業邏輯。',
+          type: 'achievement',
+          icon: '🚀'
+        },
+        {
+          title: '即時通訊系統整合',
+          description: '實作 Socket.io 即時訊息功能，讓發案者與接案者能在平台內無縫溝通。',
+          type: 'skill',
+          icon: '💬'
+        },
+        {
+          title: '認證與授權系統',
+          description: '整合 NextAuth.js 與 Email 驗證、Google OAuth，確保使用者認證與授權的安全性。',
+          type: 'skill',
+          icon: '🔐'
+        },
+        {
+          title: '代幣付費系統',
+          description: '開發數位代幣管理系統，用於查看提案、提交提案與解鎖聯絡方式，並實作自動退款邏輯。',
+          type: 'learning',
+          icon: '💰'
+        },
+        {
+          title: 'AI 智慧媒合',
+          description: '整合 Google Gemini API 提供智慧專案推薦與媒合功能，協助發案者與接案者快速配對。',
+          type: 'learning',
+          icon: '🤖'
+        }
+      ]
+    },
+    youtubeVideoId: '3eJiVbF_AcI'
+  },
+  {
     id: 'aiplanner',
     title: {
       en: 'aiPlanner Smart Calendar',
