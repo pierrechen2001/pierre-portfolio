@@ -6,10 +6,10 @@ import type { Metadata } from 'next';
 import ProjectDetailClient from '@/components/ProjectDetailClient';
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
+  }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 export async function generateStaticParams() {
@@ -19,7 +19,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = projects.find((p) => p.id === params.id);
+  const { id } = await params;
+  const project = projects.find((p) => p.id === id);
   
   if (!project) {
     return {
@@ -63,7 +64,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   };
 
-  const seo = getProjectSEO(params.id, project);
+  const seo = getProjectSEO(id, project);
   const skills = project.skills.map(skill => skill.name).join(', ');
   
   return {
@@ -82,7 +83,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: seo.title,
       description: seo.description,
-      url: `https://www.pierre-chen.com/projects/${params.id}`,
+      url: `https://www.pierre-chen.com/projects/${id}`,
       type: 'article',
       images: [
         {
@@ -102,17 +103,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [project.imageUrl],
     },
     alternates: {
-      canonical: `https://www.pierre-chen.com/projects/${params.id}`,
+      canonical: `https://www.pierre-chen.com/projects/${id}`,
     },
   };
 }
 
-export default function ProjectPage({ params }: Props) {
-  const project = projects.find((p) => p.id === params.id);
+export default async function ProjectPage({ params }: Props) {
+  const { id } = await params;
+  const project = projects.find((p) => p.id === id);
   
   if (!project) {
     notFound();
   }
 
-  return <ProjectDetailClient project={project} id={params.id} />;
+  return <ProjectDetailClient project={project} id={id} />;
 } 
