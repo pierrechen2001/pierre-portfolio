@@ -42,6 +42,7 @@ export interface Project {
   };
   githubUrl?: string;
   demoUrl?: string;
+  appStoreUrl?: string;
   featured?: boolean;
   viewLiveUrl?: string;
   viewCodeUrl?: string;
@@ -85,11 +86,13 @@ export const projects: Project[] = [
       `
     },
     imageUrl: '/projects/dt.jpg',
-    status: 'in-progress',
+    status: 'completed',
     date: {
       en: '2025 - Present',
       zh: '2025年 - 現在'
     },
+    demoUrl: 'https://dogtor.superb-tutor.com/',
+    appStoreUrl: 'https://apps.apple.com/tw/app/dogtor-%E9%80%97%E8%AA%B2/id6751773627',
     skills: [
       { name: 'Flutter', color: 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' },
       { name: 'FastAPI', color: 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' },
@@ -134,6 +137,12 @@ export const projects: Project[] = [
           description: 'Designed MySQL schema for learning progress tracking, enabling error analysis and personalized learning paths.',
           type: 'skill',
           icon: '🗄️'
+        },
+        {
+          title: 'App Store Launch',
+          description: 'Successfully launched on App Store, ranked #4 in Education category.',
+          type: 'achievement',
+          icon: '🏆'
         }
       ],
       zh: [
@@ -160,6 +169,12 @@ export const projects: Project[] = [
           description: '設計 MySQL 資料庫結構，支援錯題分析與個人化學習路徑。',
           type: 'skill',
           icon: '🗄️'
+        },
+        {
+          title: 'App Store 上架',
+          description: '成功上架 App Store，教育類排名第 4 名。',
+          type: 'achievement',
+          icon: '🏆'
         }
       ]
     },

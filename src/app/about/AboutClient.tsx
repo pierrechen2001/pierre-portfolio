@@ -250,7 +250,11 @@ export default function AboutClient() {
                        <div className="inline-block px-3 py-1 rounded-full border border-[var(--secondary)]/30 bg-[var(--secondary)]/10 text-[var(--secondary)] font-mono text-xs mb-2">
                          {t('superb_tech_period')}
                        </div>
-                       <h3 className="text-xl font-bold text-white">{t('superb_tech_company')}</h3>
+                       <h3 className="text-xl font-bold text-white">
+                         <a href="https://studio.superb-tutor.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--secondary)] transition-colors underline decoration-[var(--secondary)]/30 hover:decoration-[var(--secondary)]">
+                           {t('superb_tech_company')}
+                         </a>
+                       </h3>
                        <p className="text-[var(--text-muted)] font-mono text-sm">{t('superb_tech_position')}</p>
                     </div>
                     
@@ -287,7 +291,11 @@ export default function AboutClient() {
                        <div className="inline-block px-3 py-1 rounded-full border border-[var(--primary)]/30 bg-[var(--primary)]/10 text-[var(--primary)] font-mono text-xs mb-2">
                          {t('dogtor_period')}
                        </div>
-                       <h3 className="text-xl font-bold text-white">{t('dogtor_company')}</h3>
+                       <h3 className="text-xl font-bold text-white">
+                         <a href="https://dogtor.superb-tutor.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--primary)] transition-colors underline decoration-[var(--primary)]/30 hover:decoration-[var(--primary)]">
+                           {t('dogtor_company')}
+                         </a>
+                       </h3>
                        <p className="text-[var(--text-muted)] font-mono text-sm">{t('dogtor_position')}</p>
                     </div>
                     
@@ -324,7 +332,11 @@ export default function AboutClient() {
                        <div className="inline-block px-3 py-1 rounded-full border border-[var(--secondary)]/30 bg-[var(--secondary)]/10 text-[var(--secondary)] font-mono text-xs mb-2">
                          {t('superb_period')}
                        </div>
-                       <h3 className="text-xl font-bold text-white">{t('superb_company')}</h3>
+                       <h3 className="text-xl font-bold text-white">
+                         <a href="https://superb-tutor.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--secondary)] transition-colors underline decoration-[var(--secondary)]/30 hover:decoration-[var(--secondary)]">
+                           {t('superb_company')}
+                         </a>
+                       </h3>
                        <p className="text-[var(--text-muted)] font-mono text-sm">{t('superb_position')}</p>
                     </div>
                     

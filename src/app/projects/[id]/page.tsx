@@ -33,8 +33,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const getProjectSEO = (projectId: string, project: any) => {
     const seoMap: Record<string, { title: string; description: string }> = {
       'dogtor': {
-        title: 'Dogtor AI 學習助手 - 高中生專用 AI 問答與錯題追蹤系統',
-        description: 'Dogtor 是一款專為高中生設計的 AI 學習助手，提供智能題目生成、錯題追蹤功能，使用 Flutter、FastAPI、MySQL 與 GCP 技術開發。'
+        title: 'Dogtor 逗課 - App Store 教育類排名第4｜國高中題庫・AI 學習助手',
+        description: 'Dogtor 逗課已上架 App Store，教育類排名第 4 名。專為國高中生打造的 AI 學習應用，提供題庫練習、會考學測複習、AI 解題助手，使用 Flutter、FastAPI、MySQL 與 GCP 技術開發。'
       },
       'aiplanner': {
         title: 'aiPlanner 智慧行事曆 - iOS 原生 AI 日程管理 App',
