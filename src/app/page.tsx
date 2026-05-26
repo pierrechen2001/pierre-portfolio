@@ -17,6 +17,8 @@ function ParallaxBackground() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!ref.current) return;
       const x = e.clientX / window.innerWidth;
@@ -54,10 +56,12 @@ function ParallaxBackground() {
 // 滾動視差效果
 function ScrollParallax() {
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const handleScroll = () => {
       const scrollElements = document.querySelectorAll('.parallax-scroll');
       const viewAllButton = document.querySelector('.view-all-button');
-      
+
       scrollElements.forEach((el) => {
         const scrollY = window.scrollY;
         const element = el as HTMLElement;
@@ -94,13 +98,14 @@ function ScrollParallax() {
 }
 
 export default function Home() {
-  // 只顯示前3個專案
-  const featuredProjects = projects.slice(0, 3);
+  // 手動指定最具代表性的三個專案：AI + Full Stack + Mobile
+  const FEATURED_IDS = ['dogtor', '200ok', 'aiplanner'];
+  const featuredProjects = FEATURED_IDS.map(id => projects.find(p => p.id === id)!).filter(Boolean);
   const { t, language } = useLanguage();
   
-  const roles = language === 'zh' 
-    ? ['全端開發者', 'AI 解決方案專家', '軟體架構師', '創新思維者']
-    : ['Full Stack Developer', 'AI Specialist', 'Software Architect', 'Creative Thinker'];
+  const roles = language === 'zh'
+    ? ['全端開發者', 'AI 應用開發者', 'App Store 發布者', '產品打造者']
+    : ['Full Stack Developer', 'AI Application Builder', 'App Store Publisher', 'Product Builder'];
 
   // 使用 useEffect 設置頁面標題
   useEffect(() => {
@@ -177,7 +182,21 @@ export default function Home() {
                     {t('description')}
                   </p>
                 </div>
-                
+
+                {/* Achievement Stats Strip - Mobile */}
+                <div className="flex flex-wrap gap-x-6 gap-y-2">
+                  {[
+                    { value: '10K+', label: language === 'zh' ? '用戶' : 'Users' },
+                    { value: '#4',   label: language === 'zh' ? 'App Store' : 'App Store' },
+                    { value: '8',    label: language === 'zh' ? '上線專案' : 'Shipped' },
+                  ].map(stat => (
+                    <div key={stat.value} className="flex items-baseline gap-1.5">
+                      <span className="text-xl font-bold text-[var(--primary)]">{stat.value}</span>
+                      <span className="text-xs text-[var(--text-muted)] font-mono">{stat.label}</span>
+                    </div>
+                  ))}
+                </div>
+
                 <div className="flex flex-col gap-4 parallax-scroll" data-speed="0.02">
                   <Link
                     href="/projects"
@@ -199,12 +218,25 @@ export default function Home() {
                       />
                     </svg>
                   </Link>
-                  <Link
-                    href="/contact"
-                    className="border border-[var(--border-color)] text-[var(--foreground)] px-8 py-4 rounded-lg font-semibold hover:bg-[var(--background-alt)] transition-all duration-300 hover:border-primary/50 inline-flex items-center justify-center"
-                  >
-                    {t('contact_me')}
-                  </Link>
+                  <div className="flex gap-4">
+                    <Link
+                      href="/contact"
+                      className="flex-1 border border-[var(--border-color)] text-[var(--foreground)] px-8 py-4 rounded-lg font-semibold hover:bg-[var(--background-alt)] transition-all duration-300 hover:border-primary/50 inline-flex items-center justify-center"
+                    >
+                      {t('contact_me')}
+                    </Link>
+                    <a
+                      href="https://github.com/pierrechen2001"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="border border-[var(--border-color)] text-[var(--foreground)] px-4 py-4 rounded-lg font-semibold hover:bg-[var(--background-alt)] transition-all duration-300 hover:border-primary/50 inline-flex items-center justify-center"
+                      aria-label="GitHub"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -235,7 +267,21 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                
+
+                {/* Achievement Stats Strip */}
+                <div className="flex flex-wrap gap-x-8 gap-y-3 pl-6 border-l-2 border-[var(--primary)]/20 parallax-scroll" data-speed="0.03">
+                  {[
+                    { value: '10K+', label: language === 'zh' ? '應用用戶' : 'App Users' },
+                    { value: '#4',   label: language === 'zh' ? 'App Store 教育類' : 'App Store Education' },
+                    { value: '8',    label: language === 'zh' ? '上線專案' : 'Projects Shipped' },
+                  ].map(stat => (
+                    <div key={stat.value} className="flex items-baseline gap-2">
+                      <span className="text-2xl md:text-3xl font-bold text-[var(--primary)]">{stat.value}</span>
+                      <span className="text-xs text-[var(--text-muted)] font-mono leading-tight">{stat.label}</span>
+                    </div>
+                  ))}
+                </div>
+
                 <div className="flex flex-col sm:flex-row gap-4 parallax-scroll pt-2" data-speed="0.02">
                   <Link
                     href="/projects"
@@ -263,6 +309,18 @@ export default function Home() {
                   >
                     {t('contact_me')}
                   </Link>
+                  <a
+                    href="https://github.com/pierrechen2001"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="border border-[var(--border-color)] text-[var(--foreground)] px-5 py-4 rounded-lg font-semibold hover:bg-[var(--background-alt)] transition-all duration-300 hover:border-primary/50 inline-flex items-center justify-center gap-2"
+                    aria-label="GitHub"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                    GitHub
+                  </a>
                 </div>
               </div>
               

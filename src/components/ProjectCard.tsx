@@ -140,11 +140,12 @@ export default function ProjectCard({
               </div>
             </div>
           </div>
-          <Image 
-            src={imageUrl} 
-            alt={title[language]} 
-            width={800} 
-            height={450} 
+          <Image
+            src={imageUrl}
+            alt={title[language]}
+            width={800}
+            height={450}
+            loading="lazy"
             className="object-cover w-full h-full"
           />
         </div>

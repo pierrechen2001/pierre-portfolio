@@ -595,8 +595,7 @@ export const projects: Project[] = [
       ]
     },
     // githubUrl: 'https://github.com/yourusername/erp-system',
-    youtubeVideoId: 'fnHZp87Gb9g',
-    youtubeIsShort: true,
+    youtubeVideoId: 'ViVosgnhEbM',
   },
   {
     id: 'superbot',
@@ -718,6 +717,8 @@ export const projects: Project[] = [
         }
       ]
     },
+    youtubeVideoId: 'fnHZp87Gb9g',
+    youtubeIsShort: true,
     // githubUrl: 'https://github.com/yourusername/superbot'
   },
   {

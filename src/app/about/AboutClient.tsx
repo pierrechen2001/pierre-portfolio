@@ -13,17 +13,19 @@ function ParallaxBackground() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!ref.current) return;
-      
+
       const x = e.clientX / window.innerWidth;
       const y = e.clientY / window.innerHeight;
-      
+
       ref.current.style.transform = `translate(${x * -30}px, ${y * -30}px)`;
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
@@ -33,16 +35,14 @@ function ParallaxBackground() {
     <div className="fixed inset-0 z-[-2] overflow-hidden bg-[#181c24]">
       <div ref={ref} className="absolute inset-0 scale-110">
         {/* 深藍色至黑色的漸層背景 */}
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#e9a42e]/10 rounded-full blur-[50px] animate-pulse" style={{ animationDuration: '8s' }}></div>
-        <div className="absolute top-[15%] right-[-20%] w-[40%] h-[40%] bg-indigo-300/20 rounded-full blur-[150px] animate-pulse" style={{ animationDuration: '10s' }}></div>
-        <div className="absolute bottom-[15%] left-[10%] w-[60%] h-[60%] bg-slate-800/20 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '12s' }}></div>
-        <div className="absolute bottom-[-15%] right-[30%] w-[30%] h-[30%] bg-blue-700/20 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '9s' }}></div>
-        <div className="parallax-blob absolute top-[70%] right-[10%] w-[35%] h-[35%] bg-gradient-to-bl from-purple-500/20 to-indigo-600/15 rounded-full blur-[90px] animate-pulse" style={{ animationDuration: '11s' }}></div>
-        
-        <div className="parallax-blob absolute top-[5%] left-[80%] w-[45%] h-[45%] bg-gradient-to-tr from-teal-500/15 to-emerald-400/10 rounded-full blur-[70px] animate-pulse" style={{ animationDuration: '8.5s' }}></div>        
-
-        <div className="parallax-blob absolute top-[10%] right-[5%] w-[40%] h-[40%] bg-gradient-to-bl from-teal-500/15 to-emerald-400/8 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '9.5s' }}></div>
-        <div className="absolute top-[40%] left-[30%] w-[45%] h-[45%] bg-slate-700/20 rounded-full blur-[130px] animate-pulse" style={{ animationDuration: '11s' }}></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#e9a42e]/10 rounded-full blur-[50px]"></div>
+        <div className="absolute top-[15%] right-[-20%] w-[40%] h-[40%] bg-indigo-300/20 rounded-full blur-[150px]"></div>
+        <div className="absolute bottom-[15%] left-[10%] w-[60%] h-[60%] bg-slate-800/20 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-[-15%] right-[30%] w-[30%] h-[30%] bg-blue-700/20 rounded-full blur-[120px]"></div>
+        <div className="parallax-blob absolute top-[70%] right-[10%] w-[35%] h-[35%] bg-gradient-to-bl from-purple-500/20 to-indigo-600/15 rounded-full blur-[90px]"></div>
+        <div className="parallax-blob absolute top-[5%] left-[80%] w-[45%] h-[45%] bg-gradient-to-tr from-teal-500/15 to-emerald-400/10 rounded-full blur-[70px]"></div>
+        <div className="parallax-blob absolute top-[10%] right-[5%] w-[40%] h-[40%] bg-gradient-to-bl from-teal-500/15 to-emerald-400/8 rounded-full blur-[120px]"></div>
+        <div className="absolute top-[40%] left-[30%] w-[45%] h-[45%] bg-slate-700/20 rounded-full blur-[130px]"></div>
       </div>
     </div>
   );
@@ -51,20 +51,22 @@ function ParallaxBackground() {
 // 創建一個滾動視差效果
 function ScrollParallax() {
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const handleScroll = () => {
       const scrollElements = document.querySelectorAll('.parallax-scroll');
-      
+
       scrollElements.forEach((el) => {
         const scrollY = window.scrollY;
         const element = el as HTMLElement;
         const speed = element.dataset.speed || '0.2';
-        
+
         element.style.transform = `translateY(${scrollY * parseFloat(speed)}px)`;
       });
     };
-    
+
     window.addEventListener('scroll', handleScroll);
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -439,7 +441,7 @@ export default function AboutClient() {
                      ))}
                    </div>
                    <p className="text-xs text-gray-500 leading-relaxed">
-                     Optimized component architecture with modern state management.
+                     Production web apps: real-time dashboards, OAuth flows, and multi-tenant SaaS platforms.
                    </p>
                  </div>
                  
@@ -457,7 +459,7 @@ export default function AboutClient() {
                      ))}
                    </div>
                    <p className="text-xs text-gray-500 leading-relaxed">
-                     Scalable microservices & high-performance API design.
+                     RESTful APIs in production on GCP Cloud Run — designed, deployed, and maintained solo.
                    </p>
                  </div>
                  
@@ -475,7 +477,7 @@ export default function AboutClient() {
                      ))}
                    </div>
                    <p className="text-xs text-gray-500 leading-relaxed">
-                     Native-like performance across all mobile platforms.
+                     Published on the App Store (#4 Education). Built with Flutter, Swift, and React Native.
                    </p>
                  </div>
                  
@@ -494,7 +496,7 @@ export default function AboutClient() {
                      <TechTagCloud tags={['System Design', 'DevOps', 'Socket']} color="text-gray-400" />
                    </div>
                    <p className="text-xs text-gray-500 leading-relaxed">
-                     Advanced problem solving with ML & system architecture.
+                     OpenAI integration in production, synthetic data pipelines for ML training, NLP event parsing.
                    </p>
                  </div>
               </div>

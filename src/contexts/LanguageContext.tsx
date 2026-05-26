@@ -16,13 +16,13 @@ const translations = {
     // 頁面頭部
     'iam': 'I am',
     'fullname': 'Pierre Chen',
-    'description': 'A creative full-stack developer passionate about building meaningful products. I love solving real-world problems through code and integrating technology into daily life to make a positive impact.',
+    'description': 'Full-stack developer who ships real products. Dogtor AI reached #4 on the App Store Education chart with 10K+ users. I build across mobile (Flutter, Swift), web (React, Next.js), and AI — from zero to deployed.',
     'view_portfolio': 'View My Portfolio',
     'contact_me': 'Contact Me',
     
     // 作品集區塊
     'my_portfolio': 'My Portfolio',
-    'portfolio_description': 'These are some of my recent projects that showcase my skills and experience. Each work represents my attention to detail and problem-solving abilities.',
+    'portfolio_description': 'From App Store launches to enterprise ERPs — I ship production products across mobile, web, and AI. Every project here is live and used by real people.',
     'view_all_projects': 'View All Projects',
     'view_details': 'View Details',
     
@@ -32,7 +32,7 @@ const translations = {
     'planned': 'Planned',
     
     // 頁腳
-    'about_me': 'Focused on creating excellent websites and applications, turning creativity into reality. Providing comprehensive solutions, from website design to application development.',
+    'about_me': 'Full-stack developer shipping products from concept to App Store. 10K+ users. Cross-platform: mobile, web & AI.',
     'quick_links': 'Quick Links',
     'home': 'Home',
     'portfolio': 'Portfolio',
@@ -43,11 +43,11 @@ const translations = {
     
     // About 頁面
     'about_page_title': 'About Me',
-    'about_page_description': 'Learn more about my background, skills, and experience.',
+    'about_page_description': 'Chemistry → Computer Science. I pivoted from lab research to building apps used by thousands — including an AI learning app ranked #4 in App Store Education with 10K+ users.',
     'who_am_i': 'Who Am I',
-    'about_intro_1': 'Hi, I\'m Pierre, a full-stack developer who loves creating meaningful products that solve real-world problems. I combine front-end and back-end technologies to build solutions that make a difference in people\'s lives.',
-    'about_intro_2': 'I believe great design is not just about aesthetics, but about solving problems and enhancing user experiences. My goal is to build practical, impactful solutions that add value and create positive change.',
-    'about_intro_3': 'Beyond coding, I enjoy photography, traveling, and exploring new technologies. I always stay curious and seek new ways to improve my skills and approach problem-solving.',
+    'about_intro_1': 'Hi, I\'m Pierre — a full-stack developer who builds and ships products end-to-end. My AI learning app Dogtor reached #4 in App Store Education with 10K+ users. I work across mobile (Flutter, Swift), web (React, Next.js), and AI integration.',
+    'about_intro_2': 'I believe the best products come from deeply understanding problems, not just writing code. My background in Chemistry research trained me to approach systems analytically — a mindset I now apply directly to software architecture and product decisions.',
+    'about_intro_3': 'Beyond coding, I enjoy photography and traveling — they keep me observant and creative. I\'m always building side projects to explore new tech, because the best way to learn is to ship something real.',
     'work_experience': 'Work Experience',
     'education': 'Education',
     'skills': 'Professional Skills',
@@ -78,17 +78,17 @@ const translations = {
     'dogtor_company': 'AI Learning Application Development Team',
     'dogtor_period': '2025 - Present',
     'dogtor_description': 'Participated in full-stack development of the Dogtor project, combining Flutter, FastAPI, and MySQL to build a student learning platform deployed on GCP.',
-    'dogtor_achievement_1': 'Designed and built personalized error tracking and practice system',
-    'dogtor_achievement_2': 'Deployed backend API to Cloud Run, integrated with Flutter application',
-    'dogtor_achievement_3': 'Integrated OpenAI models for question generation and feedback',
+    'dogtor_achievement_1': 'Built personalized error tracking system powering Dogtor AI — ranked #4 in App Store Education with 10K+ active users',
+    'dogtor_achievement_2': 'Deployed and maintained scalable FastAPI backend on GCP Cloud Run, reliably serving 10K+ users',
+    'dogtor_achievement_3': 'Integrated OpenAI API for AI-powered question generation and real-time adaptive feedback',
     
     'superb_position': 'Founder & Technical Developer',
     'superb_company': 'Superb Education',
     'superb_period': '2023 - Present',
     'superb_description': 'Independently developed LINE chatbot and teaching platform to assist high school students in learning mathematics and English, integrated Google Sheets API for attendance and assignment tracking.',
-    'superb_achievement_1': 'Used Python to integrate LINE Message API and Google Sheets API',
-    'superb_achievement_2': 'Deployed backend application to Heroku for stable service',
-    'superb_achievement_3': 'Designed website frontend using HTML/CSS/JS',
+    'superb_achievement_1': 'Built LINE chatbot with Python integrating LINE Message API and Google Sheets API, automating class reminders and assignment tracking for hundreds of students',
+    'superb_achievement_2': 'Independently deployed full backend to Heroku, maintaining stable uptime for all students and instructors',
+    'superb_achievement_3': 'Designed and launched company website, driving student enrollment for the tutoring platform',
     
     // 教育背景
     'ntu_degree': 'Bachelor of Information Management',
@@ -102,7 +102,7 @@ const translations = {
     'kmu_degree': 'Bachelor of Chemistry',
     'kmu_school': 'Kaohsiung Medical University',
     'kmu_period': '2019 - 2023',
-    'kmu_description': 'Majored in Chemistry, conducted cancer biomarker analysis research, participated in student government as student representative and event organizer, developed excellent communication and leadership skills.',
+    'kmu_description': 'Majored in Chemistry with cancer biomarker research experience. The analytical, hypothesis-driven mindset from lab work directly informs how I approach software architecture and complex problem-solving today.',
     
     // Projects 頁面
     'projects_page_title': 'Projects',
@@ -166,13 +166,13 @@ const translations = {
     // 頁面頭部
     'iam': '我是',
     'fullname': 'Pierre Chen',
-    'description': '熱愛創造能帶來價值的產品，專注於開發解決真實問題的程式，將科技融入生活並改善使用者體驗的全端開發者。',
+    'description': '從 0 到上架的全端開發者。Dogtor AI 在 App Store 教育類排名第 4，累積超過 10K 用戶。橫跨行動端（Flutter、Swift）、Web（React、Next.js）與 AI 整合，每個作品都已上線。',
     'view_portfolio': '查看我的作品',
     'contact_me': '聯繫我',
     
     // 作品集區塊
     'my_portfolio': '我的作品集',
-    'portfolio_description': '這些是我最近開發的一些專案，展示了我的技能和經驗。每個作品都代表了我對細節的關注和解決問題的能力。',
+    'portfolio_description': '從 App Store 上架到企業 ERP——每個專案都已部署上線，服務真實用戶。涵蓋行動端、Web 與 AI 整合。',
     'view_all_projects': '查看所有作品',
     'view_details': '查看詳情',
     
@@ -182,7 +182,7 @@ const translations = {
     'planned': '計劃中',
     
     // 頁腳
-    'about_me': '專注於打造優秀的網站和應用程式，將創意轉化為現實。提供全方位的解決方案，從網站設計到應用開發。',
+    'about_me': '從概念到上架，獨立交付產品的全端開發者。10K+ 用戶。行動端、Web 與 AI 全覆蓋。',
     'quick_links': '快速連結',
     'home': '首頁',
     'portfolio': '作品集',
@@ -193,11 +193,11 @@ const translations = {
     
     // About 頁面
     'about_page_title': '關於我',
-    'about_page_description': '了解更多關於我的背景、技能和經驗。',
+    'about_page_description': '化學系轉資訊管理。從實驗室研究到打造萬人使用的 App——包含 App Store 教育類第 4 名的 AI 學習平台。',
     'who_am_i': '我是誰',
-    'about_intro_1': '嗨，我是 Pierre，一名熱愛開發、專注於創造有價值產品的全端開發者。我擅長結合前後端技術，打造能夠解決真實問題的應用，讓科技成為生活的一部分。',
-    'about_intro_2': '我相信好的設計不只是好看，而是能夠幫助使用者解決問題、提升體驗。我的目標是開發出實用又有溫度的產品，創造對世界有正面影響的解決方案。',
-    'about_intro_3': '除了寫程式，我喜歡攝影、旅行和探索新技術，並持續保持好奇心，學習新知識，找到更好的方法解決問題。',
+    'about_intro_1': '嗨，我是 Pierre，一名從開發到上線都自己搞定的全端開發者。我打造的 AI 學習應用 Dogtor 在 App Store 教育類排名第 4，累積超過 10K 活躍用戶。專攻行動端（Flutter、Swift）、Web（React、Next.js）與 AI 整合。',
+    'about_intro_2': '我相信最好的產品來自深入理解問題，而不只是寫程式。化學系的研究訓練讓我學會以假設驅動、系統化的角度思考——這個能力現在直接體現在我的軟體架構與產品決策上。',
+    'about_intro_3': '工作之外，我喜歡攝影和旅行——這讓我保持觀察力和創造力。我也持續做 side project 探索新技術，因為學習最好的方式就是把東西做出來。',
     'work_experience': '工作經歷',
     'education': '教育背景',
     'skills': '專業技能',
@@ -228,17 +228,17 @@ const translations = {
     'dogtor_company': 'AI 學習應用開發團隊',
     'dogtor_period': '2025年 - 現在',
     'dogtor_description': '參與 Dogtor 專案的全端開發，結合 Flutter、FastAPI 和 MySQL 建構學生學習平台，並部署於 GCP。',
-    'dogtor_achievement_1': '設計與建置個人化錯題追蹤與練習系統',
-    'dogtor_achievement_2': '將後端 API 部署至 Cloud Run，串接 Flutter 應用',
-    'dogtor_achievement_3': '整合 OpenAI 模型進行題目生成與回饋',
+    'dogtor_achievement_1': '建置個人化錯題追蹤系統，支撐 Dogtor AI 平台——App Store 教育類排名第 4，突破 10K 活躍用戶',
+    'dogtor_achievement_2': '在 GCP Cloud Run 部署並維護可擴展 FastAPI 後端，穩定服務超過 10K 用戶',
+    'dogtor_achievement_3': '整合 OpenAI API 實作 AI 題目生成與即時自適應回饋功能',
     
     'superb_position': '創辦人兼技術開發',
     'superb_company': '精湛教育',
     'superb_period': '2023年 - 現在',
     'superb_description': '獨立開發 LINE 聊天機器人與教學平台，協助高中生學習數理與英文，並整合 Google Sheet API 進行出勤與作業追蹤。',
-    'superb_achievement_1': '使用 Python 串接 LINE Message API 與 Google Sheets API',
-    'superb_achievement_2': '將後端應用部署至 Heroku 提供穩定服務',
-    'superb_achievement_3': '設計官網前端頁面，使用 HTML/CSS/JS 完成',
+    'superb_achievement_1': '用 Python 串接 LINE Message API 與 Google Sheets API，打造 LINE 聊天機器人，自動化數百位高中生的課程提醒與作業追蹤',
+    'superb_achievement_2': '獨立將完整後端部署至 Heroku，為所有學生與講師維持穩定服務',
+    'superb_achievement_3': '設計並上線公司官方網站，推動學生報名與品牌曝光',
     
     // 教育背景
     'ntu_degree': '資訊管理學士',
@@ -252,7 +252,7 @@ const translations = {
     'kmu_degree': '醫藥化學學士',
     'kmu_school': '高雄醫學大學',
     'kmu_period': '2019年 - 2023年',
-    'kmu_description': '主修化學，進行癌症生物標記分析研究，參與學生會並擔任學生代表、活動總召，發展出良好的溝通與領導能力。',
+    'kmu_description': '主修化學，進行癌症生物標記分析研究。實驗室培養的假設驅動、系統化分析思維，直接影響了我現在對軟體架構與複雜問題拆解的方式。',
     
     // Projects 頁面
     'projects_page_title': '專案作品',

@@ -5,6 +5,7 @@
 :root {
   /* 主要顏色變量 - 這些是網站核心顏色系統 */
   --primary: #f3b237;           /* 主色調 - 金黃色 */
+  --foreground-muted: #c8c4ae;  /* 描述文字 - 介於 foreground 和 text-muted 之間 */
   --primary-dark: #e9a42e;      /* 主色調深色版 */
   --primary-light: #f7c359;     /* 主色調淺色版 */
   
@@ -222,6 +223,27 @@ body {
 
 .animate-blob {
   animation: blob 10s infinite;
+}
+
+/* prefers-reduced-motion: 遵守使用者的動畫偏好設定 (WCAG 2.1 AAA) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .parallax-blob,
+  .animate-float,
+  .animate-pulse-slow,
+  .animate-blob,
+  .parallax-scroll {
+    animation: none !important;
+    transform: none !important;
+  }
 }
 
 /* 響應式調整 */
