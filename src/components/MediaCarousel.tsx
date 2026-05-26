@@ -5,11 +5,14 @@ import Image from 'next/image';
 
 interface MediaCarouselProps {
   youtubeVideoId?: string;
+  youtubeIsShort?: boolean;
   galleryImages?: string[];
   projectTitle: string;
 }
 
-export default function MediaCarousel({ youtubeVideoId, galleryImages, projectTitle }: MediaCarouselProps) {
+export default function MediaCarousel({ youtubeVideoId, youtubeIsShort, galleryImages, projectTitle }: MediaCarouselProps) {
+  const videoAspect = youtubeIsShort ? 'aspect-[9/16]' : 'aspect-video';
+  const videoWrap = youtubeIsShort ? 'max-w-xs mx-auto' : 'w-full';
 
   // 如果既沒有影片也沒有圖片，返回 null
   if (!youtubeVideoId && (!galleryImages || galleryImages.length === 0)) {
@@ -20,42 +23,8 @@ export default function MediaCarousel({ youtubeVideoId, galleryImages, projectTi
   if (youtubeVideoId && (!galleryImages || galleryImages.length === 0)) {
     return (
       <div className="w-full">
-        <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
-          <iframe
-            src={`https://www.youtube.com/embed/${youtubeVideoId}`}
-            title={`${projectTitle} Demo Video`}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-full"
-          />
-        </div>
-      </div>
-    );
-  }
-
-
-
-  return (
-    <div className="w-full">
-      {/* 如果只有 YouTube 影片，直接顯示影片 */}
-      {youtubeVideoId && (!galleryImages || galleryImages.length === 0) && (
-        <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
-          <iframe
-            src={`https://www.youtube.com/embed/${youtubeVideoId}`}
-            title={`${projectTitle} Demo Video`}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-full"
-          />
-        </div>
-      )}
-
-      {/* 如果有 YouTube 影片和圖片，先顯示影片 */}
-      {youtubeVideoId && galleryImages && galleryImages.length > 0 && (
-        <div className="mb-6">
-          <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
+        <div className={`${videoWrap}`}>
+          <div className={`relative w-full ${videoAspect} rounded-lg overflow-hidden shadow-lg`}>
             <iframe
               src={`https://www.youtube.com/embed/${youtubeVideoId}`}
               title={`${projectTitle} Demo Video`}
@@ -64,6 +33,28 @@ export default function MediaCarousel({ youtubeVideoId, galleryImages, projectTi
               allowFullScreen
               className="w-full h-full"
             />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-full">
+      {/* 如果有 YouTube 影片和圖片，先顯示影片 */}
+      {youtubeVideoId && galleryImages && galleryImages.length > 0 && (
+        <div className="mb-6">
+          <div className={`${videoWrap}`}>
+            <div className={`relative w-full ${videoAspect} rounded-lg overflow-hidden shadow-lg`}>
+              <iframe
+                src={`https://www.youtube.com/embed/${youtubeVideoId}`}
+                title={`${projectTitle} Demo Video`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
           </div>
         </div>
       )}
@@ -78,7 +69,7 @@ export default function MediaCarousel({ youtubeVideoId, galleryImages, projectTi
                   key={index}
                   className="flex-shrink-0"
                 >
-                  <div className="relative rounded-xl overflow-hidden" 
+                  <div className="relative rounded-xl overflow-hidden"
                        style={{ maxHeight: '400px' }}>
                     <Image
                       src={image}

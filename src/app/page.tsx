@@ -19,56 +19,33 @@ function ParallaxBackground() {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!ref.current) return;
-      
       const x = e.clientX / window.innerWidth;
       const y = e.clientY / window.innerHeight;
-      
-      ref.current.style.transform = `translate(${x * -30}px, ${y * -30}px)`;
-    };
-
-    const handleScroll = () => {
-      if (!ref.current) return;
-      
-      const scrollY = window.scrollY;
-      const parallaxElements = ref.current.querySelectorAll('.parallax-blob');
-      
-      parallaxElements.forEach((el, index) => {
-        const element = el as HTMLElement;
-        const speed = 0.3 + (index * 0.1); // 不同元素不同的視差速度
-        element.style.transform = `translateY(${scrollY * speed}px)`;
-      });
+      ref.current.style.transform = `translate(${x * -20}px, ${y * -20}px)`;
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll);
-    
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return (
     <div className="fixed inset-0 z-[-2] overflow-hidden bg-[#181c24]">
-      <div ref={ref} className="absolute inset-0 scale-110">
-        {/* 增強的圓形色塊 - 更明顯、更豐富 */}
-        <div className="parallax-blob absolute top-[-15%] left-[-15%] w-[40%] h-[40%] bg-gradient-to-br from-[#e9a42e]/30 to-[#f3b237]/20 rounded-full blur-[40px] animate-pulse" style={{ animationDuration: '6s' }}></div>
-        
-        <div className="parallax-blob absolute top-[20%] right-[-25%] w-[50%] h-[50%] bg-gradient-to-bl from-indigo-400/25 to-blue-500/15 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '8s' }}></div>
-        
-        <div className="parallax-blob absolute bottom-[10%] left-[5%] w-[70%] h-[70%] bg-gradient-to-tr from-slate-600/20 to-slate-400/10 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '10s' }}></div>
-        
-        <div className="parallax-blob absolute bottom-[-20%] right-[25%] w-[40%] h-[40%] bg-gradient-to-tl from-blue-600/25 to-cyan-500/15 rounded-full blur-[140px] animate-pulse" style={{ animationDuration: '7s' }}></div>
-        
-        <div className="parallax-blob absolute top-[35%] left-[25%] w-[55%] h-[55%] bg-gradient-to-br from-slate-500/20 to-gray-600/10 rounded-full blur-[110px] animate-pulse" style={{ animationDuration: '9s' }}></div>
-        
-        {/* 新增更多豐富的色塊 */}
-        <div className="parallax-blob absolute top-[60%] right-[10%] w-[35%] h-[35%] bg-gradient-to-bl from-purple-500/20 to-indigo-600/15 rounded-full blur-[90px] animate-pulse" style={{ animationDuration: '11s' }}></div>
-        
-        <div className="parallax-blob absolute top-[5%] left-[60%] w-[45%] h-[45%] bg-gradient-to-tr from-teal-500/15 to-emerald-400/10 rounded-full blur-[130px] animate-pulse" style={{ animationDuration: '8.5s' }}></div>
-        
-        
-        <div className="parallax-blob absolute top-[80%] right-[45%] w-[30%] h-[30%] bg-gradient-to-tl from-pink-500/15 to-rose-400/10 rounded-full blur-[85px] animate-pulse" style={{ animationDuration: '6.5s' }}></div>
+      <div ref={ref} className="absolute inset-[-10%] w-[120%] h-[120%]" style={{ willChange: 'transform' }}>
+        {/* 使用 radial-gradient 避免 blur 大值造成的塊狀顆粒感 */}
+        {/* 左上角：金黃光暈 */}
+        <div className="parallax-blob absolute top-[-10%] left-[-10%] w-[60%] h-[60%]" style={{
+          background: 'radial-gradient(ellipse at center, rgba(243,178,55,0.12) 0%, rgba(243,178,55,0.04) 50%, transparent 70%)',
+        }}></div>
+
+        {/* 右側：深藍光暈 */}
+        <div className="parallax-blob absolute top-[10%] right-[-15%] w-[65%] h-[65%]" style={{
+          background: 'radial-gradient(ellipse at center, rgba(39,104,168,0.14) 0%, rgba(39,104,168,0.05) 50%, transparent 70%)',
+        }}></div>
+
+        {/* 中央偏下：深藍金交融 */}
+        <div className="parallax-blob absolute bottom-[0%] left-[20%] w-[60%] h-[60%]" style={{
+          background: 'radial-gradient(ellipse at center, rgba(39,104,168,0.10) 0%, rgba(243,178,55,0.04) 50%, transparent 70%)',
+        }}></div>
       </div>
     </div>
   );

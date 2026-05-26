@@ -56,6 +56,7 @@ interface ProjectProps {
     demoUrl?: string;
     appStoreUrl?: string;
     youtubeVideoId?: string;
+    youtubeIsShort?: boolean;
     galleryImages?: string[];
   };
 }
@@ -254,6 +255,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                   </h2>
                   <MediaCarousel
                     youtubeVideoId={project.youtubeVideoId}
+                    youtubeIsShort={project.youtubeIsShort}
                     galleryImages={project.galleryImages}
                     projectTitle={project.title[language]}
                   />

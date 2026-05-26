@@ -47,6 +47,7 @@ export interface Project {
   viewLiveUrl?: string;
   viewCodeUrl?: string;
   youtubeVideoId?: string;
+  youtubeIsShort?: boolean;
   galleryImages?: string[];
 }
 
@@ -63,26 +64,34 @@ export const projects: Project[] = [
     },
     fullDescription: {
       en: `
-        Dogtor is an AI-powered learning app that helps high school students practice effectively by generating personalized questions and tracking their learning progress.
-        
+        Dogtor (逗課) is an AI-powered learning app built for high school students, offering personalized question generation, error tracking, and adaptive learning paths to help students practice smarter.
+
         I spearheaded the entire system design and development, including:
         - AI engineering and deep learning model training for personalized question generation
+        - Subject-specific question banks covering math and science topics
+        - Adaptive difficulty system that adjusts based on student performance
         - FastAPI backend with RESTful APIs and automatic documentation
         - MySQL database schema for error tracking and learning analytics
+        - Push notifications to remind students to practice daily
+        - Learning streak and progress visualization to boost motivation
         - Cloud deployment on Google Cloud Run and Cloud SQL for scalability
-        
-        Dogtor not only generates questions tailored to each student's weak points but also provides instant feedback, helping students focus on their learning gaps.
+
+        Dogtor not only generates questions tailored to each student's weak points but also provides instant feedback and detailed explanations, helping students understand — not just memorize — the material.
       `,
       zh: `
-        Dogtor 是一款 AI 輔助學習應用，專為國高中生打造，能依據學生學習情況生成個人化練習題，並追蹤學習進度。
-        
+        Dogtor（逗課）是一款 AI 輔助學習應用，專為國高中生打造，提供個人化練習題生成、錯題追蹤與自適應學習路徑，幫助學生更聰明地練習。
+
         我主導整體系統架構與開發，負責：
         - AI 工程與深度學習模型訓練，用於個人化題目生成
+        - 涵蓋數學與自然科目的分科題庫建置
+        - 根據學生表現動態調整難度的自適應系統
         - FastAPI 後端建構 RESTful API 並自動生成文件
         - MySQL 資料庫設計，追蹤錯題紀錄與學習分析
+        - 推播通知機制，提醒學生每日練習
+        - 學習連續天數與進度視覺化，激勵持續學習動力
         - GCP Cloud Run 與 Cloud SQL 雲端部署，確保系統可擴展性與穩定性
-        
-        Dogtor 讓學生根據自身弱點練習題目，並即時收到反饋，聚焦學習成效，提升學習動力。
+
+        Dogtor 讓學生依自身弱點針對性練習，並提供即時反饋與詳細解析，幫助學生真正理解，而不只是死記。
       `
     },
     imageUrl: '/projects/dt.jpg',
@@ -102,13 +111,23 @@ export const projects: Project[] = [
     ],
     features: {
       en: [
-        'AI question generation tailored to student learning gaps',
+        'AI question generation tailored to each student\'s learning gaps',
+        'Subject-specific question banks covering math and science',
+        'Adaptive difficulty system that adjusts to student performance',
         'Error tracking and personalized practice recommendations',
+        'Instant feedback with step-by-step explanations',
+        'Daily push notifications and learning streaks to build habits',
+        'Progress visualization and learning analytics dashboard',
         'GCP Cloud Run + Cloud SQL deployment for scalability'
       ],
       zh: [
-        'AI 題目生成，針對學生弱點量身打造',
+        'AI 題目生成，針對每位學生弱點量身打造',
+        '涵蓋數學、自然的分科題庫',
+        '根據答題表現自動調整難度的自適應系統',
         '錯題紀錄與個人化練習推薦',
+        '即時反饋與逐步解題說明',
+        '每日推播提醒與學習連續天數，培養學習習慣',
+        '學習進度視覺化與分析儀表板',
         'GCP Cloud Run + Cloud SQL 雲端部署，支援高可擴展性'
       ]
     },
@@ -178,6 +197,8 @@ export const projects: Project[] = [
         }
       ]
     },
+    youtubeVideoId: '97PbV861JYs',
+    youtubeIsShort: true,
     galleryImages: [
       '/projects/dogtor/2.jpg',
       '/projects/dogtor/8.jpg',
@@ -574,7 +595,8 @@ export const projects: Project[] = [
       ]
     },
     // githubUrl: 'https://github.com/yourusername/erp-system',
-    youtubeVideoId: 'ViVosgnhEbM', // Rick Astley - Never Gonna Give You Up
+    youtubeVideoId: 'fnHZp87Gb9g',
+    youtubeIsShort: true,
   },
   {
     id: 'superbot',
