@@ -56,7 +56,7 @@ export const projects: Project[] = [
     id: 'dogtor',
     title: {
       en: 'Dogtor AI Learning Assistant',
-      zh: 'Dogtor AI 學習助教'
+      zh: 'DOGTOR 逗課 AI 學習軟體'
     },
     description: {
       en: 'An AI-powered learning application designed for high school students, offering intelligent question generation and error tracking.',
