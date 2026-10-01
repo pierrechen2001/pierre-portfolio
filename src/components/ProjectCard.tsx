@@ -146,7 +146,7 @@ export default function ProjectCard({
             width={800}
             height={450}
             loading="lazy"
-            className="object-cover w-full h-full"
+            className={id === 'mapit' ? 'object-contain w-full h-full bg-[#2b5073] p-4' : 'object-cover w-full h-full'}
           />
         </div>
         <div className="p-6 flex flex-col flex-grow relative overflow-hidden">
@@ -204,4 +204,4 @@ export default function ProjectCard({
       </div>
     </Link>
   );
-} 
+}

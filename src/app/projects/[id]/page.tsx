@@ -29,43 +29,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  // 根據專案 ID 生成特定的 SEO 標題和描述
-  const getProjectSEO = (projectId: string, project: any) => {
-    const seoMap: Record<string, { title: string; description: string }> = {
-      'dogtor': {
-        title: 'Dogtor 逗課 - App Store 教育類排名第4｜國高中題庫・AI 學習助手',
-        description: 'Dogtor 逗課已上架 App Store，教育類排名第 4 名。專為國高中生打造的 AI 學習應用，提供題庫練習、會考學測複習、AI 解題助手，使用 Flutter、FastAPI、MySQL 與 GCP 技術開發。'
-      },
-      'aiplanner': {
-        title: 'aiPlanner 智慧行事曆 - iOS 原生 AI 日程管理 App',
-        description: 'aiPlanner 是一款 iOS 原生智慧行事曆應用，支援自然語言輸入與 AI 智能推薦，使用 Swift、Supabase 與 iCloud 技術開發。'
-      },
-      'erp-system': {
-        title: '中星白蟻 ERP 系統 - 企業資源規劃管理系統',
-        description: '為中星白蟻公司開發的企業資源規劃系統，管理客戶、工單、排程等業務流程，使用 React、TypeScript、Firebase 技術開發。'
-      },
-      'superbot': {
-        title: 'SuperBot AI LineBot - 多功能智能助手',
-        description: 'SuperBot 是一款 AI LineBot，提供智能對話與協助精湛教育課務任務功能，展現 AI 技術在日常應用中的實用性。'
-      },
-      'seven-peach': {
-        title: '七桃交友 App - 樂齡族的 AI 約會助手',
-        description: '七桃是一款為銀髮族打造的交友 App，打造跨世代連結的美好生活。'
-      },
-      'lakycarcar': {
-        title: 'LakyCar 單人桌機解謎遊戲',
-        description: 'LakyCar 是一個單人桌機解謎遊戲，使用 C++ 開發。'
-      }
-    };
-
-    return seoMap[projectId] || {
-      title: `${project.title.zh} - Pierre Chen 開發專案`,
-      description: project.fullDescription?.zh || project.description.zh
-    };
+  const seo = {
+    title: `${project.title.zh} - Pierre Chen 開發專案`,
+    description: project.description.zh,
   };
-
-  const seo = getProjectSEO(id, project);
-  const skills = project.skills.map(skill => skill.name).join(', ');
   
   return {
     title: seo.title,
@@ -117,4 +84,4 @@ export default async function ProjectPage({ params }: Props) {
   }
 
   return <ProjectDetailClient project={project} id={id} />;
-} 
+}

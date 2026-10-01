@@ -98,14 +98,14 @@ function ScrollParallax() {
 }
 
 export default function Home() {
-  // 手動指定最具代表性的三個專案：AI + Full Stack + Mobile
-  const FEATURED_IDS = ['dogtor', '200ok', 'aiplanner'];
+  // 精選最新專題、AI 學習產品與團隊全端平台
+  const FEATURED_IDS = ['mapit', 'dogtor', '200ok'];
   const featuredProjects = FEATURED_IDS.map(id => projects.find(p => p.id === id)!).filter(Boolean);
   const { t, language } = useLanguage();
   
   const roles = language === 'zh'
-    ? ['全端開發者', 'AI 應用開發者', 'App Store 發布者', '產品打造者']
-    : ['Full Stack Developer', 'AI Application Builder', 'App Store Publisher', 'Product Builder'];
+    ? ['全端開發者', 'AI 應用開發者', '行動應用開發者', '產品開發者']
+    : ['Full Stack Developer', 'AI Application Developer', 'Mobile Developer', 'Product Developer'];
 
   // 使用 useEffect 設置頁面標題
   useEffect(() => {
@@ -186,9 +186,9 @@ export default function Home() {
                 {/* Achievement Stats Strip - Mobile */}
                 <div className="flex flex-wrap gap-x-6 gap-y-2">
                   {[
-                    { value: '10K+', label: language === 'zh' ? '用戶' : 'Users' },
+                    { value: '7K+', label: language === 'zh' ? 'Dogtor 用戶' : 'Dogtor users' },
                     { value: '#4',   label: language === 'zh' ? 'App Store' : 'App Store' },
-                    { value: '8',    label: language === 'zh' ? '上線專案' : 'Shipped' },
+                    { value: String(projects.length), label: language === 'zh' ? '收錄專案' : 'Projects' },
                   ].map(stat => (
                     <div key={stat.value} className="flex items-baseline gap-1.5">
                       <span className="text-xl font-bold text-[var(--primary)]">{stat.value}</span>
@@ -271,9 +271,9 @@ export default function Home() {
                 {/* Achievement Stats Strip */}
                 <div className="flex flex-wrap gap-x-8 gap-y-3 pl-6 border-l-2 border-[var(--primary)]/20 parallax-scroll" data-speed="0.03">
                   {[
-                    { value: '10K+', label: language === 'zh' ? '應用用戶' : 'App Users' },
+                    { value: '7K+', label: language === 'zh' ? 'Dogtor 用戶' : 'Dogtor users' },
                     { value: '#4',   label: language === 'zh' ? 'App Store 教育類' : 'App Store Education' },
-                    { value: '8',    label: language === 'zh' ? '上線專案' : 'Projects Shipped' },
+                    { value: String(projects.length), label: language === 'zh' ? '收錄專案' : 'Projects' },
                   ].map(stat => (
                     <div key={stat.value} className="flex items-baseline gap-2">
                       <span className="text-2xl md:text-3xl font-bold text-[var(--primary)]">{stat.value}</span>

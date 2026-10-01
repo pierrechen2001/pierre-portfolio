@@ -109,29 +109,19 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": project.title[language],
-    "description": project.fullDescription[language],
+    "description": project.description[language],
     "creator": {
       "@type": "Person",
       "name": "Pierre Chen",
       "url": "https://www.pierre-chen.com"
     },
-    "dateCreated": project.date[language],
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": project.skills.map(skill => skill.name).join(", "),
     "programmingLanguage": project.skills.filter(skill => 
       ['JavaScript', 'TypeScript', 'Python', 'Swift', 'Dart', 'Java'].includes(skill.name)
     ).map(skill => skill.name),
     "url": `https://www.pierre-chen.com/projects/${id}`,
     "image": project.imageUrl,
     "keywords": project.skills.map(skill => skill.name).join(", "),
-    "applicationSubCategory": project.status === 'completed' ? 'Released' : 'InDevelopment',
-    ...(project.githubUrl && { "codeRepository": project.githubUrl }),
-    ...(project.demoUrl && { "downloadUrl": project.demoUrl }),
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
+    ...(project.githubUrl && { "codeRepository": project.githubUrl })
   };
 
   // 渲染 Markdown 格式的函數
@@ -209,7 +199,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                   alt={project.title[language]}
                   width={1200}
                   height={630}
-                  className="w-full h-auto object-cover"
+                  className={project.id === 'mapit' ? 'w-full max-h-[540px] object-contain bg-[#2b5073] p-8' : 'w-full h-auto object-cover'}
                   priority
                 />
               </div>
@@ -414,4 +404,4 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
       </div>
     </ParallaxProvider>
   );
-} 
+}

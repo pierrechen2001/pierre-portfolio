@@ -53,45 +53,96 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'mapit',
+    title: {
+      en: 'MapIt — Restaurant Discovery & Social Map',
+      zh: 'MapIt — 餐廳收藏與好友地圖'
+    },
+    description: {
+      en: 'A team capstone app that turns restaurant links into map-based collections, then helps friends share places and decide where to go.',
+      zh: '臺大資管團隊專題：將餐廳連結解析為地圖收藏，並透過好友動態、邀約與共同造訪紀錄幫助大家決定去哪裡。'
+    },
+    fullDescription: {
+      en: `
+        MapIt is a National Taiwan University Information Management capstone project. It helps people save restaurants they discover in social posts or web links, organize them on a personal map, and plan visits with friends.
+
+        Users can import a link or search for a place. An AI-assisted backend extracts restaurant information; the Flutter app then presents saved places on a Mapbox map. Friends can share places through a feed, invite each other to visit, and keep a record of places they visited together.
+
+        I contributed across the mobile experience and supporting services. My work in the project includes Mapbox integration and map interactions, improvements to the link-parsing prompts and post-processing, and flows for profiles, shared visits, and saved-place performance. This is an ongoing team project, so these contributions sit alongside work by other members.
+      `,
+      zh: `
+        MapIt 是國立臺灣大學資訊管理學系的團隊專題，協助使用者把社群貼文或網頁中看到的餐廳存成個人地圖，整理收藏並和朋友規劃聚餐。
+
+        使用者可以貼上連結或直接搜尋店家；後端協助解析餐廳資訊，Flutter App 再透過 Mapbox 呈現收藏地點。好友之間也能在動態中分享店家、發送邀約，並記錄一起去過的地方。
+
+        我參與行動端體驗與相關服務開發，包括 Mapbox 導入與地圖互動、連結解析提示詞及後處理優化、個人檔案與共同造訪流程，以及收藏地點的效能改善。這是持續開發中的團隊作品，功能由多位成員共同完成。
+      `
+    },
+    imageUrl: '/projects/mapit.png',
+    status: 'in-progress',
+    date: {
+      en: 'Apr 2026 - Present',
+      zh: '2026年4月 - 現在'
+    },
+    skills: [
+      { name: 'Flutter', color: 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' },
+      { name: 'FastAPI', color: 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' },
+      { name: 'Mapbox', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30' },
+      { name: 'Supabase', color: 'bg-green-500/20 text-green-400 border border-green-500/30' },
+      { name: 'PostgreSQL', color: 'bg-purple-700/20 text-purple-300 border border-purple-700/30' },
+      { name: 'OpenAI API', color: 'bg-green-600/20 text-green-300 border border-green-600/30' }
+    ],
+    features: {
+      en: [
+        'Import restaurant links and review AI-extracted places',
+        'Browse and filter saved places on a personal Mapbox map',
+        'Share discoveries in a friends feed and invite friends to visit',
+        'Record places visited together and organize collaborative lists'
+      ],
+      zh: [
+        '匯入餐廳連結並檢視 AI 解析出的店家',
+        '在個人 Mapbox 地圖瀏覽與篩選收藏',
+        '透過好友動態分享店家並發送聚餐邀約',
+        '記錄共同造訪的地點並整理協作清單'
+      ]
+    },
+    milestones: {
+      en: [
+        { title: 'Map experience', description: 'Integrated Mapbox and refined map gestures, saved pins, and place discovery in the Flutter app.', type: 'skill', icon: '🗺️' },
+        { title: 'Link understanding', description: 'Improved prompts and post-processing in the AI-assisted link-to-place pipeline.', type: 'skill', icon: '🔗' },
+        { title: 'Social and performance flows', description: 'Worked on profiles, shared-visit records, caching, and saved-place loading.', type: 'achievement', icon: '⚡' }
+      ],
+      zh: [
+        { title: '地圖體驗', description: '導入 Mapbox，調整 Flutter 地圖手勢、收藏圖釘與地點探索體驗。', type: 'skill', icon: '🗺️' },
+        { title: '連結理解', description: '優化 AI 輔助連結解析流程的提示詞與後處理。', type: 'skill', icon: '🔗' },
+        { title: '社交與效能流程', description: '參與個人檔案、共同造訪紀錄、快取及收藏載入改善。', type: 'achievement', icon: '⚡' }
+      ]
+    }
+  },
+  {
     id: 'dogtor',
     title: {
       en: 'Dogtor AI Learning Assistant',
       zh: 'DOGTOR 逗課 AI 學習軟體'
     },
     description: {
-      en: 'An AI-powered learning application designed for high school students, offering intelligent question generation and error tracking.',
-      zh: '專為國高中生設計的 AI 學習應用，提供智慧題目生成與錯題追蹤功能。'
+      en: 'Co-built an AI learning app with 7,000+ users, owning LLM features, learning data, FastAPI services, and cloud deployment.',
+      zh: '共同打造累積超過 7,000 位用戶的 AI 學習 App，負責 LLM 功能、學習資料、FastAPI 服務與雲端部署。'
     },
     fullDescription: {
       en: `
-        Dogtor (逗課) is an AI-powered learning app built for high school students, offering personalized question generation, error tracking, and adaptive learning paths to help students practice smarter.
+        Dogtor (逗課) is an AI learning app for secondary-school students. It combines question practice, error tracking, learning progress, and personalized guidance. The product has reached 7,000+ users and 2,600 monthly active users, and ranked #4 in App Store Education.
 
-        I spearheaded the entire system design and development, including:
-        - AI engineering and deep learning model training for personalized question generation
-        - Subject-specific question banks covering math and science topics
-        - Adaptive difficulty system that adjusts based on student performance
-        - FastAPI backend with RESTful APIs and automatic documentation
-        - MySQL database schema for error tracking and learning analytics
-        - Push notifications to remind students to practice daily
-        - Learning streak and progress visualization to boost motivation
-        - Cloud deployment on Google Cloud Run and Cloud SQL for scalability
+        As a co-founder and software engineer, I owned the AI feature lifecycle and much of the production backend and data work: knowledge-point modeling, LLM orchestration, event collection, FastAPI APIs, and deployment on Cloud Run and Cloud SQL.
 
-        Dogtor not only generates questions tailored to each student's weak points but also provides instant feedback and detailed explanations, helping students understand — not just memorize — the material.
+        I also built paid parent analytics that turns student answers, incorrect choices, and knowledge-point performance into AI-generated weakness analyses and personalized guidance.
       `,
       zh: `
-        Dogtor（逗課）是一款 AI 輔助學習應用，專為國高中生打造，提供個人化練習題生成、錯題追蹤與自適應學習路徑，幫助學生更聰明地練習。
+        Dogtor（逗課）是為國高中生設計的 AI 學習 App，整合題目練習、錯題追蹤、學習進度與個人化建議。產品已累積超過 7,000 位用戶、每月 2,600 位活躍用戶，曾登上 App Store 教育類第 4 名。
 
-        我主導整體系統架構與開發，負責：
-        - AI 工程與深度學習模型訓練，用於個人化題目生成
-        - 涵蓋數學與自然科目的分科題庫建置
-        - 根據學生表現動態調整難度的自適應系統
-        - FastAPI 後端建構 RESTful API 並自動生成文件
-        - MySQL 資料庫設計，追蹤錯題紀錄與學習分析
-        - 推播通知機制，提醒學生每日練習
-        - 學習連續天數與進度視覺化，激勵持續學習動力
-        - GCP Cloud Run 與 Cloud SQL 雲端部署，確保系統可擴展性與穩定性
+        作為共同創辦人與軟體工程師，我負責 AI 功能生命週期，以及大部分正式環境的後端與資料工作，包括知識點建模、LLM 編排、事件蒐集、FastAPI API，以及 Cloud Run 和 Cloud SQL 部署。
 
-        Dogtor 讓學生依自身弱點針對性練習，並提供即時反饋與詳細解析，幫助學生真正理解，而不只是死記。
+        我也開發付費家長分析功能，將學生答題、錯誤選項與知識點表現轉換成 AI 弱點分析和個人化建議。
       `
     },
     imageUrl: '/projects/dt.jpg',
@@ -118,6 +169,7 @@ export const projects: Project[] = [
         'Instant feedback with step-by-step explanations',
         'Daily push notifications and learning streaks to build habits',
         'Progress visualization and learning analytics dashboard',
+        'Paid parent analytics with AI-generated weakness insights',
         'GCP Cloud Run + Cloud SQL deployment for scalability'
       ],
       zh: [
@@ -128,19 +180,20 @@ export const projects: Project[] = [
         '即時反饋與逐步解題說明',
         '每日推播提醒與學習連續天數，培養學習習慣',
         '學習進度視覺化與分析儀表板',
+        '付費家長分析，提供 AI 弱點洞察',
         'GCP Cloud Run + Cloud SQL 雲端部署，支援高可擴展性'
       ]
     },
     milestones: {
       en: [
         {
-          title: 'Led Full-Stack AI Application Development',
-          description: 'Designed and built the entire AI learning system, integrating AI question generation, backend, database, and frontend.',
+          title: 'Owned AI Features and Data Systems',
+          description: 'Built knowledge-point models, LLM orchestration, event collection, and production APIs for the learning experience.',
           type: 'achievement',
           icon: '🚀'
         },
         {
-          title: 'Mastered Cloud Infrastructure',
+          title: 'Cloud Infrastructure',
           description: 'Deployed scalable backend and database on Google Cloud Run and Cloud SQL.',
           type: 'skill',
           icon: '☁️'
@@ -166,13 +219,13 @@ export const projects: Project[] = [
       ],
       zh: [
         {
-          title: '主導全端 AI 應用開發',
-          description: '設計並開發完整 AI 學習系統，整合 AI 題目生成、後端、資料庫與前端。',
+          title: '負責 AI 功能與資料系統',
+          description: '建立知識點模型、LLM 編排、事件蒐集與正式環境 API，支援學生學習體驗。',
           type: 'achievement',
           icon: '🚀'
         },
         {
-          title: '精通雲端架構部署',
+          title: '雲端架構部署',
           description: '使用 Google Cloud Run 與 Cloud SQL 部署具可擴展性的後端與資料庫。',
           type: 'skill',
           icon: '☁️'
@@ -213,8 +266,8 @@ export const projects: Project[] = [
       zh: '200OK 軟體外包接案平台'
     },
     description: {
-      en: 'A professional software outsourcing platform connecting clients with engineers through transparent matching processes and AI-assisted mechanisms.',
-      zh: '專業的軟體外包接案平台，連結需求方與工程師，透過透明媒合流程與 AI 輔助機制提升專案合作品質。'
+      en: 'Collaborated on a full-stack outsourcing platform with project proposals, real-time messaging, token flows, and AI-assisted matching.',
+      zh: '參與全端接案平台開發，整合發案與提案、即時訊息、代幣流程及 AI 輔助媒合。'
     },
     fullDescription: {
       en: `
@@ -355,8 +408,8 @@ export const projects: Project[] = [
       zh: 'aiPlanner 智慧行程助理'
     },
     description: {
-      en: 'An iOS-native smart calendar app that uses natural language input and AI to simplify event creation and daily planning.',
-      zh: '一款 iOS 原生智慧行程應用，透過自然語言輸入與 AI，讓事件建立與日程規劃更直覺。'
+      en: 'Designed and built a Swift calendar app that turns natural-language text or speech into events, with Supabase and iCloud integration.',
+      zh: '以 Swift 設計並開發行事曆 App，將自然語言文字或語音轉成行程，並整合 Supabase 與 iCloud。'
     },
     fullDescription: {
       en: `
@@ -481,8 +534,8 @@ export const projects: Project[] = [
       zh: '中星害蟲防治 ERP 系統'
     },
     description: {
-      en: 'An enterprise resource planning (ERP) system designed for Zhongxing Environmental Company to manage customers, work orders, scheduling, and business operations.',
-      zh: '為中星環保公司設計的企業資源規劃 (ERP) 系統，整合客戶管理、工單處理、排程與業務營運管理。'
+      en: 'Led development of a React and Firebase ERP for customer records, work orders, field scheduling, and reporting.',
+      zh: '主導以 React 與 Firebase 開發企業 ERP，整合客戶資料、工單、外勤排程與報表。'
     },
     fullDescription: {
       en: `
@@ -604,8 +657,8 @@ export const projects: Project[] = [
       zh: 'SuperBot：行政自動化工具'
     },
     description: {
-      en: 'An automation tool that streamlines administrative workflows for educational institutions, handling tasks like class check-ins, assignment tracking, and attendance calculation.',
-      zh: '一款協助教育機構數位化行政工作的自動化工具，支援上課打卡、作業指派與時數統計等功能。'
+      en: 'Independently built a LINE-based education operations tool for class reminders, homework tracking, check-ins, and attendance reports.',
+      zh: '獨立開發 LINE 教育行政工具，自動處理課程提醒、作業追蹤、打卡與出勤統計。'
     },
     fullDescription: {
       en: `
@@ -728,8 +781,8 @@ export const projects: Project[] = [
       zh: '七桃：銀髮交友應用'
     },
     description: {
-      en: 'A social and activity matching platform designed to help seniors expand their social circles and enjoy an active lifestyle.',
-      zh: '為熟齡族群打造的交友與活動媒合平台，協助長輩拓展社交圈、享受積極生活。'
+      en: 'Led a Flutter app for seniors with accessible activity discovery, personalized recommendations, and Firebase accounts.',
+      zh: '主導 Flutter 熟齡社交 App，設計易用的活動探索、個人化推薦與 Firebase 帳號功能。'
     },
     fullDescription: {
       en: `
@@ -846,8 +899,8 @@ export const projects: Project[] = [
       zh: 'LakyCarcar：解謎遊戲專案'
     },
     description: {
-      en: 'A logic-based puzzle game inspired by "Get Out the Parking Lot", challenging players to solve parking dilemmas with minimal moves.',
-      zh: '一款以邏輯為核心的解謎遊戲，靈感來自「Get Out the Parking Lot」，挑戰玩家在最少步數內解決停車困境。'
+      en: 'Built the core logic, data structures, and SFML interface for a C++ parking puzzle game.',
+      zh: '為 C++ 停車場解謎遊戲設計核心邏輯與資料結構，並以 SFML 開發互動介面。'
     },
     fullDescription: {
       en: `

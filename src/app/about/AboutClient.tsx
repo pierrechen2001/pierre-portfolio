@@ -105,20 +105,20 @@ export default function AboutClient() {
     ],
     backend: [
       { name: 'Python', color: 'bg-yellow-500 border-yellow-500 text-yellow-400' },
-      { name: 'Node.js', color: 'bg-green-600 border-green-600 text-green-400' },
       { name: 'FastAPI', color: 'bg-teal-500 border-teal-500 text-teal-400' },
       { name: 'PostgreSQL', color: 'bg-blue-400 border-blue-400 text-blue-300' },
+      { name: 'MySQL', color: 'bg-purple-500 border-purple-500 text-purple-400' },
     ],
     mobile: [
       { name: 'Flutter', color: 'bg-cyan-500 border-cyan-500 text-cyan-400' },
-      { name: 'React Native', color: 'bg-blue-400 border-blue-400 text-blue-300' },
+      { name: 'Swift', color: 'bg-orange-500 border-orange-500 text-orange-400' },
       { name: 'iOS', color: 'bg-gray-500 border-gray-500 text-gray-300' },
-      { name: 'Android', color: 'bg-green-500 border-green-500 text-green-400' },
+      { name: 'Mapbox', color: 'bg-blue-500 border-blue-500 text-blue-400' },
     ],
     ai: [
-      { name: 'Machine Learning', color: 'bg-purple-500 border-purple-500 text-purple-400' },
-      { name: 'TensorFlow', color: 'bg-orange-500 border-orange-500 text-orange-400' },
       { name: 'OpenAI API', color: 'bg-green-500 border-green-500 text-green-400' },
+      { name: 'Gemini API', color: 'bg-blue-500 border-blue-500 text-blue-400' },
+      { name: 'NLP', color: 'bg-purple-500 border-purple-500 text-purple-400' },
     ]
   };
 
@@ -193,14 +193,14 @@ export default function AboutClient() {
               </div>
             </div>
             
-            {/* 工作經歷區域 - Git Log Style - 保持不變 */}
+            {/* 工作經歷與產品時間軸 */}
             <div className="mb-32">
               <div className="flex items-center justify-center gap-3 mb-16">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[var(--primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  Commit History
+                  {t('experience_and_projects')}
                 </h2>
               </div>
               
@@ -209,6 +209,71 @@ export default function AboutClient() {
                 <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--border-color)] via-[var(--primary)]/50 to-[var(--border-color)]"></div>
 
                 <div className="space-y-20">
+                  {/* Aiii.AI */}
+                  <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                    <div className="md:text-right pt-2">
+                       <div className="inline-block px-3 py-1 rounded-full border border-[var(--primary)]/30 bg-[var(--primary)]/10 text-[var(--primary)] font-mono text-xs mb-2">
+                         {t('aiii_period')}
+                       </div>
+                       <h3 className="text-xl font-bold text-white">{t('aiii_company')}</h3>
+                       <p className="text-[var(--text-muted)] font-mono text-sm">{t('aiii_position')}</p>
+                    </div>
+                    
+                    {/* Git Node */}
+                    <div className="absolute left-8 md:left-1/2 w-4 h-4 -translate-x-[7px] md:-translate-x-[7px] mt-3 rounded-full bg-[var(--background)] border-2 border-[var(--primary)] z-10 shadow-[0_0_10px_var(--primary)]"></div>
+
+                    <div className="pl-16 md:pl-0 md:pt-2">
+                      <div className="p-6 rounded-xl bg-[var(--background-alt)]/40 border border-[var(--border-color)] hover:border-[var(--primary)]/50 transition-all duration-300 group">
+                        <div className="flex items-center gap-2 mb-4 font-mono text-xs text-[var(--text-muted)]">
+                          <span className="text-green-400">feat:</span>
+                          <span>AI Application Development</span>
+                        </div>
+                        <p className="text-sm text-gray-300">{t('aiii_summary')}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* DOGTOR */}
+                  <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                    <div className="md:order-2 pt-2">
+                       <div className="inline-block px-3 py-1 rounded-full border border-[var(--secondary)]/30 bg-[var(--secondary)]/10 text-[var(--secondary)] font-mono text-xs mb-2">
+                         {t('dogtor_period')}
+                       </div>
+                       <h3 className="text-xl font-bold text-white">
+                         <a href="https://dogtor.superb-tutor.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--secondary)] transition-colors underline decoration-[var(--secondary)]/30 hover:decoration-[var(--secondary)]">
+                           {t('dogtor_company')}
+                         </a>
+                       </h3>
+                       <p className="text-[var(--text-muted)] font-mono text-sm">{t('dogtor_position')}</p>
+                    </div>
+                    
+                    {/* Git Node */}
+                    <div className="absolute left-8 md:left-1/2 w-4 h-4 -translate-x-[7px] md:-translate-x-[7px] mt-3 rounded-full bg-[var(--background)] border-2 border-[var(--secondary)] z-10 shadow-[0_0_10px_var(--secondary)]"></div>
+
+                    <div className="pl-16 md:pl-0 md:text-right md:order-1 md:pt-2">
+                      <div className="p-6 rounded-xl bg-[var(--background-alt)]/40 border border-[var(--border-color)] hover:border-[var(--secondary)]/50 transition-all duration-300">
+                         <div className="flex items-center gap-2 mb-4 font-mono text-xs text-[var(--text-muted)] md:justify-end">
+                          <span className="text-blue-400">refactor:</span>
+                          <span>Dogtor Product Engineering</span>
+                        </div>
+                        <ul className="space-y-3 text-sm text-gray-300 inline-block text-left">
+                           <li className="flex items-start gap-2">
+                             <span className="text-[var(--secondary)] mt-1">+</span>
+                             {t('dogtor_achievement_1')}
+                           </li>
+                           <li className="flex items-start gap-2">
+                             <span className="text-[var(--secondary)] mt-1">+</span>
+                             {t('dogtor_achievement_2')}
+                           </li>
+                           <li className="flex items-start gap-2">
+                             <span className="text-[var(--secondary)] mt-1">+</span>
+                             {t('dogtor_achievement_3')}
+                           </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
                   {/* Akira Dialog Tech */}
                   <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
                     <div className="md:text-right pt-2">
@@ -223,10 +288,10 @@ export default function AboutClient() {
                     <div className="absolute left-8 md:left-1/2 w-4 h-4 -translate-x-[7px] md:-translate-x-[7px] mt-3 rounded-full bg-[var(--background)] border-2 border-[var(--primary)] z-10 shadow-[0_0_10px_var(--primary)]"></div>
 
                     <div className="pl-16 md:pl-0 md:pt-2">
-                      <div className="p-6 rounded-xl bg-[var(--background-alt)]/40 border border-[var(--border-color)] hover:border-[var(--primary)]/50 transition-all duration-300 group">
+                      <div className="p-6 rounded-xl bg-[var(--background-alt)]/40 border border-[var(--border-color)] hover:border-[var(--primary)]/50 transition-all duration-300">
                         <div className="flex items-center gap-2 mb-4 font-mono text-xs text-[var(--text-muted)]">
-                          <span className="text-green-400">feat:</span>
-                          <span>AI Dialog System Implementation</span>
+                          <span className="text-yellow-400">init:</span>
+                          <span>Backend APIs &amp; ML Data</span>
                         </div>
                         <ul className="space-y-3 text-sm text-gray-300">
                            <li className="flex items-start gap-2">
@@ -240,88 +305,6 @@ export default function AboutClient() {
                            <li className="flex items-start gap-2">
                              <span className="text-[var(--primary)] mt-1">+</span>
                              {t('akira_achievement_3')}
-                           </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Superb Tech Studio */}
-                  <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-                    <div className="md:order-2 pt-2">
-                       <div className="inline-block px-3 py-1 rounded-full border border-[var(--secondary)]/30 bg-[var(--secondary)]/10 text-[var(--secondary)] font-mono text-xs mb-2">
-                         {t('superb_tech_period')}
-                       </div>
-                       <h3 className="text-xl font-bold text-white">
-                         <a href="https://studio.superb-tutor.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--secondary)] transition-colors underline decoration-[var(--secondary)]/30 hover:decoration-[var(--secondary)]">
-                           {t('superb_tech_company')}
-                         </a>
-                       </h3>
-                       <p className="text-[var(--text-muted)] font-mono text-sm">{t('superb_tech_position')}</p>
-                    </div>
-                    
-                    {/* Git Node */}
-                    <div className="absolute left-8 md:left-1/2 w-4 h-4 -translate-x-[7px] md:-translate-x-[7px] mt-3 rounded-full bg-[var(--background)] border-2 border-[var(--secondary)] z-10 shadow-[0_0_10px_var(--secondary)]"></div>
-
-                    <div className="pl-16 md:pl-0 md:text-right md:order-1 md:pt-2">
-                      <div className="p-6 rounded-xl bg-[var(--background-alt)]/40 border border-[var(--border-color)] hover:border-[var(--secondary)]/50 transition-all duration-300">
-                         <div className="flex items-center gap-2 mb-4 font-mono text-xs text-[var(--text-muted)] md:justify-end">
-                          <span className="text-blue-400">refactor:</span>
-                          <span>System Architecture & Leadership</span>
-                        </div>
-                        <ul className="space-y-3 text-sm text-gray-300 inline-block text-left">
-                           <li className="flex items-start gap-2">
-                             <span className="text-[var(--secondary)] mt-1">+</span>
-                             {t('superb_tech_achievement_1')}
-                           </li>
-                           <li className="flex items-start gap-2">
-                             <span className="text-[var(--secondary)] mt-1">+</span>
-                             {t('superb_tech_achievement_2')}
-                           </li>
-                           <li className="flex items-start gap-2">
-                             <span className="text-[var(--secondary)] mt-1">+</span>
-                             {t('superb_tech_achievement_3')}
-                           </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Dogtor */}
-                  <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-                    <div className="md:text-right pt-2">
-                       <div className="inline-block px-3 py-1 rounded-full border border-[var(--primary)]/30 bg-[var(--primary)]/10 text-[var(--primary)] font-mono text-xs mb-2">
-                         {t('dogtor_period')}
-                       </div>
-                       <h3 className="text-xl font-bold text-white">
-                         <a href="https://dogtor.superb-tutor.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--primary)] transition-colors underline decoration-[var(--primary)]/30 hover:decoration-[var(--primary)]">
-                           {t('dogtor_company')}
-                         </a>
-                       </h3>
-                       <p className="text-[var(--text-muted)] font-mono text-sm">{t('dogtor_position')}</p>
-                    </div>
-                    
-                    {/* Git Node */}
-                    <div className="absolute left-8 md:left-1/2 w-4 h-4 -translate-x-[7px] md:-translate-x-[7px] mt-3 rounded-full bg-[var(--background)] border-2 border-[var(--primary)] z-10 shadow-[0_0_10px_var(--primary)]"></div>
-
-                    <div className="pl-16 md:pl-0 md:pt-2">
-                      <div className="p-6 rounded-xl bg-[var(--background-alt)]/40 border border-[var(--border-color)] hover:border-[var(--primary)]/50 transition-all duration-300">
-                        <div className="flex items-center gap-2 mb-4 font-mono text-xs text-[var(--text-muted)]">
-                          <span className="text-yellow-400">init:</span>
-                          <span>Dogtor Platform Launch</span>
-                        </div>
-                        <ul className="space-y-3 text-sm text-gray-300">
-                           <li className="flex items-start gap-2">
-                             <span className="text-[var(--primary)] mt-1">+</span>
-                             {t('dogtor_achievement_1')}
-                           </li>
-                           <li className="flex items-start gap-2">
-                             <span className="text-[var(--primary)] mt-1">+</span>
-                             {t('dogtor_achievement_2')}
-                           </li>
-                           <li className="flex items-start gap-2">
-                             <span className="text-[var(--primary)] mt-1">+</span>
-                             {t('dogtor_achievement_3')}
                            </li>
                         </ul>
                       </div>
@@ -441,7 +424,7 @@ export default function AboutClient() {
                      ))}
                    </div>
                    <p className="text-xs text-gray-500 leading-relaxed">
-                     Production web apps: real-time dashboards, OAuth flows, and multi-tenant SaaS platforms.
+                     {language === 'zh' ? 'React 與 Next.js 介面，涵蓋接案平台、企業系統與驗證流程。' : 'React and Next.js interfaces for matching platforms, business systems, and sign-in flows.'}
                    </p>
                  </div>
                  
@@ -459,7 +442,7 @@ export default function AboutClient() {
                      ))}
                    </div>
                    <p className="text-xs text-gray-500 leading-relaxed">
-                     RESTful APIs in production on GCP Cloud Run — designed, deployed, and maintained solo.
+                     {language === 'zh' ? '使用 FastAPI 設計 API，並以 Cloud Run、Cloud SQL 與 Firebase 支援資料流程。' : 'FastAPI services and data flows using Cloud Run, Cloud SQL, and Firebase.'}
                    </p>
                  </div>
                  
@@ -477,7 +460,7 @@ export default function AboutClient() {
                      ))}
                    </div>
                    <p className="text-xs text-gray-500 leading-relaxed">
-                     Published on the App Store (#4 Education). Built with Flutter, Swift, and React Native.
+                     {language === 'zh' ? '以 Flutter 開發 Dogtor 與 MapIt，並使用 Swift 打造 iOS 原生行事曆。' : 'Built Dogtor and MapIt with Flutter, plus a native iOS calendar with Swift.'}
                    </p>
                  </div>
                  
@@ -496,7 +479,7 @@ export default function AboutClient() {
                      <TechTagCloud tags={['System Design', 'DevOps', 'Socket']} color="text-gray-400" />
                    </div>
                    <p className="text-xs text-gray-500 leading-relaxed">
-                     OpenAI integration in production, synthetic data pipelines for ML training, NLP event parsing.
+                     {language === 'zh' ? '應用 AI 題目生成、合成資料研究與自然語言行程解析。' : 'AI question generation, synthetic data research, and natural-language event parsing.'}
                    </p>
                  </div>
               </div>

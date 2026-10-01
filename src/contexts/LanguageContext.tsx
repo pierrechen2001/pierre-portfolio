@@ -16,13 +16,13 @@ const translations = {
     // 頁面頭部
     'iam': 'I am',
     'fullname': 'Pierre Chen',
-    'description': 'Full-stack developer who ships real products. Dogtor AI reached #4 on the App Store Education chart with 10K+ users. I build across mobile (Flutter, Swift), web (React, Next.js), and AI — from zero to deployed.',
+    'description': 'AI application developer and full-stack engineer. I co-build Dogtor, a learning app with 7,000+ users, and contribute to MapIt, a social restaurant map. My work spans Flutter, FastAPI, data systems, and product experience.',
     'view_portfolio': 'View My Portfolio',
     'contact_me': 'Contact Me',
     
     // 作品集區塊
     'my_portfolio': 'My Portfolio',
-    'portfolio_description': 'From App Store launches to enterprise ERPs — I ship production products across mobile, web, and AI. Every project here is live and used by real people.',
+    'portfolio_description': 'From Dogtor and the MapIt capstone to iOS and business tools, these projects show the problems I worked on and my contribution to each team.',
     'view_all_projects': 'View All Projects',
     'view_details': 'View Details',
     
@@ -32,7 +32,7 @@ const translations = {
     'planned': 'Planned',
     
     // 頁腳
-    'about_me': 'Full-stack developer shipping products from concept to App Store. 10K+ users. Cross-platform: mobile, web & AI.',
+    'about_me': 'Full-stack developer building mobile apps, web platforms, and AI learning tools from idea to release.',
     'quick_links': 'Quick Links',
     'home': 'Home',
     'portfolio': 'Portfolio',
@@ -43,12 +43,13 @@ const translations = {
     
     // About 頁面
     'about_page_title': 'About Me',
-    'about_page_description': 'Chemistry → Computer Science. I pivoted from lab research to building apps used by thousands — including an AI learning app ranked #4 in App Store Education with 10K+ users.',
+    'about_page_description': 'From chemistry research to information management and AI application development, with experience across product, data, and mobile engineering.',
     'who_am_i': 'Who Am I',
-    'about_intro_1': 'Hi, I\'m Pierre — a full-stack developer who builds and ships products end-to-end. My AI learning app Dogtor reached #4 in App Store Education with 10K+ users. I work across mobile (Flutter, Swift), web (React, Next.js), and AI integration.',
-    'about_intro_2': 'I believe the best products come from deeply understanding problems, not just writing code. My background in Chemistry research trained me to approach systems analytically — a mindset I now apply directly to software architecture and product decisions.',
-    'about_intro_3': 'Beyond coding, I enjoy photography and traveling — they keep me observant and creative. I\'m always building side projects to explore new tech, because the best way to learn is to ship something real.',
+    'about_intro_1': 'Hi, I\'m Pierre. I am an AI Application Developer Intern at Aiii.AI and a co-founder and software engineer building Dogtor. Dogtor has reached 7,000+ users and #4 in App Store Education.',
+    'about_intro_2': 'My path began in chemistry research and continued into information management. I use that research mindset to map user problems, design data flows, and test product decisions before refining the implementation.',
+    'about_intro_3': 'At Akira Dialog Tech, I worked on backend APIs and synthetic-data research. I also contribute to MapIt, an ongoing NTU capstone that turns restaurant links into a social map, and have built client and education tools through Superb Education.',
     'work_experience': 'Work Experience',
+    'experience_and_projects': 'Experience & Products',
     'education': 'Education',
     'skills': 'Professional Skills',
     'frontend_dev': 'Frontend Development',
@@ -57,43 +58,39 @@ const translations = {
     'other_skills': 'Other Skills',
     
     // 工作經歷詳細內容
+    'aiii_position': 'AI Application Developer Intern',
+    'aiii_company': 'Aiii.AI',
+    'aiii_period': 'Sep 2026 - Present',
+    'aiii_summary': 'AI application development internship in Taipei.',
     'akira_position': 'Software Engineer Intern',
     'akira_company': 'Akira Dialog Tech Inc.',
     'akira_location': 'Taipei, Taiwan',
-    'akira_period': 'Oct 2025 - Present',
+    'akira_period': 'Oct 2025 - Jan 2026',
     'akira_description': 'Software engineering intern focused on backend API development and machine learning data enhancement.',
-    'akira_achievement_1': 'Designed and implemented RESTful APIs for mobile number verification and user profile management, including backend database schema planning and integration with SMS service providers',
-    'akira_achievement_2': 'Conducted end-to-end research on synthetic data generation for machine learning model enhancement - proposed methodology, designed labeling strategies, generated training datasets, and optimized model training pipelines',
+    'akira_achievement_1': 'Built REST APIs for profile management and Firebase-backed SMS authentication, including database schemas and validation flows',
+    'akira_achievement_2': 'Researched synthetic data and text mining for model training and evaluation, from generation methods to labeling and pipeline design',
     'akira_achievement_3': 'Collaborated cross-functionally with frontend engineers to define API specifications, review QA checklists, and establish an efficient backend-frontend integration workflow',
     
-    'superb_tech_position': 'Technical Developer',
-    'superb_tech_company': 'Superb Tech Studio',
-    'superb_tech_period': 'Aug 2025 - Present',
-    'superb_tech_description': 'Full-stack development and technical consulting for technology projects.',
-    'superb_tech_achievement_1': 'Developed custom web applications and automation tools for institutions',
-    'superb_tech_achievement_2': 'Implemented API integrations and database optimization solutions',
-    'superb_tech_achievement_3': 'Provided technical consulting and code reviews for client projects',
+    'dogtor_position': 'Co-Founder & Software Engineer',
+    'dogtor_company': 'SuperB Software Technology — DOGTOR',
+    'dogtor_period': 'Apr 2026 - Present',
+    'dogtor_description': 'Co-founded Dogtor and built AI features, backend data systems, and the student learning product.',
+    'dogtor_achievement_1': 'Scaled Dogtor to 7,000+ users and 2,600 monthly active users; reached #4 in App Store Education',
+    'dogtor_achievement_2': 'Owned knowledge-point models, LLM orchestration, event collection, FastAPI APIs, and Cloud Run / Cloud SQL deployment',
+    'dogtor_achievement_3': 'Built paid parent analytics that turns learning data into AI-generated weakness analyses and guidance',
     
-    'dogtor_position': 'Dogtor Full-Stack Engineer',
-    'dogtor_company': 'AI Learning Application Development Team',
-    'dogtor_period': '2025 - Present',
-    'dogtor_description': 'Participated in full-stack development of the Dogtor project, combining Flutter, FastAPI, and MySQL to build a student learning platform deployed on GCP.',
-    'dogtor_achievement_1': 'Built personalized error tracking system powering Dogtor AI — ranked #4 in App Store Education with 10K+ active users',
-    'dogtor_achievement_2': 'Deployed and maintained scalable FastAPI backend on GCP Cloud Run, reliably serving 10K+ users',
-    'dogtor_achievement_3': 'Integrated OpenAI API for AI-powered question generation and real-time adaptive feedback',
-    
-    'superb_position': 'Founder & Technical Developer',
-    'superb_company': 'Superb Education',
-    'superb_period': '2023 - Present',
-    'superb_description': 'Independently developed LINE chatbot and teaching platform to assist high school students in learning mathematics and English, integrated Google Sheets API for attendance and assignment tracking.',
-    'superb_achievement_1': 'Built LINE chatbot with Python integrating LINE Message API and Google Sheets API, automating class reminders and assignment tracking for hundreds of students',
-    'superb_achievement_2': 'Independently deployed full backend to Heroku, maintaining stable uptime for all students and instructors',
-    'superb_achievement_3': 'Designed and launched company website, driving student enrollment for the tutoring platform',
+    'superb_position': 'Founder & Technology Developer',
+    'superb_company': 'Superb Education / Superb Tech Studio',
+    'superb_period': 'Aug 2023 - Present',
+    'superb_description': 'Founded an education and software organization that delivers client projects and builds automation for learning operations.',
+    'superb_achievement_1': 'Founded and led a 20-person education and software organization',
+    'superb_achievement_2': 'Delivered 10+ client projects across education and software workflows',
+    'superb_achievement_3': 'Built Python, LINE, and Google Sheets automation for operations and learning-progress tracking',
     
     // 教育背景
     'ntu_degree': 'Bachelor of Information Management',
     'ntu_school': 'National Taiwan University',
-    'ntu_period': '2023 - Expected 2027',
+    'ntu_period': '2023 - Expected Dec 2026',
     'ntu_description': 'Majoring in Information Management, studying software engineering, database systems, deep learning, and human-computer interaction, actively participating in programming competitions and application project development.',
     'ntu_achievement_1': 'Developed multiple AI education and social impact application projects',
     'ntu_achievement_2': 'Served as teaching assistant for "Disaster Risk Management" course',
@@ -106,7 +103,7 @@ const translations = {
     
     // Projects 頁面
     'projects_page_title': 'Projects',
-    'projects_page_description': 'Explore my portfolio of projects showcasing my skills and experience.',
+    'projects_page_description': 'Eight projects spanning AI learning, a social map, mobile apps, business systems, and education tools. Open a project to see the work and implementation.',
     'all_projects': 'All Projects',
     'featured_projects': 'Featured Projects',
     'project_details': 'Project Details',
@@ -166,13 +163,13 @@ const translations = {
     // 頁面頭部
     'iam': '我是',
     'fullname': 'Pierre Chen',
-    'description': '從 0 到上架的全端開發者。Dogtor AI 在 App Store 教育類排名第 4，累積超過 10K 用戶。橫跨行動端（Flutter、Swift）、Web（React、Next.js）與 AI 整合，每個作品都已上線。',
+    'description': '我在 Aiii.AI 擔任 AI 應用開發實習生，也參與 Dogtor 與 MapIt 的產品開發。Dogtor 累積超過 7,000 位用戶；我的工作涵蓋 Flutter、FastAPI、資料系統與產品體驗。',
     'view_portfolio': '查看我的作品',
     'contact_me': '聯繫我',
     
     // 作品集區塊
     'my_portfolio': '我的作品集',
-    'portfolio_description': '從 App Store 上架到企業 ERP——每個專案都已部署上線，服務真實用戶。涵蓋行動端、Web 與 AI 整合。',
+    'portfolio_description': '從 Dogtor、MapIt 專題到 iOS 與企業工具，這些作品呈現我參與的問題、實際分工與技術實作。',
     'view_all_projects': '查看所有作品',
     'view_details': '查看詳情',
     
@@ -182,7 +179,7 @@ const translations = {
     'planned': '計劃中',
     
     // 頁腳
-    'about_me': '從概念到上架，獨立交付產品的全端開發者。10K+ 用戶。行動端、Web 與 AI 全覆蓋。',
+    'about_me': '開發行動應用、網頁平台與 AI 學習工具，參與產品從構想到發布的過程。',
     'quick_links': '快速連結',
     'home': '首頁',
     'portfolio': '作品集',
@@ -193,12 +190,13 @@ const translations = {
     
     // About 頁面
     'about_page_title': '關於我',
-    'about_page_description': '化學系轉資訊管理。從實驗室研究到打造萬人使用的 App——包含 App Store 教育類第 4 名的 AI 學習平台。',
+    'about_page_description': '從化學研究轉向資訊管理與 AI 應用開發，累積產品、資料與行動端的實作經驗。',
     'who_am_i': '我是誰',
-    'about_intro_1': '嗨，我是 Pierre，一名從開發到上線都自己搞定的全端開發者。我打造的 AI 學習應用 Dogtor 在 App Store 教育類排名第 4，累積超過 10K 活躍用戶。專攻行動端（Flutter、Swift）、Web（React、Next.js）與 AI 整合。',
-    'about_intro_2': '我相信最好的產品來自深入理解問題，而不只是寫程式。化學系的研究訓練讓我學會以假設驅動、系統化的角度思考——這個能力現在直接體現在我的軟體架構與產品決策上。',
-    'about_intro_3': '工作之外，我喜歡攝影和旅行——這讓我保持觀察力和創造力。我也持續做 side project 探索新技術，因為學習最好的方式就是把東西做出來。',
+    'about_intro_1': '嗨，我是 Pierre，目前在 Aiii.AI 擔任 AI 應用開發實習生，也是 Dogtor 的共同創辦人與軟體工程師。Dogtor 已累積超過 7,000 位用戶，曾登上 App Store 教育類第 4 名。',
+    'about_intro_2': '我從化學研究走進資訊管理。研究訓練讓我習慣先釐清問題、整理資料流程，再設計系統並反覆驗證產品決策。',
+    'about_intro_3': '曾在皓談心理科技投入後端 API 與合成資料研究；目前也參與 MapIt 臺大資管專題，把餐廳連結轉成可與好友分享的地圖收藏，並透過精湛教育開發客戶與教學工具。',
     'work_experience': '工作經歷',
+    'experience_and_projects': '經歷與產品',
     'education': '教育背景',
     'skills': '專業技能',
     'frontend_dev': '前端開發',
@@ -207,43 +205,39 @@ const translations = {
     'other_skills': '其他技能',
     
     // 工作經歷詳細內容
+    'aiii_position': 'AI 應用開發實習生',
+    'aiii_company': 'Aiii.AI',
+    'aiii_period': '2026年9月 - 現在',
+    'aiii_summary': '於台北參與 AI 應用開發實習。',
     'akira_position': '軟體工程實習生',
     'akira_company': '皓談心理科技',
     'akira_location': '台北，台灣',
-    'akira_period': '2025年10月 - 現在',
+    'akira_period': '2025年10月 - 2026年1月',
     'akira_description': '專注於後端 API 開發與機器學習資料增強的軟體工程實習生。',
-    'akira_achievement_1': '設計並實作手機號碼驗證與用戶資料管理的 RESTful API，包含後端資料庫架構規劃及與簡訊服務商的整合',
-    'akira_achievement_2': '進行端到端的合成資料生成研究以增強機器學習模型 - 提出方法論、設計標註策略、生成訓練資料集，並優化模型訓練流程',
+    'akira_achievement_1': '建置用戶資料管理與 Firebase 簡訊驗證 API，包含資料庫結構與驗證流程',
+    'akira_achievement_2': '研究模型訓練與評估用的合成資料及文本探勘，涵蓋生成方法、標註與流程設計',
     'akira_achievement_3': '跨職能協作前端工程師，定義 API 規格、審查 QA 檢查清單，並建立高效的前後端整合工作流程',
     
-    'superb_tech_position': '技術開發',
-    'superb_tech_company': '精湛資訊工作室',
-    'superb_tech_period': '2025年8月 - 現在',
-    'superb_tech_description': '為科技專案提供全端開發與技術顧問服務。',
-    'superb_tech_achievement_1': '為機構開發客製化網頁應用與自動化工具',
-    'superb_tech_achievement_2': '實作 API 整合與資料庫優化解決方案',
-    'superb_tech_achievement_3': '為客戶專案提供技術諮詢與程式碼審查',
+    'dogtor_position': '共同創辦人暨軟體工程師',
+    'dogtor_company': 'SuperB Software Technology — DOGTOR 逗課',
+    'dogtor_period': '2026年4月 - 現在',
+    'dogtor_description': '共同創辦 Dogtor，開發 AI 功能、後端資料系統與學生學習產品。',
+    'dogtor_achievement_1': 'Dogtor 累積超過 7,000 位用戶、每月 2,600 位活躍用戶，曾登上 App Store 教育類第 4 名',
+    'dogtor_achievement_2': '負責知識點模型、LLM 編排、事件蒐集、FastAPI API，以及 Cloud Run／Cloud SQL 部署',
+    'dogtor_achievement_3': '開發付費家長分析功能，將學習資料轉成 AI 弱點分析與個人化建議',
     
-    'dogtor_position': 'Dogtor 全端工程師',
-    'dogtor_company': 'AI 學習應用開發團隊',
-    'dogtor_period': '2025年 - 現在',
-    'dogtor_description': '參與 Dogtor 專案的全端開發，結合 Flutter、FastAPI 和 MySQL 建構學生學習平台，並部署於 GCP。',
-    'dogtor_achievement_1': '建置個人化錯題追蹤系統，支撐 Dogtor AI 平台——App Store 教育類排名第 4，突破 10K 活躍用戶',
-    'dogtor_achievement_2': '在 GCP Cloud Run 部署並維護可擴展 FastAPI 後端，穩定服務超過 10K 用戶',
-    'dogtor_achievement_3': '整合 OpenAI API 實作 AI 題目生成與即時自適應回饋功能',
-    
-    'superb_position': '創辦人兼技術開發',
-    'superb_company': '精湛教育',
-    'superb_period': '2023年 - 現在',
-    'superb_description': '獨立開發 LINE 聊天機器人與教學平台，協助高中生學習數理與英文，並整合 Google Sheet API 進行出勤與作業追蹤。',
-    'superb_achievement_1': '用 Python 串接 LINE Message API 與 Google Sheets API，打造 LINE 聊天機器人，自動化數百位高中生的課程提醒與作業追蹤',
-    'superb_achievement_2': '獨立將完整後端部署至 Heroku，為所有學生與講師維持穩定服務',
-    'superb_achievement_3': '設計並上線公司官方網站，推動學生報名與品牌曝光',
+    'superb_position': '創辦人暨技術開發',
+    'superb_company': '精湛教育／精湛資訊工作室',
+    'superb_period': '2023年8月 - 現在',
+    'superb_description': '創辦教育與軟體團隊，交付客戶專案，並開發教學營運自動化工具。',
+    'superb_achievement_1': '創辦並帶領 20 人教育與軟體團隊',
+    'superb_achievement_2': '交付超過 10 個教育與軟體客戶專案',
+    'superb_achievement_3': '以 Python、LINE 與 Google Sheets 開發營運及學習進度追蹤自動化工具',
     
     // 教育背景
     'ntu_degree': '資訊管理學士',
     'ntu_school': '國立台灣大學',
-    'ntu_period': '2023年 - 預計2027年',
+    'ntu_period': '2023年 - 預計2026年12月',
     'ntu_description': '主修資訊管理，修習軟體工程、資料庫系統、深度學習與人機互動等課程，積極參與校內外程式設計競賽與應用專題開發。',
     'ntu_achievement_1': '開發多個 AI 教育與社會影響應用專案',
     'ntu_achievement_2': '擔任「災害風險管理」課程助教',
@@ -256,7 +250,7 @@ const translations = {
     
     // Projects 頁面
     'projects_page_title': '專案作品',
-    'projects_page_description': '探索我的作品集，展示我的技能和經驗。',
+    'projects_page_description': '收錄八個 AI 學習、社交地圖、行動應用、企業系統與教育工具專案。點進作品查看開發內容與實作方式。',
     'all_projects': '所有專案',
     'featured_projects': '精選專案',
     'project_details': '專案詳情',
@@ -354,4 +348,4 @@ export function useLanguage() {
     throw new Error('useLanguage must be used within a LanguageProvider');
   }
   return context;
-} 
+}

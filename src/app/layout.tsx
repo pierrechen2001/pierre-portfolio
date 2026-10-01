@@ -17,10 +17,10 @@ const robotoMono = Roboto_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Pierre Chen - 全端開發者 | AI 與 App 開發專家",
+    default: "Pierre Chen - 全端開發者 | 行動應用、Web 與 AI 作品集",
     template: "%s | Pierre Chen"
   },
-  description: "Pierre Chen 是一位專注於 AI 與 App 開發的全端開發者，擅長 Flutter、React、Next.js 等技術，致力於創造有意義的產品解決真實世界問題。",
+  description: "Pierre Chen 的作品集：Aiii.AI 實習、DOGTOR AI 學習應用、MapIt 社交地圖與全端開發專案。",
   keywords: [
     "Pierre Chen", "全端開發者", "AI開發", "App開發", "Flutter", "React", "Next.js", 
     "軟體工程師", "作品集", "portfolio", "full-stack developer", "software engineer",
@@ -34,11 +34,11 @@ export const metadata: Metadata = {
     canonical: 'https://www.pierre-chen.com/',
   },
   openGraph: {
-    title: "Pierre Chen - 全端開發者 | AI 與 App 開發專家",
-    description: "Pierre Chen 是一位專注於 AI 與 App 開發的全端開發者，擅長 Flutter、React、Next.js 等技術，致力於創造有意義的產品解決真實世界問題。",
+    title: "Pierre Chen - 全端開發者 | 行動應用、Web 與 AI 作品集",
+    description: "Pierre Chen 的開發作品集：DOGTOR AI 學習應用、MapIt 社交地圖與全端開發專案。",
     url: 'https://www.pierre-chen.com/',
     siteName: "Pierre Chen Portfolio",
-    locale: 'en_US',
+    locale: 'zh_TW',
     type: 'website',
     images: [
       {
@@ -51,8 +51,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Pierre Chen - 全端開發者 | AI 與 App 開發專家",
-    description: "Pierre Chen 是一位專注於 AI 與 App 開發的全端開發者，擅長 Flutter、React、Next.js 等技術。",
+    title: "Pierre Chen - 全端開發者 | 行動應用、Web 與 AI 作品集",
+    description: "Pierre Chen 的開發作品集：DOGTOR AI 學習應用、MapIt 社交地圖與全端開發專案。",
     images: ['/og-image.png'],
   },
   robots: {
@@ -79,11 +79,11 @@ export default function RootLayout({
     "name": "Pierre Chen",
     "url": "https://www.pierre-chen.com",
     "sameAs": [
-      "https://github.com/guanyu1123",
-      "https://www.linkedin.com/in/guanyu-chen/"
+      "https://github.com/pierrechen2001",
+      "https://www.linkedin.com/in/guanyu-chen-989117303/"
     ],
     "jobTitle": "Full-Stack Developer / AI Developer",
-    "description": "Pierre Chen 是一位專注於 AI 與 App 開發的全端開發者，擅長 Flutter、React、Next.js 等技術，致力於創造有意義的產品解決真實世界問題。",
+    "description": "Pierre Chen 在 Aiii.AI 擔任 AI 應用開發實習生，並參與 DOGTOR 與 MapIt 的產品開發。",
     "worksFor": {
       "@type": "Organization",
       "name": "Superb Education"
