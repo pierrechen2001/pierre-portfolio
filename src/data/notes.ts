@@ -451,9 +451,9 @@ This blog post is the first footprint of that journey.`,
   It helped me debug JSON, refactor code, understand obscure API docs, and even walk through flow design logic.
   
   So yes—**SuperBot is Superb Education’s first digital staff member**,  
-  and ChatGPT is its secret co-founder 🤝
+  and ChatGPT is its secret co-founder :handshake:
    
-  I bow to AI. I debugged, it answered. I questioned, it delivered. SuperBot? It’s our first joint startup. 🚀🤖`,
+  I bow to AI. I debugged, it answered. I questioned, it delivered. SuperBot? It’s our first joint startup. :rocket::bot:`,
       zh: `## 為什麼要開發 SuperBot？
   
   在創辦 **精湛教育** 的初期，我花了大量時間在處理學生的出缺勤紀錄、功課追蹤、進度回報，甚至要一一回覆「老師我幾點要補課」這種訊息。  
@@ -547,7 +547,7 @@ This blog post is the first footprint of that journey.`,
   **SuperBot 可以說是我和 ChatGPT 一起打造出的「精湛教育第一位數位員工」。**
   
   不請假、不怠惰、準時上工，還永遠記得每個學生的名字——  
-  感恩 AI，讚嘆 AI，這不只是開發，是我們與機器人的合作新時代 🛠️🤖`
+  感恩 AI，讚嘆 AI，這不只是開發，是我們與機器人的合作新時代 :wrench::bot:`
     },
     category: {
       en: 'Development',

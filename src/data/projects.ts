@@ -1,3 +1,5 @@
+import type { IconName } from '@/components/InteractiveIcon';
+
 export interface Project {
   id: string;
   title: {
@@ -31,13 +33,13 @@ export interface Project {
       title: string;
       description: string;
       type: 'achievement' | 'skill' | 'learning';
-      icon?: string;
+      icon?: IconName;
     }[];
     zh: {
       title: string;
       description: string;
       type: 'achievement' | 'skill' | 'learning';
-      icon?: string;
+      icon?: IconName;
     }[];
   };
   githubUrl?: string;
@@ -108,14 +110,14 @@ export const projects: Project[] = [
     },
     milestones: {
       en: [
-        { title: 'Map experience', description: 'Integrated Mapbox and refined map gestures, saved pins, and place discovery in the Flutter app.', type: 'skill', icon: '🗺️' },
-        { title: 'Link understanding', description: 'Improved prompts and post-processing in the AI-assisted link-to-place pipeline.', type: 'skill', icon: '🔗' },
-        { title: 'Social and performance flows', description: 'Worked on profiles, shared-visit records, caching, and saved-place loading.', type: 'achievement', icon: '⚡' }
+        { title: 'Map experience', description: 'Integrated Mapbox and refined map gestures, saved pins, and place discovery in the Flutter app.', type: 'skill', icon: 'map' },
+        { title: 'Link understanding', description: 'Improved prompts and post-processing in the AI-assisted link-to-place pipeline.', type: 'skill', icon: 'link' },
+        { title: 'Social and performance flows', description: 'Worked on profiles, shared-visit records, caching, and saved-place loading.', type: 'achievement', icon: 'zap' }
       ],
       zh: [
-        { title: '地圖體驗', description: '導入 Mapbox，調整 Flutter 地圖手勢、收藏圖釘與地點探索體驗。', type: 'skill', icon: '🗺️' },
-        { title: '連結理解', description: '優化 AI 輔助連結解析流程的提示詞與後處理。', type: 'skill', icon: '🔗' },
-        { title: '社交與效能流程', description: '參與個人檔案、共同造訪紀錄、快取及收藏載入改善。', type: 'achievement', icon: '⚡' }
+        { title: '地圖體驗', description: '導入 Mapbox，調整 Flutter 地圖手勢、收藏圖釘與地點探索體驗。', type: 'skill', icon: 'map' },
+        { title: '連結理解', description: '優化 AI 輔助連結解析流程的提示詞與後處理。', type: 'skill', icon: 'link' },
+        { title: '社交與效能流程', description: '參與個人檔案、共同造訪紀錄、快取及收藏載入改善。', type: 'achievement', icon: 'zap' }
       ]
     }
   },
@@ -190,31 +192,31 @@ export const projects: Project[] = [
           title: 'Owned AI Features and Data Systems',
           description: 'Built knowledge-point models, LLM orchestration, event collection, and production APIs for the learning experience.',
           type: 'achievement',
-          icon: '🚀'
+          icon: 'rocket'
         },
         {
           title: 'Cloud Infrastructure',
           description: 'Deployed scalable backend and database on Google Cloud Run and Cloud SQL.',
           type: 'skill',
-          icon: '☁️'
+          icon: 'cloud'
         },
         {
           title: 'Built RESTful APIs with FastAPI',
           description: 'Developed efficient, well-documented APIs with FastAPI, enabling seamless communication between frontend and backend.',
           type: 'learning',
-          icon: '⚡'
+          icon: 'zap'
         },
         {
           title: 'Database Design & Analytics',
           description: 'Designed MySQL schema for learning progress tracking, enabling error analysis and personalized learning paths.',
           type: 'skill',
-          icon: '🗄️'
+          icon: 'database'
         },
         {
           title: 'App Store Launch',
           description: 'Successfully launched on App Store, ranked #4 in Education category.',
           type: 'achievement',
-          icon: '🏆'
+          icon: 'trophy'
         }
       ],
       zh: [
@@ -222,31 +224,31 @@ export const projects: Project[] = [
           title: '負責 AI 功能與資料系統',
           description: '建立知識點模型、LLM 編排、事件蒐集與正式環境 API，支援學生學習體驗。',
           type: 'achievement',
-          icon: '🚀'
+          icon: 'rocket'
         },
         {
           title: '雲端架構部署',
           description: '使用 Google Cloud Run 與 Cloud SQL 部署具可擴展性的後端與資料庫。',
           type: 'skill',
-          icon: '☁️'
+          icon: 'cloud'
         },
         {
           title: '打造 FastAPI RESTful API',
           description: '開發高效能、帶有自動文件的 REST API，串接前後端功能。',
           type: 'learning',
-          icon: '⚡'
+          icon: 'zap'
         },
         {
           title: '資料庫設計與學習分析',
           description: '設計 MySQL 資料庫結構，支援錯題分析與個人化學習路徑。',
           type: 'skill',
-          icon: '🗄️'
+          icon: 'database'
         },
         {
           title: 'App Store 上架',
           description: '成功上架 App Store，教育類排名第 4 名。',
           type: 'achievement',
-          icon: '🏆'
+          icon: 'trophy'
         }
       ]
     },
@@ -339,31 +341,31 @@ export const projects: Project[] = [
           title: 'Full-Stack Platform Development',
           description: 'Collaborated on building a complete commercial outsourcing platform from scratch, handling complex business logic including payment flows and state management.',
           type: 'achievement',
-          icon: '🚀'
+          icon: 'rocket'
         },
         {
           title: 'Real-time Communication Integration',
           description: 'Implemented Socket.io for instant messaging, enabling seamless communication between clients and engineers within the platform.',
           type: 'skill',
-          icon: '💬'
+          icon: 'message'
         },
         {
           title: 'Authentication & Authorization System',
           description: 'Integrated NextAuth.js with email verification and Google OAuth, ensuring secure user authentication and authorization.',
           type: 'skill',
-          icon: '🔐'
+          icon: 'key'
         },
         {
           title: 'Token-based Payment System',
           description: 'Developed a digital token management system for viewing proposals, submitting proposals, and unlocking contact information with automated refund logic.',
           type: 'learning',
-          icon: '💰'
+          icon: 'coins'
         },
         {
           title: 'AI-powered Matching',
           description: 'Integrated Google Gemini API to provide intelligent project recommendations and matching between clients and engineers.',
           type: 'learning',
-          icon: '🤖'
+          icon: 'bot'
         }
       ],
       zh: [
@@ -371,31 +373,31 @@ export const projects: Project[] = [
           title: '全端平台開發',
           description: '參與從零開始建立完整的商業外包接案平台，處理包含付費流程與狀態管理等複雜商業邏輯。',
           type: 'achievement',
-          icon: '🚀'
+          icon: 'rocket'
         },
         {
           title: '即時通訊系統整合',
           description: '實作 Socket.io 即時訊息功能，讓發案者與接案者能在平台內無縫溝通。',
           type: 'skill',
-          icon: '💬'
+          icon: 'message'
         },
         {
           title: '認證與授權系統',
           description: '整合 NextAuth.js 與 Email 驗證、Google OAuth，確保使用者認證與授權的安全性。',
           type: 'skill',
-          icon: '🔐'
+          icon: 'key'
         },
         {
           title: '代幣付費系統',
           description: '開發數位代幣管理系統，用於查看提案、提交提案與解鎖聯絡方式，並實作自動退款邏輯。',
           type: 'learning',
-          icon: '💰'
+          icon: 'coins'
         },
         {
           title: 'AI 智慧媒合',
           description: '整合 Google Gemini API 提供智慧專案推薦與媒合功能，協助發案者與接案者快速配對。',
           type: 'learning',
-          icon: '🤖'
+          icon: 'bot'
         }
       ]
     },
@@ -472,25 +474,25 @@ export const projects: Project[] = [
           title: 'Built iOS-native Calendar App',
           description: 'Developed aiPlanner using Swift with Apple-style UI and smooth user experience.',
           type: 'achievement',
-          icon: '📱'
+          icon: 'smartphone'
         },
         {
           title: 'Implemented Natural Language Parsing',
           description: 'Enabled users to create events with simple text or voice inputs.',
           type: 'skill',
-          icon: '🗣️'
+          icon: 'speech'
         },
         {
           title: 'Integrated Supabase',
           description: 'Added authentication and shared event storage via Supabase.',
           type: 'learning',
-          icon: '🛠️'
+          icon: 'wrench'
         },
         {
           title: 'Enhanced Privacy with iCloud',
           description: 'Leveraged iCloud sync for secure, private personal events.',
           type: 'skill',
-          icon: '🔒'
+          icon: 'lock'
         }
       ],
       zh: [
@@ -498,25 +500,25 @@ export const projects: Project[] = [
           title: '開發 iOS 原生行事曆應用',
           description: '以 Swift 打造 aiPlanner，提供 Apple 風格的流暢體驗。',
           type: 'achievement',
-          icon: '📱'
+          icon: 'smartphone'
         },
         {
           title: '導入自然語言解析',
           description: '支援以簡單文字或語音快速建立事件。',
           type: 'skill',
-          icon: '🗣️'
+          icon: 'speech'
         },
         {
           title: '整合 Supabase',
           description: '透過 Supabase 提供帳號驗證與共享事件儲存。',
           type: 'learning',
-          icon: '🛠️'
+          icon: 'wrench'
         },
         {
           title: '強化隱私與 iCloud 同步',
           description: '利用 iCloud 確保個人事件安全私密同步。',
           type: 'skill',
-          icon: '🔒'
+          icon: 'lock'
         }
       ]
     },
@@ -599,25 +601,25 @@ export const projects: Project[] = [
           title: 'First End-to-End ERP System',
           description: 'Designed and developed a complete ERP system tailored for a real-world pest control business.',
           type: 'achievement',
-          icon: '💼'
+          icon: 'briefcase'
         },
         {
           title: 'Firebase Ecosystem Mastery',
           description: 'Utilized Firebase Authentication for secure login, Firestore for real-time data, and Firebase Rules for access control.',
           type: 'skill',
-          icon: '🔥'
+          icon: 'flame'
         },
         {
           title: 'TypeScript in Production',
           description: 'Implemented TypeScript in a real-world application, ensuring type safety and reducing runtime errors.',
           type: 'skill',
-          icon: '📝'
+          icon: 'notebook'
         },
         {
           title: 'Business Workflow Understanding',
           description: 'Gained deep understanding of ERP workflows in the pest control industry, including scheduling, field operations, and reporting.',
           type: 'learning',
-          icon: '📊'
+          icon: 'chart'
         }
       ],
       zh: [
@@ -625,25 +627,25 @@ export const projects: Project[] = [
           title: '首個端到端 ERP 系統',
           description: '設計並開發專為真實害蟲防治公司量身打造的完整 ERP 系統。',
           type: 'achievement',
-          icon: '💼'
+          icon: 'briefcase'
         },
         {
           title: 'Firebase 生態系統精通',
           description: '掌握 Firebase Authentication 用戶登入、Firestore 即時資料管理，以及 Firebase Rules 權限控管。',
           type: 'skill',
-          icon: '🔥'
+          icon: 'flame'
         },
         {
           title: 'TypeScript 生產環境應用',
           description: '於真實專案中導入 TypeScript，確保型別安全並降低執行時錯誤。',
           type: 'skill',
-          icon: '📝'
+          icon: 'notebook'
         },
         {
           title: '商業流程理解',
           description: '深入了解 ERP 系統在害蟲防治產業的實際運作，包括排程、外勤作業與報表分析。',
           type: 'learning',
-          icon: '📊'
+          icon: 'chart'
         }
       ]
     },
@@ -722,25 +724,25 @@ export const projects: Project[] = [
           title: 'Independent System Development',
           description: 'Designed, built, and deployed the entire system independently, from backend logic to LINE chatbot integration.',
           type: 'achievement',
-          icon: '💻'
+          icon: 'laptop'
         },
         {
           title: 'Google Sheets Integration',
           description: 'Used Google Sheets as a real-time database to enable collaborative data management.',
           type: 'skill',
-          icon: '📊'
+          icon: 'chart'
         },
         {
           title: 'Deployment on Heroku',
           description: 'Learned and applied cloud deployment techniques, making the system publicly accessible.',
           type: 'skill',
-          icon: '☁️'
+          icon: 'cloud'
         },
         {
           title: 'Automating Admin Workflows',
           description: 'Automated routine administrative tasks, significantly improving efficiency for teachers and staff.',
           type: 'achievement',
-          icon: '⚙️'
+          icon: 'settings'
         }
       ],
       zh: [
@@ -748,25 +750,25 @@ export const projects: Project[] = [
           title: '獨立開發全系統',
           description: '從後端邏輯到 LINE 聊天機器人整合，獨立設計、開發與部署整個系統。',
           type: 'achievement',
-          icon: '💻'
+          icon: 'laptop'
         },
         {
           title: 'Google Sheets 整合',
           description: '將 Google Sheets 作為即時資料庫，支援多人協作的數據管理。',
           type: 'skill',
-          icon: '📊'
+          icon: 'chart'
         },
         {
           title: 'Heroku 雲端部署',
           description: '學習並實作雲端部署技術，讓系統可供公開訪問。',
           type: 'skill',
-          icon: '☁️'
+          icon: 'cloud'
         },
         {
           title: '行政流程自動化',
           description: '自動化處理例行行政工作，大幅提升教師與行政人員的效率。',
           type: 'achievement',
-          icon: '⚙️'
+          icon: 'settings'
         }
       ]
     },
@@ -841,25 +843,25 @@ export const projects: Project[] = [
           title: 'Founder & Product Lead',
           description: 'Drove the entire project from ideation to development, leading a cross-functional team and managing product vision.',
           type: 'achievement',
-          icon: '👑'
+          icon: 'crown'
         },
         {
           title: 'Senior-Centric UX Design',
           description: 'Designed a user interface specifically for older adults, ensuring accessibility, simplicity, and usability.',
           type: 'skill',
-          icon: '🎨'
+          icon: 'palette'
         },
         {
           title: 'Recommendation System Integration',
           description: 'Developed a personalized activity recommendation algorithm that considers user interests, friends\\\' participation, and location proximity.',
           type: 'learning',
-          icon: '🤖'
+          icon: 'bot'
         },
         {
           title: 'Social Innovation Impact',
           description: 'Addressed real-world aging society challenges by creating a solution that promotes active aging and social engagement.',
           type: 'achievement',
-          icon: '❤️'
+          icon: 'heart'
         }
       ],
       zh: [
@@ -867,25 +869,25 @@ export const projects: Project[] = [
           title: '創辦人與產品負責人',
           description: '從概念發想到開發實作全程主導專案，領導跨領域團隊並管理產品方向。',
           type: 'achievement',
-          icon: '👑'
+          icon: 'crown'
         },
         {
           title: '銀髮友善 UX 設計',
           description: '專為熟齡族群設計的使用者介面，確保無障礙、簡潔與易用性。',
           type: 'skill',
-          icon: '🎨'
+          icon: 'palette'
         },
         {
           title: '推薦系統整合',
           description: '開發活動推薦演算法，根據用戶興趣、朋友參與度與地點距離進行推播。',
           type: 'learning',
-          icon: '🤖'
+          icon: 'bot'
         },
         {
           title: '社會創新影響力',
           description: '針對高齡社會挑戰提出解決方案，推動積極老化與社會參與。',
           type: 'achievement',
-          icon: '❤️'
+          icon: 'heart'
         }
       ]
     },
@@ -958,25 +960,25 @@ export const projects: Project[] = [
           title: 'First Game Development Project',
           description: 'Completed my first full-featured game, integrating logic design, graphics programming, and user interaction.',
           type: 'achievement',
-          icon: '🎮'
+          icon: 'gamepad'
         },
         {
           title: 'C++ Advanced Programming',
           description: 'Applied advanced C++ concepts including object-oriented design, memory management, and custom data structures.',
           type: 'skill',
-          icon: '⚙️'
+          icon: 'settings'
         },
         {
           title: 'Graphics Programming with SFML',
           description: 'Gained hands-on experience building an interactive UI with SFML, handling events, rendering, and user feedback.',
           type: 'learning',
-          icon: '🖼️'
+          icon: 'image'
         },
         {
           title: 'Collaborative Development Skills',
           description: 'Enhanced teamwork and code collaboration abilities through pair programming and version control.',
           type: 'skill',
-          icon: '🤝'
+          icon: 'handshake'
         }
       ],
       zh: [
@@ -984,25 +986,25 @@ export const projects: Project[] = [
           title: '首次遊戲開發專案',
           description: '完成第一款完整功能的遊戲，整合邏輯設計、圖形程式設計與使用者互動。',
           type: 'achievement',
-          icon: '🎮'
+          icon: 'gamepad'
         },
         {
           title: 'C++ 進階程式設計',
           description: '實作 C++ 高階概念，包括物件導向設計、記憶體管理與自訂資料結構。',
           type: 'skill',
-          icon: '⚙️'
+          icon: 'settings'
         },
         {
           title: 'SFML 圖形程式設計',
           description: '實際操作 SFML 建立互動介面，學習事件處理、畫面渲染與使用者反饋。',
           type: 'learning',
-          icon: '🖼️'
+          icon: 'image'
         },
         {
           title: '團隊合作開發能力',
           description: '透過 pair programming 與版本控制，增進團隊協作與程式碼管理能力。',
           type: 'skill',
-          icon: '🤝'
+          icon: 'handshake'
         }
       ]
     },

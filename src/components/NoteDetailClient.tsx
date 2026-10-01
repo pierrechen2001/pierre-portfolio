@@ -11,6 +11,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import 'highlight.js/styles/github-dark.css';
 import Link from 'next/link';
+import { renderIconShortcodes } from '@/components/InteractiveIcon';
 
 // 視差背景組件
 function ParallaxBackground() {
@@ -281,7 +282,7 @@ export default function NoteDetailClient({ note, id }: NoteDetailClientProps) {
                       ),
                       p: ({ children }) => (
                         <p className="text-[var(--foreground-muted)] mb-4 leading-relaxed text-sm md:text-base font-normal">
-                          {children}
+                          {renderIconShortcodes(children)}
                         </p>
                       ),
                       ul: ({ children }) => (

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MediaCarousel from '@/components/MediaCarousel';
+import InteractiveIcon, { type IconName } from '@/components/InteractiveIcon';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect, useRef } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
@@ -18,7 +19,7 @@ interface Milestone {
   title: string;
   description: string;
   type: 'achievement' | 'skill' | 'learning';
-  icon?: string;
+  icon?: IconName;
 }
 
 interface ProjectProps {
@@ -311,12 +312,10 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                       return (
                         <div
                           key={index}
-                          className={`p-6 rounded-xl border-2 bg-[var(--background-alt)]/40 backdrop-blur-sm ${typeColors[milestone.type]} transition-all hover:shadow-lg hover:scale-105 hover:bg-[var(--background-alt)]/60`}
+                          className={`group p-6 rounded-xl border-2 bg-[var(--background-alt)]/40 backdrop-blur-sm ${typeColors[milestone.type]} transition-all hover:shadow-lg hover:scale-105 hover:bg-[var(--background-alt)]/60`}
                         >
                           <div className="flex items-start space-x-4">
-                            <div className="text-3xl flex-shrink-0">
-                              {milestone.icon || '🎯'}
-                            </div>
+                            <InteractiveIcon name={milestone.icon ?? 'target'} />
                             <div className="flex-1">
                               <div className="flex items-center justify-between mb-3">
                                 <h3 className="text-lg font-semibold text-[var(--foreground)]">
