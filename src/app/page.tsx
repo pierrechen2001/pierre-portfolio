@@ -8,10 +8,11 @@ import SiteBackground from '@/components/SiteBackground';
 import ProjectCard from '@/components/ProjectCard';
 import Typewriter from '@/components/Typewriter';
 import ResumeButton from '@/components/ResumeButton';
+import { Capabilities, ContactCTA, ExperienceSnapshot, LatestNotes, SectionHeading, SectionLink, TechMarquee } from '@/components/HomeSections';
 import { projects } from '@/data/projects';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { CountUp, EASE_OUT, Reveal, staggerContainer, staggerItem } from '@/components/motion';
 
 const avatarItem = {
@@ -32,6 +33,7 @@ export default function Home() {
 
   // 主視覺隨滾動退場：淡出、略縮並上移
   const heroRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
   const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroOpacity = useTransform(heroProgress, [0, 0.9], [1, 0.15]);
   const heroScale = useTransform(heroProgress, [0, 1], [1, 0.94]);
@@ -59,7 +61,7 @@ export default function Home() {
 
         <main className="flex-grow bg-transparent">
           {/* Hero Section with improved mobile layout */}
-          <motion.div ref={heroRef} variants={staggerContainer} initial="hidden" animate="show" style={{ opacity: heroOpacity, scale: heroScale, y: heroY }} className="container mx-auto px-6 md:px-8 lg:px-12 py-16 md:py-20">
+          <motion.div ref={heroRef} variants={staggerContainer} initial={reduceMotion ? false : 'hidden'} animate="show" style={{ opacity: heroOpacity, scale: heroScale, y: heroY }} className="container mx-auto px-6 md:px-8 lg:px-12 py-16 md:py-20">
             {/* Mobile layout with avatar and name side by side */}
             <div className="md:hidden">
               {/* Mobile header with avatar and I am Pierre Chen */}
@@ -284,18 +286,18 @@ export default function Home() {
               </motion.div>
             </div>
           </motion.div>
-          
+
+          <TechMarquee />
+
           {/* Featured Projects Section with improved spacing */}
           <section className="container mx-auto px-6 md:px-8 lg:px-12 py-16 md:py-24">
-            <Reveal className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                {t('my_portfolio')}
-              </h2>
-              <p className="text-lg md:text-xl text-[var(--foreground-muted)] max-w-3xl mx-auto">
-                {t('portfolio_description')}
-              </p>
-            </Reveal>
-            
+            <SectionHeading
+              eyebrow="// featured-projects"
+              title={t('my_portfolio')}
+              description={t('portfolio_description')}
+              action={<SectionLink href="/projects">{t('view_all_projects')}</SectionLink>}
+            />
+
             <div className="project-cards-grid">
               {featuredProjects.map((project, index) => (
                 <Reveal key={project.id} delay={index * 0.12}>
@@ -303,30 +305,12 @@ export default function Home() {
                 </Reveal>
               ))}
             </div>
-
-            <Reveal className="text-center mt-20">
-              <Link
-                href="/projects"
-                className="inline-flex items-center bg-[var(--background-alt)] border border-[var(--border-color)] text-[var(--foreground)] px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold hover:bg-primary hover:text-dark hover:border-primary transition-all duration-300 group text-sm md:text-base w-full sm:w-auto justify-center"
-              >
-                <span className="whitespace-nowrap">{t('view_all_projects')}</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  className="w-4 h-4 md:w-5 md:h-5 ml-2 group-hover:translate-x-1 transition-transform"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </Link>
-            </Reveal>
           </section>
+
+          <Capabilities />
+          <ExperienceSnapshot />
+          <LatestNotes />
+          <ContactCTA />
         </main>
         
         <Footer />

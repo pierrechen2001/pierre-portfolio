@@ -26,10 +26,12 @@ interface RevealProps {
 /** 進入視窗時淡入並上移，只播放一次（不加 blur：大面積 filter 動畫在行動裝置上成本高） */
 export function Reveal({ children, className, delay = 0, y = 40, as = 'div' }: RevealProps) {
   const Component = motion[as];
+  // 偏好減少動態時直接顯示內容，不做淡入
+  const reduceMotion = useReducedMotion();
   return (
     <Component
       className={className}
-      initial={{ opacity: 0, y }}
+      initial={reduceMotion ? false : { opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.9, delay, ease: EASE_OUT }}
