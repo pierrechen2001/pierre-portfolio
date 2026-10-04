@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import type { PointerEvent } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 type ProjectStatus = 'completed' | 'in-progress' | 'planned';
@@ -99,6 +100,12 @@ export default function ProjectCard({
   skills,
 }: ProjectCardProps) {
   const { t, language } = useLanguage();
+
+  const handlePointerMove = (e: PointerEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+    e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`);
+  };
   
   const statusColor = {
     completed: 'bg-green-500/20 text-green-400 border border-green-500/30',
@@ -129,7 +136,17 @@ export default function ProjectCard({
 
   return (
     <Link href={`/projects/${id}`} className="block group h-full">
-      <div className="project-card h-full flex flex-col bg-[var(--background-alt)]/60 backdrop-blur-sm border border-[var(--border-color)]/30 rounded-2xl overflow-hidden hover:border-primary/50 hover:bg-[var(--background-alt)]/80 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 motion-safe:hover:-translate-y-2">
+      <div
+        onPointerMove={handlePointerMove}
+        className="project-card relative h-full flex flex-col bg-[var(--background-alt)]/60 backdrop-blur-sm border border-[var(--border-color)]/30 rounded-2xl overflow-hidden hover:border-primary/50 hover:bg-[var(--background-alt)]/80 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 motion-safe:hover:-translate-y-2">
+        {/* 跟隨游標的聚光燈與邊框光暈 */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-10 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          style={{
+            background: 'radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(243,178,55,0.10), transparent 45%)',
+          }}
+        />
         <div className="relative aspect-video w-full overflow-hidden flex-shrink-0">
           <div className={`absolute inset-0 bg-gradient-to-br ${gradientColor} opacity-10`}>
             <div className="absolute inset-0 flex items-center justify-center">
@@ -146,7 +163,7 @@ export default function ProjectCard({
             width={800}
             height={450}
             loading="lazy"
-            className={id === 'mapit' ? 'object-contain w-full h-full bg-[#2b5073] p-4' : 'object-cover w-full h-full'}
+            className="object-cover w-full h-full transition-transform duration-700 ease-out motion-safe:group-hover:scale-105"
           />
         </div>
         <div className="p-6 flex flex-col flex-grow relative overflow-hidden">

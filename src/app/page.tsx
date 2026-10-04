@@ -10,15 +10,33 @@ import Typewriter from '@/components/Typewriter';
 import ResumeButton from '@/components/ResumeButton';
 import { projects } from '@/data/projects';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useEffect } from 'react';
-import Head from 'next/head';
+import { useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { CountUp, EASE_OUT, Reveal, staggerContainer, staggerItem } from '@/components/motion';
+
+const avatarItem = {
+  hidden: { opacity: 0, scale: 0.92 },
+  show: { opacity: 1, scale: 1, transition: { duration: 1.1, ease: EASE_OUT, delay: 0.2 } },
+};
+
+const floatAnimation = {
+  y: [0, -10, 0],
+  transition: { duration: 6, repeat: Infinity, ease: 'easeInOut' as const },
+};
 
 export default function Home() {
   // 精選最新專題、AI 學習產品與團隊全端平台
   const FEATURED_IDS = ['mapit', 'dogtor', '200ok'];
   const featuredProjects = FEATURED_IDS.map(id => projects.find(p => p.id === id)!).filter(Boolean);
   const { t, language } = useLanguage();
-  
+
+  // 主視覺隨滾動退場：淡出、略縮並上移
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const heroOpacity = useTransform(heroProgress, [0, 0.9], [1, 0.15]);
+  const heroScale = useTransform(heroProgress, [0, 1], [1, 0.94]);
+  const heroY = useTransform(heroProgress, [0, 1], [0, -40]);
+
   const roles = language === 'zh'
     ? ['全端開發者', 'AI 應用開發者', '行動應用開發者', '產品開發者']
     : ['Full Stack Developer', 'AI Application Developer', 'Mobile Developer', 'Product Developer'];
@@ -41,13 +59,13 @@ export default function Home() {
 
         <main className="flex-grow bg-transparent">
           {/* Hero Section with improved mobile layout */}
-          <div className="container mx-auto px-6 md:px-8 lg:px-12 py-16 md:py-20">
+          <motion.div ref={heroRef} variants={staggerContainer} initial="hidden" animate="show" style={{ opacity: heroOpacity, scale: heroScale, y: heroY }} className="container mx-auto px-6 md:px-8 lg:px-12 py-16 md:py-20">
             {/* Mobile layout with avatar and name side by side */}
             <div className="md:hidden">
               {/* Mobile header with avatar and I am Pierre Chen */}
               <div className="flex items-end justify-between mb-6">
                 {/* Left side - I am Pierre Chen */}
-                <div className="flex-1 parallax-scroll" data-speed="0.05">
+                <motion.div variants={staggerItem} className="flex-1">
                   <div className="font-mono text-[var(--primary)] font-medium mb-2 flex items-center text-sm">
                     <span className="mr-2 opacity-70">&gt;</span>
                     {t('iam')}
@@ -62,12 +80,12 @@ export default function Home() {
                       className="text-xs text-[var(--text-muted)]"
                     />
                   </div>
-                </div>
+                </motion.div>
                 
                 {/* Right side - smaller avatar */}
-                <div className="flex-shrink-0 ml-4">
-                  <div className="relative parallax-scroll" data-speed="-0.07">
-                    <div className="avatar-container relative w-36 h-44 top-1.5">
+                <motion.div variants={staggerItem} className="flex-shrink-0 ml-4">
+                  <div className="relative">
+                    <motion.div animate={floatAnimation} className="avatar-container relative w-36 h-44 top-1.5">
                       {/* Smaller decorative elements */}
                       <div className="absolute -top-1 -left-1 w-2 h-2 border border-primary/30 rounded-full animate-pulse"></div>
                       <div className="absolute -bottom-1 -right-1 w-3 h-3 border border-secondary/30 rounded rotate-12 animate-pulse" style={{ animationDelay: '1s' }}></div>
@@ -81,14 +99,14 @@ export default function Home() {
                         priority
                         unoptimized={true}
                       />
-                    </div>
+                    </motion.div>
                   </div>
-                </div>
+                </motion.div>
               </div>
               
               {/* Mobile description */}
-              <div className="space-y-6 pl-4 border-l border-[var(--border-color)]">
-                <div className="parallax-scroll" data-speed="0.05">
+              <motion.div variants={staggerItem} className="space-y-6 pl-4 border-l border-[var(--border-color)]">
+                <div>
                   <p className="text-lg text-[var(--foreground-muted)] leading-relaxed">
                     {t('description')}
                   </p>
@@ -102,13 +120,13 @@ export default function Home() {
                     { value: String(projects.length), label: language === 'zh' ? '收錄專案' : 'Projects' },
                   ].map(stat => (
                     <div key={stat.value} className="flex items-baseline gap-1.5">
-                      <span className="text-xl font-bold text-[var(--primary)]">{stat.value}</span>
+                      <CountUp value={stat.value} className="text-xl font-bold text-[var(--primary)]" />
                       <span className="text-xs text-[var(--text-muted)] font-mono">{stat.label}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="flex flex-col gap-4 parallax-scroll" data-speed="0.02">
+                <div className="flex flex-col gap-4">
                   <Link
                     href="/projects"
                     className="bg-primary text-dark px-6 py-4 rounded-lg font-semibold whitespace-nowrap hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 inline-flex items-center justify-center group"
@@ -153,7 +171,7 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Desktop layout - original grid layout */}
@@ -161,7 +179,7 @@ export default function Home() {
               
               {/* Left side content with better spacing */}
               <div className="col-span-7 space-y-8">
-                <div className="parallax-scroll" data-speed="0.05">
+                <motion.div variants={staggerItem}>
                   <div className="flex items-center space-x-3 font-mono text-[var(--primary)] mb-4 opacity-90">
                     <span className="animate-pulse text-lg">_</span>
                     <span className="text-lg md:text-xl font-medium tracking-wide">{t('iam')}</span>
@@ -181,23 +199,23 @@ export default function Home() {
                       {t('description')}
                     </p>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Achievement Stats Strip */}
-                <div className="flex flex-wrap gap-x-8 gap-y-3 pl-6 border-l-2 border-[var(--primary)]/20 parallax-scroll" data-speed="0.03">
+                <motion.div variants={staggerItem} className="flex flex-wrap gap-x-8 gap-y-3 pl-6 border-l-2 border-[var(--primary)]/20">
                   {[
                     { value: '7K+', label: language === 'zh' ? 'Dogtor 用戶' : 'Dogtor users' },
                     { value: '#4',   label: language === 'zh' ? 'App Store 教育類' : 'App Store Education' },
                     { value: String(projects.length), label: language === 'zh' ? '收錄專案' : 'Projects' },
                   ].map(stat => (
                     <div key={stat.value} className="flex items-baseline gap-2">
-                      <span className="text-2xl md:text-3xl font-bold text-[var(--primary)]">{stat.value}</span>
+                      <CountUp value={stat.value} className="text-2xl md:text-3xl font-bold text-[var(--primary)]" />
                       <span className="text-xs text-[var(--text-muted)] font-mono leading-tight">{stat.label}</span>
                     </div>
                   ))}
-                </div>
+                </motion.div>
 
-                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 parallax-scroll pt-2" data-speed="0.02">
+                <motion.div variants={staggerItem} className="flex flex-col sm:flex-row sm:flex-wrap gap-4 pt-2">
                   <Link
                     href="/projects"
                     className="bg-primary text-dark px-6 py-4 rounded-lg font-semibold whitespace-nowrap hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 inline-flex items-center justify-center group"
@@ -240,13 +258,13 @@ export default function Home() {
                     </svg>
                     GitHub
                   </a>
-                </div>
+                </motion.div>
               </div>
               
               {/* Right side image with better integration */}
-              <div className="col-span-5">
-                <div className="relative parallax-scroll" data-speed="-0.07">
-                  <div className="avatar-container relative w-64 h-96 md:w-80 md:h-[30rem] mx-auto">
+              <motion.div variants={avatarItem} className="col-span-5">
+                <div className="relative">
+                  <motion.div animate={floatAnimation} className="avatar-container relative w-64 h-96 md:w-80 md:h-[30rem] mx-auto">
                     {/* Decorative elements */}
                     <div className="absolute -top-4 -left-4 w-8 h-8 border-2 border-primary/30 rounded-full animate-pulse"></div>
                     <div className="absolute -bottom-6 -right-6 w-12 h-12 border-2 border-secondary/30 rounded-lg rotate-12 animate-pulse" style={{ animationDelay: '1s' }}></div>
@@ -261,32 +279,32 @@ export default function Home() {
                       priority
                       unoptimized={true}
                     />
-                  </div>
+                  </motion.div>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
           
           {/* Featured Projects Section with improved spacing */}
           <section className="container mx-auto px-6 md:px-8 lg:px-12 py-16 md:py-24">
-            <div className="text-center mb-16">
+            <Reveal className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4">
                 {t('my_portfolio')}
               </h2>
               <p className="text-lg md:text-xl text-[var(--foreground-muted)] max-w-3xl mx-auto">
                 {t('portfolio_description')}
               </p>
-            </div>
+            </Reveal>
             
             <div className="project-cards-grid">
               {featuredProjects.map((project, index) => (
-                <div key={project.id} className="parallax-scroll" data-speed="0.02">
+                <Reveal key={project.id} delay={index * 0.12}>
                   <ProjectCard {...project} />
-                </div>
+                </Reveal>
               ))}
             </div>
 
-            <div className="text-center mt-16 mt-20">
+            <Reveal className="text-center mt-20">
               <Link
                 href="/projects"
                 className="inline-flex items-center bg-[var(--background-alt)] border border-[var(--border-color)] text-[var(--foreground)] px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold hover:bg-primary hover:text-dark hover:border-primary transition-all duration-300 group text-sm md:text-base w-full sm:w-auto justify-center"
@@ -307,7 +325,7 @@ export default function Home() {
                   />
                 </svg>
               </Link>
-            </div>
+            </Reveal>
           </section>
         </main>
         

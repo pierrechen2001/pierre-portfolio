@@ -80,7 +80,7 @@ export const projects: Project[] = [
         我參與行動端體驗與相關服務開發，包括 Mapbox 導入與地圖互動、連結解析提示詞及後處理優化、個人檔案與共同造訪流程，以及收藏地點的效能改善。這是持續開發中的團隊作品，功能由多位成員共同完成。
       `
     },
-    imageUrl: '/projects/mapit_cover.png',
+    imageUrl: '/projects/mapit_cover.webp',
     status: 'in-progress',
     date: {
       en: 'Apr 2026 - Present',

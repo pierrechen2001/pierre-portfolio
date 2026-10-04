@@ -6,6 +6,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SiteBackground from '@/components/SiteBackground';
 import MediaCarousel from '@/components/MediaCarousel';
+import { motion } from 'framer-motion';
+import { EASE_OUT, Reveal, ScrollZoom } from '@/components/motion';
 import InteractiveIcon, { type IconName } from '@/components/InteractiveIcon';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect } from 'react';
@@ -156,19 +158,19 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
             <div className="backdrop-blur-md bg-[var(--background-alt)]/60 rounded-2xl shadow-2xl border border-[var(--border-color)]/20 p-8 md:p-12">
               
               {/* 專案圖片 */}
-              <div className="mb-8 md:mb-12 rounded-2xl overflow-hidden shadow-lg border border-[var(--border-color)]/10">
+              <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1, ease: EASE_OUT }} className="mb-8 md:mb-12 rounded-2xl overflow-hidden shadow-lg border border-[var(--border-color)]/10">
                 <Image
                   src={project.imageUrl}
                   alt={project.title[language]}
                   width={1200}
                   height={630}
-                  className={project.id === 'mapit' ? 'w-full max-h-[540px] object-contain bg-[#2b5073] p-8' : 'w-full h-auto object-cover'}
+                  className="w-full h-auto object-cover"
                   priority
                 />
-              </div>
+              </motion.div>
 
               {/* 標題區域 */}
-              <div className="text-center mb-12">
+              <Reveal delay={0.15} className="text-center mb-12">
                 <h1 className="text-4xl md:text-6xl font-bold text-[var(--foreground)] mb-6 leading-normal">
                   {project.title[language]}
                 </h1>
@@ -184,10 +186,10 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                     {statusText[project.status][language]}
                   </span>
                 </div>
-              </div>
+              </Reveal>
               
               {/* 專案概述 */}
-              <div className="mb-12">
+              <Reveal className="mb-12">
                 <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
                   {language === 'en' ? 'Project Overview' : '專案概述'}
                 </h2>
@@ -198,26 +200,28 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                     </p>
                   ))}
                 </div>
-              </div>
+              </Reveal>
 
               {/* 專案媒體展示 */}
               {(project.youtubeVideoId || (project.galleryImages && project.galleryImages.length > 0)) && (
-                <div className="mb-12">
+                <Reveal className="mb-12">
                   <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
                     {language === 'en' ? 'Project Media' : '專案展示'}
                   </h2>
+                  <ScrollZoom>
                   <MediaCarousel
                     youtubeVideoId={project.youtubeVideoId}
                     youtubeIsShort={project.youtubeIsShort}
                     galleryImages={project.galleryImages}
                     projectTitle={project.title[language]}
                   />
-                </div>
+                  </ScrollZoom>
+                </Reveal>
               )}
               
               {/* 主要功能 */}
               {project.features && (
-                <div className="mb-12">
+                <Reveal className="mb-12">
                   <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
                     {language === 'en' ? 'Key Features' : '主要功能'}
                   </h2>
@@ -231,11 +235,11 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </Reveal>
               )}
               
               {/* 使用技術 */}
-              <div className="mb-12">
+              <Reveal className="mb-12">
                 <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
                   {t('technologies_used')}
                 </h2>
@@ -249,11 +253,11 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                     </span>
                   ))}
                 </div>
-              </div>
+              </Reveal>
               
               {/* 專案里程碑 */}
               {project.milestones && (
-                <div className="mb-12">
+                <Reveal className="mb-12">
                   <h2 className="text-2xl md:text-3xl font-bold mb-8 text-[var(--foreground)]">
                     {language === 'en' ? 'Project Milestones' : '專案里程碑'}
                   </h2>
@@ -296,11 +300,11 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                       );
                     })}
                   </div>
-                </div>
+                </Reveal>
               )}
               
               {/* 連結按鈕 */}
-              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+              <Reveal className="flex flex-wrap gap-4 justify-center md:justify-start">
                 {project.githubUrl && (
                   <a
                     href={project.githubUrl}
@@ -356,7 +360,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                     {language === 'en' ? 'App Store' : 'App Store 下載'}
                   </a>
                 )}
-              </div>
+              </Reveal>
             </div>
           </div>
         </main>

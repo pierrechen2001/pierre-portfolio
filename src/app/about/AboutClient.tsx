@@ -6,6 +6,7 @@ import SiteBackground from '@/components/SiteBackground';
 import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
 import CodeBlock from '@/components/CodeBlock';
+import { Reveal } from '@/components/motion';
 
 // Tech Stack Badge Component
 const TechBadge = ({ name, color }: { name: string, color: string }) => (
@@ -64,7 +65,7 @@ export default function AboutClient() {
         <main className="flex-grow bg-transparent">
           <div className="container mx-auto py-16 px-4 md:px-6">
             {/* 頂部區域：標題和簡介 */}
-            <div className="mb-20 pt-6 md:pt-14 md:pb-6 text-center">
+            <Reveal className="mb-20 pt-6 md:pt-14 md:pb-6 text-center">
               <div className="inline-block mb-4 px-4 py-1 rounded-full border border-[var(--primary)]/30 bg-[var(--primary)]/10 text-[var(--primary)] font-mono text-sm">
                 $ whoami
               </div>
@@ -74,7 +75,7 @@ export default function AboutClient() {
               <p className="text-lg md:text-xl max-w-2xl mx-auto text-[var(--foreground-muted)] font-light leading-relaxed">
                 {t('about_page_description')}
               </p>
-            </div>
+            </Reveal>
             
             {/* 個人介紹區 - IDE 風格 - 調整圖片比例與佈局 */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-32 items-start">
@@ -137,7 +138,7 @@ export default function AboutClient() {
 
                 <div className="space-y-20">
                   {/* Aiii.AI */}
-                  <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                  <Reveal y={60} className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
                     <div className="md:text-right pt-2">
                        <div className="inline-block px-3 py-1 rounded-full border border-[var(--primary)]/30 bg-[var(--primary)]/10 text-[var(--primary)] font-mono text-xs mb-2">
                          {t('aiii_period')}
@@ -158,10 +159,10 @@ export default function AboutClient() {
                         <p className="text-sm text-gray-300">{t('aiii_summary')}</p>
                       </div>
                     </div>
-                  </div>
+                  </Reveal>
 
                   {/* DOGTOR */}
-                  <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                  <Reveal y={60} className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
                     <div className="md:order-2 pt-2">
                        <div className="inline-block px-3 py-1 rounded-full border border-[var(--secondary)]/30 bg-[var(--secondary)]/10 text-[var(--secondary)] font-mono text-xs mb-2">
                          {t('dogtor_period')}
@@ -199,10 +200,10 @@ export default function AboutClient() {
                         </ul>
                       </div>
                     </div>
-                  </div>
+                  </Reveal>
 
                   {/* Akira Dialog Tech */}
-                  <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                  <Reveal y={60} className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
                     <div className="md:text-right pt-2">
                        <div className="inline-block px-3 py-1 rounded-full border border-[var(--primary)]/30 bg-[var(--primary)]/10 text-[var(--primary)] font-mono text-xs mb-2">
                          {t('akira_period')}
@@ -236,10 +237,10 @@ export default function AboutClient() {
                         </ul>
                       </div>
                     </div>
-                  </div>
+                  </Reveal>
                   
                   {/* Superb Education */}
-                  <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                  <Reveal y={60} className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
                     <div className="md:order-2 pt-2">
                        <div className="inline-block px-3 py-1 rounded-full border border-[var(--secondary)]/30 bg-[var(--secondary)]/10 text-[var(--secondary)] font-mono text-xs mb-2">
                          {t('superb_period')}
@@ -277,14 +278,14 @@ export default function AboutClient() {
                         </ul>
                       </div>
                     </div>
-                  </div>
+                  </Reveal>
 
                 </div>
               </div>
             </div>
             
             {/* 分開的區塊：先是教育 */}
-            <div className="mb-20">
+            <Reveal className="mb-20">
               <div className="flex items-center gap-4 mb-8 border-b border-[var(--border-color)] pb-4">
                 <h2 className="text-3xl font-bold text-white">
                   <span className="text-[var(--secondary)] mr-2">#</span>{t('education')}
@@ -323,10 +324,10 @@ export default function AboutClient() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Reveal>
             
             {/* 分開的區塊：後是技能 */}
-            <div className="mb-24">
+            <Reveal className="mb-24">
               <div className="flex items-center gap-4 mb-8 border-b border-[var(--border-color)] pb-4">
                 <h2 className="text-3xl font-bold text-white">
                   <span className="text-[var(--primary)] mr-2">#</span>{t('skills')}
@@ -410,7 +411,7 @@ export default function AboutClient() {
                    </p>
                  </div>
               </div>
-            </div>
+            </Reveal>
 
           </div>
         </main>

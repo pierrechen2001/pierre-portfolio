@@ -69,6 +69,17 @@ export default function SiteBackground() {
           style={{ background: 'radial-gradient(ellipse at center, rgba(39,104,168,0.06) 0%, rgba(243,178,55,0.02) 50%, transparent 70%)' }}
         />
       </div>
+      {/* 細網格：只在畫面上方中央可見，往外淡出 */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(253,250,230,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(253,250,230,0.04) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+          maskImage: 'radial-gradient(ellipse 70% 55% at 50% 0%, #000 30%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 70% 55% at 50% 0%, #000 30%, transparent 100%)',
+        }}
+      />
     </div>
   );
 }
