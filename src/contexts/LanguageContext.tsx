@@ -19,6 +19,7 @@ const translations = {
     'description': 'AI application developer and full-stack engineer. I co-build Dogtor, a learning app with 7,000+ users, and contribute to MapIt, a social restaurant map. My work spans Flutter, FastAPI, data systems, and product experience.',
     'view_portfolio': 'View My Portfolio',
     'contact_me': 'Contact Me',
+    'resume': 'Resume',
     
     // 作品集區塊
     'my_portfolio': 'My Portfolio',
@@ -166,6 +167,7 @@ const translations = {
     'description': '我在 Aiii.AI 擔任 AI 應用開發實習生，也參與 Dogtor 與 MapIt 的產品開發。Dogtor 累積超過 7,000 位用戶；我的工作涵蓋 Flutter、FastAPI、資料系統與產品體驗。',
     'view_portfolio': '查看我的作品',
     'contact_me': '聯繫我',
+    'resume': '履歷',
     
     // 作品集區塊
     'my_portfolio': '我的作品集',

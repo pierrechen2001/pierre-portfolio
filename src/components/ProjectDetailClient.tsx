@@ -4,11 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SiteBackground from '@/components/SiteBackground';
 import MediaCarousel from '@/components/MediaCarousel';
 import InteractiveIcon, { type IconName } from '@/components/InteractiveIcon';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useEffect, useRef } from 'react';
-import { ParallaxProvider } from 'react-scroll-parallax';
+import { useEffect } from 'react';
 
 interface Skill {
   name: string;
@@ -60,40 +60,6 @@ interface ProjectProps {
     youtubeIsShort?: boolean;
     galleryImages?: string[];
   };
-}
-
-// 視差背景組件
-function ParallaxBackground() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!ref.current) return;
-      
-      const x = e.clientX / window.innerWidth;
-      const y = e.clientY / window.innerHeight;
-      
-      ref.current.style.transform = `translate(${x * -30}px, ${y * -30}px)`;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  return (
-    <div className="fixed inset-0 z-[-2] overflow-hidden bg-[#181c24]">
-      <div ref={ref} className="absolute inset-0 scale-110">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#e9a42e]/10 rounded-full blur-[50px] animate-pulse" style={{ animationDuration: '8s' }}></div>
-        <div className="absolute top-[15%] right-[-20%] w-[40%] h-[40%] bg-indigo-300/20 rounded-full blur-[150px] animate-pulse" style={{ animationDuration: '10s' }}></div>
-        <div className="absolute bottom-[15%] left-[10%] w-[60%] h-[60%] bg-slate-800/20 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '12s' }}></div>
-        <div className="absolute bottom-[-15%] right-[30%] w-[30%] h-[30%] bg-blue-700/20 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '9s' }}></div>
-        <div className="absolute top-[40%] left-[30%] w-[45%] h-[45%] bg-slate-700/20 rounded-full blur-[130px] animate-pulse" style={{ animationDuration: '11s' }}></div>
-      </div>
-    </div>
-  );
 }
 
 export default function ProjectDetailClient({ project, id }: ProjectProps) {
@@ -150,7 +116,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
   }, [project.title, project.description, language]);
   
   return (
-    <ParallaxProvider>
+    <>
       <div className="flex flex-col min-h-screen relative">
         {/* 添加結構化數據 */}
         <script
@@ -159,12 +125,8 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
         />
         <Header />
         
-        {/* 添加視差背景 */}
-        <ParallaxBackground />
-        
-        {/* 覆蓋一層半透明背景以確保內容可讀性 */}
-        <div className="fixed inset-0 z-[-1] bg-[var(--background)]/90 backdrop-blur-sm"></div>
-        
+        <SiteBackground />
+
         <main className="flex-grow bg-transparent">
           <div className="container mx-auto px-6 md:px-8 lg:px-12 py-16 md:py-24">
             
@@ -207,7 +169,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
 
               {/* 標題區域 */}
               <div className="text-center mb-12">
-                <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6 leading-normal">
+                <h1 className="text-4xl md:text-6xl font-bold text-[var(--foreground)] mb-6 leading-normal">
                   {project.title[language]}
                 </h1>
                 <div className="flex flex-wrap justify-center items-center gap-6 text-[var(--foreground-muted)]">
@@ -226,7 +188,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
               
               {/* 專案概述 */}
               <div className="mb-12">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
                   {language === 'en' ? 'Project Overview' : '專案概述'}
                 </h2>
                 <div className="text-[var(--foreground-muted)] leading-relaxed space-y-4">
@@ -241,7 +203,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
               {/* 專案媒體展示 */}
               {(project.youtubeVideoId || (project.galleryImages && project.galleryImages.length > 0)) && (
                 <div className="mb-12">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
                     {language === 'en' ? 'Project Media' : '專案展示'}
                   </h2>
                   <MediaCarousel
@@ -256,7 +218,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
               {/* 主要功能 */}
               {project.features && (
                 <div className="mb-12">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
                     {language === 'en' ? 'Key Features' : '主要功能'}
                   </h2>
                   <ul className="space-y-4">
@@ -274,7 +236,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
               
               {/* 使用技術 */}
               <div className="mb-12">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
                   {t('technologies_used')}
                 </h2>
                 <div className="flex flex-wrap gap-3">
@@ -292,7 +254,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
               {/* 專案里程碑 */}
               {project.milestones && (
                 <div className="mb-12">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-8 text-[var(--foreground)]">
                     {language === 'en' ? 'Project Milestones' : '專案里程碑'}
                   </h2>
                   <div className="grid gap-6 md:grid-cols-2">
@@ -312,7 +274,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                       return (
                         <div
                           key={index}
-                          className={`group p-6 rounded-xl border-2 bg-[var(--background-alt)]/40 backdrop-blur-sm ${typeColors[milestone.type]} transition-all hover:shadow-lg hover:scale-105 hover:bg-[var(--background-alt)]/60`}
+                          className={`group p-6 rounded-xl border-2 bg-[var(--background-alt)]/40 backdrop-blur-sm ${typeColors[milestone.type]} transition-all duration-300 hover:shadow-lg motion-safe:hover:-translate-y-1 hover:bg-[var(--background-alt)]/60`}
                         >
                           <div className="flex items-start space-x-4">
                             <InteractiveIcon name={milestone.icon ?? 'target'} />
@@ -344,7 +306,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center bg-[var(--background-alt)] border border-[var(--border-color)] text-[var(--foreground)] px-6 py-3 rounded-lg font-semibold hover:bg-primary hover:text-[var(--dark)] hover:border-primary transition-all duration-300 group"
+                    className="inline-flex items-center bg-[var(--background-alt)] border border-[var(--border-color)] text-[var(--foreground)] px-6 py-3 rounded-lg font-semibold hover:bg-primary hover:text-dark hover:border-primary transition-all duration-300 group"
                   >
                     <svg 
                       viewBox="0 0 24 24"
@@ -362,7 +324,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center bg-primary text-[var(--dark)] px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 group"
+                    className="inline-flex items-center bg-primary text-dark px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 group"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -401,6 +363,6 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
         
         <Footer />
       </div>
-    </ParallaxProvider>
+    </>
   );
 }

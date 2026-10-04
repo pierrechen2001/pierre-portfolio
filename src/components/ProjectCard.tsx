@@ -129,7 +129,7 @@ export default function ProjectCard({
 
   return (
     <Link href={`/projects/${id}`} className="block group h-full">
-      <div className="project-card h-full flex flex-col bg-[var(--background-alt)]/60 backdrop-blur-sm border border-[var(--border-color)]/30 rounded-2xl overflow-hidden hover:border-primary/50 hover:bg-[var(--background-alt)]/80 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2">
+      <div className="project-card h-full flex flex-col bg-[var(--background-alt)]/60 backdrop-blur-sm border border-[var(--border-color)]/30 rounded-2xl overflow-hidden hover:border-primary/50 hover:bg-[var(--background-alt)]/80 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 motion-safe:hover:-translate-y-2">
         <div className="relative aspect-video w-full overflow-hidden flex-shrink-0">
           <div className={`absolute inset-0 bg-gradient-to-br ${gradientColor} opacity-10`}>
             <div className="absolute inset-0 flex items-center justify-center">

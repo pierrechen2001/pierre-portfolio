@@ -2,86 +2,20 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SiteBackground from '@/components/SiteBackground';
 import TerminalContact from '@/components/TerminalContact';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useEffect, useRef } from 'react';
-import { ParallaxProvider } from 'react-scroll-parallax';
-
-// 視差背景組件
-function ParallaxBackground() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!ref.current) return;
-      
-      const x = e.clientX / window.innerWidth;
-      const y = e.clientY / window.innerHeight;
-      
-      ref.current.style.transform = `translate(${x * -30}px, ${y * -30}px)`;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  return (
-    <div className="fixed inset-0 z-[-2] overflow-hidden bg-[#181c24]">
-      <div ref={ref} className="absolute inset-0 scale-110">
-        {/* 深藍色至黑色的漸層背景 */}
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#e9a42e]/10 rounded-full blur-[50px] animate-pulse" style={{ animationDuration: '8s' }}></div>
-        <div className="absolute top-[15%] right-[-20%] w-[40%] h-[40%] bg-indigo-300/20 rounded-full blur-[150px] animate-pulse" style={{ animationDuration: '10s' }}></div>
-        <div className="absolute bottom-[15%] left-[10%] w-[60%] h-[60%] bg-slate-800/20 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '12s' }}></div>
-        <div className="absolute bottom-[-15%] right-[30%] w-[30%] h-[30%] bg-blue-700/20 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '9s' }}></div>
-        <div className="absolute top-[40%] left-[30%] w-[45%] h-[45%] bg-slate-700/20 rounded-full blur-[130px] animate-pulse" style={{ animationDuration: '11s' }}></div>
-      </div>
-    </div>
-  );
-}
-
-// 滾動視差效果
-function ScrollParallax() {
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollElements = document.querySelectorAll('.parallax-scroll');
-      
-      scrollElements.forEach((el) => {
-        const scrollY = window.scrollY;
-        const element = el as HTMLElement;
-        const speed = element.dataset.speed || '0.2';
-        
-        element.style.transform = `translateY(${scrollY * parseFloat(speed)}px)`;
-      });
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-  
-  return null;
-}
 
 export default function ContactClient() {
   const { t, language } = useLanguage();
   
   return (
-    <ParallaxProvider>
+    <>
       <div className="flex flex-col min-h-screen relative">
         <Header />
         
-        {/* 添加視差背景 */}
-        <ParallaxBackground />
-        <ScrollParallax />
-        
-        {/* 覆蓋一層半透明背景以確保內容可讀性 */}
-        <div className="fixed inset-0 z-[-1] bg-[var(--background)]/90 backdrop-blur-sm"></div>
-        
+        <SiteBackground />
+
         <main className="flex-grow bg-transparent">
           {/* 整頁一體設計 - 移除容器限制，使用全寬度佈局 */}
           <div className="min-h-screen flex flex-col justify-center py-20 px-4 md:px-8 lg:px-16">
@@ -91,7 +25,7 @@ export default function ContactClient() {
               
               {/* 標題區域 */}
               <div className="text-center mb-16 parallax-scroll" data-speed="0.1">
-                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-8">
+                <h1 className="text-4xl md:text-5xl font-bold text-[var(--foreground)] mb-8">
                   {t('contact_page_title')}
                 </h1>
                 <p className="text-xl md:text-2xl text-[var(--foreground-muted)] max-w-3xl mx-auto leading-relaxed">
@@ -105,7 +39,7 @@ export default function ContactClient() {
                 {/* 左側：聯絡表單 */}
                 <div className="parallax-scroll" data-speed="0.05">
                   <div className="mb-4">
-                    <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary/90 to-secondary/90 bg-clip-text text-transparent mb-2">
+                    <h2 className="text-2xl md:text-3xl font-bold text-[var(--foreground)] mb-2">
                       {t('get_in_touch')}
                     </h2>
                     <p className="text-gray-400 text-sm mb-6">// Initialize secure communication channel</p>
@@ -115,8 +49,8 @@ export default function ContactClient() {
                 
                 {/* 右側：聯絡資訊 */}
                 <div className="parallax-scroll" data-speed="-0.03">
-                  <div className="backdrop-blur-md bg-[var(--background)]/60 p-8 md:p-12 rounded-2xl shadow-2xl border border-[var(--border)]/20">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-secondary/90 to-primary/90 bg-clip-text text-transparent">
+                  <div className="backdrop-blur-md bg-[var(--background)]/60 p-8 md:p-12 rounded-2xl shadow-2xl border border-[var(--border-color)]/20">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-8 text-[var(--foreground)]">
                       {t('contact_info')}
                     </h2>
                     
@@ -257,6 +191,6 @@ export default function ContactClient() {
         
         <Footer />
       </div>
-    </ParallaxProvider>
+    </>
   );
 }

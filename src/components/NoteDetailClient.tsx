@@ -2,9 +2,9 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SiteBackground from '@/components/SiteBackground';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useEffect, useRef } from 'react';
-import { ParallaxProvider } from 'react-scroll-parallax';
+import { useEffect } from 'react';
 import { Note } from '@/data/notes';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -12,40 +12,6 @@ import rehypeHighlight from 'rehype-highlight';
 import 'highlight.js/styles/github-dark.css';
 import Link from 'next/link';
 import { renderIconShortcodes } from '@/components/InteractiveIcon';
-
-// 視差背景組件
-function ParallaxBackground() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!ref.current) return;
-      
-      const x = e.clientX / window.innerWidth;
-      const y = e.clientY / window.innerHeight;
-      
-      ref.current.style.transform = `translate(${x * -30}px, ${y * -30}px)`;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  return (
-    <div className="fixed inset-0 z-[-2] overflow-hidden bg-[#181c24]">
-      <div ref={ref} className="absolute inset-0 scale-110">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#e9a42e]/10 rounded-full blur-[50px] animate-pulse" style={{ animationDuration: '8s' }}></div>
-        <div className="absolute top-[15%] right-[-20%] w-[40%] h-[40%] bg-indigo-300/20 rounded-full blur-[150px] animate-pulse" style={{ animationDuration: '10s' }}></div>
-        <div className="absolute bottom-[15%] left-[10%] w-[60%] h-[60%] bg-slate-800/20 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '12s' }}></div>
-        <div className="absolute bottom-[-15%] right-[30%] w-[30%] h-[30%] bg-blue-700/20 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '9s' }}></div>
-        <div className="absolute top-[40%] left-[30%] w-[45%] h-[45%] bg-slate-700/20 rounded-full blur-[130px] animate-pulse" style={{ animationDuration: '11s' }}></div>
-      </div>
-    </div>
-  );
-}
 
 interface NoteDetailClientProps {
   note: Note;
@@ -165,16 +131,12 @@ export default function NoteDetailClient({ note, id }: NoteDetailClientProps) {
         }}
       />
 
-      <ParallaxProvider>
+      <>
         <div className="flex flex-col min-h-screen relative">
           <Header />
         
-        {/* 添加視差背景 */}
-        <ParallaxBackground />
-        
-        {/* 覆蓋一層半透明背景以確保內容可讀性 */}
-        <div className="fixed inset-0 z-[-1] bg-[var(--background)]/90 backdrop-blur-sm"></div>
-        
+        <SiteBackground />
+
         <main className="flex-grow bg-transparent">
           <div className="container mx-auto px-6 md:px-8 lg:px-12 py-16 md:py-24">
             
@@ -382,7 +344,7 @@ export default function NoteDetailClient({ note, id }: NoteDetailClientProps) {
               <div className="mt-16 flex flex-col sm:flex-row justify-between items-center gap-6">
                 <Link
                   href="/notes"
-                  className="inline-flex items-center bg-[var(--background-alt)] border border-[var(--border-color)] text-[var(--foreground)] px-6 py-3 rounded-lg font-semibold hover:bg-primary hover:text-[var(--dark)] hover:border-primary transition-all duration-300 group"
+                  className="inline-flex items-center bg-[var(--background-alt)] border border-[var(--border-color)] text-[var(--foreground)] px-6 py-3 rounded-lg font-semibold hover:bg-primary hover:text-dark hover:border-primary transition-all duration-300 group"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -406,7 +368,7 @@ export default function NoteDetailClient({ note, id }: NoteDetailClientProps) {
                         navigator.clipboard.writeText(window.location.href);
                         // 這裡可以添加成功提示
                       }}
-                      className="p-3 bg-[var(--background-alt)] border border-[var(--border-color)] text-[var(--foreground)] rounded-lg hover:bg-primary hover:text-[var(--dark)] hover:border-primary transition-all duration-300 group"
+                      className="p-3 bg-[var(--background-alt)] border border-[var(--border-color)] text-[var(--foreground)] rounded-lg hover:bg-primary hover:text-dark hover:border-primary transition-all duration-300 group"
                       title={language === 'en' ? 'Copy link' : '複製連結'}
                     >
                       <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -415,7 +377,7 @@ export default function NoteDetailClient({ note, id }: NoteDetailClientProps) {
                     </button>
                     <button
                       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                      className="p-3 bg-[var(--background-alt)] border border-[var(--border-color)] text-[var(--foreground)] rounded-lg hover:bg-secondary hover:text-[var(--dark)] hover:border-secondary transition-all duration-300 group"
+                      className="p-3 bg-[var(--background-alt)] border border-[var(--border-color)] text-[var(--foreground)] rounded-lg hover:bg-secondary hover:text-dark hover:border-secondary transition-all duration-300 group"
                       title={language === 'en' ? 'Back to top' : '返回頂部'}
                     >
                       <svg className="w-5 h-5 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -431,7 +393,7 @@ export default function NoteDetailClient({ note, id }: NoteDetailClientProps) {
         
         <Footer />
         </div>
-      </ParallaxProvider>
+      </>
     </>
   );
 }

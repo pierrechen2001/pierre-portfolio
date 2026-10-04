@@ -4,98 +4,14 @@ import Image from "next/image";
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SiteBackground from '@/components/SiteBackground';
 import ProjectCard from '@/components/ProjectCard';
 import Typewriter from '@/components/Typewriter';
+import ResumeButton from '@/components/ResumeButton';
 import { projects } from '@/data/projects';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useEffect, useRef } from 'react';
-import { ParallaxProvider } from 'react-scroll-parallax';
+import { useEffect } from 'react';
 import Head from 'next/head';
-
-// 視差背景組件
-function ParallaxBackground() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!ref.current) return;
-      const x = e.clientX / window.innerWidth;
-      const y = e.clientY / window.innerHeight;
-      ref.current.style.transform = `translate(${x * -20}px, ${y * -20}px)`;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  return (
-    <div className="fixed inset-0 z-[-2] overflow-hidden bg-[#181c24]">
-      <div ref={ref} className="absolute inset-[-10%] w-[120%] h-[120%]" style={{ willChange: 'transform' }}>
-        {/* 使用 radial-gradient 避免 blur 大值造成的塊狀顆粒感 */}
-        {/* 左上角：金黃光暈 */}
-        <div className="parallax-blob absolute top-[-10%] left-[-10%] w-[60%] h-[60%]" style={{
-          background: 'radial-gradient(ellipse at center, rgba(243,178,55,0.12) 0%, rgba(243,178,55,0.04) 50%, transparent 70%)',
-        }}></div>
-
-        {/* 右側：深藍光暈 */}
-        <div className="parallax-blob absolute top-[10%] right-[-15%] w-[65%] h-[65%]" style={{
-          background: 'radial-gradient(ellipse at center, rgba(39,104,168,0.14) 0%, rgba(39,104,168,0.05) 50%, transparent 70%)',
-        }}></div>
-
-        {/* 中央偏下：深藍金交融 */}
-        <div className="parallax-blob absolute bottom-[0%] left-[20%] w-[60%] h-[60%]" style={{
-          background: 'radial-gradient(ellipse at center, rgba(39,104,168,0.10) 0%, rgba(243,178,55,0.04) 50%, transparent 70%)',
-        }}></div>
-      </div>
-    </div>
-  );
-}
-
-// 滾動視差效果
-function ScrollParallax() {
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const handleScroll = () => {
-      const scrollElements = document.querySelectorAll('.parallax-scroll');
-      const viewAllButton = document.querySelector('.view-all-button');
-
-      scrollElements.forEach((el) => {
-        const scrollY = window.scrollY;
-        const element = el as HTMLElement;
-        const speed = element.dataset.speed || '0.2';
-        
-        element.style.transform = `translateY(${scrollY * parseFloat(speed)}px)`;
-      });
-
-      // 為 "查看所有專案" 按鈕添加滾動放大效果
-      if (viewAllButton) {
-        const scrollY = window.scrollY;
-        const scaleStart = 800; // 開始放大的滾動位置
-        const scaleMax = 1.3; // 最大放大倍數
-        const scaleDistance = 500; // 達到最大放大的滾動距離
-        
-        if (scrollY > scaleStart) {
-          const progress = Math.min((scrollY - scaleStart) / scaleDistance, 1);
-          const scale = 1 + (scaleMax - 1) * progress;
-          (viewAllButton as HTMLElement).style.transform = `scale(${scale})`;
-        } else {
-          (viewAllButton as HTMLElement).style.transform = 'scale(1)';
-        }
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-  
-  return null;
-}
 
 export default function Home() {
   // 精選最新專題、AI 學習產品與團隊全端平台
@@ -117,17 +33,12 @@ export default function Home() {
   }, [t, language]);
 
   return (
-    <ParallaxProvider>
+    <>
       <div className="flex flex-col min-h-screen relative">
         <Header />
         
-        {/* 添加視差背景 */}
-        <ParallaxBackground />
-        <ScrollParallax />
-        
-        {/* 覆蓋一層半透明背景以確保內容可讀性 */}
-        <div className="fixed inset-0 z-[-1] bg-[var(--background)]/90 backdrop-blur-sm"></div>
-        
+        <SiteBackground />
+
         <main className="flex-grow bg-transparent">
           {/* Hero Section with improved mobile layout */}
           <div className="container mx-auto px-6 md:px-8 lg:px-12 py-16 md:py-20">
@@ -141,7 +52,7 @@ export default function Home() {
                     <span className="mr-2 opacity-70">&gt;</span>
                     {t('iam')}
                   </div>
-                  <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight mb-2">
+                  <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-[#6aa5e0] bg-clip-text text-transparent leading-tight mb-2">
                     {t('fullname')}
                   </h1>
                   <div className="h-6 flex items-center overflow-hidden">
@@ -162,7 +73,7 @@ export default function Home() {
                       <div className="absolute -bottom-1 -right-1 w-3 h-3 border border-secondary/30 rounded rotate-12 animate-pulse" style={{ animationDelay: '1s' }}></div>
                       
                       <Image
-                        src="/nb_pixel_av.png"
+                        src="/nb_pixel_av.webp"
                         alt="Pierre's Avatar"
                         fill
                         sizes="80px"
@@ -200,7 +111,7 @@ export default function Home() {
                 <div className="flex flex-col gap-4 parallax-scroll" data-speed="0.02">
                   <Link
                     href="/projects"
-                    className="bg-primary text-[var(--dark)] px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 inline-flex items-center justify-center group"
+                    className="bg-primary text-dark px-6 py-4 rounded-lg font-semibold whitespace-nowrap hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 inline-flex items-center justify-center group"
                   >
                     {t('view_portfolio')}
                     <svg
@@ -218,13 +129,17 @@ export default function Home() {
                       />
                     </svg>
                   </Link>
-                  <div className="flex gap-4">
+                  <div className="flex gap-3">
                     <Link
                       href="/contact"
-                      className="flex-1 border border-[var(--border-color)] text-[var(--foreground)] px-8 py-4 rounded-lg font-semibold hover:bg-[var(--background-alt)] transition-all duration-300 hover:border-primary/50 inline-flex items-center justify-center"
+                      className="flex-1 border border-[var(--border-color)] text-[var(--foreground)] px-4 py-4 rounded-lg font-semibold whitespace-nowrap hover:bg-[var(--background-alt)] transition-all duration-300 hover:border-primary/50 inline-flex items-center justify-center"
                     >
                       {t('contact_me')}
                     </Link>
+                    <ResumeButton
+                      label={t('resume')}
+                      className="flex-1 border border-[var(--border-color)] text-[var(--foreground)] px-4 py-4 rounded-lg font-semibold whitespace-nowrap hover:bg-[var(--background-alt)] hover:border-primary/50"
+                    />
                     <a
                       href="https://github.com/pierrechen2001"
                       target="_blank"
@@ -251,7 +166,7 @@ export default function Home() {
                     <span className="animate-pulse text-lg">_</span>
                     <span className="text-lg md:text-xl font-medium tracking-wide">{t('iam')}</span>
                   </div>
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight">
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-[#6aa5e0] bg-clip-text text-transparent leading-tight">
                     {t('fullname')}
                   </h1>
                   <div className="h-10 mb-8 flex items-center">
@@ -282,10 +197,10 @@ export default function Home() {
                   ))}
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 parallax-scroll pt-2" data-speed="0.02">
+                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 parallax-scroll pt-2" data-speed="0.02">
                   <Link
                     href="/projects"
-                    className="bg-primary text-[var(--dark)] px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 inline-flex items-center justify-center group"
+                    className="bg-primary text-dark px-6 py-4 rounded-lg font-semibold whitespace-nowrap hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 inline-flex items-center justify-center group"
                   >
                     {t('view_portfolio')}
                     <svg
@@ -305,15 +220,19 @@ export default function Home() {
                   </Link>
                   <Link
                     href="/contact"
-                    className="border border-[var(--border-color)] text-[var(--foreground)] px-8 py-4 rounded-lg font-semibold hover:bg-[var(--background-alt)] transition-all duration-300 hover:border-primary/50 inline-flex items-center justify-center"
+                    className="border border-[var(--border-color)] text-[var(--foreground)] px-6 py-4 rounded-lg font-semibold whitespace-nowrap hover:bg-[var(--background-alt)] transition-all duration-300 hover:border-primary/50 inline-flex items-center justify-center"
                   >
                     {t('contact_me')}
                   </Link>
+                  <ResumeButton
+                    label={t('resume')}
+                    className="border border-[var(--border-color)] text-[var(--foreground)] px-6 py-4 rounded-lg font-semibold whitespace-nowrap hover:bg-[var(--background-alt)] hover:border-primary/50"
+                  />
                   <a
                     href="https://github.com/pierrechen2001"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="border border-[var(--border-color)] text-[var(--foreground)] px-5 py-4 rounded-lg font-semibold hover:bg-[var(--background-alt)] transition-all duration-300 hover:border-primary/50 inline-flex items-center justify-center gap-2"
+                    className="border border-[var(--border-color)] text-[var(--foreground)] px-5 py-4 rounded-lg font-semibold whitespace-nowrap hover:bg-[var(--background-alt)] transition-all duration-300 hover:border-primary/50 inline-flex items-center justify-center gap-2"
                     aria-label="GitHub"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -334,7 +253,7 @@ export default function Home() {
                     <div className="absolute top-1/4 -right-8 w-4 h-4 bg-primary/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
                     
                     <Image
-                      src="/nb_pixel_av.png"
+                      src="/nb_pixel_av.webp"
                       alt="Pierre's Avatar"
                       fill
                       sizes="(max-width: 768px) 256px, 320px"
@@ -370,7 +289,7 @@ export default function Home() {
             <div className="text-center mt-16 mt-20">
               <Link
                 href="/projects"
-                className="inline-flex items-center bg-[var(--background-alt)] border border-[var(--border-color)] text-[var(--foreground)] px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold hover:bg-primary hover:text-[var(--dark)] hover:border-primary transition-all duration-300 group text-sm md:text-base w-full sm:w-auto justify-center"
+                className="inline-flex items-center bg-[var(--background-alt)] border border-[var(--border-color)] text-[var(--foreground)] px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold hover:bg-primary hover:text-dark hover:border-primary transition-all duration-300 group text-sm md:text-base w-full sm:w-auto justify-center"
               >
                 <span className="whitespace-nowrap">{t('view_all_projects')}</span>
                 <svg
@@ -394,6 +313,6 @@ export default function Home() {
         
         <Footer />
       </div>
-    </ParallaxProvider>
+    </>
   );
 }

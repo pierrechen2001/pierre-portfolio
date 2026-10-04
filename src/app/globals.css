@@ -142,18 +142,6 @@ body {
   color: var(--primary);
 }
 
-/* View All Button 特殊樣式 */
-.view-all-button {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-origin: center;
-}
-
-.view-all-button:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-  box-shadow: 0 8px 25px rgba(243, 178, 55, 0.3);
-}
-
 /* 徽章樣式 */
 .badge {
   display: inline-flex;
@@ -277,7 +265,7 @@ body {
 /* 專案卡片網格樣式 - 確保同一行卡片高度統一 */
 .project-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
   gap: 2rem;
   align-items: stretch;
 }
@@ -293,15 +281,6 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
   }
-}
-
-/* 專案卡片樣式增強 */
-.project-card {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
 }
 
 /* 圖片容器樣式改進 */

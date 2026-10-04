@@ -2,45 +2,11 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SiteBackground from '@/components/SiteBackground';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useEffect, useRef, useState } from 'react';
-import { ParallaxProvider } from 'react-scroll-parallax';
+import { useEffect, useState } from 'react';
 import { notes, categories } from '@/data/notes';
 import Link from 'next/link';
-
-// 視差背景組件
-function ParallaxBackground() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!ref.current) return;
-      
-      const x = e.clientX / window.innerWidth;
-      const y = e.clientY / window.innerHeight;
-      
-      ref.current.style.transform = `translate(${x * -30}px, ${y * -30}px)`;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  return (
-    <div className="fixed inset-0 z-[-2] overflow-hidden bg-[#181c24]">
-      <div ref={ref} className="absolute inset-0 scale-110">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#e9a42e]/10 rounded-full blur-[50px] animate-pulse" style={{ animationDuration: '8s' }}></div>
-        <div className="absolute top-[15%] right-[-20%] w-[40%] h-[40%] bg-indigo-300/20 rounded-full blur-[150px] animate-pulse" style={{ animationDuration: '10s' }}></div>
-        <div className="absolute bottom-[15%] left-[10%] w-[60%] h-[60%] bg-slate-800/20 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '12s' }}></div>
-        <div className="absolute bottom-[-15%] right-[30%] w-[30%] h-[30%] bg-blue-700/20 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '9s' }}></div>
-        <div className="absolute top-[40%] left-[30%] w-[45%] h-[45%] bg-slate-700/20 rounded-full blur-[130px] animate-pulse" style={{ animationDuration: '11s' }}></div>
-      </div>
-    </div>
-  );
-}
 
 export default function NotesPage() {
   const { t, language } = useLanguage();
@@ -169,22 +135,18 @@ export default function NotesPage() {
         }}
       />
 
-      <ParallaxProvider>
+      <>
         <div className="flex flex-col min-h-screen relative">
           <Header />
         
-        {/* 添加視差背景 */}
-        <ParallaxBackground />
-        
-        {/* 覆蓋一層半透明背景以確保內容可讀性 */}
-        <div className="fixed inset-0 z-[-1] bg-[var(--background)]/90 backdrop-blur-sm"></div>
-        
+        <SiteBackground />
+
         <main className="flex-grow bg-transparent">
           <div className="container mx-auto px-6 md:px-8 lg:px-12 py-16 md:py-24">
             
             {/* 標題區域 */}
             <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl font-bold text-[var(--foreground)] mb-6 leading-tight">
                 {language === 'en' ? 'My Notes' : '我的筆記庫'}
               </h1>
               <p className="text-lg md:text-xl text-[var(--foreground-muted)] max-w-3xl mx-auto leading-relaxed">
@@ -227,7 +189,7 @@ export default function NotesPage() {
                       onClick={() => setSelectedCategory(category[language])}
                       className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                         selectedCategory === category[language]
-                          ? 'bg-primary text-[var(--dark)] shadow-lg shadow-primary/25'
+                          ? 'bg-primary text-dark shadow-lg shadow-primary/25'
                           : 'bg-[var(--background-alt)] border border-[var(--border-color)] text-[var(--foreground)] hover:border-primary/50'
                       }`}
                     >
@@ -338,7 +300,7 @@ export default function NotesPage() {
         
         <Footer />
         </div>
-      </ParallaxProvider>
+      </>
     </>
   );
 } 

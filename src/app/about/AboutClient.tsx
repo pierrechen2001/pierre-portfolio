@@ -2,78 +2,10 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SiteBackground from '@/components/SiteBackground';
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
-import { ParallaxProvider } from 'react-scroll-parallax';
 import { useLanguage } from '@/contexts/LanguageContext';
 import CodeBlock from '@/components/CodeBlock';
-
-// 用戶端組件，用於處理視差效果
-function ParallaxBackground() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!ref.current) return;
-
-      const x = e.clientX / window.innerWidth;
-      const y = e.clientY / window.innerHeight;
-
-      ref.current.style.transform = `translate(${x * -30}px, ${y * -30}px)`;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  return (
-    <div className="fixed inset-0 z-[-2] overflow-hidden bg-[#181c24]">
-      <div ref={ref} className="absolute inset-0 scale-110">
-        {/* 深藍色至黑色的漸層背景 */}
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#e9a42e]/10 rounded-full blur-[50px]"></div>
-        <div className="absolute top-[15%] right-[-20%] w-[40%] h-[40%] bg-indigo-300/20 rounded-full blur-[150px]"></div>
-        <div className="absolute bottom-[15%] left-[10%] w-[60%] h-[60%] bg-slate-800/20 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-[-15%] right-[30%] w-[30%] h-[30%] bg-blue-700/20 rounded-full blur-[120px]"></div>
-        <div className="parallax-blob absolute top-[70%] right-[10%] w-[35%] h-[35%] bg-gradient-to-bl from-purple-500/20 to-indigo-600/15 rounded-full blur-[90px]"></div>
-        <div className="parallax-blob absolute top-[5%] left-[80%] w-[45%] h-[45%] bg-gradient-to-tr from-teal-500/15 to-emerald-400/10 rounded-full blur-[70px]"></div>
-        <div className="parallax-blob absolute top-[10%] right-[5%] w-[40%] h-[40%] bg-gradient-to-bl from-teal-500/15 to-emerald-400/8 rounded-full blur-[120px]"></div>
-        <div className="absolute top-[40%] left-[30%] w-[45%] h-[45%] bg-slate-700/20 rounded-full blur-[130px]"></div>
-      </div>
-    </div>
-  );
-}
-
-// 創建一個滾動視差效果
-function ScrollParallax() {
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const handleScroll = () => {
-      const scrollElements = document.querySelectorAll('.parallax-scroll');
-
-      scrollElements.forEach((el) => {
-        const scrollY = window.scrollY;
-        const element = el as HTMLElement;
-        const speed = element.dataset.speed || '0.2';
-
-        element.style.transform = `translateY(${scrollY * parseFloat(speed)}px)`;
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-  
-  return null;
-}
 
 // Tech Stack Badge Component
 const TechBadge = ({ name, color }: { name: string, color: string }) => (
@@ -123,17 +55,12 @@ export default function AboutClient() {
   };
 
   return (
-    <ParallaxProvider>
+    <>
       <div className="flex flex-col min-h-screen relative">
         <Header />
         
-        {/* 添加視差背景 */}
-        <ParallaxBackground />
-        <ScrollParallax />
-        
-        {/* 覆蓋一層半透明背景以確保內容可讀性 */}
-        <div className="fixed inset-0 z-[-1] bg-[var(--background)]/90 backdrop-blur-sm"></div>
-        
+        <SiteBackground />
+
         <main className="flex-grow bg-transparent">
           <div className="container mx-auto py-16 px-4 md:px-6">
             {/* 頂部區域：標題和簡介 */}
@@ -141,7 +68,7 @@ export default function AboutClient() {
               <div className="inline-block mb-4 px-4 py-1 rounded-full border border-[var(--primary)]/30 bg-[var(--primary)]/10 text-[var(--primary)] font-mono text-sm">
                 $ whoami
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6 tracking-tight">
+              <h1 className="text-4xl md:text-6xl font-bold text-[var(--foreground)] mb-6 tracking-tight">
                 {t('about_page_title')}
               </h1>
               <p className="text-lg md:text-xl max-w-2xl mx-auto text-[var(--foreground-muted)] font-light leading-relaxed">
@@ -157,7 +84,7 @@ export default function AboutClient() {
                   <div className="relative aspect-[3/4] w-full">
                     <div className="relative h-full w-full overflow-hidden rounded-lg">
                       <Image
-                        src="/av.png"
+                        src="/av.webp"
                         alt={`${t('fullname')} photo`}
                         fill
                         sizes="(max-width: 768px) 240px, 300px"
@@ -199,7 +126,7 @@ export default function AboutClient() {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[var(--primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                <h2 className="text-3xl font-bold text-[var(--foreground)]">
                   {t('experience_and_projects')}
                 </h2>
               </div>
@@ -490,6 +417,6 @@ export default function AboutClient() {
         
         <Footer />
       </div>
-    </ParallaxProvider>
+    </>
   );
 }

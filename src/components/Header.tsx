@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
+import ResumeButton from './ResumeButton';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -84,6 +85,10 @@ export default function Header() {
           {/* Social/Theme Links */}
           <div className="hidden md:flex items-center gap-4">
             <LanguageSwitcher />
+            <ResumeButton
+              label={t('resume')}
+              className="px-3 py-1.5 rounded-md border border-primary/50 text-primary text-sm font-medium hover:bg-primary hover:text-dark"
+            />
             <a href="https://github.com/pierrechen2001" target="_blank" rel="noopener noreferrer" 
                className="text-gray-400 hover:text-white transition-colors">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -143,6 +148,10 @@ export default function Header() {
               >
                 {t('contact')}
               </Link>
+              <ResumeButton
+                label={t('resume')}
+                className="!justify-start w-full py-2 px-3 text-primary hover:bg-[#252530] rounded-lg"
+              />
             </nav>
           </div>
         </div>
