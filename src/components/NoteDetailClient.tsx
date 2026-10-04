@@ -12,6 +12,7 @@ import rehypeHighlight from 'rehype-highlight';
 import 'highlight.js/styles/github-dark.css';
 import Link from 'next/link';
 import { renderIconShortcodes } from '@/components/InteractiveIcon';
+import { Quote } from 'lucide-react';
 
 interface NoteDetailClientProps {
   note: Note;
@@ -264,10 +265,8 @@ export default function NoteDetailClient({ note, id }: NoteDetailClientProps) {
                         </li>
                       ),
                       blockquote: ({ children }) => (
-                        <blockquote className="border-l-4 border-primary pl-6 py-4 my-8 bg-gradient-to-r from-primary/5 to-transparent rounded-r-lg italic text-[var(--foreground-muted)] text-sm md:text-base leading-relaxed relative font-normal">
-                          <svg className="absolute top-3 left-2 w-5 h-5 text-primary/40" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-                          </svg>
+                        <blockquote className="relative border-l-4 border-primary pl-14 pr-6 py-5 my-8 bg-gradient-to-r from-primary/10 to-transparent rounded-r-lg text-[var(--foreground)] text-base md:text-lg leading-relaxed font-medium [&_p]:text-inherit [&_p]:text-base [&_p]:md:text-lg [&>p:last-child]:mb-0">
+                          <Quote className="absolute top-5 left-5 w-5 h-5 text-primary/70" aria-hidden />
                           {children}
                         </blockquote>
                       ),
@@ -324,7 +323,7 @@ export default function NoteDetailClient({ note, id }: NoteDetailClientProps) {
                         <hr className="my-8 border-0 h-px bg-gradient-to-r from-transparent via-[var(--border-color)] to-transparent" />
                       ),
                       strong: ({ children }) => (
-                        <strong className="font-bold text-[var(--foreground)] bg-gradient-to-r from-primary/10 to-secondary/10 px-1 rounded">
+                        <strong className="font-bold text-[var(--foreground)] bg-[linear-gradient(transparent_45%,rgba(243,178,55,0.28)_45%,rgba(243,178,55,0.28)_92%,transparent_92%)] box-decoration-clone">
                           {children}
                         </strong>
                       ),
