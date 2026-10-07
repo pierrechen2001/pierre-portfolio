@@ -40,6 +40,14 @@ interface ProjectProps {
       en: string;
       zh: string;
     };
+    productStory?: {
+      en: { problem: string; approach: string };
+      zh: { problem: string; approach: string };
+    };
+    userFlow?: {
+      en: string[];
+      zh: string[];
+    };
     imageUrl: string;
     status: 'completed' | 'in-progress' | 'planned';
     date: {
@@ -66,6 +74,7 @@ interface ProjectProps {
 
 export default function ProjectDetailClient({ project, id }: ProjectProps) {
   const { t, language } = useLanguage();
+  const userFlow = project.userFlow?.[language];
   
   const statusText = {
     completed: { zh: '已完成', en: 'Completed' },
@@ -187,6 +196,58 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                   </span>
                 </div>
               </Reveal>
+
+              {/* 先交代產品要解決的問題與設計想法 */}
+              {project.productStory && (
+                <Reveal className="mb-12">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
+                    {language === 'en' ? 'Why this project exists' : '為什麼做這個專案'}
+                  </h2>
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="rounded-xl border border-[var(--border-color)]/50 bg-[var(--background-alt)]/50 p-6">
+                      <h3 className="mb-3 text-sm font-semibold tracking-widest text-primary uppercase">
+                        {language === 'en' ? 'The problem' : '遇到的問題'}
+                      </h3>
+                      <p className="text-lg leading-relaxed text-[var(--foreground-muted)]">
+                        {project.productStory[language].problem}
+                      </p>
+                    </div>
+                    <div className="rounded-xl border border-primary/30 bg-primary/5 p-6">
+                      <h3 className="mb-3 text-sm font-semibold tracking-widest text-primary uppercase">
+                        {language === 'en' ? 'The product idea' : '產品想法'}
+                      </h3>
+                      <p className="text-lg leading-relaxed text-[var(--foreground-muted)]">
+                        {project.productStory[language].approach}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+              )}
+
+              {userFlow && (
+                <Reveal className="mb-12">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
+                    {language === 'en' ? 'How it works' : '使用流程'}
+                  </h2>
+                  <ol className="flex flex-col gap-2 lg:flex-row lg:gap-0" aria-label={language === 'en' ? 'Product use flow' : '產品使用流程'}>
+                    {userFlow.map((step, index) => (
+                      <li key={index} className="flex min-w-0 flex-1 flex-col items-center lg:flex-row">
+                        <div className="flex w-full flex-1 items-start gap-3 rounded-xl border border-[var(--border-color)]/50 bg-[var(--background-alt)]/50 p-4 lg:min-h-36 lg:flex-col">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 text-sm font-bold text-primary" aria-hidden="true">
+                            {index + 1}
+                          </span>
+                          <span className="text-base font-medium leading-relaxed text-[var(--foreground)]">{step}</span>
+                        </div>
+                        {index < userFlow.length - 1 && (
+                          <span className="py-1 text-xl font-semibold text-primary lg:px-2 lg:py-0" aria-hidden="true">
+                            <span className="lg:hidden">↓</span><span className="hidden lg:inline">→</span>
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ol>
+                </Reveal>
+              )}
               
               {/* 專案概述 */}
               <Reveal className="mb-12">
@@ -194,9 +255,9 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                   {language === 'en' ? 'Project Overview' : '專案概述'}
                 </h2>
                 <div className="text-[var(--foreground-muted)] leading-relaxed space-y-4">
-                  {project.fullDescription[language].split('\n').map((paragraph, i) => (
+                  {project.fullDescription[language].split('\n').map(paragraph => paragraph.trim()).filter(Boolean).map((paragraph, i) => (
                     <p key={i} className="text-lg">
-                      {renderMarkdown(paragraph.trim())}
+                      {renderMarkdown(paragraph)}
                     </p>
                   ))}
                 </div>

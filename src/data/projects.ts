@@ -14,6 +14,14 @@ export interface Project {
     en: string;
     zh: string;
   };
+  productStory?: {
+    en: { problem: string; approach: string };
+    zh: { problem: string; approach: string };
+  };
+  userFlow?: {
+    en: string[];
+    zh: string[];
+  };
   imageUrl: string;
   status: 'completed' | 'in-progress' | 'planned';
   date: {
@@ -81,6 +89,20 @@ export const projects: Project[] = [
       `
     },
     imageUrl: '/projects/mapit_cover.webp',
+    productStory: {
+      en: {
+        problem: 'Restaurant recommendations get buried across social posts and saved links. Even after saving them, finding a place that fits the moment and agreeing on it with friends takes another round of searching.',
+        approach: 'Turn a link into a place on a personal map, then connect that saved place to discovery, invitations, and shared visit records. The product follows the decision from “that looks good” to “we went there.”'
+      },
+      zh: {
+        problem: '想吃的餐廳散落在社群貼文與收藏連結中；等到要約朋友吃飯時，還得重新翻找、比對和討論。',
+        approach: '把連結變成個人地圖上的店家，再串起篩選、好友邀約與共同造訪紀錄，讓「看到想吃」能接到「真的一起去」。'
+      }
+    },
+    userFlow: {
+      en: ['Share or paste a restaurant link', 'Review extracted places and save one to the map', 'Find a place with map filters or a friends feed', 'Invite friends or draw from saved places', 'Record the visit together'],
+      zh: ['分享或貼上餐廳連結', '檢視解析結果並加入地圖', '用地圖篩選或好友動態找店', '揪朋友或從收藏中轉蛋選店', '記錄一起去過的地方']
+    },
     status: 'in-progress',
     date: {
       en: 'Apr 2026 - Present',
@@ -128,8 +150,8 @@ export const projects: Project[] = [
       zh: 'DOGTOR 逗課 AI 學習軟體'
     },
     description: {
-      en: 'Co-built an AI learning app with 7,000+ users, owning LLM features, learning data, FastAPI services, and cloud deployment.',
-      zh: '共同打造累積超過 7,000 位用戶的 AI 學習 App，負責 LLM 功能、學習資料、FastAPI 服務與雲端部署。'
+      en: 'An AI learning companion that helps students keep a study rhythm through practice and feedback; co-built for 7,000+ users.',
+      zh: '從補教現場出發的 AI 學伴，透過練習與即時回饋幫學生維持學習節奏；共同打造並累積超過 7,000 位用戶。'
     },
     fullDescription: {
       en: `
@@ -148,6 +170,20 @@ export const projects: Project[] = [
       `
     },
     imageUrl: '/projects/dt.jpg',
+    productStory: {
+      en: {
+        problem: 'After years of teaching, I saw that many students wanted to learn but struggled to keep a rhythm when studying felt repetitive and feedback came too late.',
+        approach: 'I wanted an AI learning companion for short, interactive practice. Question feedback and knowledge-point records help students keep going and make their weak areas visible to them and their parents.'
+      },
+      zh: {
+        problem: '在補教現場待了多年，我看到不少學生並非不想學，而是傳統練習缺少即時互動與回饋，很難維持學習節奏。',
+        approach: '我想做能陪學生持續練習的 AI 學伴：用短時間的互動練題建立節奏，再用錯題與知識點紀錄讓學生和家長看見下一步。'
+      }
+    },
+    userFlow: {
+      en: ['Practice questions', 'Get feedback and explanations', 'Track mistakes by knowledge point', 'Practice weaker areas', 'Review progress and parent insights'],
+      zh: ['練習題目', '查看回饋與解題說明', '依知識點累積錯題', '針對弱點再練習', '查看進度與家長分析']
+    },
     status: 'completed',
     date: {
       en: '2025 - Present',
@@ -268,8 +304,8 @@ export const projects: Project[] = [
       zh: '200OK 軟體外包接案平台'
     },
     description: {
-      en: 'Collaborated on a full-stack outsourcing platform with project proposals, real-time messaging, token flows, and AI-assisted matching.',
-      zh: '參與全端接案平台開發，整合發案與提案、即時訊息、代幣流程及 AI 輔助媒合。'
+      en: 'A software-focused outsourcing platform shaped by the gaps I saw in generic freelance sites, connecting project posts, proposals, and direct discussion.',
+      zh: '從自身接案時遇到的需求溝通障礙出發，打造專為軟體案件設計的發案、提案與即時討論平台。'
     },
     fullDescription: {
       en: `
@@ -302,6 +338,20 @@ export const projects: Project[] = [
       `
     },
     imageUrl: '/projects/200okp.webp',
+    productStory: {
+      en: {
+        problem: 'While taking software freelance jobs, I found that many general-purpose platforms were not built around software projects. They often missed the questions engineers needed answered, or asked them in ways clients could not understand, leaving both sides with unclear requirements.',
+        approach: 'I wanted a platform designed around software outsourcing, where clients can post a project and engineers can respond with proposals, then clarify the work through direct conversation before moving forward.'
+      },
+      zh: {
+        problem: '我自己接軟體案時發現，許多接案平台不是為軟體專案設計：工程師在意的需求資訊沒有被問到；有些問題業主看不懂，只能隨意填，讓雙方從一開始就很難對焦。',
+        approach: '因此我想做專門承接軟體案件的平台，把發案、工程師提案和即時討論接在一起，讓雙方有機會先釐清需求再推進合作。'
+      }
+    },
+    userFlow: {
+      en: ['Client posts a project', 'Engineer discovers it and submits a proposal', 'Client reviews proposals', 'Both sides discuss through messaging', 'Contact information is unlocked to continue'],
+      zh: ['需求方發布案件', '工程師找到案件並提案', '需求方比較提案', '雙方透過訊息討論', '解鎖聯絡資訊並推進合作']
+    },
     status: 'completed',
     date: {
       en: 'October 2025 - December 2025',
@@ -442,6 +492,10 @@ export const projects: Project[] = [
       `
     },
     imageUrl: '/projects/aip.jpg',
+    userFlow: {
+      en: ['Type or speak a plan', 'Parse its date, time, and event', 'Add it to the calendar', 'View or share the schedule'],
+      zh: ['輸入或說出計畫', '解析日期、時間與事件', '加入行事曆', '查看或共享行程']
+    },
     status: 'completed',
     date: {
       en: 'July 2025 - August 2025',
@@ -568,6 +622,20 @@ export const projects: Project[] = [
       `
     },
     imageUrl: '/projects/erp.jpg',
+    productStory: {
+      en: {
+        problem: 'Customer records, service visits, and field schedules need to stay connected so staff can follow a job from request to completion.',
+        approach: 'Organize customer details, work orders, scheduling, task status, and reports around the actual pest-control service process.'
+      },
+      zh: {
+        problem: '害蟲防治服務涉及客戶資料、施工安排與外勤進度；這些紀錄若分散，行政與現場人員就難以追蹤同一筆服務。',
+        approach: '以實際服務流程整理客戶、工單、排程、任務狀態與報表，讓資料能從接案一路連到完成。'
+      }
+    },
+    userFlow: {
+      en: ['Create a customer record', 'Open and schedule a work order', 'Field staff complete the visit', 'Update task status', 'Review service reports'],
+      zh: ['建立客戶資料', '建立工單並安排外勤', '現場完成服務', '更新任務狀態', '查看服務報表']
+    },
     status: 'completed',
     date: {
       en: 'June 2025',
@@ -659,8 +727,8 @@ export const projects: Project[] = [
       zh: 'SuperBot：行政自動化工具'
     },
     description: {
-      en: 'Independently built a LINE-based education operations tool for class reminders, homework tracking, check-ins, and attendance reports.',
-      zh: '獨立開發 LINE 教育行政工具，自動處理課程提醒、作業追蹤、打卡與出勤統計。'
+      en: 'A LINE assistant I built to handle the repetitive class and attendance work I faced while running an education business.',
+      zh: '為減少自己在補教現場反覆處理的提醒、作業與出勤工作，我獨立開發了 LINE 行政助手。'
     },
     fullDescription: {
       en: `
@@ -693,6 +761,20 @@ export const projects: Project[] = [
       `
     },
     imageUrl: '/projects/sb.jpg',
+    productStory: {
+      en: {
+        problem: 'When I started running Superb Education, attendance, homework follow-ups, and repeated schedule questions consumed time I needed for teaching and student support.',
+        approach: 'I built a LINE assistant that students could use in a familiar chat, with Google Sheets behind it to record check-ins, answer routine questions, and keep the admin work moving.'
+      },
+      zh: {
+        problem: '剛創辦精湛教育時，我每天都在處理出缺勤、作業追蹤與補課時間詢問；這些小事不能漏，卻不斷擠掉教學與陪伴學生的時間。',
+        approach: '我因此做了 LINE 小助手，讓學生用熟悉的聊天方式查詢與打卡，並把資料交由 Google Sheets 記錄和統計。'
+      }
+    },
+    userFlow: {
+      en: ['Set up classes and tasks', 'Send reminders through LINE', 'Collect homework and check-ins', 'Calculate hours and export records'],
+      zh: ['設定課程與任務', '透過 LINE 發送提醒', '收集作業與打卡紀錄', '計算時數並匯出資料']
+    },
     status: 'completed',
     date: {
       en: 'July 2024',
@@ -783,8 +865,8 @@ export const projects: Project[] = [
       zh: '七桃：銀髮交友應用'
     },
     description: {
-      en: 'Led a Flutter app for seniors with accessible activity discovery, personalized recommendations, and Firebase accounts.',
-      zh: '主導 Flutter 熟齡社交 App，設計易用的活動探索、個人化推薦與 Firebase 帳號功能。'
+      en: 'An activity discovery app we designed to help older family members get out of the house and meet new friends.',
+      zh: '希望鼓勵家中長輩出門走走、認識朋友，我們設計了熟齡友善的活動探索 App。'
     },
     fullDescription: {
       en: `
@@ -811,6 +893,20 @@ export const projects: Project[] = [
       `
     },
     imageUrl: '/projects/sp.jpg',
+    productStory: {
+      en: {
+        problem: 'We thought about older family members spending long stretches at home with few reasons to go out. We wanted to make it easier for them to find company and something enjoyable to do.',
+        approach: 'We designed Seven Peach to encourage older adults to go out, take part in activities, and make friends, with an interface and recommendations shaped for them.'
+      },
+      zh: {
+        problem: '我們想到家裡的長輩常常長時間待在家裡，生活容易無聊，也少了出門認識人的機會。',
+        approach: '因此我們想做一個真正適合長輩使用的產品，透過容易操作的活動探索與推薦，鼓勵他們出門走走、參加活動、交新朋友。'
+      }
+    },
+    userFlow: {
+      en: ['Set up a profile and interests', 'Browse recommended activities', 'Choose an activity to join', 'Meet people through shared participation'],
+      zh: ['建立個人檔案與興趣', '瀏覽推薦活動', '選擇想參加的活動', '透過共同活動認識人']
+    },
     status: 'completed',
     date: {
       en: 'August 2024',
@@ -929,6 +1025,20 @@ export const projects: Project[] = [
       `
     },
     imageUrl: '/projects/lk.jpg',
+    productStory: {
+      en: {
+        problem: 'This was a C++ course project: the goal was to make game states, legal moves, and visual feedback work together in an interactive puzzle.',
+        approach: 'Use a parking-lot puzzle as a concrete way to practice data structures, object-oriented design, and graphics programming.'
+      },
+      zh: {
+        problem: '這是 C++ 課程期末作品，出發點是把狀態表示、合法移動與畫面回饋整合成真的能玩的互動程式。',
+        approach: '選擇停車場解謎作為題材，具體練習資料結構、物件導向設計與圖形介面。'
+      }
+    },
+    userFlow: {
+      en: ['Choose a puzzle', 'Move cars within the grid', 'Check the changing route', 'Free the target car'],
+      zh: ['選擇關卡', '在格子中移動車輛', '觀察路徑變化', '讓目標車輛脫困']
+    },
     status: 'completed',
     date: {
       en: 'January 2024',
