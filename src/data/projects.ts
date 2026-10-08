@@ -454,6 +454,134 @@ export const projects: Project[] = [
     youtubeVideoId: '3eJiVbF_AcI'
   },
   {
+    id: 'whisper-of-the-abyss',
+    title: {
+      en: 'Whisper of the Abyss',
+      zh: 'Whisper of the Abyss'
+    },
+    description: {
+      en: 'A 2.5D Unity puzzle game built on the physics engine around limited jumps, map exploration, teleport stations, and item-use points. Playable online.',
+      zh: '以 Unity 物理引擎打造的 2.5D 益智遊戲，透過有限跳躍次數、地圖探索、傳送站與道具使用點設計關卡，可線上遊玩。'
+    },
+    fullDescription: {
+      en: `
+        Whisper of the Abyss is a 2.5D puzzle game built by our team with Unity. Built on Unity's physics engine, its puzzles revolve around a limited number of jumps, map exploration, teleport stations, and items that must be brought to their matching use points.
+
+        My responsibilities included:
+        - **Lighting & shadows**: Designing the game's lighting and shadow atmosphere
+        - **Ray tracing**: Implementing ray tracing for the game's lighting
+        - **Tileset**: Building the tile-based map system used to compose the game's levels
+        - **Dynamic background computation**: Calculating and updating the game background in real time as the game state changes
+        - **Item mechanics**: Designing and implementing how items are picked up and used at their matching use points
+
+        The game is published on itch.io and can be played directly in the browser.
+      `,
+      zh: `
+        Whisper of the Abyss 是我們團隊以 Unity 製作的 2.5D 益智遊戲。遊戲利用 Unity 的物理引擎，透過有限的跳躍次數、地圖探索、傳送站，以及道具與對應的道具使用點來設計謎題。
+
+        我的負責項目包含：
+        - **光影設計**：設計遊戲整體的光影氛圍
+        - **光線追蹤**：實作遊戲中的光線追蹤效果
+        - **Tileset**：建立以圖塊組成關卡的地圖系統
+        - **動態遊戲背景運算**：依遊戲狀態即時計算並更新遊戲背景
+        - **道具機制**：設計並實作道具的取得，以及在對應使用點使用道具的機制
+
+        遊戲已發布於 itch.io，可直接在瀏覽器線上遊玩。
+      `
+    },
+    imageUrl: '/projects/abyss.jpg',
+    userFlow: {
+      en: ['Explore the map', 'Plan moves within the limited jumps', 'Travel through teleport stations', 'Collect items', 'Use items at their matching points to solve the puzzle'],
+      zh: ['探索地圖', '在有限跳躍次數內規劃路線', '透過傳送站移動', '取得道具', '在對應使用點使用道具解開謎題']
+    },
+    status: 'completed',
+    date: {
+      en: 'October 2025 - December 2025',
+      zh: '2025年10月 - 2025年12月'
+    },
+    skills: [
+      { name: 'Unity', color: 'bg-slate-500/20 text-slate-400 border border-slate-500/30' },
+      { name: 'C#', color: 'bg-violet-500/20 text-violet-400 border border-violet-500/30' },
+      { name: 'Media', color: 'bg-pink-500/20 text-pink-400 border border-pink-500/30' },
+      { name: 'Game Development', color: 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' },
+      { name: 'Ray Tracing', color: 'bg-amber-500/20 text-amber-400 border border-amber-500/30' }
+    ],
+    features: {
+      en: [
+        '2.5D puzzle gameplay built on Unity physics',
+        'Limited jumps, map exploration, and teleport stations',
+        'Items paired with matching use points',
+        'Lighting, shadows, and ray tracing',
+        'Tile-based levels with a real-time dynamic background',
+        'Playable online on itch.io'
+      ],
+      zh: [
+        '基於 Unity 物理引擎的 2.5D 益智玩法',
+        '有限跳躍次數、地圖探索與傳送站',
+        '道具與對應道具使用點的解謎設計',
+        '光影設計與光線追蹤',
+        'Tileset 關卡與即時運算的動態背景',
+        '可於 itch.io 線上遊玩'
+      ]
+    },
+    milestones: {
+      en: [
+        {
+          title: 'Published Playable Game',
+          description: 'Shipped a 2.5D puzzle game on itch.io that anyone can play in the browser.',
+          type: 'achievement',
+          icon: 'gamepad'
+        },
+        {
+          title: 'Lighting & Ray Tracing',
+          description: 'Designed the game\'s lighting and shadows and implemented ray tracing to shape its atmosphere.',
+          type: 'skill',
+          icon: 'flame'
+        },
+        {
+          title: 'Tileset & Dynamic Background',
+          description: 'Built the tile-based level system and a background that is computed and updated in real time during gameplay.',
+          type: 'learning',
+          icon: 'image'
+        },
+        {
+          title: 'Item Mechanics',
+          description: 'Designed and implemented items and their matching use points as a core puzzle mechanic.',
+          type: 'skill',
+          icon: 'zap'
+        }
+      ],
+      zh: [
+        {
+          title: '發布可線上遊玩的遊戲',
+          description: '將 2.5D 益智遊戲發布於 itch.io，任何人都能直接在瀏覽器遊玩。',
+          type: 'achievement',
+          icon: 'gamepad'
+        },
+        {
+          title: '光影與光線追蹤',
+          description: '設計遊戲的光影，並實作光線追蹤來營造遊戲氛圍。',
+          type: 'skill',
+          icon: 'flame'
+        },
+        {
+          title: 'Tileset 與動態背景',
+          description: '建立 Tileset 關卡系統，以及在遊戲中即時運算更新的背景。',
+          type: 'learning',
+          icon: 'image'
+        },
+        {
+          title: '道具機制',
+          description: '設計並實作道具與對應使用點，作為核心解謎機制。',
+          type: 'skill',
+          icon: 'zap'
+        }
+      ]
+    },
+    demoUrl: 'https://ocean1029.itch.io/team-project',
+    youtubeVideoId: 'a0MbaG1MBfU'
+  },
+  {
     id: 'aiplanner',
     title: {
       en: 'aiPlanner Smart Calendar',
