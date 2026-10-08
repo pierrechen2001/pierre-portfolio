@@ -489,7 +489,7 @@ export const projects: Project[] = [
         遊戲已發布於 itch.io，可直接在瀏覽器線上遊玩。
       `
     },
-    imageUrl: '/projects/abyss.jpg',
+    imageUrl: '/projects/abyss.png',
     userFlow: {
       en: ['Explore the map', 'Plan moves within the limited jumps', 'Travel through teleport stations', 'Collect items', 'Use items at their matching points to solve the puzzle'],
       zh: ['探索地圖', '在有限跳躍次數內規劃路線', '透過傳送站移動', '取得道具', '在對應使用點使用道具解開謎題']
