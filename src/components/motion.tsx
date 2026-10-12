@@ -42,7 +42,7 @@ export function Reveal({ children, className, delay = 0, y = 40, as = 'div' }: R
 }
 
 interface CountUpProps {
-  /** 例如 "7K+"、"#4"、"8"：數字部分會從 0 滾動到目標值，前後綴保持不變 */
+  /** 例如 "10K+"、"#4"、"8"：數字部分會從 0 滾動到目標值，前後綴保持不變 */
   value: string;
   className?: string;
 }

@@ -117,7 +117,7 @@ export default function Home() {
                 {/* Achievement Stats Strip - Mobile */}
                 <div className="flex flex-wrap gap-x-6 gap-y-2">
                   {[
-                    { value: '7K+', label: language === 'zh' ? 'Dogtor 用戶' : 'Dogtor users' },
+                    { value: '10K+', label: language === 'zh' ? 'Dogtor 用戶' : 'Dogtor users' },
                     { value: '#4',   label: language === 'zh' ? 'App Store' : 'App Store' },
                     { value: String(projects.length), label: language === 'zh' ? '收錄專案' : 'Projects' },
                   ].map(stat => (
@@ -206,7 +206,7 @@ export default function Home() {
                 {/* Achievement Stats Strip */}
                 <motion.div variants={staggerItem} className="flex flex-wrap gap-x-8 gap-y-3 pl-6 border-l-2 border-[var(--primary)]/20">
                   {[
-                    { value: '7K+', label: language === 'zh' ? 'Dogtor 用戶' : 'Dogtor users' },
+                    { value: '10K+', label: language === 'zh' ? 'Dogtor 用戶' : 'Dogtor users' },
                     { value: '#4',   label: language === 'zh' ? 'App Store 教育類' : 'App Store Education' },
                     { value: String(projects.length), label: language === 'zh' ? '收錄專案' : 'Projects' },
                   ].map(stat => (
