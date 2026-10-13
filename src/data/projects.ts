@@ -23,7 +23,7 @@ export interface Project {
     zh: string[];
   };
   imageUrl: string;
-  status: 'completed' | 'in-progress' | 'planned';
+  status: 'completed' | 'live' | 'in-progress' | 'planned';
   date: {
     en: string;
     zh: string;
@@ -150,19 +150,19 @@ export const projects: Project[] = [
       zh: 'DOGTOR 逗課 AI 學習軟體'
     },
     description: {
-      en: 'An AI learning companion that helps students keep a study rhythm through practice and feedback; co-built for 10,000+ users.',
-      zh: '從補教現場出發的 AI 學伴，透過練習與即時回饋幫學生維持學習節奏；共同打造並累積超過 10,000 位用戶。'
+      en: 'An AI learning companion that helps students keep a study rhythm through practice and feedback; co-built for 10,000+ users as of October 12, 2026.',
+      zh: '從補教現場出發的 AI 學伴，透過練習與即時回饋幫學生維持學習節奏；共同打造，截至 2026 年 10 月 12 日累積超過 10,000 位用戶。'
     },
     fullDescription: {
       en: `
-        Dogtor (逗課) is an AI learning app for secondary-school students. It combines question practice, error tracking, learning progress, and personalized guidance. The product has reached 10,000+ users and 2,600 monthly active users, and ranked #4 in App Store Education.
+        Dogtor (逗課) is an AI learning app for secondary-school students. It combines question practice, error tracking, learning progress, and personalized guidance. As of October 12, 2026, the product has reached 10,000+ users. In its first month after launch, it reached 2,600 monthly active users and ranked #4 in App Store Education.
 
         As a co-founder and software engineer, I owned the AI feature lifecycle and much of the production backend and data work: knowledge-point modeling, LLM orchestration, event collection, FastAPI APIs, and deployment on Cloud Run and Cloud SQL.
 
         I also built paid parent analytics that turns student answers, incorrect choices, and knowledge-point performance into AI-generated weakness analyses and personalized guidance.
       `,
       zh: `
-        Dogtor（逗課）是為國高中生設計的 AI 學習 App，整合題目練習、錯題追蹤、學習進度與個人化建議。產品已累積超過 10,000 位用戶、每月 2,600 位活躍用戶，曾登上 App Store 教育類第 4 名。
+        Dogtor（逗課）是為國高中生設計的 AI 學習 App，整合題目練習、錯題追蹤、學習進度與個人化建議。截至 2026 年 10 月 12 日，產品已累積超過 10,000 位用戶；上線首月達到 2,600 位月活躍用戶（MAU），並登上 App Store 教育類第 4 名。
 
         作為共同創辦人與軟體工程師，我負責 AI 功能生命週期，以及大部分正式環境的後端與資料工作，包括知識點建模、LLM 編排、事件蒐集、FastAPI API，以及 Cloud Run 和 Cloud SQL 部署。
 
@@ -184,7 +184,7 @@ export const projects: Project[] = [
       en: ['Practice questions', 'Get feedback and explanations', 'Track mistakes by knowledge point', 'Practice weaker areas', 'Review progress and parent insights'],
       zh: ['練習題目', '查看回饋與解題說明', '依知識點累積錯題', '針對弱點再練習', '查看進度與家長分析']
     },
-    status: 'completed',
+    status: 'live',
     date: {
       en: '2025 - Present',
       zh: '2025年 - 現在'
@@ -250,7 +250,7 @@ export const projects: Project[] = [
         },
         {
           title: 'App Store Launch',
-          description: 'Successfully launched on App Store, ranked #4 in Education category.',
+          description: 'Launched on the App Store and ranked #4 in Education in its first month.',
           type: 'achievement',
           icon: 'trophy'
         }
@@ -282,7 +282,7 @@ export const projects: Project[] = [
         },
         {
           title: 'App Store 上架',
-          description: '成功上架 App Store，教育類排名第 4 名。',
+          description: '成功上架 App Store，上線首月登上教育類第 4 名。',
           type: 'achievement',
           icon: 'trophy'
         }

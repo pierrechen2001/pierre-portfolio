@@ -49,7 +49,7 @@ interface ProjectProps {
       zh: string[];
     };
     imageUrl: string;
-    status: 'completed' | 'in-progress' | 'planned';
+    status: 'completed' | 'live' | 'in-progress' | 'planned';
     date: {
       en: string;
       zh: string;
@@ -78,6 +78,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
   
   const statusText = {
     completed: { zh: '已完成', en: 'Completed' },
+    live: { zh: '已上線，持續迭代優化', en: 'Live · Continuously improving' },
     'in-progress': { zh: '進行中', en: 'In Progress' },
     planned: { zh: '計劃中', en: 'Planned' },
   };
@@ -186,7 +187,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                 <div className="flex flex-wrap justify-center items-center gap-6 text-[var(--foreground-muted)]">
                   <span className="text-lg">{project.date[language]}</span>
                   <span className={`px-4 py-2 rounded-full text-sm font-medium ${
-                    project.status === 'completed'
+                    (project.status === 'completed' || project.status === 'live')
                       ? 'bg-green-500/20 text-green-400 border border-green-500/30'
                       : project.status === 'in-progress'
                       ? 'bg-primary/20 text-primary border border-primary/30'

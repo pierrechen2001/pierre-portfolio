@@ -117,8 +117,8 @@ export default function Home() {
                 {/* Achievement Stats Strip - Mobile */}
                 <div className="flex flex-wrap gap-x-6 gap-y-2">
                   {[
-                    { value: '10K+', label: language === 'zh' ? 'Dogtor 用戶' : 'Dogtor users' },
-                    { value: '#4',   label: language === 'zh' ? 'App Store' : 'App Store' },
+                    { value: '10K+', label: language === 'zh' ? 'Dogtor 用戶 · 2026/10/12' : 'Dogtor users · Oct 12, 2026' },
+                    { value: '#4',   label: language === 'zh' ? 'App Store 教育類 · 上線首月' : 'App Store Education · First month' },
                     { value: String(projects.length), label: language === 'zh' ? '收錄專案' : 'Projects' },
                   ].map(stat => (
                     <div key={stat.value} className="flex items-baseline gap-1.5">
@@ -206,8 +206,8 @@ export default function Home() {
                 {/* Achievement Stats Strip */}
                 <motion.div variants={staggerItem} className="flex flex-wrap gap-x-8 gap-y-3 pl-6 border-l-2 border-[var(--primary)]/20">
                   {[
-                    { value: '10K+', label: language === 'zh' ? 'Dogtor 用戶' : 'Dogtor users' },
-                    { value: '#4',   label: language === 'zh' ? 'App Store 教育類' : 'App Store Education' },
+                    { value: '10K+', label: language === 'zh' ? 'Dogtor 用戶 · 2026/10/12' : 'Dogtor users · Oct 12, 2026' },
+                    { value: '#4',   label: language === 'zh' ? 'App Store 教育類 · 上線首月' : 'App Store Education · First month' },
                     { value: String(projects.length), label: language === 'zh' ? '收錄專案' : 'Projects' },
                   ].map(stat => (
                     <div key={stat.value} className="flex items-baseline gap-2">

@@ -27,7 +27,7 @@ export default function ProjectsClient() {
               </h1>
               <div className="backdrop-blur-sm bg-[var(--background)]/50 p-6 rounded-xl shadow-sm max-w-3xl mx-auto mb-16">
                 <p className="text-xl text-gray-300 leading-relaxed">
-                  {t('projects_page_description')}
+                  {t('projects_page_description').replace('{count}', String(projects.length))}
                 </p>
               </div>
             </Reveal>

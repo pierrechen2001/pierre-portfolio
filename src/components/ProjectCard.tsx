@@ -5,7 +5,7 @@ import Link from 'next/link';
 import type { PointerEvent } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-type ProjectStatus = 'completed' | 'in-progress' | 'planned';
+type ProjectStatus = 'completed' | 'live' | 'in-progress' | 'planned';
 
 interface Skill {
   name: string;
@@ -109,12 +109,14 @@ export default function ProjectCard({
   
   const statusColor = {
     completed: 'bg-green-500/20 text-green-400 border border-green-500/30',
+    live: 'bg-green-500/20 text-green-400 border border-green-500/30',
     'in-progress': 'bg-[#F3C14B]/20 text-[#F3C14B] border border-[#F3C14B]/30',
     planned: 'bg-gray-500/20 text-gray-400 border border-gray-500/30',
   };
 
   const statusText = {
     completed: { zh: '已完成', en: 'Completed' },
+    live: { zh: '已上線，持續迭代優化', en: 'Live · Continuously improving' },
     'in-progress': { zh: '進行中', en: 'In Progress' },
     planned: { zh: '計劃中', en: 'Planned' },
   };
@@ -170,7 +172,7 @@ export default function ProjectCard({
           {/* 裝飾性線條 - Tech Accent */}
           <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--border-color)] to-transparent opacity-50 group-hover:via-primary/50 transition-all duration-500"></div>
           
-          <div className="flex justify-between items-start gap-3 mb-4">
+          <div className="flex flex-wrap justify-between items-start gap-3 mb-4">
             <h3 className="text-xl font-bold text-white group-hover:text-[#F3C14B] transition-colors leading-tight flex-grow">{title[language]}</h3>
             <span className={`badge ${statusColor[status]} font-mono text-xs px-3 py-1.5 rounded md:rounded-md border backdrop-blur-sm flex-shrink-0 whitespace-nowrap shadow-sm`}>
               {statusText[status][language]}

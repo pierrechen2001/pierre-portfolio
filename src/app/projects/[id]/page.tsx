@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'Pierre Chen',
       '專案開發',
       '作品集',
-      project.status === 'completed' ? '已完成專案' : '開發中專案'
+      project.status === 'live' ? '已上線，持續迭代優化' : project.status === 'completed' ? '已完成專案' : '開發中專案'
     ],
     authors: [{ name: "Pierre Chen" }],
     openGraph: {
