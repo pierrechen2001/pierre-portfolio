@@ -104,7 +104,7 @@ const translations = {
     
     // Projects 頁面
     'projects_page_title': 'Projects',
-    'projects_page_description': '{count} projects spanning AI learning, a social map, mobile apps, business systems, and education tools. Open a project to see the work and implementation.',
+    'projects_page_description': '{count} substantial projects presented publicly, spanning AI learning, social maps, mobile apps, business systems, and education tools. This selection highlights my work and contributions across larger projects.',
     'all_projects': 'All Projects',
     'featured_projects': 'Featured Projects',
     'project_details': 'Project Details',
@@ -252,7 +252,7 @@ const translations = {
     
     // Projects 頁面
     'projects_page_title': '專案作品',
-    'projects_page_description': '收錄 {count} 個 AI 學習、社交地圖、行動應用、企業系統與教育工具專案。點進作品查看開發內容與實作方式。',
+    'projects_page_description': '精選公開展示的 {count} 個大型專案，涵蓋 AI 學習、社交地圖、行動應用、企業系統與教育工具，呈現完整產品與系統實作，以及我的參與和貢獻。',
     'all_projects': '所有專案',
     'featured_projects': '精選專案',
     'project_details': '專案詳情',

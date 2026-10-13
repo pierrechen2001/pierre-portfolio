@@ -8,68 +8,15 @@ import SiteBackground from '@/components/SiteBackground';
 import MediaCarousel from '@/components/MediaCarousel';
 import { motion } from 'framer-motion';
 import { EASE_OUT, Reveal, ScrollZoom } from '@/components/motion';
-import InteractiveIcon, { type IconName } from '@/components/InteractiveIcon';
+import InteractiveIcon from '@/components/InteractiveIcon';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect } from 'react';
-
-interface Skill {
-  name: string;
-  color: string;
-}
-
-interface Milestone {
-  title: string;
-  description: string;
-  type: 'achievement' | 'skill' | 'learning';
-  icon?: IconName;
-}
+import type { Project } from '@/data/projects';
+import ProjectFeatureCards from '@/components/ProjectFeatureCards';
 
 interface ProjectProps {
   id: string;
-  project: {
-    id: string;
-    title: {
-      en: string;
-      zh: string;
-    };
-    description: {
-      en: string;
-      zh: string;
-    };
-    fullDescription: {
-      en: string;
-      zh: string;
-    };
-    productStory?: {
-      en: { problem: string; approach: string };
-      zh: { problem: string; approach: string };
-    };
-    userFlow?: {
-      en: string[];
-      zh: string[];
-    };
-    imageUrl: string;
-    status: 'completed' | 'live' | 'in-progress' | 'planned';
-    date: {
-      en: string;
-      zh: string;
-    };
-    skills: Skill[];
-    features?: {
-      en: string[];
-      zh: string[];
-    };
-    milestones?: {
-      en: Milestone[];
-      zh: Milestone[];
-    };
-    githubUrl?: string;
-    demoUrl?: string;
-    appStoreUrl?: string;
-    youtubeVideoId?: string;
-    youtubeIsShort?: boolean;
-    galleryImages?: string[];
-  };
+  project: Project;
 }
 
 export default function ProjectDetailClient({ project, id }: ProjectProps) {
@@ -225,6 +172,24 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                 </Reveal>
               )}
 
+              {/* 專案概述 */}
+              <Reveal className="mb-12">
+                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
+                  {language === 'en' ? 'Project Overview' : '專案概述'}
+                </h2>
+                <div className="text-[var(--foreground-muted)] leading-relaxed space-y-4">
+                  {project.fullDescription[language].split('\n').map(paragraph => paragraph.trim()).filter(Boolean).map((paragraph, i) => (
+                    <p key={i} className="text-lg">
+                      {renderMarkdown(paragraph)}
+                    </p>
+                  ))}
+                </div>
+              </Reveal>
+
+              {project.features && project.features.length > 0 && (
+                <ProjectFeatureCards features={project.features} language={language} />
+              )}
+
               {userFlow && (
                 <Reveal className="mb-12">
                   <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
@@ -250,20 +215,6 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                 </Reveal>
               )}
               
-              {/* 專案概述 */}
-              <Reveal className="mb-12">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
-                  {language === 'en' ? 'Project Overview' : '專案概述'}
-                </h2>
-                <div className="text-[var(--foreground-muted)] leading-relaxed space-y-4">
-                  {project.fullDescription[language].split('\n').map(paragraph => paragraph.trim()).filter(Boolean).map((paragraph, i) => (
-                    <p key={i} className="text-lg">
-                      {renderMarkdown(paragraph)}
-                    </p>
-                  ))}
-                </div>
-              </Reveal>
-
               {/* 專案媒體展示 */}
               {(project.youtubeVideoId || (project.galleryImages && project.galleryImages.length > 0)) && (
                 <Reveal className="mb-12">
@@ -278,25 +229,6 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                     projectTitle={project.title[language]}
                   />
                   </ScrollZoom>
-                </Reveal>
-              )}
-              
-              {/* 主要功能 */}
-              {project.features && (
-                <Reveal className="mb-12">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
-                    {language === 'en' ? 'Key Features' : '主要功能'}
-                  </h2>
-                  <ul className="space-y-4">
-                    {project.features[language].map((feature, index) => (
-                      <li key={index} className="flex items-start group">
-                        <span className="inline-flex items-center justify-center w-8 h-8 mr-4 rounded-full bg-primary/20 text-primary border border-primary/30 font-semibold flex-shrink-0 group-hover:bg-primary/30 transition-colors">
-                          {index + 1}
-                        </span>
-                        <span className="text-[var(--foreground-muted)] text-lg">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </Reveal>
               )}
               

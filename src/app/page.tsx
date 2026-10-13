@@ -119,7 +119,7 @@ export default function Home() {
                   {[
                     { value: '10K+', label: language === 'zh' ? 'Dogtor 用戶 · 2026/10/12' : 'Dogtor users · Oct 12, 2026' },
                     { value: '#4',   label: language === 'zh' ? 'App Store 教育類 · 上線首月' : 'App Store Education · First month' },
-                    { value: String(projects.length), label: language === 'zh' ? '收錄專案' : 'Projects' },
+                    { value: String(projects.length), label: language === 'zh' ? '大型公開專案' : 'Major public projects' },
                   ].map(stat => (
                     <div key={stat.value} className="flex items-baseline gap-1.5">
                       <CountUp value={stat.value} className="text-xl font-bold text-[var(--primary)]" />
@@ -208,7 +208,7 @@ export default function Home() {
                   {[
                     { value: '10K+', label: language === 'zh' ? 'Dogtor 用戶 · 2026/10/12' : 'Dogtor users · Oct 12, 2026' },
                     { value: '#4',   label: language === 'zh' ? 'App Store 教育類 · 上線首月' : 'App Store Education · First month' },
-                    { value: String(projects.length), label: language === 'zh' ? '收錄專案' : 'Projects' },
+                    { value: String(projects.length), label: language === 'zh' ? '大型公開專案' : 'Major public projects' },
                   ].map(stat => (
                     <div key={stat.value} className="flex items-baseline gap-2">
                       <CountUp value={stat.value} className="text-2xl md:text-3xl font-bold text-[var(--primary)]" />

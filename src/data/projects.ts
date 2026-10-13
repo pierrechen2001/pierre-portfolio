@@ -1,3 +1,4 @@
+import { projectFeatures, type ProjectFeature } from './projectFeatures';
 import type { IconName } from '@/components/InteractiveIcon';
 
 export interface Project {
@@ -32,10 +33,7 @@ export interface Project {
     name: string;
     color: string;
   }[];
-  features?: {
-    en: string[];
-    zh: string[];
-  };
+  features?: ProjectFeature[];
   milestones?: {
     en: {
       title: string;
@@ -116,20 +114,7 @@ export const projects: Project[] = [
       { name: 'PostgreSQL', color: 'bg-purple-700/20 text-purple-300 border border-purple-700/30' },
       { name: 'OpenAI API', color: 'bg-green-600/20 text-green-300 border border-green-600/30' }
     ],
-    features: {
-      en: [
-        'Import restaurant links and review AI-extracted places',
-        'Browse and filter saved places on a personal Mapbox map',
-        'Share discoveries in a friends feed and invite friends to visit',
-        'Record places visited together and organize collaborative lists'
-      ],
-      zh: [
-        '匯入餐廳連結並檢視 AI 解析出的店家',
-        '在個人 Mapbox 地圖瀏覽與篩選收藏',
-        '透過好友動態分享店家並發送聚餐邀約',
-        '記錄共同造訪的地點並整理協作清單'
-      ]
-    },
+    features: projectFeatures['mapit'],
     milestones: {
       en: [
         { title: 'Map experience', description: 'Integrated Mapbox and refined map gestures, saved pins, and place discovery in the Flutter app.', type: 'skill', icon: 'map' },
@@ -198,30 +183,7 @@ export const projects: Project[] = [
       { name: 'GCP Cloud Run', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30' },
       { name: 'Cloud SQL', color: 'bg-purple-600/20 text-purple-300 border border-purple-600/30' }
     ],
-    features: {
-      en: [
-        'AI question generation tailored to each student\'s learning gaps',
-        'Subject-specific question banks covering math and science',
-        'Adaptive difficulty system that adjusts to student performance',
-        'Error tracking and personalized practice recommendations',
-        'Instant feedback with step-by-step explanations',
-        'Daily push notifications and learning streaks to build habits',
-        'Progress visualization and learning analytics dashboard',
-        'Paid parent analytics with AI-generated weakness insights',
-        'GCP Cloud Run + Cloud SQL deployment for scalability'
-      ],
-      zh: [
-        'AI 題目生成，針對每位學生弱點量身打造',
-        '涵蓋數學、自然的分科題庫',
-        '根據答題表現自動調整難度的自適應系統',
-        '錯題紀錄與個人化練習推薦',
-        '即時反饋與逐步解題說明',
-        '每日推播提醒與學習連續天數，培養學習習慣',
-        '學習進度視覺化與分析儀表板',
-        '付費家長分析，提供 AI 弱點洞察',
-        'GCP Cloud Run + Cloud SQL 雲端部署，支援高可擴展性'
-      ]
-    },
+    features: projectFeatures['dogtor'],
     milestones: {
       en: [
         {
@@ -367,24 +329,7 @@ export const projects: Project[] = [
       { name: 'Socket.io', color: 'bg-orange-500/20 text-orange-400 border border-orange-500/30' },
       { name: 'NextAuth.js', color: 'bg-green-500/20 text-green-400 border border-green-500/30' }
     ],
-    features: {
-      en: [
-        'Email registration with verification & Google OAuth login',
-        'Complete project posting and proposal submission workflows',
-        'Real-time messaging system with Socket.io',
-        'Token-based payment system for proposals and contact unlocking',
-        'AI-powered project matching with Google Gemini API',
-        'Automated refund mechanism (7-day auto-refund for unresponded proposals)'
-      ],
-      zh: [
-        'Email 註冊驗證與 Google OAuth 快速登入',
-        '完整的發案與提案提交流程',
-        'Socket.io 即時訊息溝通系統',
-        '代幣付費機制，用於查看提案與解鎖聯絡方式',
-        'Google Gemini API 智慧專案媒合推薦',
-        '自動化退款機制（7 日內無回應自動退款）'
-      ]
-    },
+    features: projectFeatures['200ok'],
     milestones: {
       en: [
         {
@@ -506,24 +451,7 @@ export const projects: Project[] = [
       { name: 'Game Development', color: 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' },
       { name: 'Ray Tracing', color: 'bg-amber-500/20 text-amber-400 border border-amber-500/30' }
     ],
-    features: {
-      en: [
-        '2.5D puzzle gameplay built on Unity physics',
-        'Limited jumps, map exploration, and teleport stations',
-        'Items paired with matching use points',
-        'Lighting, shadows, and ray tracing',
-        'Tile-based levels with a real-time dynamic background',
-        'Playable online on itch.io'
-      ],
-      zh: [
-        '基於 Unity 物理引擎的 2.5D 益智玩法',
-        '有限跳躍次數、地圖探索與傳送站',
-        '道具與對應道具使用點的解謎設計',
-        '光影設計與光線追蹤',
-        'Tileset 關卡與即時運算的動態背景',
-        '可於 itch.io 線上遊玩'
-      ]
-    },
+    features: projectFeatures['whisper-of-the-abyss'],
     milestones: {
       en: [
         {
@@ -636,20 +564,7 @@ export const projects: Project[] = [
       { name: 'iCloud', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30' },
       { name: 'iOS Development', color: 'bg-gray-500/20 text-gray-400 border border-gray-500/30' }
     ],
-    features: {
-      en: [
-        'Natural language event creation (text & voice)',
-        'Swift-based iOS app with minimalist UI',
-        'Private iCloud sync for personal events',
-        'Supabase backend for authentication & shared events'
-      ],
-      zh: [
-        '自然語言事件建立（文字 & 語音）',
-        '以 Swift 開發的 iOS 原生應用與極簡 UI',
-        'iCloud 私有同步，保障個人事件',
-        'Supabase 後端支援帳號驗證與共享事件'
-      ]
-    },
+    features: projectFeatures['aiplanner'],
     milestones: {
       en: [
         {
@@ -775,22 +690,7 @@ export const projects: Project[] = [
       { name: 'Firebase Authentication', color: 'bg-amber-500/20 text-amber-400 border border-amber-500/30' },
       { name: 'Firestore', color: 'bg-purple-400/20 text-purple-300 border border-purple-400/30' }
     ],
-    features: {
-      en: [
-        'Customer profiles and contact management',
-        'Work order creation, scheduling, and task status tracking',
-        'Automated reminders for field staff',
-        'Business analytics and reporting for decision-making',
-        'Real-time data sync with Firebase'
-      ],
-      zh: [
-        '客戶檔案與聯絡管理',
-        '工單建立、排程與任務狀態追蹤',
-        '前線人員自動提醒',
-        '業務決策統計分析報表',
-        'Firebase 即時資料同步'
-      ]
-    },
+    features: projectFeatures['erp-system'],
     milestones: {
       en: [
         {
@@ -914,20 +814,7 @@ export const projects: Project[] = [
       { name: 'Google Sheets API', color: 'bg-blue-600/20 text-blue-300 border border-blue-600/30' },
       { name: 'Heroku', color: 'bg-purple-500/20 text-purple-400 border border-purple-500/30' }
     ],
-    features: {
-      en: [
-        'Class reminders and notifications',
-        'Homework assignment and tracking',
-        'Attendance check-in and timestamp logging',
-        'Automated hour calculation and reporting'
-      ],
-      zh: [
-        '課程提醒與通知',
-        '作業指派與進度追蹤',
-        '出勤打卡與時間記錄',
-        '自動化時數計算與報表產出'
-      ]
-    },
+    features: projectFeatures['superbot'],
     milestones: {
       en: [
         {
@@ -1047,20 +934,7 @@ export const projects: Project[] = [
       { name: 'UX Research', color: 'bg-green-500/20 text-green-400 border border-green-500/30' },
       { name: 'Algorithm Design', color: 'bg-purple-500/20 text-purple-400 border border-purple-500/30' }
     ],
-    features: {
-      en: [
-        'Curated activity recommendation system for seniors',
-        'User-friendly interface designed for accessibility',
-        'Firebase-powered authentication and data storage',
-        'Focus on community building and social inclusion'
-      ],
-      zh: [
-        '為熟齡族群設計的活動推薦系統',
-        '無障礙設計的使用者介面',
-        'Firebase 驅動的認證與資料儲存',
-        '強調社群建立與社會參與'
-      ]
-    },
+    features: projectFeatures['seven-peach'],
     milestones: {
       en: [
         {
@@ -1178,20 +1052,7 @@ export const projects: Project[] = [
       { name: 'Data Structures', color: 'bg-green-500/20 text-green-400 border border-green-500/30' },
       { name: 'Memory Management', color: 'bg-red-600/20 text-red-400 border border-red-600/30' }
     ],
-    features: {
-      en: [
-        'Grid-based puzzle logic',
-        'Real-time mouse interaction',
-        'Save/load progress and custom levels',
-        'Dynamic difficulty adjustment'
-      ],
-      zh: [
-        '基於網格的解謎邏輯',
-        '即時滑鼠互動操作',
-        '儲存/讀取進度與自訂關卡',
-        '動態難度調整'
-      ]
-    },
+    features: projectFeatures['lakycarcar'],
     milestones: {
       en: [
         {
