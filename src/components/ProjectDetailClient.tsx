@@ -7,12 +7,13 @@ import Footer from '@/components/Footer';
 import SiteBackground from '@/components/SiteBackground';
 import MediaCarousel from '@/components/MediaCarousel';
 import { motion } from 'framer-motion';
-import { EASE_OUT, Reveal, ScrollZoom } from '@/components/motion';
+import { EASE_OUT, Reveal } from '@/components/motion';
 import InteractiveIcon from '@/components/InteractiveIcon';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect } from 'react';
 import type { Project } from '@/data/projects';
 import ProjectFeatureCards from '@/components/ProjectFeatureCards';
+import ProjectSection from '@/components/ProjectSection';
 
 interface ProjectProps {
   id: string;
@@ -22,6 +23,16 @@ interface ProjectProps {
 export default function ProjectDetailClient({ project, id }: ProjectProps) {
   const { t, language } = useLanguage();
   const userFlow = project.userFlow?.[language];
+  const hasImages = Boolean(project.galleryImages?.length);
+  const navigation = [
+    { id: 'overview', title: language === 'zh' ? '概述' : 'Overview' },
+    ...(project.youtubeVideoId ? [{ id: 'demo', title: language === 'zh' ? '影片' : 'Video' }] : []),
+    ...(!project.youtubeVideoId && hasImages ? [{ id: 'gallery', title: language === 'zh' ? '圖片' : 'Images' }] : []),
+    ...(project.features?.length ? [{ id: 'design', title: language === 'zh' ? '功能與設計' : 'Features & design' }] : []),
+    ...(userFlow?.length ? [{ id: 'flow', title: language === 'zh' ? '使用流程' : 'User flow' }] : []),
+    ...(project.youtubeVideoId && hasImages ? [{ id: 'gallery', title: language === 'zh' ? '圖片' : 'Images' }] : []),
+    { id: 'technology', title: language === 'zh' ? '技術與成果' : 'Technology & outcomes' },
+  ];
   
   const statusText = {
     completed: { zh: '已完成', en: 'Completed' },
@@ -73,10 +84,22 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
       metaDescription.setAttribute('content', project.description[language]);
     }
   }, [project.title, project.description, language]);
+
+  // Re-align deep links after the saved language changes the section heights.
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      const sectionId = window.location.hash.slice(1);
+      const section = document.getElementById(sectionId);
+      if (section?.classList.contains('project-detail-section')) {
+        section.scrollIntoView({ block: 'start' });
+      }
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [language, id]);
   
   return (
     <>
-      <div className="flex flex-col min-h-screen relative">
+      <div className="project-detail-page flex flex-col min-h-screen relative">
         {/* 添加結構化數據 */}
         <script
           type="application/ld+json"
@@ -112,7 +135,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
             </Link>
             
             {/* 主要內容 */}
-            <div className="backdrop-blur-md bg-[var(--background-alt)]/60 rounded-2xl shadow-2xl border border-[var(--border-color)]/20 p-8 md:p-12">
+            <div className="project-detail-content">
               
               {/* 專案圖片 */}
               <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1, ease: EASE_OUT }} className="mb-8 md:mb-12 rounded-2xl overflow-hidden shadow-lg border border-[var(--border-color)]/10">
@@ -145,60 +168,75 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                 </div>
               </Reveal>
 
-              {/* 先交代產品要解決的問題與設計想法 */}
-              {project.productStory && (
-                <Reveal className="mb-12">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
-                    {language === 'en' ? 'Why this project exists' : '為什麼做這個專案'}
-                  </h2>
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <div className="rounded-xl border border-[var(--border-color)]/50 bg-[var(--background-alt)]/50 p-6">
-                      <h3 className="mb-3 text-sm font-semibold tracking-widest text-primary uppercase">
-                        {language === 'en' ? 'The problem' : '遇到的問題'}
-                      </h3>
-                      <p className="text-lg leading-relaxed text-[var(--foreground-muted)]">
-                        {project.productStory[language].problem}
-                      </p>
+              <nav className="project-section-nav" aria-label={language === 'zh' ? '專案頁面目錄' : 'Project sections'}>
+                {navigation.map(section => (
+                  <a key={section.id} href={`#${section.id}`}>{section.title}</a>
+                ))}
+              </nav>
+
+              <div className="project-introduction">
+                {/* 先交代產品要解決的問題與設計想法 */}
+                {project.productStory && (
+                  <Reveal className="project-context mb-12">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
+                      {language === 'en' ? 'Why this project exists' : '為什麼做這個專案'}
+                    </h2>
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <div className="project-context-item">
+                        <h3 className="mb-3 text-sm font-semibold tracking-widest text-primary uppercase">
+                          {language === 'en' ? 'The problem' : '遇到的問題'}
+                        </h3>
+                        <p className="text-lg leading-relaxed text-[var(--foreground-muted)]">
+                          {project.productStory[language].problem}
+                        </p>
+                      </div>
+                      <div className="project-context-item">
+                        <h3 className="mb-3 text-sm font-semibold tracking-widest text-primary uppercase">
+                          {language === 'en' ? 'The product idea' : '產品想法'}
+                        </h3>
+                        <p className="text-lg leading-relaxed text-[var(--foreground-muted)]">
+                          {project.productStory[language].approach}
+                        </p>
+                      </div>
                     </div>
-                    <div className="rounded-xl border border-primary/30 bg-primary/5 p-6">
-                      <h3 className="mb-3 text-sm font-semibold tracking-widest text-primary uppercase">
-                        {language === 'en' ? 'The product idea' : '產品想法'}
-                      </h3>
-                      <p className="text-lg leading-relaxed text-[var(--foreground-muted)]">
-                        {project.productStory[language].approach}
+                  </Reveal>
+                )}
+
+                {/* 專案概述 */}
+                <ProjectSection id="overview" title={language === 'en' ? 'Project Overview' : '專案概述'} eyebrow="OVERVIEW">
+                  <div className="project-overview-copy text-[var(--foreground-muted)] leading-relaxed space-y-4">
+                    {project.fullDescription[language].split('\n').map(paragraph => paragraph.trim()).filter(Boolean).map((paragraph, i) => (
+                      <p key={i} className="text-lg">
+                        {renderMarkdown(paragraph)}
                       </p>
-                    </div>
+                    ))}
                   </div>
-                </Reveal>
+                </ProjectSection>
+
+              </div>
+
+              {project.youtubeVideoId && (
+                <ProjectSection id="demo" title={language === 'zh' ? '影片展示' : 'Video Showcase'} eyebrow="WATCH IT IN ACTION" tone="showcase">
+                  <MediaCarousel youtubeVideoId={project.youtubeVideoId} youtubeIsShort={project.youtubeIsShort} projectTitle={project.title[language]} />
+                </ProjectSection>
               )}
 
-              {/* 專案概述 */}
-              <Reveal className="mb-12">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
-                  {language === 'en' ? 'Project Overview' : '專案概述'}
-                </h2>
-                <div className="text-[var(--foreground-muted)] leading-relaxed space-y-4">
-                  {project.fullDescription[language].split('\n').map(paragraph => paragraph.trim()).filter(Boolean).map((paragraph, i) => (
-                    <p key={i} className="text-lg">
-                      {renderMarkdown(paragraph)}
-                    </p>
-                  ))}
-                </div>
-              </Reveal>
+              {!project.youtubeVideoId && hasImages && (
+                <ProjectSection id="gallery" title={language === 'zh' ? '圖片展示' : 'Image Showcase'} eyebrow="PRODUCT GALLERY" tone="gallery">
+                  <MediaCarousel galleryImages={project.galleryImages} projectTitle={project.title[language]} />
+                </ProjectSection>
+              )}
 
               {project.features && project.features.length > 0 && (
                 <ProjectFeatureCards features={project.features} language={language} />
               )}
 
               {userFlow && (
-                <Reveal className="mb-12">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
-                    {language === 'en' ? 'How it works' : '使用流程'}
-                  </h2>
+                <ProjectSection id="flow" title={language === 'en' ? 'How it works' : '使用流程'} eyebrow="THE USER JOURNEY" tone="flow">
                   <ol className="flex flex-col gap-2 lg:flex-row lg:gap-0" aria-label={language === 'en' ? 'Product use flow' : '產品使用流程'}>
                     {userFlow.map((step, index) => (
                       <li key={index} className="flex min-w-0 flex-1 flex-col items-center lg:flex-row">
-                        <div className="flex w-full flex-1 items-start gap-3 rounded-xl border border-[var(--border-color)]/50 bg-[var(--background-alt)]/50 p-4 lg:min-h-36 lg:flex-col">
+                        <div className="project-flow-step flex w-full flex-1 items-start gap-3 p-4 lg:min-h-36 lg:flex-col">
                           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 text-sm font-bold text-primary" aria-hidden="true">
                             {index + 1}
                           </span>
@@ -212,31 +250,17 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                       </li>
                     ))}
                   </ol>
-                </Reveal>
+                </ProjectSection>
               )}
               
-              {/* 專案媒體展示 */}
-              {(project.youtubeVideoId || (project.galleryImages && project.galleryImages.length > 0)) && (
-                <Reveal className="mb-12">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
-                    {language === 'en' ? 'Project Media' : '專案展示'}
-                  </h2>
-                  <ScrollZoom>
-                  <MediaCarousel
-                    youtubeVideoId={project.youtubeVideoId}
-                    youtubeIsShort={project.youtubeIsShort}
-                    galleryImages={project.galleryImages}
-                    projectTitle={project.title[language]}
-                  />
-                  </ScrollZoom>
-                </Reveal>
+              {project.youtubeVideoId && hasImages && (
+                <ProjectSection id="gallery" title={language === 'zh' ? '介面與產品畫面' : 'Interface & Product Screens'} eyebrow="A CLOSER LOOK" tone="gallery">
+                  <MediaCarousel galleryImages={project.galleryImages} projectTitle={project.title[language]} />
+                </ProjectSection>
               )}
-              
+
               {/* 使用技術 */}
-              <Reveal className="mb-12">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground)]">
-                  {t('technologies_used')}
-                </h2>
+              <ProjectSection id="technology" title={t('technologies_used')} eyebrow="BUILT WITH" tone="details">
                 <div className="flex flex-wrap gap-3">
                   {project.skills.map((skill) => (
                     <span
@@ -247,14 +271,11 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                     </span>
                   ))}
                 </div>
-              </Reveal>
+              </ProjectSection>
               
               {/* 專案里程碑 */}
               {project.milestones && (
-                <Reveal className="mb-12">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-8 text-[var(--foreground)]">
-                    {language === 'en' ? 'Project Milestones' : '專案里程碑'}
-                  </h2>
+                <ProjectSection id="milestones" title={language === 'en' ? 'Project Milestones' : '專案里程碑'} eyebrow="EXPERIENCE & OUTCOMES" tone="details">
                   <div className="grid gap-6 md:grid-cols-2">
                     {project.milestones[language].map((milestone, index) => {
                       const typeColors = {
@@ -272,12 +293,12 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                       return (
                         <div
                           key={index}
-                          className={`group p-6 rounded-xl border-2 bg-[var(--background-alt)]/40 backdrop-blur-sm ${typeColors[milestone.type]} transition-all duration-300 hover:shadow-lg motion-safe:hover:-translate-y-1 hover:bg-[var(--background-alt)]/60`}
+                          className={`project-milestone p-5 ${typeColors[milestone.type]}`}
                         >
                           <div className="flex items-start space-x-4">
                             <InteractiveIcon name={milestone.icon ?? 'target'} />
                             <div className="flex-1">
-                              <div className="flex items-center justify-between mb-3">
+                              <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                                 <h3 className="text-lg font-semibold text-[var(--foreground)]">
                                   {milestone.title}
                                 </h3>
@@ -294,7 +315,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                       );
                     })}
                   </div>
-                </Reveal>
+                </ProjectSection>
               )}
               
               {/* 連結按鈕 */}

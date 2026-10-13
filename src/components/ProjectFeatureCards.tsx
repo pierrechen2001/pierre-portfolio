@@ -7,11 +7,11 @@ export default function ProjectFeatureCards({ features, language }: {
   language: 'zh' | 'en';
 }) {
   return (
-    <section className="mb-14" aria-labelledby="project-features-title">
-      <div className="mb-7 flex flex-wrap items-end justify-between gap-3">
-        <h2 id="project-features-title" className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">
+    <section id="design" className="project-detail-section project-design-zone" aria-labelledby="project-features-title">
+      <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+        <div><p className="project-section-eyebrow">DESIGN & DECISIONS</p><h2 id="project-features-title" className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">
           {language === 'zh' ? '主要功能與設計' : 'Key Features & Design'}
-        </h2>
+        </h2></div>
         <p className="text-sm text-[var(--foreground-muted)]">
           {language === 'zh' ? '從功能出發，看見背後的考量' : 'The thinking behind the features'}
         </p>
@@ -22,7 +22,7 @@ export default function ProjectFeatureCards({ features, language }: {
           const primary = feature.size === 'primary';
           const supporting = feature.size === 'supporting';
           return (
-            <article key={feature.title.en} className={`relative overflow-hidden rounded-2xl border p-6 md:p-8 ${
+            <article key={feature.title.en} className={`project-feature-card project-feature-${feature.size} relative overflow-hidden rounded-2xl border p-6 md:p-8 ${
               primary
                 ? 'border-primary/35 bg-gradient-to-br from-primary/10 via-[var(--background-alt)]/60 to-[var(--background-alt)]/40 md:col-span-12'
                 : supporting
