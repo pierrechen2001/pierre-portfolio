@@ -67,8 +67,8 @@ export const projects: Project[] = [
       zh: 'MapIt — 餐廳收藏與好友地圖'
     },
     description: {
-      en: 'A team capstone app that turns restaurant links into map-based collections, then helps friends share places and decide where to go.',
-      zh: '臺大資管團隊專題：將餐廳連結解析為地圖收藏，並透過好友動態、邀約與共同造訪紀錄幫助大家決定去哪裡。'
+      en: 'An NTU team capstone based on a product concept I proposed, connecting restaurant discovery to shared visits while studying the flow’s HCI and feasibility.',
+      zh: '由我提出概念的臺大資管團隊專題：串起餐廳收藏、好友選店與共同造訪，並研究此流程的人機互動與可行性。'
     },
     fullDescription: {
       en: `
@@ -76,14 +76,14 @@ export const projects: Project[] = [
 
         Users can import a link or search for a place. An AI-assisted backend extracts restaurant information; the Flutter app then presents saved places on a Mapbox map. Friends can share places through a feed, invite each other to visit, and keep a record of places they visited together.
 
-        I contributed across the mobile experience and supporting services. My work in the project includes Mapbox integration and map interactions, improvements to the link-parsing prompts and post-processing, and flows for profiles, shared visits, and saved-place performance. This is an ongoing team project, so these contributions sit alongside work by other members.
+        I proposed the product concept and contribute to implementation as part of the team. The work also studies human–computer interaction and the feasibility of the save-to-visit flow: whether saved places are reused, how friends reach a shared choice, and what helps or prevents an actual visit. This is an ongoing team capstone and research project.
       `,
       zh: `
         MapIt 是國立臺灣大學資訊管理學系的團隊專題，協助使用者把社群貼文或網頁中看到的餐廳存成個人地圖，整理收藏並和朋友規劃聚餐。
 
         使用者可以貼上連結或直接搜尋店家；後端協助解析餐廳資訊，Flutter App 再透過 Mapbox 呈現收藏地點。好友之間也能在動態中分享店家、發送邀約，並記錄一起去過的地方。
 
-        我參與行動端體驗與相關服務開發，包括 Mapbox 導入與地圖互動、連結解析提示詞及後處理優化、個人檔案與共同造訪流程，以及收藏地點的效能改善。這是持續開發中的團隊作品，功能由多位成員共同完成。
+        我提出產品概念，並與團隊共同參與實作。同時，我們研究這套流程的人機互動與可行性：收藏是否會被重新使用、朋友如何形成共同選擇，以及哪些因素能促成或阻礙實際造訪。這是持續開發與研究中的團隊專題。
       `
     },
     imageUrl: '/projects/mapit_cover.webp',
@@ -116,15 +116,45 @@ export const projects: Project[] = [
     ],
     features: projectFeatures['mapit'],
     milestones: {
-      en: [
-        { title: 'Map experience', description: 'Integrated Mapbox and refined map gestures, saved pins, and place discovery in the Flutter app.', type: 'skill', icon: 'map' },
-        { title: 'Link understanding', description: 'Improved prompts and post-processing in the AI-assisted link-to-place pipeline.', type: 'skill', icon: 'link' },
-        { title: 'Social and performance flows', description: 'Worked on profiles, shared-visit records, caching, and saved-place loading.', type: 'achievement', icon: 'zap' }
+      "en": [
+        {
+          "title": "Product concept",
+          "description": "Proposed a social-map concept that connects discovering and saving places to shared choice, invitations and visits.",
+          "type": "achievement",
+          "icon": "map"
+        },
+        {
+          "title": "Product implementation",
+          "description": "Contribute to the mobile product with the capstone team, supporting the complete save-to-visit experience.",
+          "type": "skill",
+          "icon": "laptop"
+        },
+        {
+          "title": "HCI and flow feasibility",
+          "description": "Study how the product flow fits existing habits and supports collaborative decisions and real-world visits. Research is ongoing.",
+          "type": "learning",
+          "icon": "target"
+        }
       ],
-      zh: [
-        { title: '地圖體驗', description: '導入 Mapbox，調整 Flutter 地圖手勢、收藏圖釘與地點探索體驗。', type: 'skill', icon: 'map' },
-        { title: '連結理解', description: '優化 AI 輔助連結解析流程的提示詞與後處理。', type: 'skill', icon: 'link' },
-        { title: '社交與效能流程', description: '參與個人檔案、共同造訪紀錄、快取及收藏載入改善。', type: 'achievement', icon: 'zap' }
+      "zh": [
+        {
+          "title": "產品概念提出",
+          "description": "提出社交地圖概念，將地點發現與收藏接到共同選店、邀約和造訪。",
+          "type": "achievement",
+          "icon": "map"
+        },
+        {
+          "title": "團隊產品實作",
+          "description": "與專題團隊參與行動產品開發，支援從收藏到造訪的完整體驗。",
+          "type": "skill",
+          "icon": "laptop"
+        },
+        {
+          "title": "HCI 與流程可行性研究",
+          "description": "研究產品流程如何接入使用習慣，以及如何支持共同決策與實際造訪，目前持續進行中。",
+          "type": "learning",
+          "icon": "target"
+        }
       ]
     }
   },
@@ -142,14 +172,14 @@ export const projects: Project[] = [
       en: `
         Dogtor (逗課) is an AI learning app for secondary-school students. It combines question practice, error tracking, learning progress, and personalized guidance. As of October 12, 2026, the product has reached 10,000+ users. In its first month after launch, it reached 2,600 monthly active users and ranked #4 in App Store Education.
 
-        As a co-founder and software engineer, I owned the AI feature lifecycle and much of the production backend and data work: knowledge-point modeling, LLM orchestration, event collection, FastAPI APIs, and deployment on Cloud Run and Cloud SQL.
+        As a co-founder and software engineer, I proposed the overall system architecture, connecting knowledge-graph-based learning scores, AI question generation and multi-model checks, personalized review, and parent analytics. Multi-model checking covers nearly all Taiwanese junior and senior high school subjects and international curricula including SAT and AP. Personalized review is live. I also work on the production backend and data systems, including LLM orchestration, event collection, FastAPI APIs, Cloud Run and Cloud SQL.
 
         I also built paid parent analytics that turns student answers, incorrect choices, and knowledge-point performance into AI-generated weakness analyses and personalized guidance.
       `,
       zh: `
         Dogtor（逗課）是為國高中生設計的 AI 學習 App，整合題目練習、錯題追蹤、學習進度與個人化建議。截至 2026 年 10 月 12 日，產品已累積超過 10,000 位用戶；上線首月達到 2,600 位月活躍用戶（MAU），並登上 App Store 教育類第 4 名。
 
-        作為共同創辦人與軟體工程師，我負責 AI 功能生命週期，以及大部分正式環境的後端與資料工作，包括知識點建模、LLM 編排、事件蒐集、FastAPI API，以及 Cloud Run 和 Cloud SQL 部署。
+        作為共同創辦人與軟體工程師，我提出整體系統架構，串起知識圖譜與知識分數、AI 題庫生成與多模型檢查、個人化複習及家長分析。多模型檢查涵蓋幾乎所有台灣國高中科目，也包含 SAT／AP 等國際課程；個人化複習已正式開放。我也參與正式環境的後端與資料工作，包括 LLM 編排、事件蒐集、FastAPI API，以及 Cloud Run 和 Cloud SQL 部署。
 
         我也開發付費家長分析功能，將學生答題、錯誤選項與知識點表現轉換成 AI 弱點分析和個人化建議。
       `
@@ -187,8 +217,8 @@ export const projects: Project[] = [
     milestones: {
       en: [
         {
-          title: 'Owned AI Features and Data Systems',
-          description: 'Built knowledge-point models, LLM orchestration, event collection, and production APIs for the learning experience.',
+          title: 'Proposed the Overall Learning Architecture',
+          description: 'Proposed the architecture connecting knowledge graphs, cross-curriculum AI question checking, personalized review and parent analytics.',
           type: 'achievement',
           icon: 'rocket'
         },
@@ -219,8 +249,8 @@ export const projects: Project[] = [
       ],
       zh: [
         {
-          title: '負責 AI 功能與資料系統',
-          description: '建立知識點模型、LLM 編排、事件蒐集與正式環境 API，支援學生學習體驗。',
+          title: '提出整體學習系統架構',
+          description: '提出串接知識圖譜、跨課程 AI 題庫檢查、個人化複習與家長分析的整體架構。',
           type: 'achievement',
           icon: 'rocket'
         },

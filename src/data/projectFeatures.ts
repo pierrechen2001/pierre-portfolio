@@ -1,15 +1,34 @@
 export interface ProjectFeature {
   title: { zh: string; en: string };
   summary: { zh: string; en: string };
-  why?: { zh: string; en: string };
-  thinking?: { zh: string; en: string };
-  size: 'primary' | 'standard' | 'supporting';
+  why: { zh: string; en: string };
+  thinking: { zh: string; en: string };
+  size: 'primary' | 'standard';
 }
 
-// Curated from documented contributions; rationale describes design considerations,
-// not measured outcomes or claims of ownership over every team feature.
+// Keep distinctive product decisions with documented contributions.
+// Rationale describes design considerations, not measured learning outcomes.
 export const projectFeatures: Record<string, ProjectFeature[]> = {
   "dogtor": [
+    {
+      "title": {
+        "zh": "跨課程的 AI 題庫與多模型檢查",
+        "en": "AI question banks with cross-model checks across curricula"
+      },
+      "summary": {
+        "zh": "由我提出題庫生成與檢查架構，涵蓋幾乎所有台灣國高中科目，也延伸至 SAT／AP 等國際課程。",
+        "en": "I proposed the question-generation and checking architecture, covering nearly all Taiwanese junior and senior high school subjects and international curricula including SAT and AP."
+      },
+      "why": {
+        "zh": "不同課程有各自的範圍、命題方式與語言要求；大量生成題目時，也需要檢查內容與答案。",
+        "en": "Curricula differ in scope, question formats and language requirements. Generating questions at scale also requires checking content and answers."
+      },
+      "thinking": {
+        "zh": "以課程、章節與知識點組織生成流程，依科目調整命題規範，再用多個模型交叉檢查；將同一套架構延伸到台灣與國際課程，支援不同的學習內容。",
+        "en": "Organize generation by curriculum, chapter and knowledge point, adapt requirements by subject, and cross-check with multiple models. Extend the architecture across Taiwanese and international curricula to support different learning content."
+      },
+      "size": "primary"
+    },
     {
       "title": {
         "zh": "讓家長看懂學習，也知道如何陪伴",
@@ -19,7 +38,7 @@ export const projectFeatures: Record<string, ProjectFeature[]> = {
         "zh": "將答題、錯誤選項與知識點表現整理成家長報告，提供 AI 弱點分析與個人化建議。",
         "en": "Turn answers, incorrect choices and knowledge-point performance into parent reports with AI weakness analysis and guidance."
       },
-      "size": "primary",
+      "size": "standard",
       "why": {
         "zh": "答題紀錄需要轉成具體的觀念與下一步，家長才能拿來理解孩子的學習狀況。",
         "en": "Answer records need concrete concepts and next steps to help parents understand their child’s learning."
@@ -31,106 +50,81 @@ export const projectFeatures: Record<string, ProjectFeature[]> = {
     },
     {
       "title": {
-        "zh": "從學習紀錄走向個人化複習",
-        "en": "From learning records to review priorities"
+        "zh": "以知識圖譜連結學習分數與個人化複習",
+        "en": "Connect learning scores and personalized review through a knowledge graph"
       },
       "summary": {
-        "zh": "結合知識點分數與上次練習時間，呈現個人化複習推薦並連到對應練習。",
-        "en": "Combine knowledge scores and time since practice to recommend review topics and connect them to practice."
+        "zh": "個人化複習已正式開放，運用知識圖譜計算知識分數，結合學習紀錄與複習時機推薦下一步練習。",
+        "en": "Personalized review is live, using a knowledge graph to calculate knowledge scores and combining learning records with review timing to recommend next steps."
       },
       "size": "standard",
       "thinking": {
-        "zh": "推薦需要兼顧目前弱點與複習時機；計分規則集中管理，避免錯題本與關卡使用不同規則，讓分數失去一致性。",
-        "en": "Balance weak areas with review timing. Shared scoring rules keep quiz and mistake-book updates consistent."
+        "zh": "我提出以知識圖譜為基礎的學習架構，將答題紀錄接到知識分數，再依知識點表現與上次練習時間安排複習優先順序，讓學習分析能回到實際練習。",
+        "en": "I proposed a knowledge-graph-based learning architecture that connects answer records to knowledge scores, then prioritizes review using knowledge-point performance and time since practice, linking analytics back to practice."
+      },
+      "why": {
+        "zh": "只展示分數，學生仍要自己決定先練什麼；推薦需要回到具體知識點與練習時機。",
+        "en": "Scores alone leave students to decide what to practice. Recommendations need specific concepts and review timing."
       }
-    },
-    {
-      "title": {
-        "zh": "保存報告，再延伸到網頁分享",
-        "en": "Stored reports with a shareable web view"
-      },
-      "summary": {
-        "zh": "保存已生成的家長報告，加入適合手機閱讀的網頁版與分享入口。",
-        "en": "Persist generated parent reports and provide a mobile web view with sharing."
-      },
-      "size": "standard",
-      "thinking": {
-        "zh": "相同資料可重用既有報告，答題紀錄變動後才重建；LINE 與網頁使用相同內容，減少重複生成與呈現差異。",
-        "en": "Reuse a report while answer activity is unchanged. LINE and the web render the same content to avoid repeated generation and inconsistent presentation."
-      }
-    },
-    {
-      "title": {
-        "zh": "AI 與資料流程",
-        "en": "AI and data workflows"
-      },
-      "summary": {
-        "zh": "建立知識點模型、LLM 編排及事件蒐集，支援學習分析與題庫處理。",
-        "en": "Build knowledge-point models, LLM orchestration and event collection for learning analytics and question processing."
-      },
-      "size": "supporting"
-    },
-    {
-      "title": {
-        "zh": "正式環境後端",
-        "en": "Production backend"
-      },
-      "summary": {
-        "zh": "以 FastAPI、Cloud Run 與 Cloud SQL 支援產品，處理報告生成阻塞及非同步流程的穩定性。",
-        "en": "Support the product with FastAPI, Cloud Run and Cloud SQL, addressing blocking report generation and asynchronous stability."
-      },
-      "size": "supporting"
     }
   ],
   "mapit": [
     {
       "title": {
-        "zh": "把收藏放回地圖上的情境",
-        "en": "Put saved places back in context"
+        "zh": "讓「看到想吃」接到「真的一起去」",
+        "en": "Connect discovering a place to actually going together"
       },
       "summary": {
-        "zh": "導入 Mapbox，調整地圖手勢、收藏圖釘與地點探索體驗。",
-        "en": "Integrate Mapbox and refine gestures, saved pins and place discovery."
+        "zh": "我提出 MapIt 的產品概念，將社群中的餐廳連結整理成地圖收藏，再串起找回店家、好友選店、邀約與共同造訪。",
+        "en": "I proposed the MapIt product concept: organize restaurant links from social platforms on a map, then connect retrieval, choosing places with friends, invitations and shared visits."
       },
-      "size": "primary",
       "why": {
-        "zh": "收藏之後還需要找得到；地圖讓地點、距離與周邊關係一起呈現。",
-        "en": "Saved places need to be retrievable. A map brings location, distance and nearby options into the same view."
+        "zh": "想吃的餐廳散落在社群收藏與聊天紀錄中；到了要約朋友時，還需要重新翻找、選店與協調。",
+        "en": "Restaurant ideas are scattered across social bookmarks and chats. Planning with friends still requires finding, choosing and coordinating."
       },
       "thinking": {
-        "zh": "地圖互動與收藏載入要一起考量，兼顧探索時的操作、圖釘呈現及快取。",
-        "en": "Consider interaction and loading together, including exploration gestures, pin presentation and caching."
-      }
+        "zh": "以「發現 → 收藏 → 找回 → 共同選擇 → 邀約 → 造訪」作為完整產品流程，讓每個功能對應到從線上資訊走向實際行動的一個環節。",
+        "en": "Design around discovery, saving, retrieval, shared choice, invitations and visits, with each feature supporting a step from online information to real-world action."
+      },
+      "size": "primary"
     },
     {
       "title": {
-        "zh": "從連結到可確認的店家",
-        "en": "From links to reviewable places"
+        "zh": "把個人收藏帶進朋友間的共同決策",
+        "en": "Bring personal collections into shared decisions"
       },
       "summary": {
-        "zh": "參與連結解析提示詞與後處理優化，將社群資訊轉成可加入收藏的店家資料。",
-        "en": "Improve link-parsing prompts and post-processing to turn social content into saved-place data."
+        "zh": "產品透過地圖、好友動態、邀約與轉蛋選店，將個人想去的店家帶進朋友間的討論與選擇。",
+        "en": "Maps, friends’ activity, invitations and random place selection bring individually saved places into discussion and choice with friends."
       },
-      "size": "standard",
+      "why": {
+        "zh": "整理好自己的收藏後，仍需要和朋友取得共識，才有機會安排實際造訪。",
+        "en": "Organizing personal bookmarks still leaves people to reach agreement with friends before arranging a visit."
+      },
       "thinking": {
-        "zh": "解析結果提供給使用者確認後再收藏，讓資訊擷取接得上實際使用流程。",
-        "en": "Let users review extracted places before saving, connecting extraction to the actual save flow."
-      }
+        "zh": "讓收藏地點、朋友的興趣與選店操作接在同一個流程中；地圖提供位置情境，好友互動與轉蛋則提供共同選擇的入口。",
+        "en": "Connect saved places, friends’ interests and choosing a venue in one flow. Maps provide geographic context, while social interactions and random selection provide ways to choose together."
+      },
+      "size": "standard"
     },
     {
       "title": {
-        "zh": "共同造訪與個人紀錄",
-        "en": "Shared visits and personal records"
+        "zh": "研究流程的可行性與人機互動",
+        "en": "Study flow feasibility and human–computer interaction"
       },
       "summary": {
-        "zh": "參與個人檔案、共同造訪紀錄與收藏地點的載入改善。",
-        "en": "Contribute to profiles, shared-visit records and saved-place loading."
+        "zh": "以 HCI 角度研究這套流程是否能促進共同決策與實際造訪，並理解使用者在哪些環節遇到阻礙。",
+        "en": "Study whether the flow can support shared decisions and actual visits, and where users encounter barriers, through a human–computer interaction perspective."
       },
-      "size": "standard",
+      "why": {
+        "zh": "功能能操作，仍需要進一步理解它是否能進入使用者原本的收藏、選店與邀約習慣。",
+        "en": "Working features still need to be examined in the context of people’s existing saving, venue selection and invitation habits."
+      },
       "thinking": {
-        "zh": "收藏、邀約與造訪需要前後銜接；個人紀錄與共同紀錄提供不同的回顧情境。",
-        "en": "Connect saving, invitations and visits; personal and shared records support different ways to look back."
-      }
+        "zh": "研究聚焦收藏是否會被重新使用、朋友的社交訊號如何影響選店，以及共同意願如何走向邀約與造訪；目前持續研究其互動與流程可行性。",
+        "en": "Focus on whether saved places are reused, how friends’ social signals influence venue selection, and how shared interest leads to invitations and visits. Interaction and flow feasibility remain under study."
+      },
+      "size": "standard"
     }
   ],
   "200ok": [
@@ -151,21 +145,6 @@ export const projectFeatures: Record<string, ProjectFeature[]> = {
       "thinking": {
         "zh": "流程從案件資訊開始，再進入提案比較與對話，將需求釐清放進合作過程。",
         "en": "Start with project information, then proposal comparison and conversation, making clarification part of collaboration."
-      }
-    },
-    {
-      "title": {
-        "zh": "平台資料與操作流程",
-        "en": "Platform data and workflows"
-      },
-      "summary": {
-        "zh": "參與全端平台開發，串接案件與提案的操作流程。",
-        "en": "Contribute to full-stack development and project and proposal workflows."
-      },
-      "size": "standard",
-      "thinking": {
-        "zh": "案件與提案需要清楚的狀態，讓兩種角色知道目前進度與下一個操作。",
-        "en": "Clear project and proposal states help both roles understand progress and the next action."
       }
     }
   ],
@@ -191,21 +170,6 @@ export const projectFeatures: Record<string, ProjectFeature[]> = {
     },
     {
       "title": {
-        "zh": "圖塊關卡系統",
-        "en": "Tile-based levels"
-      },
-      "summary": {
-        "zh": "建立 Tileset 地圖系統，支援以圖塊組合遊戲關卡。",
-        "en": "Build the tileset map system used to compose levels."
-      },
-      "size": "standard",
-      "thinking": {
-        "zh": "把場景組成單位整理成圖塊，讓關卡配置有一致的組合方式。",
-        "en": "Tiles give level layouts a consistent set of building blocks."
-      }
-    },
-    {
-      "title": {
         "zh": "道具與使用點",
         "en": "Items and matching use points"
       },
@@ -217,6 +181,10 @@ export const projectFeatures: Record<string, ProjectFeature[]> = {
       "thinking": {
         "zh": "道具需要對應明確的用途，讓探索與解謎操作互相銜接。",
         "en": "Give items clear uses so exploration connects to puzzle actions."
+      },
+      "why": {
+        "zh": "謎題需要讓玩家在探索中建立「道具可以用在哪裡」的判斷。",
+        "en": "Puzzles need players to work out where an item can be used through exploration."
       }
     }
   ],
@@ -239,36 +207,6 @@ export const projectFeatures: Record<string, ProjectFeature[]> = {
         "zh": "把文字或語音輸入接到事件結構，再接到行事曆，讓輸入方式貼近日常表達。",
         "en": "Connect text or speech to structured event data and then the calendar, keeping input close to everyday expression."
       }
-    },
-    {
-      "title": {
-        "zh": "原生 iOS 體驗",
-        "en": "Native iOS experience"
-      },
-      "summary": {
-        "zh": "使用 Swift 設計與開發行程介面，呈現建立後的事件。",
-        "en": "Design and build the scheduling interface in Swift to display created events."
-      },
-      "size": "standard",
-      "thinking": {
-        "zh": "解析後的行程仍需清楚可讀，介面以簡潔的行程管理為核心。",
-        "en": "Parsed events still need to be readable, with a simple interface centered on scheduling."
-      }
-    },
-    {
-      "title": {
-        "zh": "個人與共享資料",
-        "en": "Personal and shared data"
-      },
-      "summary": {
-        "zh": "整合 iCloud 同步及 Supabase 帳號與共享事件儲存。",
-        "en": "Integrate iCloud sync with Supabase authentication and shared-event storage."
-      },
-      "size": "standard",
-      "thinking": {
-        "zh": "個人同步與共享事件是不同的資料需求，分別由對應服務支援。",
-        "en": "Personal sync and shared events have different data needs, supported by their respective services."
-      }
     }
   ],
   "erp-system": [
@@ -290,28 +228,6 @@ export const projectFeatures: Record<string, ProjectFeature[]> = {
         "zh": "以客戶與工單串起各階段資料，讓排程和狀態更新有對應的服務脈絡。",
         "en": "Link each stage through customers and work orders so scheduling and status updates stay in context."
       }
-    },
-    {
-      "title": {
-        "zh": "資料管理與登入",
-        "en": "Data management and sign-in"
-      },
-      "summary": {
-        "zh": "主導 React、TypeScript 與 Firebase 的前後端開發，整合登入與資料儲存。",
-        "en": "Lead frontend and backend development with React, TypeScript and Firebase, including sign-in and storage."
-      },
-      "size": "supporting"
-    },
-    {
-      "title": {
-        "zh": "營運報表",
-        "en": "Operational reporting"
-      },
-      "summary": {
-        "zh": "將服務與任務資料整理成營運報表，支援查看工作紀錄。",
-        "en": "Organize service and task data into operational reports for reviewing work records."
-      },
-      "size": "supporting"
     }
   ],
   "superbot": [
@@ -333,32 +249,6 @@ export const projectFeatures: Record<string, ProjectFeature[]> = {
         "zh": "讓聊天指令連到 Google Sheets 的資料紀錄與統計，沿用學生熟悉的互動方式。",
         "en": "Connect chat commands to Google Sheets records and summaries, using an interaction students already know."
       }
-    },
-    {
-      "title": {
-        "zh": "出勤與時數整理",
-        "en": "Attendance and hours"
-      },
-      "summary": {
-        "zh": "記錄打卡時間，計算出席時數並匯出紀錄。",
-        "en": "Record check-in times, calculate attendance hours and export records."
-      },
-      "size": "standard",
-      "thinking": {
-        "zh": "以打卡資料接續時數統計，讓日常紀錄能用於後續行政處理。",
-        "en": "Carry check-in data into hour summaries so daily records support later administration."
-      }
-    },
-    {
-      "title": {
-        "zh": "部署與資料串接",
-        "en": "Deployment and integration"
-      },
-      "summary": {
-        "zh": "整合 Python、LINE API 與 Google Sheets API，並部署於 Heroku。",
-        "en": "Integrate Python, LINE API and Google Sheets API and deploy on Heroku."
-      },
-      "size": "supporting"
     }
   ],
   "seven-peach": [
@@ -379,21 +269,6 @@ export const projectFeatures: Record<string, ProjectFeature[]> = {
       "thinking": {
         "zh": "產品從活動與興趣出發，讓「要做什麼」和「如何參與」形成連續的流程。",
         "en": "Start with activities and interests, connecting what to do with how to join."
-      }
-    },
-    {
-      "title": {
-        "zh": "熟齡友善的行動介面",
-        "en": "An interface for older adults"
-      },
-      "summary": {
-        "zh": "以 Flutter 開發活動探索介面，將容易操作作為設計重點。",
-        "en": "Build activity discovery in Flutter with ease of use as a design focus."
-      },
-      "size": "standard",
-      "thinking": {
-        "zh": "主要操作需要容易辨識，讓瀏覽活動與選擇參與的關係清楚。",
-        "en": "Make primary actions recognizable and the path from browsing to participation clear."
       }
     }
   ],
@@ -416,28 +291,6 @@ export const projectFeatures: Record<string, ProjectFeature[]> = {
         "zh": "以網格表示停車場，再把移動規則接到 SFML 的操作與畫面回饋。",
         "en": "Represent the parking lot as a grid and connect move rules to SFML input and visual feedback."
       }
-    },
-    {
-      "title": {
-        "zh": "SFML 互動介面",
-        "en": "Interactive SFML interface"
-      },
-      "summary": {
-        "zh": "實作滑鼠操作、事件處理與遊戲畫面呈現。",
-        "en": "Implement mouse input, event handling and game rendering."
-      },
-      "size": "supporting"
-    },
-    {
-      "title": {
-        "zh": "C++ 結構與記憶體管理",
-        "en": "C++ structure and memory management"
-      },
-      "summary": {
-        "zh": "運用物件導向設計與記憶體管理組織遊戲狀態。",
-        "en": "Organize game states with object-oriented design and memory management."
-      },
-      "size": "supporting"
     }
   ]
 };

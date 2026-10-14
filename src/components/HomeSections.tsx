@@ -97,8 +97,8 @@ const CAPABILITIES: Capability[] = [
     icon: BrainCircuit,
     title: { en: 'AI-Powered Products', zh: 'AI 應用產品' },
     description: {
-      en: 'LLM features that ship to real users — knowledge-point models, LLM orchestration, and AI-generated learning analytics.',
-      zh: '把 LLM 做成真正上線的功能：知識點模型、LLM 編排，到 AI 生成的學習分析報告。',
+      en: 'LLM features that ship to real users — knowledge graphs, multi-model question checks, and AI-generated learning analytics.',
+      zh: '把 LLM 做成真正上線的功能：知識圖譜、多模型題庫檢查，到 AI 生成的學習分析報告。',
     },
     proof: [
       { label: 'Dogtor', href: '/projects/dogtor' },

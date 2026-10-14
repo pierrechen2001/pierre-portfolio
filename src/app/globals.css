@@ -403,20 +403,69 @@ body {
   background: linear-gradient(125deg, rgba(243, 178, 55, .07), var(--background-alt) 60%);
   border-color: rgba(243, 178, 55, .28);
 }
-.project-design-zone .project-feature-supporting {
-  background: transparent;
-  border: 0;
-  border-top: 1px solid var(--border-color);
-  border-radius: 0;
-}
 .project-section-flow {
   padding: 56px 20px 0;
   border-top: 1px solid var(--border-color);
 }
-.project-flow-step {
-  border-radius: 12px;
-  background: transparent;
-  border: 0;
+.project-flow-list {
+  display: grid;
+  gap: 0;
+  padding: 4px 0;
+}
+.project-flow-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  column-gap: 20px;
+  padding-bottom: 30px;
+}
+.project-flow-item:last-child { padding-bottom: 0; }
+.project-flow-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 23px;
+  top: 58px;
+  bottom: 10px;
+  width: 1px;
+  background: var(--border-color);
+}
+.project-flow-marker {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(243, 178, 55, .30);
+  border-radius: 14px;
+  background: rgba(243, 178, 55, .04);
+  color: var(--primary);
+  font-family: ui-monospace, monospace;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.04em;
+}
+.project-flow-label {
+  padding-top: 12px;
+  color: var(--foreground);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+@media (min-width: 1024px) {
+  .project-flow-list {
+    grid-template-columns: repeat(var(--flow-count), minmax(0, 1fr));
+    gap: 24px;
+  }
+  .project-flow-item { display: block; padding-bottom: 0; }
+  .project-flow-item:not(:last-child)::after {
+    top: 23px;
+    left: 62px;
+    right: -10px;
+    bottom: auto;
+    width: auto;
+    height: 1px;
+    background: linear-gradient(to right, rgba(243, 178, 55, .22), var(--border-color));
+  }
+  .project-flow-label { padding-top: 22px; max-width: 20ch; }
 }
 .project-section-details { padding: 0 20px; margin-bottom: 64px; }
 .project-section-details .project-section-heading h2 { font-size: 28px; }
