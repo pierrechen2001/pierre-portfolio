@@ -164,7 +164,7 @@ const translations = {
     // 頁面頭部
     'iam': '我是',
     'fullname': 'Pierre Chen',
-    'description': '我在 Aiii.AI 擔任 AI 應用開發實習生，也參與 Dogtor 與 MapIt 的產品開發。截至 2026 年 10 月 12 日，Dogtor 累積超過 10,000 位用戶；我的工作涵蓋 Flutter、FastAPI、資料系統與產品體驗。',
+    'description': '從 0 到上架的全端開發者。Dogtor AI 上線首月登上 App Store 教育類第 4 名，截至 2026 年 10 月 12 日累積超過 10,000 位用戶。目前在 Aiii.AI 擔任 AI 應用開發實習生，也參與 MapIt 的產品開發；工作涵蓋 Flutter、FastAPI、資料系統與產品體驗。',
     'view_portfolio': '查看我的作品',
     'contact_me': '聯繫我',
     'resume': '履歷',
