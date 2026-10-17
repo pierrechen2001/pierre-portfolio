@@ -239,7 +239,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                       <dd className="text-lg text-[var(--foreground)]">{project.research.course}</dd>
                     </div>
                     <div>
-                      <dt className="text-sm text-primary mb-2">{project.research.team}</dt>
+                      <dt className="text-sm text-primary mb-2">{language === 'zh' ? '我的參與' : 'My role'}</dt>
                       <dd className="text-lg text-[var(--foreground)]">{project.research.role[language]}</dd>
                     </div>
                   </dl>

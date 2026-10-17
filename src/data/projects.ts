@@ -61,7 +61,6 @@ export interface Project {
   galleryImages?: string[];
   research?: {
     course: string;
-    team: string;
     role: { en: string; zh: string };
     members: string[];
     contribution: LocalizedText;
@@ -714,7 +713,6 @@ export const projects: Project[] = [
     date: { en: 'Course final project', zh: '課程期末專案' },
     research: {
       course: 'Human Computer Interaction and User Studies',
-      team: 'Group 10',
       role: { en: 'Guan-Yu Chen (Pierre) · Team member', zh: 'Guan-Yu Chen（Pierre）· 團隊成員' },
       members: ['Guan-Yu Chen', 'Po-Ting Lan', 'Yu Jie Chen', 'ChungYun Ting', 'Yi Jen Chen'],
       contribution: {
