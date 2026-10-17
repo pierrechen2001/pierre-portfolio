@@ -9,8 +9,8 @@
     <path d="M64 76h28" stroke="#f3c14b" stroke-width="3"/>
     <text x="108" y="82" fill="#a8b2c3" font-size="16" letter-spacing="2">HUMAN–COMPUTER INTERACTION</text>
 
-    <text x="56" y="248" fill="#f3c14b" font-size="180" font-weight="700" letter-spacing="-5">HCI</text>
-    <text x="62" y="330" fill="#f4f5f7" font-size="56" font-weight="700" letter-spacing="-1">User Research</text>
+    <text x="60" y="229" fill="#f3c14b" font-size="112" font-weight="700" letter-spacing="-2">HCI</text>
+    <text x="62" y="312" fill="#f4f5f7" font-size="56" font-weight="700" letter-spacing="-1">User Research</text>
     <text x="64" y="406" fill="#e5e9ef" font-size="28">How ad layouts shape preferences.</text>
     <text x="64" y="450" fill="#a8b2c3" font-size="23">A study across electronics and apparel.</text>
 
