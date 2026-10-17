@@ -15,6 +15,7 @@ import type { Project } from '@/data/projects';
 import ProjectFeatureCards from '@/components/ProjectFeatureCards';
 import ProjectSection from '@/components/ProjectSection';
 import ProjectUserFlow from '@/components/ProjectUserFlow';
+import { ResearchSummary, ResearchStudySections } from '@/components/ResearchStudy';
 
 interface ProjectProps {
   id: string;
@@ -27,13 +28,17 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
   const hasImages = Boolean(project.galleryImages?.length);
   const navigation = [
     { id: 'overview', title: language === 'zh' ? '概述' : 'Overview' },
-    ...(project.research ? [{ id: 'report', title: language === 'zh' ? '研究報告' : 'Report' }] : []),
+    ...(project.research ? [
+      { id: 'technology', title: language === 'zh' ? '研究方法' : 'Methods' },
+      { id: 'findings', title: language === 'zh' ? '研究洞察' : 'Findings' },
+      { id: 'report', title: language === 'zh' ? '團隊與報告' : 'Team & report' }
+    ] : []),
     ...(project.youtubeVideoId ? [{ id: 'demo', title: language === 'zh' ? '影片' : 'Video' }] : []),
     ...(!project.youtubeVideoId && hasImages ? [{ id: 'gallery', title: language === 'zh' ? '圖片' : 'Images' }] : []),
     ...(project.features?.length ? [{ id: 'design', title: language === 'zh' ? '功能與設計' : 'Features & design' }] : []),
     ...(userFlow?.length ? [{ id: 'flow', title: language === 'zh' ? '使用流程' : 'User flow' }] : []),
     ...(project.youtubeVideoId && hasImages ? [{ id: 'gallery', title: language === 'zh' ? '圖片' : 'Images' }] : []),
-    { id: 'technology', title: project.research ? (language === 'zh' ? '研究方法' : 'Research methods') : (language === 'zh' ? '技術與成果' : 'Technology & outcomes') },
+    ...(!project.research ? [{ id: 'technology', title: language === 'zh' ? '技術與成果' : 'Technology & outcomes' }] : []),
   ];
   
   const statusText = {
@@ -50,8 +55,8 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
     "name": project.title[language],
     "description": project.description[language],
     ...(project.research ? {
-      "author": { "@type": "Organization", "name": project.research.team },
-      "contributor": { "@type": "Person", "name": "Pierre Chen", "url": "https://www.pierre-chen.com" },
+      "author": project.research.members.map(name => ({ "@type": "Person", name })),
+      "contributor": { "@type": "Person", "name": "Guan-Yu Chen", "alternateName": "Pierre Chen", "url": "https://www.pierre-chen.com" },
       "associatedMedia": { "@type": "MediaObject", "contentUrl": `https://www.pierre-chen.com${project.research.reportUrl}`, "encodingFormat": "application/pdf" }
     } : { "creator": {
       "@type": "Person",
@@ -144,7 +149,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
             <div className="project-detail-content">
               
               {/* 專案圖片 */}
-              <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1, ease: EASE_OUT }} className="mb-8 md:mb-12 rounded-2xl overflow-hidden shadow-lg border border-[var(--border-color)]/10">
+              {!project.research && <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1, ease: EASE_OUT }} className="mb-8 md:mb-12 rounded-2xl overflow-hidden shadow-lg border border-[var(--border-color)]/10">
                 <Image
                   src={project.imageUrl}
                   alt={project.title[language]}
@@ -153,14 +158,15 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                   className="w-full h-auto object-cover"
                   priority
                 />
-              </motion.div>
+              </motion.div>}
 
               {/* 標題區域 */}
-              <Reveal delay={0.15} className="text-center mb-12">
-                <h1 className="text-4xl md:text-6xl font-bold text-[var(--foreground)] mb-6 leading-normal">
+              <Reveal delay={0.15} className={project.research ? 'mb-8' : 'text-center mb-12'}>
+                {project.research && <p className="text-sm text-primary mb-4">{project.research.course}</p>}
+                <h1 className={`${project.research ? 'text-3xl md:text-5xl' : 'text-4xl md:text-6xl'} font-bold text-[var(--foreground)] mb-6 leading-normal`}>
                   {project.title[language]}
                 </h1>
-                <div className="flex flex-wrap justify-center items-center gap-6 text-[var(--foreground-muted)]">
+                <div className={`flex flex-wrap ${project.research ? '' : 'justify-center'} items-center gap-6 text-[var(--foreground-muted)]`}>
                   <span className="text-lg">{project.date[language]}</span>
                   <span className={`px-4 py-2 rounded-full text-sm font-medium ${
                     (project.status === 'completed' || project.status === 'live')
@@ -173,6 +179,8 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                   </span>
                 </div>
               </Reveal>
+
+              {project.research && <ResearchSummary study={project.research} language={language} />}
 
               <nav className="project-section-nav" aria-label={language === 'zh' ? '專案頁面目錄' : 'Project sections'}>
                 {navigation.map(section => (
@@ -209,7 +217,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                 )}
 
                 {/* 專案概述 */}
-                <ProjectSection id="overview" title={language === 'en' ? 'Project Overview' : '專案概述'} eyebrow="OVERVIEW">
+                <ProjectSection id="overview" title={project.research ? (language === 'zh' ? '從理論到研究問題' : 'From Theory to a Research Question') : (language === 'en' ? 'Project Overview' : '專案概述')} eyebrow="OVERVIEW">
                   <div className="project-overview-copy text-[var(--foreground-muted)] leading-relaxed space-y-4">
                     {project.fullDescription[language].split('\n').map(paragraph => paragraph.trim()).filter(Boolean).map((paragraph, i) => (
                       <p key={i} className="text-lg">
@@ -220,6 +228,8 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                 </ProjectSection>
 
               </div>
+
+              {project.research && <ResearchStudySections study={project.research} skills={project.skills} language={language} />}
 
               {project.research && (
                 <ProjectSection id="report" title={language === 'zh' ? '課程與研究報告' : 'Course & Research Report'} eyebrow="COURSE FINAL PROJECT" tone="details">
@@ -233,6 +243,12 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                       <dd className="text-lg text-[var(--foreground)]">{project.research.role[language]}</dd>
                     </div>
                   </dl>
+                  <div className="mb-8">
+                    <p className="text-sm text-primary mb-3">{language === 'zh' ? '研究團隊' : 'Research team'}</p>
+                    <ul className="flex flex-wrap gap-x-6 gap-y-2 text-[var(--foreground)]">
+                      {project.research.members.map(name => <li key={name}>{name}</li>)}
+                    </ul>
+                  </div>
                   <p className="text-lg text-[var(--foreground)] leading-relaxed mb-4">{project.research.reportTitle}</p>
                   <p className="text-[var(--foreground-muted)] leading-relaxed mb-6">{project.research.attributionNote[language]}</p>
                   <div className="flex flex-wrap gap-4">
@@ -240,7 +256,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                       {language === 'zh' ? '閱讀完整報告（PDF）' : 'Read full report (PDF)'}
                     </a>
                     <a href={project.research.reportUrl} download className="inline-flex items-center border border-[var(--border-color)] text-[var(--foreground)] px-6 py-3 rounded-lg font-semibold hover:border-primary transition-colors">
-                      {language === 'zh' ? '下載原始 PDF' : 'Download original PDF'}
+                      {language === 'zh' ? '下載研究報告 PDF' : 'Download report PDF'}
                     </a>
                   </div>
                 </ProjectSection>
@@ -275,7 +291,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
               )}
 
               {/* 使用技術 */}
-              <ProjectSection id="technology" title={project.research ? (language === 'zh' ? '研究方法' : 'Research Methods') : t('technologies_used')} eyebrow={project.research ? 'RESEARCH TOOLKIT' : 'BUILT WITH'} tone="details">
+              {!project.research && <ProjectSection id="technology" title={t('technologies_used')} eyebrow="BUILT WITH" tone="details">
                 <div className="flex flex-wrap gap-3">
                   {project.skills.map((skill) => (
                     <span
@@ -286,7 +302,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                     </span>
                   ))}
                 </div>
-              </ProjectSection>
+              </ProjectSection>}
               
               {/* 專案里程碑 */}
               {project.milestones && (

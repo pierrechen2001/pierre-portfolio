@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const seo = {
-    title: `${project.title.zh} - Pierre Chen 開發專案`,
+    title: `${project.title.zh} - Pierre Chen ${project.research ? '研究專案' : '開發專案'}`,
     description: project.description.zh,
   };
   
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       '作品集',
       project.status === 'live' ? '已上線，持續迭代優化' : project.status === 'completed' ? '已完成專案' : '開發中專案'
     ],
-    authors: [{ name: "Pierre Chen" }],
+    authors: project.research ? project.research.members.map(name => ({ name })) : [{ name: "Pierre Chen" }],
     openGraph: {
       title: seo.title,
       description: seo.description,
