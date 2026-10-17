@@ -7,13 +7,12 @@
   <rect width="1200" height="675" fill="url(#grid)"/>
   <g font-family="Arial, Helvetica, sans-serif">
     <path d="M64 76h28" stroke="#f3c14b" stroke-width="3"/>
-    <text x="108" y="87" fill="#f3c14b" font-size="32" font-weight="700" letter-spacing="3">HCI</text>
-    <text x="198" y="83" fill="#a8b2c3" font-size="16" letter-spacing="2">HUMAN–COMPUTER INTERACTION</text>
+    <text x="108" y="82" fill="#a8b2c3" font-size="16" letter-spacing="2">HUMAN–COMPUTER INTERACTION</text>
 
-    <text x="60" y="218" fill="#f4f5f7" font-size="94" font-weight="700" letter-spacing="-3">User</text>
-    <text x="60" y="318" fill="#f3c14b" font-size="94" font-weight="700" letter-spacing="-3">Research</text>
-    <text x="64" y="391" fill="#e5e9ef" font-size="28">How ad layouts shape preferences.</text>
-    <text x="64" y="435" fill="#a8b2c3" font-size="23">A study across electronics and apparel.</text>
+    <text x="56" y="248" fill="#f3c14b" font-size="180" font-weight="700" letter-spacing="-5">HCI</text>
+    <text x="62" y="330" fill="#f4f5f7" font-size="56" font-weight="700" letter-spacing="-1">User Research</text>
+    <text x="64" y="406" fill="#e5e9ef" font-size="28">How ad layouts shape preferences.</text>
+    <text x="64" y="450" fill="#a8b2c3" font-size="23">A study across electronics and apparel.</text>
 
     <text x="718" y="128" fill="#a8b2c3" font-size="14" letter-spacing="2">FOUR INFORMATION PRIORITIES</text>
     <g transform="translate(718 154)">
