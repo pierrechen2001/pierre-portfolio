@@ -57,6 +57,14 @@ export interface Project {
   youtubeVideoId?: string;
   youtubeIsShort?: boolean;
   galleryImages?: string[];
+  research?: {
+    course: string;
+    team: string;
+    role: { en: string; zh: string };
+    reportUrl: string;
+    reportTitle: string;
+    attributionNote: { en: string; zh: string };
+  };
 }
 
 export const projects: Project[] = [
@@ -655,6 +663,81 @@ export const projects: Project[] = [
       '/projects/aip3.jpg',
       '/projects/aip4.jpg'
     ]
+  },
+  {
+    id: 'hci-popup-ad-study',
+    title: {
+      en: 'Pop-up Ad Design — An HCI User Study',
+      zh: '彈出式廣告版面設計 — HCI 使用者研究'
+    },
+    description: {
+      en: 'A team final project for Human Computer Interaction and User Studies, comparing 273 respondents’ preferences across four ad layouts for electronics and apparel.',
+      zh: 'Human Computer Interaction and User Studies 課程團隊期末專案，透過 273 位受訪者，比較 3C 與服飾產品中四種廣告版面的偏好。'
+    },
+    fullDescription: {
+      en: `
+        This is Group 10’s team final project for Human Computer Interaction and User Studies. I participated as a team member. We explored how the information emphasized in a one-page pop-up advertisement relates to user preferences for consumer electronics and apparel.
+
+        The study compared image-, review-, specification-, and price-focused layouts: four variants for each of two product categories, for eight mock-ups in total. A questionnaire collected responses from 273 people, with layout options presented in random order to reduce order bias.
+
+        In the reported rankings, apparel favored images, followed by specifications. For electronics, images and specifications were both valued more than reviews and price. The design implication is to adapt the information hierarchy to the product category.
+
+        These findings concern self-reported preferences, rather than observed clicks or purchases. Most respondents were aged 18–25, which also limits how broadly the findings can be applied.
+      `,
+      zh: `
+        這是 Human Computer Interaction and User Studies 課程中，由 Group 10 共同完成的期末專案，我以團隊成員身分參與。我們探討單頁彈出式廣告強調的資訊，如何影響使用者對 3C 與服飾產品廣告的偏好。
+
+        研究比較圖片、評論、規格與價格四種導向的版面；兩類產品各有四種版本，共八個模擬版面。問卷蒐集了 273 位受訪者的回覆，並以隨機順序呈現版面選項，降低排序偏誤。
+
+        報告的排序結果顯示，服飾類以圖片最受重視，其次是規格；3C 類則同時重視圖片與規格，兩者均優於評論與價格。這些結果支持依產品類型調整資訊層級的設計方向。
+
+        本研究衡量的是受訪者自陳的偏好，未直接測量實際點擊或購買行為；受訪者多集中於 18–25 歲，結果的適用範圍也受到樣本組成限制。
+      `
+    },
+    imageUrl: '/projects/hci-popup-ad-study.svg',
+    status: 'completed',
+    date: { en: 'Course final project', zh: '課程期末專案' },
+    research: {
+      course: 'Human Computer Interaction and User Studies',
+      team: 'Group 10',
+      role: { en: 'Team member · Pierre Chen', zh: '團隊成員 · Pierre Chen' },
+      reportUrl: '/projects/hci-popup-ad-study/final-report.pdf',
+      reportTitle: 'A Study on the Impact of One-page Pop-up Advertisement Designs on User Behavior for Different Product Categories: A Case Study of Consumer Electronics and Apparel',
+      attributionNote: {
+        en: 'The original report credits Group 10 without listing individual members. This portfolio page records my participation in the team; the PDF is shared as originally submitted.',
+        zh: '原始報告僅署名 Group 10，未列出個別組員姓名；此作品集頁面補充我的團隊參與身分，PDF 保留原始提交版本。'
+      }
+    },
+    productStory: {
+      en: {
+        problem: 'Does the same pop-up ad layout work equally well for electronics and apparel, when shoppers may need different kinds of information?',
+        approach: 'Compare preferences for four information emphases across both categories, then translate the rankings into recommendations for visual hierarchy.'
+      },
+      zh: {
+        problem: '選購 3C 與服飾時，使用者需要的資訊可能不同；同一種彈出式廣告版面，是否適合兩類產品？',
+        approach: '比較兩類產品中四種資訊重點的版面偏好，再把排序結果轉化為資訊層級的設計建議。'
+      }
+    },
+    skills: [
+      { name: 'User Research', color: 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' },
+      { name: 'Questionnaire Design', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30' },
+      { name: 'Statistical Analysis', color: 'bg-purple-500/20 text-purple-400 border border-purple-500/30' },
+      { name: 'Information Hierarchy', color: 'bg-amber-500/20 text-amber-400 border border-amber-500/30' }
+    ],
+    milestones: {
+      en: [
+        { title: '273 respondents, eight mock-ups', description: 'Compared four layout variants for each of two product categories, using randomized presentation in a preference-ranking questionnaire.', type: 'achievement', icon: 'target' },
+        { title: 'Analyze ranked preferences', description: 'The report uses Friedman tests and Wilcoxon signed-rank comparisons with Bonferroni correction to compare layout rankings.', type: 'skill', icon: 'chart' },
+        { title: 'Adapt the information hierarchy', description: 'Prioritize images for apparel and both images and specifications for electronics, based on the reported preferences.', type: 'learning', icon: 'image' },
+        { title: 'Keep the findings in context', description: 'Self-reported preferences and a predominantly 18–25-year-old sample call for behavioral validation and broader sampling.', type: 'learning', icon: 'target' }
+      ],
+      zh: [
+        { title: '273 位受訪者、八個模擬版面', description: '兩類產品各比較四種版面，以隨機順序呈現選項，透過問卷蒐集偏好排序。', type: 'achievement', icon: 'target' },
+        { title: '分析偏好排序', description: '報告使用 Friedman 檢定與 Wilcoxon 符號等級檢定，搭配 Bonferroni 校正，比較各版面的排序差異。', type: 'skill', icon: 'chart' },
+        { title: '依產品調整資訊層級', description: '依據報告中的偏好結果，服飾廣告優先呈現圖片；3C 廣告則兼顧圖片與規格資訊。', type: 'learning', icon: 'image' },
+        { title: '理解研究結果的邊界', description: '研究以自陳偏好為主，樣本也多集中於 18–25 歲；後續需要實際行為驗證與更多元的樣本。', type: 'learning', icon: 'target' }
+      ]
+    }
   },
   {
     id: 'erp-system',

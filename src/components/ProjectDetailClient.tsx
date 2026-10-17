@@ -27,12 +27,13 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
   const hasImages = Boolean(project.galleryImages?.length);
   const navigation = [
     { id: 'overview', title: language === 'zh' ? '概述' : 'Overview' },
+    ...(project.research ? [{ id: 'report', title: language === 'zh' ? '研究報告' : 'Report' }] : []),
     ...(project.youtubeVideoId ? [{ id: 'demo', title: language === 'zh' ? '影片' : 'Video' }] : []),
     ...(!project.youtubeVideoId && hasImages ? [{ id: 'gallery', title: language === 'zh' ? '圖片' : 'Images' }] : []),
     ...(project.features?.length ? [{ id: 'design', title: language === 'zh' ? '功能與設計' : 'Features & design' }] : []),
     ...(userFlow?.length ? [{ id: 'flow', title: language === 'zh' ? '使用流程' : 'User flow' }] : []),
     ...(project.youtubeVideoId && hasImages ? [{ id: 'gallery', title: language === 'zh' ? '圖片' : 'Images' }] : []),
-    { id: 'technology', title: language === 'zh' ? '技術與成果' : 'Technology & outcomes' },
+    { id: 'technology', title: project.research ? (language === 'zh' ? '研究方法' : 'Research methods') : (language === 'zh' ? '技術與成果' : 'Technology & outcomes') },
   ];
   
   const statusText = {
@@ -45,14 +46,18 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
   // 生成專案的結構化數據
   const projectStructuredData = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    "@type": project.research ? "Report" : "SoftwareApplication",
     "name": project.title[language],
     "description": project.description[language],
-    "creator": {
+    ...(project.research ? {
+      "author": { "@type": "Organization", "name": project.research.team },
+      "contributor": { "@type": "Person", "name": "Pierre Chen", "url": "https://www.pierre-chen.com" },
+      "associatedMedia": { "@type": "MediaObject", "contentUrl": `https://www.pierre-chen.com${project.research.reportUrl}`, "encodingFormat": "application/pdf" }
+    } : { "creator": {
       "@type": "Person",
       "name": "Pierre Chen",
       "url": "https://www.pierre-chen.com"
-    },
+    } }),
     "programmingLanguage": project.skills.filter(skill => 
       ['JavaScript', 'TypeScript', 'Python', 'Swift', 'Dart', 'Java'].includes(skill.name)
     ).map(skill => skill.name),
@@ -216,6 +221,31 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
 
               </div>
 
+              {project.research && (
+                <ProjectSection id="report" title={language === 'zh' ? '課程與研究報告' : 'Course & Research Report'} eyebrow="COURSE FINAL PROJECT" tone="details">
+                  <dl className="grid gap-6 md:grid-cols-3 mb-8">
+                    <div className="md:col-span-2">
+                      <dt className="text-sm text-primary mb-2">{language === 'zh' ? '課程名稱' : 'Course'}</dt>
+                      <dd className="text-lg text-[var(--foreground)]">{project.research.course}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-sm text-primary mb-2">{project.research.team}</dt>
+                      <dd className="text-lg text-[var(--foreground)]">{project.research.role[language]}</dd>
+                    </div>
+                  </dl>
+                  <p className="text-lg text-[var(--foreground)] leading-relaxed mb-4">{project.research.reportTitle}</p>
+                  <p className="text-[var(--foreground-muted)] leading-relaxed mb-6">{project.research.attributionNote[language]}</p>
+                  <div className="flex flex-wrap gap-4">
+                    <a href={project.research.reportUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-primary text-dark px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
+                      {language === 'zh' ? '閱讀完整報告（PDF）' : 'Read full report (PDF)'}
+                    </a>
+                    <a href={project.research.reportUrl} download className="inline-flex items-center border border-[var(--border-color)] text-[var(--foreground)] px-6 py-3 rounded-lg font-semibold hover:border-primary transition-colors">
+                      {language === 'zh' ? '下載原始 PDF' : 'Download original PDF'}
+                    </a>
+                  </div>
+                </ProjectSection>
+              )}
+
               {project.youtubeVideoId && (
                 <ProjectSection id="demo" title={language === 'zh' ? '影片展示' : 'Video Showcase'} eyebrow="WATCH IT IN ACTION" tone="showcase">
                   <MediaCarousel youtubeVideoId={project.youtubeVideoId} youtubeIsShort={project.youtubeIsShort} projectTitle={project.title[language]} />
@@ -245,7 +275,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
               )}
 
               {/* 使用技術 */}
-              <ProjectSection id="technology" title={t('technologies_used')} eyebrow="BUILT WITH" tone="details">
+              <ProjectSection id="technology" title={project.research ? (language === 'zh' ? '研究方法' : 'Research Methods') : t('technologies_used')} eyebrow={project.research ? 'RESEARCH TOOLKIT' : 'BUILT WITH'} tone="details">
                 <div className="flex flex-wrap gap-3">
                   {project.skills.map((skill) => (
                     <span
@@ -260,7 +290,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
               
               {/* 專案里程碑 */}
               {project.milestones && (
-                <ProjectSection id="milestones" title={language === 'en' ? 'Project Milestones' : '專案里程碑'} eyebrow="EXPERIENCE & OUTCOMES" tone="details">
+                <ProjectSection id="milestones" title={project.research ? (language === 'zh' ? '研究方法與發現' : 'Methods & Findings') : (language === 'en' ? 'Project Milestones' : '專案里程碑')} eyebrow="EXPERIENCE & OUTCOMES" tone="details">
                   <div className="grid gap-6 md:grid-cols-2">
                     {project.milestones[language].map((milestone, index) => {
                       const typeColors = {
