@@ -6,8 +6,10 @@
   <rect width="1200" height="675" fill="url(#bg)"/>
   <rect width="1200" height="675" fill="url(#grid)"/>
   <g font-family="Arial, Helvetica, sans-serif">
-    <rect x="64" y="58" width="228" height="34" rx="17" fill="#f3c14b" fill-opacity=".12" stroke="#f3c14b" stroke-opacity=".35"/>
-    <text x="84" y="80" fill="#f3c14b" font-size="14" letter-spacing="2">HCI / USER RESEARCH</text>
+    <rect x="64" y="46" width="128" height="64" rx="12" fill="#f3c14b"/>
+    <text x="128" y="91" fill="#101722" font-size="40" font-weight="800" text-anchor="middle">HCI</text>
+    <rect x="208" y="46" width="360" height="64" rx="12" fill="#284056" stroke="#81b2e1" stroke-width="2"/>
+    <text x="388" y="89" fill="#f4f7fb" font-size="34" font-weight="700" letter-spacing="1" text-anchor="middle">USER RESEARCH</text>
     <text x="64" y="160" fill="#f4f5f7" font-size="54" font-weight="700">What makes an ad</text>
     <text x="64" y="222" fill="#f3c14b" font-size="54" font-weight="700">worth a closer look?</text>
     <text x="66" y="265" fill="#a8b2c3" font-size="21">Pop-up layout preferences across electronics and apparel.</text>
