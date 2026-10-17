@@ -316,6 +316,112 @@ export const projects: Project[] = [
     ]
   },
   {
+    id: 'hci-popup-ad-study',
+    title: {
+      en: 'Pop-up Ads: Testing Design Hypotheses',
+      zh: '彈出式廣告：以使用者研究檢驗設計假說'
+    },
+    description: {
+      en: 'From theory to ranked-preference evidence: a 273-person HCI study challenged our expectation that review-led ads would outperform other layouts. My work covered design, literature, hypotheses, and statistics.',
+      zh: '從文獻假說到 273 人偏好排序研究：結果挑戰了我們對評論導向廣告的預期。我參與設計、文獻與假說建立、統計分析，檢驗產品類型與購物習慣如何對應版面偏好。'
+    },
+    fullDescription: {
+      en: `
+        **Research question.** Does product category change which information users prioritize in a pop-up ad? Drawing on search versus experience goods, the Elaboration Likelihood Model, and information scent, we hypothesized that electronics would favor specifications and reviews, while apparel would favor images and reviews.
+
+        **Study design.** We operationalized information emphasis as four layout variants—image, specifications, reviews, and price—for each of two product categories. The same 273 respondents ranked the four options in each category from 1 to 4, with presentation order randomized. This paired design let us compare categories within respondents as well as layouts within each category.
+
+        **What changed our thinking.** The ranking evidence did not sustain the expected advantage of reviews: specifications outranked reviews in both categories in the reported Bonferroni-adjusted comparisons. We then examined category differences and shopping-frequency subgroups, distinguishing the stronger category result from a frequency association that depended on how respondents were grouped.
+      `,
+      zh: `
+        **研究問題與假說。** 產品類型會改變使用者對廣告資訊的優先順序嗎？我們從搜尋財／經驗財、推敲可能性模型（ELM）與資訊氣味等文獻出發，預期 3C 產品偏好規格與評論，服飾產品則偏好圖片與評論。
+
+        **把概念轉成可比較的研究設計。** 我們將「資訊重點」操作化為圖片、規格、評論、價格四種版面，分別套用於兩類產品，共八個模擬版面。讓同一批 273 位受訪者，在兩類產品中各完成 1–4 名偏好排序，並隨機呈現選項；因此能同時檢驗類別內的版面差異，以及同一受訪者跨產品類別的偏好變化。
+
+        **結果如何修正我們的想法。** 評論的預期優勢未被排序結果支持：報告的 Bonferroni 校正比較顯示，兩類產品中，規格版面皆優於評論版面。我們接著比較跨產品差異與購物頻率分組，區分較明確的產品類型差異，以及會隨分組方式改變的探索性關聯。
+      `
+    },
+    imageUrl: '/projects/hci-popup-ad-study.svg',
+    status: 'completed',
+    date: { en: 'Course final project', zh: '課程期末專案' },
+    research: {
+      course: 'Human Computer Interaction and User Studies',
+      role: { en: 'Guan-Yu Chen (Pierre) · Team member', zh: 'Guan-Yu Chen（Pierre）· 團隊成員' },
+      members: ['Guan-Yu Chen', 'Po-Ting Lan', 'Yu Jie Chen', 'ChungYun Ting', 'Yi Jen Chen'],
+      contribution: {
+        en: 'Design · Literature review & hypothesis development · Statistical analysis',
+        zh: '設計 · 文獻回顧與假說建立 · 統計分析'
+      },
+      takeaway: {
+        en: 'We expected reviews to be persuasive. Ranked-preference evidence instead favored specifications over reviews in both product categories.',
+        zh: '我們原先預期評論具有說服優勢；偏好排序結果卻顯示，兩類產品的規格版面皆優於評論版面。'
+      },
+      methods: [
+        {
+          title: { en: '01 / Theory → hypotheses', zh: '01 / 從文獻建立可檢驗假說' },
+          description: { en: 'Connected search/experience goods, ELM, and information scent to directional hypotheses about specifications, images, and social proof. The results could challenge these predictions.', zh: '以搜尋財／經驗財、ELM 與資訊氣味推導方向性預測，將規格、圖片與社會認同轉成可由結果支持或挑戰的假說。' }
+        },
+        {
+          title: { en: '02 / Paired preference-ranking design', zh: '02 / 配對的偏好排序設計' },
+          description: { en: '273 respondents ranked four layouts in each of two categories. Randomized option order reduced order bias; four questionnaire sections also captured demographics, shopping habits, and self-reported ad behavior.', zh: '273 位受訪者各自排序兩類產品的四種版面，選項隨機呈現以降低順序偏誤；四部分問卷另蒐集人口背景、網購習慣與自陳廣告互動行為。' }
+        },
+        {
+          title: { en: '03 / Match the tests to ranked, paired data', zh: '03 / 依序位與配對資料選擇檢定' },
+          description: { en: 'Used Friedman tests for four related layouts, followed by Wilcoxon signed-rank comparisons with Bonferroni correction. Cross-category Wilcoxon tests compared each respondent’s rankings across product types.', zh: '類別內以 Friedman 檢定比較四種相關樣本，再以 Wilcoxon 符號等級檢定與 Bonferroni 校正進行事後比較；跨類別則以配對 Wilcoxon 檢定比較同一受訪者的排序。' }
+        },
+        {
+          title: { en: '04 / Probe subgroup sensitivity', zh: '04 / 比較分組方式，檢視結果邊界' },
+          description: { en: 'Explored shopping-frequency differences with Mann–Whitney U tests for two groups and Kruskal–Wallis tests for the original six levels. Read these alongside each other before drawing personalization implications.', zh: '購物頻率以二分組的 Mann–Whitney U 與原始六級的 Kruskal–Wallis 檢定分別探索，交叉閱讀結果，再評估能否據此提出個人化設計建議。' }
+        }
+      ],
+      insights: [
+        {
+          title: { en: 'The expected advantage of social proof did not hold', zh: '評論的社會認同優勢，沒有照預期出現' },
+          finding: { en: 'Our hypotheses favored reviews in both categories. Yet specifications outranked reviews in the reported pairwise tests for both electronics and apparel. In apparel, 54.95% ranked images first, compared with 11.72% for reviews.', zh: '原假說在兩類產品中都看好評論，但兩類產品的事後比較皆顯示規格優於評論。服飾類有 54.95% 將圖片排第一，評論僅 11.72%。' },
+          method: { en: 'Within-category Friedman tests, then Wilcoxon signed-rank comparisons with Bonferroni correction.', zh: '類別內 Friedman 檢定，再以 Wilcoxon 符號等級檢定進行事後比較與 Bonferroni 校正。' },
+          evidence: { en: 'Specs > reviews: adjusted p = 0.00911 in each category (Tables 3–4).', zh: '規格 > 評論：兩類產品的校正後 p 值皆為 0.00911（表 3–4）。' },
+          implication: { en: 'For these mock-ups, social proof was not a reliable default for the primary information block. The evidence supports testing information hierarchy before prioritizing review content.', zh: '在這組模擬版面中，不能直接把社會認同當作主視覺的優先依據；資訊層級應先經偏好驗證，再決定是否突出評論。' },
+          sourcePage: 8,
+          sourceLabel: 'Tables 1–4'
+        },
+        {
+          title: { en: 'Category differences were selective, not universal', zh: '產品類型改變的是特定資訊權重' },
+          finding: { en: 'The paired comparison found a stronger preference for specifications in electronics than apparel. Price and review rankings did not show a detectable cross-category difference in the reported tests.', zh: '同一受訪者的配對比較顯示，規格在 3C 類比服飾類更受重視；價格與評論的跨類別差異則未達顯著。' },
+          method: { en: 'Two-tailed paired Wilcoxon signed-rank tests for each information emphasis across product categories.', zh: '針對每種資訊重點，以雙尾配對 Wilcoxon 符號等級檢定比較跨產品排序。' },
+          evidence: { en: 'Specifications: z = −3.41, p < 0.001, 189 non-zero pairs. Price: p = 0.321; reviews: p = 0.168 (Table 5).', zh: '規格：z = −3.41，p < 0.001，189 組非零差值配對；價格 p = 0.321、評論 p = 0.168（表 5）。' },
+          implication: { en: 'A design hypothesis is to adjust the prominence of specifications by category. These results do not establish that every information block needs a different layout, or that non-significant differences imply equivalence.', zh: '可優先測試依產品類型調整規格區的顯著程度；現有結果不足以支持所有區塊都要換版，也不能把未達顯著解讀為完全相同。' },
+          sourcePage: 9,
+          sourceLabel: 'Table 5'
+        },
+        {
+          title: { en: 'A personalization signal depended on the grouping', zh: '個人化線索，會隨分組方式改變' },
+          finding: { en: 'Less frequent shoppers ranked electronics specifications more favorably in the two-group analysis (2.12 vs. 2.46; lower is better). The original six-level frequency analysis did not reach significance.', zh: '二分組時，低頻網購者比高頻者更偏好 3C 規格版面（平均排序 2.12 vs. 2.46，越低越偏好）；改回原始六級購物頻率後，差異未達顯著。' },
+          method: { en: 'Compared a Mann–Whitney U two-group result with the Kruskal–Wallis result across the original six frequency levels.', zh: '對照二分組 Mann–Whitney U 檢定與原始六級 Kruskal–Wallis 檢定。' },
+          evidence: { en: 'Two groups: n = 52 / 221, p = 0.0342; six levels: H = 9.64, p = 0.086 (Tables 31–32). The subgroup p-values are reported without a multiple-testing adjustment.', zh: '二分組 n = 52／221，p = 0.0342；六級 H = 9.64，p = 0.086（表 31–32）。分組分析的 p 值未呈現多重比較校正。' },
+          implication: { en: 'Treat shopping frequency as an exploratory follow-up question. This grouping-sensitive association is not sufficient evidence for a fixed personalization rule.', zh: '購物頻率值得作為後續研究問題；這個對分組敏感的關聯，尚不足以直接制定固定的個人化規則。' },
+          sourcePage: 23,
+          sourceLabel: 'Tables 31–32'
+        }
+      ],
+      limitations: {
+        en: 'This was a mock-up preference survey, not a behavioral conversion experiment; 73.6% of respondents were 18–25. We report the original tables rather than reanalyzing raw data. Table 3’s image-versus-specifications p-value conflicts with its interpretation, and the spending-group narrative conflicts with Table 40, so neither disputed comparison is used here. The reported tests do not establish causality; effect sizes, intervals, and subgroup multiplicity need further work. A next study could measure clicks and dwell time on a live prototype with a broader sample.',
+        zh: '這是模擬版面的偏好問卷，並非轉換率行為實驗；73.6% 受訪者為 18–25 歲。本頁依原報告表格整理，未重新分析原始資料。原報告表 3 的圖片／規格 p 值與判讀不一致，消費分組文字也與表 40 不一致，因此本頁不採用這兩項爭議比較。現有檢定不支持因果推論；效果量、區間估計與分組多重比較仍需補強。後續可用實際原型量測點擊與停留，並擴大樣本組成。'
+      },
+      reportUrl: '/projects/hci-popup-ad-study/final-report.pdf',
+      reportTitle: 'A Study on the Impact of One-page Pop-up Advertisement Designs on User Behavior for Different Product Categories: A Case Study of Consumer Electronics and Apparel',
+      attributionNote: {
+        en: 'The PDF now includes all five team members on its first page and in its author metadata. The research content and pagination are unchanged.',
+        zh: 'PDF 第一頁與作者資訊已補齊五位組員姓名，研究內文與頁碼維持原樣。'
+      }
+    },
+    skills: [
+      { name: 'Hypothesis Development', color: 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' },
+      { name: 'Within-Subject Design', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30' },
+      { name: 'Nonparametric Statistics', color: 'bg-purple-500/20 text-purple-400 border border-purple-500/30' },
+      { name: 'User Research', color: 'bg-amber-500/20 text-amber-400 border border-amber-500/30' }
+    ]
+  },
+  {
     id: '200ok',
     title: {
       en: '200OK Software Outsourcing Platform',
@@ -566,229 +672,6 @@ export const projects: Project[] = [
     youtubeVideoId: 'a0MbaG1MBfU'
   },
   {
-    id: 'aiplanner',
-    title: {
-      en: 'aiPlanner Smart Calendar',
-      zh: 'aiPlanner 智慧行程助理'
-    },
-    description: {
-      en: 'Designed and built a Swift calendar app that turns natural-language text or speech into events, with Supabase and iCloud integration.',
-      zh: '以 Swift 設計並開發行事曆 App，將自然語言文字或語音轉成行程，並整合 Supabase 與 iCloud。'
-    },
-    fullDescription: {
-      en: `
-        aiPlanner is a smart calendar app built exclusively for iOS, designed to streamline how users create and manage schedules.  
-        
-        With natural language processing (NLP) at its core, users can simply type or speak phrases like *"Dinner with John next Friday at 7 PM"* and have events automatically parsed and added to their calendar.  
-        
-        I designed and developed aiPlanner with the following architecture:
-        - Swift-based iOS app with Apple-style UI
-        - Natural Language Processing for event parsing
-        - Supabase backend for authentication and optional shared event storage
-        - Local iCloud sync for private, personal data
-        
-        aiPlanner provides users with a frictionless way to manage their daily lives while ensuring both **privacy** and **usability**.
-      `,
-      zh: `
-        aiPlanner 是一款專為 iOS 打造的智慧行程應用，目標是讓使用者以更直覺的方式規劃與管理行程。  
-        
-        核心功能是自然語言處理 (NLP)，使用者只需輸入或說出 *「下週五晚上七點和 John 吃晚餐」*，事件就會自動解析並加入行事曆。  
-        
-        我主導了系統設計與開發，包含：
-        - 使用 Swift 開發 iOS 原生應用，維持 Apple 風格的簡潔設計
-        - 導入自然語言處理，支援快速解析事件
-        - Supabase 提供帳號驗證與共享事件儲存
-        - iCloud 本地同步，保障個人資料隱私
-        
-        aiPlanner 讓使用者以最自然的方式管理日常，兼顧 **隱私性** 與 **便利性**。  
-      `
-    },
-    imageUrl: '/projects/aip.jpg',
-    userFlow: {
-      en: ['Type or speak a plan', 'Parse its date, time, and event', 'Add it to the calendar', 'View or share the schedule'],
-      zh: ['輸入或說出計畫', '解析日期、時間與事件', '加入行事曆', '查看或共享行程']
-    },
-    status: 'completed',
-    date: {
-      en: 'July 2025 - August 2025',
-      zh: '2025年7月 - 2025年8月'
-    },
-    skills: [
-      { name: 'Swift', color: 'bg-orange-500/20 text-orange-400 border border-orange-500/30' },
-      { name: 'Natural Language Processing', color: 'bg-purple-500/20 text-purple-400 border border-purple-500/30' },
-      { name: 'Supabase', color: 'bg-green-500/20 text-green-400 border border-green-500/30' },
-      { name: 'iCloud', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30' },
-      { name: 'iOS Development', color: 'bg-gray-500/20 text-gray-400 border border-gray-500/30' }
-    ],
-    features: projectFeatures['aiplanner'],
-    milestones: {
-      en: [
-        {
-          title: 'Built iOS-native Calendar App',
-          description: 'Developed aiPlanner using Swift with Apple-style UI and smooth user experience.',
-          type: 'achievement',
-          icon: 'smartphone'
-        },
-        {
-          title: 'Implemented Natural Language Parsing',
-          description: 'Enabled users to create events with simple text or voice inputs.',
-          type: 'skill',
-          icon: 'speech'
-        },
-        {
-          title: 'Integrated Supabase',
-          description: 'Added authentication and shared event storage via Supabase.',
-          type: 'learning',
-          icon: 'wrench'
-        },
-        {
-          title: 'Enhanced Privacy with iCloud',
-          description: 'Leveraged iCloud sync for secure, private personal events.',
-          type: 'skill',
-          icon: 'lock'
-        }
-      ],
-      zh: [
-        {
-          title: '開發 iOS 原生行事曆應用',
-          description: '以 Swift 打造 aiPlanner，提供 Apple 風格的流暢體驗。',
-          type: 'achievement',
-          icon: 'smartphone'
-        },
-        {
-          title: '導入自然語言解析',
-          description: '支援以簡單文字或語音快速建立事件。',
-          type: 'skill',
-          icon: 'speech'
-        },
-        {
-          title: '整合 Supabase',
-          description: '透過 Supabase 提供帳號驗證與共享事件儲存。',
-          type: 'learning',
-          icon: 'wrench'
-        },
-        {
-          title: '強化隱私與 iCloud 同步',
-          description: '利用 iCloud 確保個人事件安全私密同步。',
-          type: 'skill',
-          icon: 'lock'
-        }
-      ]
-    },
-    galleryImages: [
-      '/projects/aip1.jpg',
-      '/projects/aip2.jpg',
-      '/projects/aip3.jpg',
-      '/projects/aip4.jpg'
-    ]
-  },
-  {
-    id: 'hci-popup-ad-study',
-    title: {
-      en: 'Pop-up Ads: Testing Design Hypotheses',
-      zh: '彈出式廣告：以使用者研究檢驗設計假說'
-    },
-    description: {
-      en: 'From theory to ranked-preference evidence: a 273-person HCI study challenged our expectation that review-led ads would outperform other layouts. My work covered design, literature, hypotheses, and statistics.',
-      zh: '從文獻假說到 273 人偏好排序研究：結果挑戰了我們對評論導向廣告的預期。我參與設計、文獻與假說建立、統計分析，檢驗產品類型與購物習慣如何對應版面偏好。'
-    },
-    fullDescription: {
-      en: `
-        **Research question.** Does product category change which information users prioritize in a pop-up ad? Drawing on search versus experience goods, the Elaboration Likelihood Model, and information scent, we hypothesized that electronics would favor specifications and reviews, while apparel would favor images and reviews.
-
-        **Study design.** We operationalized information emphasis as four layout variants—image, specifications, reviews, and price—for each of two product categories. The same 273 respondents ranked the four options in each category from 1 to 4, with presentation order randomized. This paired design let us compare categories within respondents as well as layouts within each category.
-
-        **What changed our thinking.** The ranking evidence did not sustain the expected advantage of reviews: specifications outranked reviews in both categories in the reported Bonferroni-adjusted comparisons. We then examined category differences and shopping-frequency subgroups, distinguishing the stronger category result from a frequency association that depended on how respondents were grouped.
-      `,
-      zh: `
-        **研究問題與假說。** 產品類型會改變使用者對廣告資訊的優先順序嗎？我們從搜尋財／經驗財、推敲可能性模型（ELM）與資訊氣味等文獻出發，預期 3C 產品偏好規格與評論，服飾產品則偏好圖片與評論。
-
-        **把概念轉成可比較的研究設計。** 我們將「資訊重點」操作化為圖片、規格、評論、價格四種版面，分別套用於兩類產品，共八個模擬版面。讓同一批 273 位受訪者，在兩類產品中各完成 1–4 名偏好排序，並隨機呈現選項；因此能同時檢驗類別內的版面差異，以及同一受訪者跨產品類別的偏好變化。
-
-        **結果如何修正我們的想法。** 評論的預期優勢未被排序結果支持：報告的 Bonferroni 校正比較顯示，兩類產品中，規格版面皆優於評論版面。我們接著比較跨產品差異與購物頻率分組，區分較明確的產品類型差異，以及會隨分組方式改變的探索性關聯。
-      `
-    },
-    imageUrl: '/projects/hci-popup-ad-study.svg',
-    status: 'completed',
-    date: { en: 'Course final project', zh: '課程期末專案' },
-    research: {
-      course: 'Human Computer Interaction and User Studies',
-      role: { en: 'Guan-Yu Chen (Pierre) · Team member', zh: 'Guan-Yu Chen（Pierre）· 團隊成員' },
-      members: ['Guan-Yu Chen', 'Po-Ting Lan', 'Yu Jie Chen', 'ChungYun Ting', 'Yi Jen Chen'],
-      contribution: {
-        en: 'Design · Literature review & hypothesis development · Statistical analysis',
-        zh: '設計 · 文獻回顧與假說建立 · 統計分析'
-      },
-      takeaway: {
-        en: 'We expected reviews to be persuasive. Ranked-preference evidence instead favored specifications over reviews in both product categories.',
-        zh: '我們原先預期評論具有說服優勢；偏好排序結果卻顯示，兩類產品的規格版面皆優於評論版面。'
-      },
-      methods: [
-        {
-          title: { en: '01 / Theory → hypotheses', zh: '01 / 從文獻建立可檢驗假說' },
-          description: { en: 'Connected search/experience goods, ELM, and information scent to directional hypotheses about specifications, images, and social proof. The results could challenge these predictions.', zh: '以搜尋財／經驗財、ELM 與資訊氣味推導方向性預測，將規格、圖片與社會認同轉成可由結果支持或挑戰的假說。' }
-        },
-        {
-          title: { en: '02 / Paired preference-ranking design', zh: '02 / 配對的偏好排序設計' },
-          description: { en: '273 respondents ranked four layouts in each of two categories. Randomized option order reduced order bias; four questionnaire sections also captured demographics, shopping habits, and self-reported ad behavior.', zh: '273 位受訪者各自排序兩類產品的四種版面，選項隨機呈現以降低順序偏誤；四部分問卷另蒐集人口背景、網購習慣與自陳廣告互動行為。' }
-        },
-        {
-          title: { en: '03 / Match the tests to ranked, paired data', zh: '03 / 依序位與配對資料選擇檢定' },
-          description: { en: 'Used Friedman tests for four related layouts, followed by Wilcoxon signed-rank comparisons with Bonferroni correction. Cross-category Wilcoxon tests compared each respondent’s rankings across product types.', zh: '類別內以 Friedman 檢定比較四種相關樣本，再以 Wilcoxon 符號等級檢定與 Bonferroni 校正進行事後比較；跨類別則以配對 Wilcoxon 檢定比較同一受訪者的排序。' }
-        },
-        {
-          title: { en: '04 / Probe subgroup sensitivity', zh: '04 / 比較分組方式，檢視結果邊界' },
-          description: { en: 'Explored shopping-frequency differences with Mann–Whitney U tests for two groups and Kruskal–Wallis tests for the original six levels. Read these alongside each other before drawing personalization implications.', zh: '購物頻率以二分組的 Mann–Whitney U 與原始六級的 Kruskal–Wallis 檢定分別探索，交叉閱讀結果，再評估能否據此提出個人化設計建議。' }
-        }
-      ],
-      insights: [
-        {
-          title: { en: 'The expected advantage of social proof did not hold', zh: '評論的社會認同優勢，沒有照預期出現' },
-          finding: { en: 'Our hypotheses favored reviews in both categories. Yet specifications outranked reviews in the reported pairwise tests for both electronics and apparel. In apparel, 54.95% ranked images first, compared with 11.72% for reviews.', zh: '原假說在兩類產品中都看好評論，但兩類產品的事後比較皆顯示規格優於評論。服飾類有 54.95% 將圖片排第一，評論僅 11.72%。' },
-          method: { en: 'Within-category Friedman tests, then Wilcoxon signed-rank comparisons with Bonferroni correction.', zh: '類別內 Friedman 檢定，再以 Wilcoxon 符號等級檢定進行事後比較與 Bonferroni 校正。' },
-          evidence: { en: 'Specs > reviews: adjusted p = 0.00911 in each category (Tables 3–4).', zh: '規格 > 評論：兩類產品的校正後 p 值皆為 0.00911（表 3–4）。' },
-          implication: { en: 'For these mock-ups, social proof was not a reliable default for the primary information block. The evidence supports testing information hierarchy before prioritizing review content.', zh: '在這組模擬版面中，不能直接把社會認同當作主視覺的優先依據；資訊層級應先經偏好驗證，再決定是否突出評論。' },
-          sourcePage: 8,
-          sourceLabel: 'Tables 1–4'
-        },
-        {
-          title: { en: 'Category differences were selective, not universal', zh: '產品類型改變的是特定資訊權重' },
-          finding: { en: 'The paired comparison found a stronger preference for specifications in electronics than apparel. Price and review rankings did not show a detectable cross-category difference in the reported tests.', zh: '同一受訪者的配對比較顯示，規格在 3C 類比服飾類更受重視；價格與評論的跨類別差異則未達顯著。' },
-          method: { en: 'Two-tailed paired Wilcoxon signed-rank tests for each information emphasis across product categories.', zh: '針對每種資訊重點，以雙尾配對 Wilcoxon 符號等級檢定比較跨產品排序。' },
-          evidence: { en: 'Specifications: z = −3.41, p < 0.001, 189 non-zero pairs. Price: p = 0.321; reviews: p = 0.168 (Table 5).', zh: '規格：z = −3.41，p < 0.001，189 組非零差值配對；價格 p = 0.321、評論 p = 0.168（表 5）。' },
-          implication: { en: 'A design hypothesis is to adjust the prominence of specifications by category. These results do not establish that every information block needs a different layout, or that non-significant differences imply equivalence.', zh: '可優先測試依產品類型調整規格區的顯著程度；現有結果不足以支持所有區塊都要換版，也不能把未達顯著解讀為完全相同。' },
-          sourcePage: 9,
-          sourceLabel: 'Table 5'
-        },
-        {
-          title: { en: 'A personalization signal depended on the grouping', zh: '個人化線索，會隨分組方式改變' },
-          finding: { en: 'Less frequent shoppers ranked electronics specifications more favorably in the two-group analysis (2.12 vs. 2.46; lower is better). The original six-level frequency analysis did not reach significance.', zh: '二分組時，低頻網購者比高頻者更偏好 3C 規格版面（平均排序 2.12 vs. 2.46，越低越偏好）；改回原始六級購物頻率後，差異未達顯著。' },
-          method: { en: 'Compared a Mann–Whitney U two-group result with the Kruskal–Wallis result across the original six frequency levels.', zh: '對照二分組 Mann–Whitney U 檢定與原始六級 Kruskal–Wallis 檢定。' },
-          evidence: { en: 'Two groups: n = 52 / 221, p = 0.0342; six levels: H = 9.64, p = 0.086 (Tables 31–32). The subgroup p-values are reported without a multiple-testing adjustment.', zh: '二分組 n = 52／221，p = 0.0342；六級 H = 9.64，p = 0.086（表 31–32）。分組分析的 p 值未呈現多重比較校正。' },
-          implication: { en: 'Treat shopping frequency as an exploratory follow-up question. This grouping-sensitive association is not sufficient evidence for a fixed personalization rule.', zh: '購物頻率值得作為後續研究問題；這個對分組敏感的關聯，尚不足以直接制定固定的個人化規則。' },
-          sourcePage: 23,
-          sourceLabel: 'Tables 31–32'
-        }
-      ],
-      limitations: {
-        en: 'This was a mock-up preference survey, not a behavioral conversion experiment; 73.6% of respondents were 18–25. We report the original tables rather than reanalyzing raw data. Table 3’s image-versus-specifications p-value conflicts with its interpretation, and the spending-group narrative conflicts with Table 40, so neither disputed comparison is used here. The reported tests do not establish causality; effect sizes, intervals, and subgroup multiplicity need further work. A next study could measure clicks and dwell time on a live prototype with a broader sample.',
-        zh: '這是模擬版面的偏好問卷，並非轉換率行為實驗；73.6% 受訪者為 18–25 歲。本頁依原報告表格整理，未重新分析原始資料。原報告表 3 的圖片／規格 p 值與判讀不一致，消費分組文字也與表 40 不一致，因此本頁不採用這兩項爭議比較。現有檢定不支持因果推論；效果量、區間估計與分組多重比較仍需補強。後續可用實際原型量測點擊與停留，並擴大樣本組成。'
-      },
-      reportUrl: '/projects/hci-popup-ad-study/final-report.pdf',
-      reportTitle: 'A Study on the Impact of One-page Pop-up Advertisement Designs on User Behavior for Different Product Categories: A Case Study of Consumer Electronics and Apparel',
-      attributionNote: {
-        en: 'The PDF now includes all five team members on its first page and in its author metadata. The research content and pagination are unchanged.',
-        zh: 'PDF 第一頁與作者資訊已補齊五位組員姓名，研究內文與頁碼維持原樣。'
-      }
-    },
-    skills: [
-      { name: 'Hypothesis Development', color: 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' },
-      { name: 'Within-Subject Design', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30' },
-      { name: 'Nonparametric Statistics', color: 'bg-purple-500/20 text-purple-400 border border-purple-500/30' },
-      { name: 'User Research', color: 'bg-amber-500/20 text-amber-400 border border-amber-500/30' }
-    ]
-  },
-  {
     id: 'erp-system',
     title: {
       en: 'Zhongxing Pest Control ERP System',
@@ -909,6 +792,123 @@ export const projects: Project[] = [
     },
     // githubUrl: 'https://github.com/yourusername/erp-system',
     youtubeVideoId: 'ViVosgnhEbM',
+  },
+  {
+    id: 'aiplanner',
+    title: {
+      en: 'aiPlanner Smart Calendar',
+      zh: 'aiPlanner 智慧行程助理'
+    },
+    description: {
+      en: 'Designed and built a Swift calendar app that turns natural-language text or speech into events, with Supabase and iCloud integration.',
+      zh: '以 Swift 設計並開發行事曆 App，將自然語言文字或語音轉成行程，並整合 Supabase 與 iCloud。'
+    },
+    fullDescription: {
+      en: `
+        aiPlanner is a smart calendar app built exclusively for iOS, designed to streamline how users create and manage schedules.
+
+        With natural language processing (NLP) at its core, users can simply type or speak phrases like *"Dinner with John next Friday at 7 PM"* and have events automatically parsed and added to their calendar.
+
+        I designed and developed aiPlanner with the following architecture:
+        - Swift-based iOS app with Apple-style UI
+        - Natural Language Processing for event parsing
+        - Supabase backend for authentication and optional shared event storage
+        - Local iCloud sync for private, personal data
+
+        aiPlanner provides users with a frictionless way to manage their daily lives while ensuring both **privacy** and **usability**.
+      `,
+      zh: `
+        aiPlanner 是一款專為 iOS 打造的智慧行程應用，目標是讓使用者以更直覺的方式規劃與管理行程。
+
+        核心功能是自然語言處理 (NLP)，使用者只需輸入或說出 *「下週五晚上七點和 John 吃晚餐」*，事件就會自動解析並加入行事曆。
+
+        我主導了系統設計與開發，包含：
+        - 使用 Swift 開發 iOS 原生應用，維持 Apple 風格的簡潔設計
+        - 導入自然語言處理，支援快速解析事件
+        - Supabase 提供帳號驗證與共享事件儲存
+        - iCloud 本地同步，保障個人資料隱私
+
+        aiPlanner 讓使用者以最自然的方式管理日常，兼顧 **隱私性** 與 **便利性**。
+      `
+    },
+    imageUrl: '/projects/aip.jpg',
+    userFlow: {
+      en: ['Type or speak a plan', 'Parse its date, time, and event', 'Add it to the calendar', 'View or share the schedule'],
+      zh: ['輸入或說出計畫', '解析日期、時間與事件', '加入行事曆', '查看或共享行程']
+    },
+    status: 'completed',
+    date: {
+      en: 'July 2025 - August 2025',
+      zh: '2025年7月 - 2025年8月'
+    },
+    skills: [
+      { name: 'Swift', color: 'bg-orange-500/20 text-orange-400 border border-orange-500/30' },
+      { name: 'Natural Language Processing', color: 'bg-purple-500/20 text-purple-400 border border-purple-500/30' },
+      { name: 'Supabase', color: 'bg-green-500/20 text-green-400 border border-green-500/30' },
+      { name: 'iCloud', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30' },
+      { name: 'iOS Development', color: 'bg-gray-500/20 text-gray-400 border border-gray-500/30' }
+    ],
+    features: projectFeatures['aiplanner'],
+    milestones: {
+      en: [
+        {
+          title: 'Built iOS-native Calendar App',
+          description: 'Developed aiPlanner using Swift with Apple-style UI and smooth user experience.',
+          type: 'achievement',
+          icon: 'smartphone'
+        },
+        {
+          title: 'Implemented Natural Language Parsing',
+          description: 'Enabled users to create events with simple text or voice inputs.',
+          type: 'skill',
+          icon: 'speech'
+        },
+        {
+          title: 'Integrated Supabase',
+          description: 'Added authentication and shared event storage via Supabase.',
+          type: 'learning',
+          icon: 'wrench'
+        },
+        {
+          title: 'Enhanced Privacy with iCloud',
+          description: 'Leveraged iCloud sync for secure, private personal events.',
+          type: 'skill',
+          icon: 'lock'
+        }
+      ],
+      zh: [
+        {
+          title: '開發 iOS 原生行事曆應用',
+          description: '以 Swift 打造 aiPlanner，提供 Apple 風格的流暢體驗。',
+          type: 'achievement',
+          icon: 'smartphone'
+        },
+        {
+          title: '導入自然語言解析',
+          description: '支援以簡單文字或語音快速建立事件。',
+          type: 'skill',
+          icon: 'speech'
+        },
+        {
+          title: '整合 Supabase',
+          description: '透過 Supabase 提供帳號驗證與共享事件儲存。',
+          type: 'learning',
+          icon: 'wrench'
+        },
+        {
+          title: '強化隱私與 iCloud 同步',
+          description: '利用 iCloud 確保個人事件安全私密同步。',
+          type: 'skill',
+          icon: 'lock'
+        }
+      ]
+    },
+    galleryImages: [
+      '/projects/aip1.jpg',
+      '/projects/aip2.jpg',
+      '/projects/aip3.jpg',
+      '/projects/aip4.jpg'
+    ]
   },
   {
     id: 'superbot',

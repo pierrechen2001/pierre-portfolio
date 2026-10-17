@@ -26,8 +26,8 @@ const floatAnimation = {
 };
 
 export default function Home() {
-  // 精選最新專題、AI 學習產品與團隊全端平台
-  const FEATURED_IDS = ['mapit', 'dogtor', '200ok'];
+  // 精選最新專題、AI 學習產品與 HCI 研究
+  const FEATURED_IDS = ['mapit', 'dogtor', 'hci-popup-ad-study'];
   const featuredProjects = FEATURED_IDS.map(id => projects.find(p => p.id === id)!).filter(Boolean);
   const { t, language } = useLanguage();
 
