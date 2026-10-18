@@ -27,6 +27,7 @@ export interface Project {
   };
   imageUrl: string;
   status: 'completed' | 'live' | 'in-progress' | 'planned';
+  researchStatus?: 'in-progress';
   date: {
     en: string;
     zh: string;
@@ -188,6 +189,7 @@ export const projects: Project[] = [
   },
   {
     id: 'dogtor',
+    researchStatus: 'in-progress',
     title: {
       en: 'Dogtor AI Learning Assistant',
       zh: 'DOGTOR 逗課 AI 學習軟體'
@@ -203,6 +205,8 @@ export const projects: Project[] = [
         As a co-founder and software engineer, I proposed the overall system architecture, connecting knowledge-graph-based learning scores, AI question generation and multi-model checks, personalized review, and parent analytics. Multi-model checking covers nearly all Taiwanese junior and senior high school subjects and international curricula including SAT and AP. Personalized review is live. I also work on the production backend and data systems, including LLM orchestration, event collection, FastAPI APIs, Cloud Run and Cloud SQL.
 
         I also built paid parent analytics that turns student answers, incorrect choices, and knowledge-point performance into AI-generated weakness analyses and personalized guidance.
+
+        The team is also conducting human–computer interaction (HCI) research related to Dogtor; the study is still in progress.
       `,
       zh: `
         Dogtor（逗課）是為國高中生設計的 AI 學習 App，整合題目練習、錯題追蹤、學習進度與個人化建議。截至 2026 年 10 月 12 日，產品已累積超過 10,000 位用戶；上線首月達到 2,600 位月活躍用戶（MAU），並登上 App Store 教育類第 4 名。
@@ -210,6 +214,8 @@ export const projects: Project[] = [
         作為共同創辦人與軟體工程師，我提出整體系統架構，串起知識圖譜與知識分數、AI 題庫生成與多模型檢查、個人化複習及家長分析。多模型檢查涵蓋幾乎所有台灣國高中科目，也包含 SAT／AP 等國際課程；個人化複習已正式開放。我也參與正式環境的後端與資料工作，包括 LLM 編排、事件蒐集、FastAPI API，以及 Cloud Run 和 Cloud SQL 部署。
 
         我也開發付費家長分析功能，將學生答題、錯誤選項與知識點表現轉換成 AI 弱點分析和個人化建議。
+
+        團隊也正在進行與 Dogtor 相關的人機互動（HCI）研究，目前尚未完成。
       `
     },
     imageUrl: '/projects/dt.jpg',

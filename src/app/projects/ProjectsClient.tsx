@@ -42,6 +42,7 @@ export default function ProjectsClient() {
                     description={project.description}
                     imageUrl={project.imageUrl}
                     status={project.status}
+                    researchStatus={project.researchStatus}
                     date={project.date}
                     skills={project.skills}
                   />

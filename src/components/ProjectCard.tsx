@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { PointerEvent } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import ResearchStatusBadge from '@/components/ResearchStatusBadge';
 
 type ProjectStatus = 'completed' | 'live' | 'in-progress' | 'planned';
 
@@ -25,6 +26,7 @@ interface ProjectCardProps {
   };
   imageUrl: string;
   status: ProjectStatus;
+  researchStatus?: 'in-progress';
   date: {
     en: string;
     zh: string;
@@ -97,6 +99,7 @@ export default function ProjectCard({
   description,
   imageUrl,
   status,
+  researchStatus,
   date,
   skills,
 }: ProjectCardProps) {
@@ -179,6 +182,11 @@ export default function ProjectCard({
               {statusText[status][language]}
             </span>
           </div>
+          {researchStatus === 'in-progress' && (
+            <div className="mb-4">
+              <ResearchStatusBadge language={language} />
+            </div>
+          )}
           <p className="text-xs font-mono text-gray-500 mb-4 flex-shrink-0 flex items-center">
             <span className="w-2 h-2 rounded-full bg-gray-600 mr-2 group-hover:bg-[#F3C14B] transition-colors"></span>
             {date[language]}

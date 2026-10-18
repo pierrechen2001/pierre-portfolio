@@ -16,6 +16,7 @@ import ProjectFeatureCards from '@/components/ProjectFeatureCards';
 import ProjectSection from '@/components/ProjectSection';
 import ProjectUserFlow from '@/components/ProjectUserFlow';
 import { ResearchSummary, ResearchStudySections } from '@/components/ResearchStudy';
+import ResearchStatusBadge from '@/components/ResearchStatusBadge';
 
 interface ProjectProps {
   id: string;
@@ -178,6 +179,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                   }`}>
                     {statusText[project.status][language]}
                   </span>
+                  {project.researchStatus === 'in-progress' && <ResearchStatusBadge language={language} />}
                 </div>
               </Reveal>
 
