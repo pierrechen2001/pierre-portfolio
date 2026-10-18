@@ -53,6 +53,8 @@ export interface Project {
   };
   githubUrl?: string;
   demoUrl?: string;
+  // 顯示在專案頁標題下方，引導前往 demoUrl 的官網
+  websiteCallout?: LocalizedText;
   appStoreUrl?: string;
   featured?: boolean;
   viewLiveUrl?: string;
@@ -82,7 +84,6 @@ export interface Project {
     limitations: LocalizedText;
     reportUrl: string;
     reportTitle: string;
-    attributionNote: { en: string; zh: string };
   };
 }
 
@@ -232,6 +233,10 @@ export const projects: Project[] = [
       zh: '2025年 - 現在'
     },
     demoUrl: 'https://dogtor.superb-tutor.com/',
+    websiteCallout: {
+      en: 'Visit the official site for the full product tour, user reviews, and more videos.',
+      zh: '前往官網看更完整的產品介紹、使用者評價與更多影音內容。'
+    },
     appStoreUrl: 'https://apps.apple.com/tw/app/dogtor-%E9%80%97%E8%AA%B2/id6751773627',
     skills: [
       { name: 'Flutter', color: 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' },
@@ -409,11 +414,7 @@ export const projects: Project[] = [
         zh: '這是模擬版面的偏好問卷，並非轉換率行為實驗；73.6% 受訪者為 18–25 歲。本頁依原報告表格整理，未重新分析原始資料。原報告表 3 的圖片／規格 p 值與判讀不一致，消費分組文字也與表 40 不一致，因此本頁不採用這兩項爭議比較。現有檢定不支持因果推論；效果量、區間估計與分組多重比較仍需補強。後續可用實際原型量測點擊與停留，並擴大樣本組成。'
       },
       reportUrl: '/projects/hci-popup-ad-study/final-report.pdf',
-      reportTitle: 'A Study on the Impact of One-page Pop-up Advertisement Designs on User Behavior for Different Product Categories: A Case Study of Consumer Electronics and Apparel',
-      attributionNote: {
-        en: 'The PDF now includes all five team members on its first page and in its author metadata. The research content and pagination are unchanged.',
-        zh: 'PDF 第一頁與作者資訊已補齊五位組員姓名，研究內文與頁碼維持原樣。'
-      }
+      reportTitle: 'A Study on the Impact of One-page Pop-up Advertisement Designs on User Behavior for Different Product Categories: A Case Study of Consumer Electronics and Apparel'
     },
     skills: [
       { name: 'Hypothesis Development', color: 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' },

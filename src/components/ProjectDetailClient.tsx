@@ -181,6 +181,30 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                 </div>
               </Reveal>
 
+              {project.websiteCallout && project.demoUrl && (
+                <Reveal delay={0.25} className="mx-auto max-w-4xl mb-12">
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-primary/30 bg-primary/10 px-6 py-5 hover:border-primary/60 hover:bg-primary/15 transition-colors"
+                  >
+                    <div>
+                      <p className="text-sm font-semibold tracking-widest text-primary uppercase mb-1">
+                        {language === 'en' ? 'Official website' : '產品官網'}
+                      </p>
+                      <p className="text-[var(--foreground)] leading-relaxed">{project.websiteCallout[language]}</p>
+                    </div>
+                    <span className="inline-flex shrink-0 items-center bg-primary text-dark px-5 py-2.5 rounded-lg font-semibold">
+                      {project.demoUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </span>
+                  </a>
+                </Reveal>
+              )}
+
               {project.research && <ResearchSummary study={project.research} language={language} />}
 
               <nav className="project-section-nav" aria-label={language === 'zh' ? '專案頁面目錄' : 'Project sections'}>
@@ -250,8 +274,7 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                       {project.research.members.map(name => <li key={name}>{name}</li>)}
                     </ul>
                   </div>
-                  <p className="text-lg text-[var(--foreground)] leading-relaxed mb-4">{project.research.reportTitle}</p>
-                  <p className="text-[var(--foreground-muted)] leading-relaxed mb-6">{project.research.attributionNote[language]}</p>
+                  <p className="text-lg text-[var(--foreground)] leading-relaxed mb-6">{project.research.reportTitle}</p>
                   <div className="flex flex-wrap gap-4">
                     <a href={project.research.reportUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-primary text-dark px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
                       {language === 'zh' ? '閱讀完整報告（PDF）' : 'Read full report (PDF)'}
