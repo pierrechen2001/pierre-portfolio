@@ -10,6 +10,7 @@ type ProjectStatus = 'completed' | 'live' | 'in-progress' | 'planned';
 interface Skill {
   name: string;
   color: string;
+  hideOnCard?: boolean;
 }
 
 interface ProjectCardProps {
@@ -189,7 +190,7 @@ export default function ProjectCard({
           </div>
           
           <div className="flex flex-wrap gap-2 mb-6">
-            {skills.map((skill) => (
+            {skills.filter((skill) => !skill.hideOnCard).map((skill) => (
               <span
                 key={skill.name}
                 className={`text-xs px-2 py-1 rounded font-mono ${skill.color || getSkillColor(skill.name)} border opacity-90 hover:opacity-100 transition-all duration-300`}

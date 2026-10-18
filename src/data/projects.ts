@@ -34,6 +34,7 @@ export interface Project {
   skills: {
     name: string;
     color: string;
+    hideOnCard?: boolean;
   }[];
   features?: ProjectFeature[];
   milestones?: {
@@ -319,7 +320,7 @@ export const projects: Project[] = [
     id: 'hci-popup-ad-study',
     title: {
       en: 'Pop-up Ads: Testing Design Hypotheses',
-      zh: '彈出式廣告：以使用者研究檢驗設計假說'
+      zh: '彈出式廣告：使用者研究驗證假說'
     },
     description: {
       en: 'From theory to ranked-preference evidence: a 273-person HCI study challenged our expectation that review-led ads would outperform other layouts. My work covered design, literature, hypotheses, and statistics.',
@@ -416,7 +417,7 @@ export const projects: Project[] = [
     },
     skills: [
       { name: 'Hypothesis Development', color: 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' },
-      { name: 'Within-Subject Design', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30' },
+      { name: 'Within-Subject Design', color: 'bg-blue-500/20 text-blue-400 border border-blue-500/30', hideOnCard: true },
       { name: 'Nonparametric Statistics', color: 'bg-purple-500/20 text-purple-400 border border-purple-500/30' },
       { name: 'User Research', color: 'bg-amber-500/20 text-amber-400 border border-amber-500/30' }
     ]
