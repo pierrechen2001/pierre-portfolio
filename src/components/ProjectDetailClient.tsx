@@ -149,12 +149,13 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
             <div className="project-detail-content">
               
               {/* 專案圖片 */}
-              {!project.research && <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1, ease: EASE_OUT }} className="mb-8 md:mb-12 rounded-2xl overflow-hidden shadow-lg border border-[var(--border-color)]/10">
+              {!project.research && <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1, ease: EASE_OUT }} className="mx-auto max-w-4xl mb-8 md:mb-12 rounded-2xl overflow-hidden shadow-lg border border-[var(--border-color)]/10">
                 <Image
                   src={project.imageUrl}
                   alt={project.title[language]}
                   width={1200}
                   height={630}
+                  sizes="(min-width: 1024px) 896px, 100vw"
                   className="w-full h-auto object-cover"
                   priority
                 />
