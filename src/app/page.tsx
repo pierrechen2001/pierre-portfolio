@@ -118,7 +118,7 @@ export default function Home() {
                 <div className="flex flex-wrap gap-x-6 gap-y-2">
                   {[
                     { value: '12K+', label: language === 'zh' ? 'Dogtor 用戶 · 2026/10/26' : 'Dogtor users · Oct 26, 2026' },
-                    { value: '#1',   label: language === 'zh' ? 'App Store 教育類 · 2026/10/26' : 'App Store Education · Oct 26, 2026' },
+                    { value: '#1',   label: language === 'zh' ? 'App Store／Google Play 教育類 · 2026/10/26' : 'App Store / Google Play Education · Oct 26, 2026' },
                     { value: String(projects.length), label: language === 'zh' ? '大型公開專案' : 'Major public projects' },
                   ].map(stat => (
                     <div key={stat.value} className="flex items-baseline gap-1.5">
@@ -207,7 +207,7 @@ export default function Home() {
                 <motion.div variants={staggerItem} className="flex flex-wrap gap-x-8 gap-y-3 pl-6 border-l-2 border-[var(--primary)]/20">
                   {[
                     { value: '12K+', label: language === 'zh' ? 'Dogtor 用戶 · 2026/10/26' : 'Dogtor users · Oct 26, 2026' },
-                    { value: '#1',   label: language === 'zh' ? 'App Store 教育類 · 2026/10/26' : 'App Store Education · Oct 26, 2026' },
+                    { value: '#1',   label: language === 'zh' ? 'App Store／Google Play 教育類 · 2026/10/26' : 'App Store / Google Play Education · Oct 26, 2026' },
                     { value: String(projects.length), label: language === 'zh' ? '大型公開專案' : 'Major public projects' },
                   ].map(stat => (
                     <div key={stat.value} className="flex items-baseline gap-2">

@@ -16,7 +16,7 @@ const translations = {
     // 頁面頭部
     'iam': 'I am',
     'fullname': 'Pierre Chen',
-    'description': 'AI application developer and full-stack engineer. I co-build Dogtor, a learning app with 12,000+ users that reached #1 in App Store Education on October 26, 2026, and contribute to MapIt, a social restaurant map. My work spans Flutter, FastAPI, data systems, and product experience.',
+    'description': 'AI application developer and full-stack engineer. I co-build Dogtor, a learning app with 12,000+ users that reached #1 in Education on both the App Store and Google Play on October 26, 2026, and contribute to MapIt, a social restaurant map. My work spans Flutter, FastAPI, data systems, and product experience.',
     'view_portfolio': 'View My Portfolio',
     'contact_me': 'Contact Me',
     'resume': 'Resume',
@@ -46,7 +46,7 @@ const translations = {
     'about_page_title': 'About Me',
     'about_page_description': 'From chemistry research to information management and AI application development, with experience across product, data, and mobile engineering.',
     'who_am_i': 'Who Am I',
-    'about_intro_1': 'Hi, I\'m Pierre. I am an AI Application Developer Intern at Aiii.AI and a co-founder and software engineer building Dogtor. On October 26, 2026, Dogtor reached #1 in App Store Education and added 2,000 users in one day, bringing its total to 12,000+ users.',
+    'about_intro_1': 'Hi, I\'m Pierre. I am an AI Application Developer Intern at Aiii.AI and a co-founder and software engineer building Dogtor. On October 26, 2026, Dogtor reached #1 in Education on both the App Store and Google Play and added 2,000 users in one day, bringing its total to 12,000+ users.',
     'about_intro_2': 'My path began in chemistry research and continued into information management. I use that research mindset to map user problems, design data flows, and test product decisions before refining the implementation.',
     'about_intro_3': 'At Akira Dialog Tech, I worked on backend APIs and synthetic-data research. I also proposed the MapIt product concept and contribute to its NTU capstone development and HCI feasibility research, and have built client and education tools through Superb Education.',
     'work_experience': 'Work Experience',
@@ -76,7 +76,7 @@ const translations = {
     'dogtor_company': 'SuperB Software Technology — DOGTOR',
     'dogtor_period': 'Apr 2026 - Present',
     'dogtor_description': 'Co-founded Dogtor and built AI features, backend data systems, and the student learning product.',
-    'dogtor_achievement_1': 'Reached #1 in App Store Education on October 26, 2026; added 2,000 users that day, bringing Dogtor to 12,000+ total users; recorded 2,600 MAU in the first month after launch',
+    'dogtor_achievement_1': 'Reached #1 in Education on both the App Store and Google Play on October 26, 2026; added 2,000 users that day, bringing Dogtor to 12,000+ total users; recorded 2,600 MAU in the first month after launch',
     'dogtor_achievement_2': 'Proposed the overall architecture: knowledge-graph-based scoring, multi-model question checks across Taiwanese and SAT/AP curricula, and live personalized review',
     'dogtor_achievement_3': 'Built paid parent analytics that turns learning data into AI-generated weakness analyses and guidance',
     
@@ -164,7 +164,7 @@ const translations = {
     // 頁面頭部
     'iam': '我是',
     'fullname': 'Pierre Chen',
-    'description': '從 0 到上架的全端開發者，熱愛把想法變成真正有人在用的產品！Dogtor AI 於 2026 年 10 月 26 日登上 App Store 教育類第 1 名，已陪伴超過 12,000 位用戶學習。從 Flutter、FastAPI 到資料系統與產品體驗，我享受打磨每一個讓使用者會心一笑的細節。',
+    'description': '從 0 到上架的全端開發者，熱愛把想法變成真正有人在用的產品！Dogtor AI 於 2026 年 10 月 26 日登上 App Store 與 Google Play 教育類雙榜第 1 名，已陪伴超過 12,000 位用戶學習。從 Flutter、FastAPI 到資料系統與產品體驗，我享受打磨每一個讓使用者會心一笑的細節。',
     'view_portfolio': '查看我的作品',
     'contact_me': '聯繫我',
     'resume': '履歷',
@@ -194,7 +194,7 @@ const translations = {
     'about_page_title': '關於我',
     'about_page_description': '從化學研究轉向資訊管理與 AI 應用開發，累積產品、資料與行動端的實作經驗。',
     'who_am_i': '我是誰',
-    'about_intro_1': '嗨，我是 Pierre，目前在 Aiii.AI 擔任 AI 應用開發實習生，也是 Dogtor 的共同創辦人與軟體工程師。2026 年 10 月 26 日，Dogtor 登上 App Store 教育類第 1 名，當日新增 2,000 位用戶，累積用戶超過 12,000 位。',
+    'about_intro_1': '嗨，我是 Pierre，目前在 Aiii.AI 擔任 AI 應用開發實習生，也是 Dogtor 的共同創辦人與軟體工程師。2026 年 10 月 26 日，Dogtor 登上 App Store 與 Google Play 教育類雙榜第 1 名，當日新增 2,000 位用戶，累積用戶超過 12,000 位。',
     'about_intro_2': '我從化學研究走進資訊管理。研究訓練讓我習慣先釐清問題、整理資料流程，再設計系統並反覆驗證產品決策。',
     'about_intro_3': '曾在皓談心理科技投入後端 API 與合成資料研究。我提出 MapIt 的產品概念，目前與臺大資管專題團隊共同開發，研究從收藏到共同造訪的 HCI 與流程可行性；也透過精湛教育開發客戶與教學工具。',
     'work_experience': '工作經歷',
@@ -224,7 +224,7 @@ const translations = {
     'dogtor_company': 'SuperB Software Technology — DOGTOR 逗課',
     'dogtor_period': '2026年4月 - 現在',
     'dogtor_description': '共同創辦 Dogtor，開發 AI 功能、後端資料系統與學生學習產品。',
-    'dogtor_achievement_1': '2026 年 10 月 26 日登上 App Store 教育類第 1 名，當日新增 2,000 位用戶，累積超過 12,000 位；上線首月達到 2,600 MAU',
+    'dogtor_achievement_1': '2026 年 10 月 26 日登上 App Store 與 Google Play 教育類雙榜第 1 名，當日新增 2,000 位用戶，累積超過 12,000 位；上線首月達到 2,600 MAU',
     'dogtor_achievement_2': '提出整體架構，結合知識圖譜計分、台灣國高中與 SAT／AP 題庫的多模型檢查，以及已開放的個人化複習',
     'dogtor_achievement_3': '開發付費家長分析功能，將學習資料轉成 AI 弱點分析與個人化建議',
     
