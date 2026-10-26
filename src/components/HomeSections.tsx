@@ -212,7 +212,16 @@ export function ExperienceSnapshot() {
               <p className="font-mono text-sm text-[var(--text-muted)] pt-0.5">{t(`${key}_period`)}</p>
               <div>
                 <h3 className="text-lg font-semibold text-[var(--foreground)]">
-                  {t(`${key}_company`)}
+                  {key === 'dogtor' ? (
+                    <a
+                      href="https://official.superb-tutor.com/zh-TW"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline decoration-[var(--primary)]/30 hover:text-[var(--primary)] hover:decoration-[var(--primary)] transition-colors"
+                    >
+                      {t(`${key}_company`)}
+                    </a>
+                  ) : t(`${key}_company`)}
                   <span className="text-[var(--text-muted)] font-normal"> · {t(`${key}_position`)}</span>
                 </h3>
                 <p className="text-[var(--foreground-muted)] mt-1 leading-relaxed">{t(highlight)}</p>

@@ -168,7 +168,7 @@ export default function AboutClient() {
                          {t('dogtor_period')}
                        </div>
                        <h3 className="text-xl font-bold text-white">
-                         <a href="https://dogtor.superb-tutor.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--secondary)] transition-colors underline decoration-[var(--secondary)]/30 hover:decoration-[var(--secondary)]">
+                         <a href="https://official.superb-tutor.com/zh-TW" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--secondary)] transition-colors underline decoration-[var(--secondary)]/30 hover:decoration-[var(--secondary)]">
                            {t('dogtor_company')}
                          </a>
                        </h3>
