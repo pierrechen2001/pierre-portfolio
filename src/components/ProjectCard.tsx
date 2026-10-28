@@ -26,6 +26,7 @@ interface ProjectCardProps {
   imageUrl: string;
   status: ProjectStatus;
   researchStatus?: 'in-progress';
+  highlight?: { en: string; zh: string };
   date: {
     en: string;
     zh: string;
@@ -99,6 +100,7 @@ export default function ProjectCard({
   imageUrl,
   status,
   researchStatus,
+  highlight,
   date,
   skills,
 }: ProjectCardProps) {
@@ -177,6 +179,12 @@ export default function ProjectCard({
           {/* 裝飾性線條 - Tech Accent */}
           <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--border-color)] to-transparent opacity-50 group-hover:via-primary/50 transition-all duration-500"></div>
           
+          {highlight && (
+            <div className="mb-3 inline-flex self-start items-center gap-1.5 rounded-full border border-[#F3C14B]/40 bg-[#F3C14B]/15 px-3 py-1 text-xs font-bold text-[#F3C14B]">
+              <span aria-hidden>🏆</span>
+              {highlight[language]}
+            </div>
+          )}
           <div className="flex flex-wrap justify-between items-start gap-3 mb-4">
             <h3 className="text-xl font-bold text-white group-hover:text-[#F3C14B] transition-colors leading-tight flex-grow">{title[language]}</h3>
             <div className="flex items-center gap-2">

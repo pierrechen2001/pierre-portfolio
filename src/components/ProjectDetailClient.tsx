@@ -179,6 +179,12 @@ export default function ProjectDetailClient({ project, id }: ProjectProps) {
                   }`}>
                     {statusText[project.status][language]}
                   </span>
+                  {project.highlight && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#F3C14B]/40 bg-[#F3C14B]/15 px-4 py-2 text-sm font-bold text-[#F3C14B]">
+                      <span aria-hidden>🏆</span>
+                      {project.highlight[language]}
+                    </span>
+                  )}
                   {project.researchStatus === 'in-progress' && <ResearchStatusBadge language={language} />}
                 </div>
               </Reveal>

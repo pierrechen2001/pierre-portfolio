@@ -28,6 +28,8 @@ export interface Project {
   imageUrl: string;
   status: 'completed' | 'live' | 'in-progress' | 'planned';
   researchStatus?: 'in-progress';
+  // 卡片與專案頁標題旁的醒目成就標章
+  highlight?: LocalizedText;
   date: {
     en: string;
     zh: string;
@@ -190,17 +192,21 @@ export const projects: Project[] = [
   {
     id: 'dogtor',
     researchStatus: 'in-progress',
+    highlight: {
+      en: '#1 Education · App Store & Google Play',
+      zh: 'App Store／Google Play 教育類雙榜第一'
+    },
     title: {
       en: 'Dogtor AI Learning Assistant',
       zh: 'DOGTOR 逗課 AI 學習軟體'
     },
     description: {
-      en: 'An AI learning companion that helps students keep a study rhythm through practice and feedback; co-built for 12,000+ users and reached #1 in Education on both the App Store and Google Play on October 26, 2026.',
-      zh: '從補教現場出發的 AI 學伴，透過練習與即時回饋幫學生維持學習節奏；共同打造，於 2026 年 10 月 26 日登上 App Store 與 Google Play 教育類雙榜第 1 名，累積超過 12,000 位用戶。'
+      en: '#1 in Education on both the App Store and Google Play, with 18,000+ users. An AI learning companion that helps students keep a study rhythm through practice and feedback.',
+      zh: 'App Store 與 Google Play 教育類雙榜第一，累積超過 18,000 位用戶。從補教現場出發的 AI 學伴，透過練習與即時回饋幫學生維持學習節奏。'
     },
     fullDescription: {
       en: `
-        Dogtor (逗課) is an AI learning app for secondary-school students. It combines question practice, error tracking, learning progress, and personalized guidance. On October 26, 2026, it reached #1 in Education on both the App Store and Google Play and added 2,000 users in one day, bringing its total to 12,000+ users. In its first month after launch, it reached 2,600 monthly active users.
+        Dogtor (逗課) is an AI learning app for secondary-school students. It combines question practice, error tracking, learning progress, and personalized guidance. On October 26, 2026, it reached #1 in Education on both the App Store and Google Play, and it now has 18,000+ users. In its first month after launch, it reached 2,600 monthly active users.
 
         As a co-founder and software engineer, I proposed the overall system architecture, connecting knowledge-graph-based learning scores, AI question generation and multi-model checks, personalized review, and parent analytics. Multi-model checking covers nearly all Taiwanese junior and senior high school subjects and international curricula including SAT and AP. Personalized review is live. I also work on the production backend and data systems, including LLM orchestration, event collection, FastAPI APIs, Cloud Run and Cloud SQL.
 
@@ -209,7 +215,7 @@ export const projects: Project[] = [
         The team is also conducting human–computer interaction (HCI) research related to Dogtor; the study is still in progress.
       `,
       zh: `
-        Dogtor（逗課）是為國高中生設計的 AI 學習 App，整合題目練習、錯題追蹤、學習進度與個人化建議。2026 年 10 月 26 日登上 App Store 與 Google Play 教育類雙榜第 1 名，當日新增 2,000 位用戶，累積用戶超過 12,000 位；上線首月達到 2,600 位月活躍用戶（MAU）。
+        Dogtor（逗課）是為國高中生設計的 AI 學習 App，整合題目練習、錯題追蹤、學習進度與個人化建議。2026 年 10 月 26 日登上 App Store 與 Google Play 教育類雙榜第一，目前累積用戶超過 18,000 位；上線首月達到 2,600 位月活躍用戶（MAU）。
 
         作為共同創辦人與軟體工程師，我提出整體系統架構，串起知識圖譜與知識分數、AI 題庫生成與多模型檢查、個人化複習及家長分析。多模型檢查涵蓋幾乎所有台灣國高中科目，也包含 SAT／AP 等國際課程；個人化複習已正式開放。我也參與正式環境的後端與資料工作，包括 LLM 編排、事件蒐集、FastAPI API，以及 Cloud Run 和 Cloud SQL 部署。
 
@@ -280,7 +286,7 @@ export const projects: Project[] = [
         },
         {
           title: '#1 in Education on both the App Store and Google Play',
-          description: 'Reached #1 in Education on both the App Store and Google Play on October 26, 2026; added 2,000 users that day, bringing the total to 12,000+ users.',
+          description: 'Reached #1 in Education on both the App Store and Google Play on October 26, 2026; Dogtor now has 18,000+ users.',
           type: 'achievement',
           icon: 'trophy'
         }
@@ -311,8 +317,8 @@ export const projects: Project[] = [
           icon: 'database'
         },
         {
-          title: 'App Store 與 Google Play 教育類雙榜第 1 名',
-          description: '2026 年 10 月 26 日登上 App Store 與 Google Play 教育類雙榜第 1 名，當日新增 2,000 位用戶，累積超過 12,000 位。',
+          title: 'App Store 與 Google Play 教育類雙榜第一',
+          description: '2026 年 10 月 26 日登上 App Store 與 Google Play 教育類雙榜第一，目前累積用戶超過 18,000 位。',
           type: 'achievement',
           icon: 'trophy'
         }
